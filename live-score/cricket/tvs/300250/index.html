@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVS Cricket Live Score</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+<body>
+    <div class="pps_wrapper">
+        <div class="pps_element_1">
+            <img src="images/logos.png"/>
+        </div>
+        <div class="pps_element_2 showZoomIn hidden" >
+            <img src="images/copy2.png"/>
+        </div>
+        <div class="pps_element_3 ">
+            <img src="images/bike.png"/>
+        </div>
+       
+        <div class="pps_element_5 hidden showZoomIn">
+            <img src="images/3a.png"/>
+        </div>
+        <div class="pps_element_6 hidden showZoomIn">
+            <img src="images/3b.png"/>
+        </div>
+        <div class="pps_element_7 hidden showZoomIn">
+            <img src="images/3c.png"/>
+        </div>
+        <div class="pps_element_4 ">
+            <img src="images/scorebg.png"/>
+        </div>
+
+            <div class="countryName">
+                <span class="countryone" id="countryone"></span>
+                <span class="countrytwo" id="countrytwo"></span>
+            </div>
+            <div class="teams">
+                <span class="teamone" id="teamone"></span>
+                <span class="teamtwo" id="teamtwo"></span>
+            </div>
+    </div>
+    <script src="main.js"></script>
+    <script>
+        let pps_element_2 = document.querySelector('.pps_element_2')
+        let pps_element_3 = document.querySelector('.pps_element_3')
+        let pps_element_5 = document.querySelector('.pps_element_5')
+        let pps_element_6 = document.querySelector('.pps_element_6')
+        let pps_element_7 = document.querySelector('.pps_element_7')
+
+            setTimeout(slide, false)
+        function slide(){
+            pps_element_7.classList.add('hidden')
+            pps_element_3.classList.remove('hidden')
+            pps_element_3.classList.add('showZoomInLeft')
+            setTimeout(function(){
+                pps_element_2.classList.remove('hidden')
+                pps_element_3.classList.remove('showZoomInLeft')
+                setTimeout(function(){
+                    pps_element_3.classList.add('zoomOutRight')
+                    setTimeout(function(){
+                        pps_element_3.classList.remove('zoomOutRight')
+                        pps_element_3.classList.add('hidden')
+                        pps_element_2.classList.add('hidden')
+                        pps_element_5.classList.remove('hidden')
+                        setTimeout(function(){
+                            pps_element_5.classList.add('hidden')
+                            pps_element_6.classList.remove('hidden')
+                            setTimeout(function(){
+                                pps_element_6.classList.add('hidden')
+                                pps_element_7.classList.remove('hidden')
+                                setTimeout(function(){
+                                    slide();
+                                },2500)
+                            },2000)
+                        },2000)
+                    },1000)
+                },2000)
+            },1000)
+        }
+
+    </script>
+</body>
+</html>

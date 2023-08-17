@@ -1,0 +1,303 @@
+
+ .purple__wrapper * {
+     margin: 0;
+     padding: 0;
+     user-select: none;
+ }
+ .hidden{
+    display: none;
+ }
+ 
+ .purple__wrapper img {
+     background: transparent !important;
+ }
+ 
+ .purple__wrapper .purple_slide img {
+     max-width: 100%;
+     max-height: 100%
+ }
+ 
+ .purple_slide_bg img {
+     width: 100%
+ }
+ 
+ #purple_image_overlay_section {
+     position: relative;
+ }
+ 
+ .purple__wrapper {
+     bottom: 0;
+     width: 728px;
+     height: 120px;
+     position: absolute;
+     background: url('img/bg.png');
+     cursor: pointer;
+     background-size: 100% 100%;
+     left: 0;
+     right: 0;
+     margin: 0 auto;
+     overflow-y: hidden;
+     background-position: bottom;
+     background-repeat: no-repeat;
+ }
+ 
+ .purple_slide_2 {
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+ }
+ 
+ .logos {
+     width: 100%;
+     height: 100%;
+
+ }
+ 
+ 
+ .one {
+    width: 100%;
+     height: 100%;
+ }
+ 
+ 
+ .two {
+     width: 100%;
+     height: 100%;
+    
+ }
+
+ 
+ .three {
+    width: 100%;
+     height: 100%;
+     bottom: -16px;
+
+ }
+ .four {
+    width: 100%;
+     height: 100%;
+ }
+
+ .country{
+    width: 100%;
+    height: 100%;
+ }
+.countryone{
+    top: 34%;
+    left: 31%;
+    position: absolute;
+    font-family: sans-serif!important;
+    font-weight: 700;
+    font-size: 13px;
+    color: red;
+}
+    .countrytwo{
+    top: 34%;
+    left: 60%;
+    position: absolute;
+    font-family: sans-serif!important;
+    font-weight: 700;
+    font-size: 13px;
+    color: red;
+}
+ .team{
+    width: 100%;
+    height: 100%;
+ }
+ .teamone{
+    top: 68%;
+    left: 34%;
+     position: absolute;
+     font-family: sans-serif!important;
+   font-weight: 700;
+   font-size: 14px;
+   color: #fff;
+
+ }
+ .teamtwo{
+    top: 68%;
+    left: 59%;
+     position: absolute;
+    font-family: sans-serif!important;
+   font-weight: 700;
+   font-size: 14px;
+   color: #fff;
+
+ }
+ 
+ .absolute {
+     position: absolute;
+ }
+ 
+ .hidden {
+     display: none;
+ }
+ 
+ .pulse {
+     animation: pulse 2s ease-in-out infinite;
+ }
+ 
+ @keyframes pulse {
+     0% {
+         transform: scaleX(1) scaleY(1)
+     }
+     50% {
+         transform: scale3d(.95, .95, .95)
+     }
+     to {
+         transform: scaleX(1) scaleY(1)
+     }
+ }
+ 
+ .pulse_2 {
+     animation: pulse_2 1.5s ease-in-out infinite;
+ }
+ 
+ @keyframes pulse_2 {
+     0% {
+         transform: scaleX(1) scaleY(1)
+     }
+     50% {
+         transform: scale3d(.97, .95, .95)
+     }
+     to {
+         transform: scaleX(1) scaleY(1)
+     }
+ }
+ 
+ @keyframes hideZoomOut {
+     100% {
+         opacity: 0;
+         transform: scale3d(.3, .3, .3)
+     }
+ }
+ 
+ @keyframes hideZoomOutBottom {
+     100% {
+         opacity: 0;
+         transform: scale3d(.3, .3, .3) translateY(100%)
+     }
+ }
+ 
+ @keyframes showZoomIn {
+     from {
+         transform: scale3d(.5, .5, .5)
+     }
+     to {
+         transform: scale3d(1, 1, 1)
+     }
+ }
+ 
+ @keyframes showZoomInBottom {
+     from {
+         transform: scale3d(.5, .5, .5) translateY(50%)
+     }
+     to {
+         transform: scale3d(1, 1, 1)
+     }
+ }
+ 
+ @keyframes topBottom {
+     0%,
+     100% {
+         transform: translateY(1px);
+     }
+     50% {
+         transform: translateY(-10px);
+     }
+ }
+ 
+ .hideZoomOut {
+     animation-name: hideZoomOut;
+     animation-duration: .5s;
+     animation-fill-mode: both;
+     animation-iteration-count: 1
+ }
+ 
+ .hideZoomOutBottom {
+     animation-name: hideZoomOutBottom;
+     animation-duration: .5s;
+     animation-fill-mode: both;
+     animation-iteration-count: 1
+ }
+ 
+ .showZoomIn {
+     animation-name: showZoomIn;
+     animation-duration: .5s;
+     animation-fill-mode: both
+ }
+ 
+ .showZoomInBottom {
+     animation-name: showZoomInBottom;
+     animation-duration: .5s;
+     animation-fill-mode: both
+ }
+ 
+ .topBottom {
+     animation-name: topBottom;
+     animation-duration: 3s;
+     animation-fill-mode: both;
+     animation-iteration-count: infinite;
+ }
+ /*info css*/
+ 
+ .purple_generic_icon {
+     position: absolute;
+     bottom: 51px;
+     right: 0px;
+     background: url('//ms.purplepatch.online/overlay/generic/info.svg') no-repeat;
+     background-size: 100% 100%;
+     width: 22px;
+     height: 22px;
+     -webkit-animation: fadeIn24 1s .4s both;
+     animation: fadeIn24 1s .4s both;
+     cursor: pointer;
+     margin: 0!important;
+     z-index: 1;
+ }
+ 
+ .purple_generic_close {
+     position: absolute;
+     bottom: 80px;
+     right: 0px;
+     background: url('//ms.purplepatch.online/overlay/generic/close.svg') no-repeat;
+     background-size: 100% 100%;
+     width: 22px;
+     height: 22px;
+     -webkit-animation: fadeIn24 1s .4s both;
+     animation: fadeIn24 1s .4s both;
+     cursor: pointer;
+     margin: 0!important;
+     z-index: 1;
+ }
+/*.bgcolor{animation-name:bgcolor;animation-duration:.5s;animation-fill-mode:both}
+.bgcolorRemove{animation-name:bgcolorRemove;animation-duration:.5s;animation-fill-mode:both}
+@keyframes hideZoomOut{100%{opacity:0;transform:scale3d(.3,.3,.3)}}
+@keyframes bgcolor{0%{background-color:inherit}100%{background-color:rgba(9,6,6,.5)}}
+@keyframes bgcolorRemove{100%{background-color:inherit}}*/
+
+.showZoomIn {animation-name: showZoomIn;animation-duration: .5s;animation-fill-mode: both}
+.hideZoomOut{animation-name: hideZoomOut;animation-duration: .5s;animation-fill-mode: both;}
+.bgcolor{animation-name: bgcolor;animation-duration: .5s;animation-fill-mode: both;}
+.bgcolorRemove{animation-name: bgcolorRemove;animation-duration: .5s;animation-fill-mode: both;}
+@keyframes showZoomIn {
+    from {opacity: 0;transform: scale3d(.3, .3, .3)}
+    to {opacity:1;transform: scale3d(1, 1, 1)}
+} 
+
+@keyframes hideZoomOut {
+  100% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+
+@keyframes bgcolor {
+    0%     {background-color:inherit;}
+    100%  {background-color:rgba(9, 6, 6, .5);}
+}
+
+@keyframes bgcolorRemove {
+    100%  {background-color:inherit;}
+}

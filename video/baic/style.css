@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  width: 300px;
+  height: 250px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.pp_container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: relative;
+  overflow: hidden;
+}
+
+.pp_check {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: .5;
+  height: 250px;
+  width: 300px;
+}
+
+
+/* pp_slide_1 */
+
+
+.pp_bgBottom {
+  bottom: 0px;
+  left: 0px;
+}
+
+.pp_logo {
+  bottom: 32px;
+  left: 13px;
+}
+
+.pp_btn {
+  bottom: 33px;
+  left: 190px;
+  cursor: pointer;
+}
+
+
+/* pp_slide_2 */
+.pp_bg2 {
+  top: 0px;
+  left: 0px;
+}
+
+.pp_logo2 {
+  top: 0px;
+  left: 13px;
+}
+
+.pp_malogo {
+  top: 10px;
+  left: 222px;
+}
+
+.pp_cross {
+  top: 16px;
+  left: 271px;
+}
+
+.pp_carSmall1 {
+  top: 178px;
+  left: 12px;
+}
+
+.pp_carSmall2 {
+  top: 178px;
+  left: 100px;
+}
+
+.pp_carSmall3 {
+  top: 176px;
+  left: 196px;
+}
+
+.pp_carBig2,.pp_carBig1,.pp_carBig3 {
+  top: 64px;
+  left: 56px;
+}
+
+/* .pp_carBig1 {
+  top: 85px;
+  left: 35px;
+}
+
+.pp_carBig3 {
+  top: 85px;
+  left: 35px;
+} */
+
+
+/* small Car Opacity */
+.opacityLow{
+  opacity: .6;
+}
+
+.opacityFull{
+  opacity: 1;
+}
+
+
+
+/* Utility class */
+.pp_absolute {
+  position: absolute;
+}
+
+.pp_hidden {
+  display: none;
+}
+
+.pp_zeroOpacity {
+  opacity: 0;
+}
+
+.error {
+  outline: 2px solid red !important;
+}
+
+.success {
+  outline: 2px solid rgb(9, 148, 39) !important;
+}
+
+
+
+
+/* video btn design */
+.video-controls{
+  position: absolute;
+  bottom: 1px;
+  /* background: #cccccc33; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.btn{
+  background-color: #cccccc00;
+  border: none;
+  color: white;
+}
+/* End video design */

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="ad.size" content="width=300,height=250">
+    <title> Coke Studio Video Ad by InfoStation </title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.min.css">
+</style>
+</head>
+<body>
+<div id="video-container">
+      <div class="slide_1">
+        <a href="{CLICK_MACRO}" target="_blank">
+            <img src="coke.gif" alt="" class="coke">
+        </a>
+    </div>
+    <div class="slide_2 d_none">
+        <div class="youtube-container"><iframe id="ytplayer" width="280" height="192" src="https://www.youtube.com/embed/3vDyCnOHo7w?rel=0&showinfo=0&autoplay=1&controls=0&enablejsapi=1&playerapiid=ytplayer"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             <!-- <a href="{CLICK_MACRO}" target="_blank">
+                <div id="invis"></div>
+             </a>  -->
+        </div>
+        <button class="audio_control" onclick="toggleMute()"><i class="material-icons">volume_off</i></button>
+        <div class="readMore">
+            <a href="{CLICK_MACRO}" target="_blank">
+            <img src="logo.png" class="logo" alt="">
+        </a>
+        </div>
+    </div>
+    <!-- <div class="slider_overlay d_none"></div> -->
+</div>
+<script>
+    let slide_1 = document.querySelector(".slide_1");
+    let slide_2 = document.querySelector(".slide_2");
+    let slider_overlay = document.querySelector(".slider_overlay");
+    let Container = document.querySelector("#video-container");
+    var tag = document.createElement('script');
+    var isPlay = false;
+    let played = true;
+    let audioControl = document.querySelector(".audio_control");
+    let device = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'mobile' : 'desktop';
+
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    document.querySelector("#ytplayer").src = "https://www.youtube.com/embed/3vDyCnOHo7w?rel=0&showinfo=0&autoplay=1&controls=0&enablejsapi=1&playerapiid=ytplayer&loop=1";
+
+    var player;
+
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player('ytplayer', {
+            events: {
+                'onStateChange': ShowMe,
+                'onReady': onPlayerReady
+            },
+            playerVars: {
+                showinfo: 0,
+                ecver: 2
+            },
+        });
+    }
+
+
+
+    function ShowMe(event) {
+        var sStatus;
+        sStatus = player.getPlayerState();
+        if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+              window.open('{CLICK_MACRO}')
+          
+          }
+        
+        if (sStatus == 1){
+            remove_class(slider_overlay, 'd_none', 'lincoln');
+            landingworking();
+        }
+        if (sStatus == 0) {
+            if (isPlay) {
+                player.stopVideo();
+            }
+        } else if (sStatus == 1) {
+            if (played) {
+                played = false;
+            }
+        } else if (sStatus == 2) {
+            console.log('paused');
+            // add_class(slider_overlay, 'd_none');
+            landingworking();
+        } else if (sStatus == 3) {
+            // console.log('buffering');
+        } else if (sStatus == 5) {
+            // console.log('cued');
+        }
+       
+    }
+
+    function toggleMute() {
+        if (player.isMuted()) {
+            player.unMute();
+            audioControl.innerHTML = '<i class="material-icons">volume_up</i>';
+        } else {
+            player.mute();
+            audioControl.innerHTML = '<i class="material-icons">volume_off</i>';
+        }
+    }
+
+    if (device == 'desktop') {
+        function onPlayerReady(event) {
+            event.target.mute();
+        }
+
+    }
+
+    function landingworking(){
+        setTimeout(() => {
+            // remove_class(slider_overlay, 'd_none', 'lincoln');
+            add_class(slider_overlay, 'd_none');
+        }, 1000);
+    }
+
+    setTimeout(() => {
+        add_class(slide_1, 'd_none');
+        remove_class(slide_2, 'd_none', 'fadeIn');
+    }, 2700);
+
+    function remove_class(element, classname, newclass = '') {
+        element.className = element.className.replace(classname, newclass);
+    }
+
+    function add_class(element, classname) {
+        element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+    }
+</script>
+</body>
+</html>

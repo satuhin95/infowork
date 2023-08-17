@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAIC</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="shortcut icon" type="image/x-icon" href="//infostation.digital/favicon.ico">
+  <link rel="stylesheet" href="//showcase.infostation.digital/demo/video/baic/style.css?v=1.2">
+</head>
+
+<body>
+  <div class="pp_container">
+    <div class="pp_slide_1">
+      <!-- <img src="//showcase.infostation.digital/demo/video/baic/slide1/bg.jpg" alt="" class="pp_bg pp_absolute" draggable="false"> -->
+      <div class="videoContainer pp_absolute " id="videoContainer">
+        <video src="//showcase.infostation.digital/demo/video/baic/slide1/vid.mp4" id="myVideo" autoplay muted="true" loop></video>
+        <div class="video-controls">
+          <button id="toggle" class="btn toggle"><i class="material-icons">play_arrow</i></button>
+          <button id="sound" class="btn sound"><i class="material-icons">volume_off</i></button>
+        </div>
+      </div>
+      <div class="bottomSide">
+        <img src="//showcase.infostation.digital/demo/video/baic/slide1/bgBottom.png" alt="" class="pp_bgBottom pp_absolute" draggable="false">
+        <img src="//showcase.infostation.digital/demo/video/baic/slide1/logo.png" alt="" class="pp_logo pp_absolute" draggable="false">
+        <img src="//showcase.infostation.digital/demo/video/baic/slide1/btn.png" alt="" class="pp_btn pp_absolute" draggable="false">
+      </div>
+    </div>
+
+    <div class="pp_slide_2 pp_hidden">
+      <img src="//showcase.infostation.digital/demo/video/baic/slide2/bg2.jpg" alt="" class="pp_bg2 pp_absolute" draggable="false">
+      <img src="//showcase.infostation.digital/demo/video/baic/slide2/logo.png" alt="" class="pp_logo2 pp_absolute" draggable="false">
+      <img src="//showcase.infostation.digital/demo/video/baic/slide2/malogo.png" alt="" class="pp_malogo pp_absolute" draggable="false">
+      <img src="//showcase.infostation.digital/demo/video/baic/slide2/cross.png" alt="" class="pp_cross pp_absolute" draggable="false">
+
+
+      <img src="//showcase.infostation.digital/demo/video/baic/slide2/small/carSmall1.png" alt="" class="pp_carSmall1 pp_carSmall pp_absolute" draggable="false"
+        onclick="event.stopPropagation();carSelectOperation(1)">
+      <img src="//showcase.infostation.digital/demo/video/baic/slide2/small/carSmall2.png" alt="" class="pp_carSmall2 pp_carSmall pp_absolute" draggable="false"
+        onclick="event.stopPropagation();carSelectOperation(2)">
+      <img src="//showcase.infostation.digital/demo/video/baic/slide2/small/carSmall3.png" alt="" class="pp_carSmall3 pp_carSmall pp_absolute" draggable="false"
+        onclick="event.stopPropagation();carSelectOperation(3)">
+
+
+      <img src="//showcase.infostation.digital/demo/video/baic/slide2/carBig2.png" alt="" class="pp_carBig2 pp_carBig pp_absolute " draggable="false">
+      <img src="//showcase.infostation.digital/demo/video/baic/slide2/carBig1.png" alt="" class="pp_carBig1 pp_carBig pp_absolute pp_zeroOpacity" draggable="false">
+      <img src="//showcase.infostation.digital/demo/video/baic/slide2/carBig3.png" alt="" class="pp_carBig3 pp_carBig pp_absolute pp_zeroOpacity" draggable="false">
+
+
+    </div>
+
+
+    <!-- <img src="//showcase.infostation.digital/demo/video/baic/slide2.jpg" alt="" srcset="" class="pp_check"> -->
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/Draggable.min.js"></script> -->
+  <script>
+    document.querySelector('.pp_slide_2').addEventListener('click',()=>{
+      window.open("{CLICK_MACRO}")
+    })
+        document.querySelector('.videoContainer').addEventListener('click',()=>{
+      window.open("{CLICK_MACRO}")
+    })
+  </script>
+  <script src="//showcase.infostation.digital/demo/video/baic/script.js?v=1.2"></script>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.hidden{
+    display: none;
+}
+.pps_wrapper{
+    width: 300px;
+    height: 250px;
+    position: relative;
+    background: url(images/bg.jpg) no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+}
+.pps_element_1{
+    width: 279px;
+    height: 19px;
+    top: 13px;
+    left: 11px;
+    position: absolute
+}
+.pps_element_2{
+    width: 155px;
+    height: 39px;
+    top: 41px;
+    left: 69px;
+    position: absolute
+}
+.pps_element_3{
+    width: 217px;
+    height: 184px;
+    top: 66px;
+    left: -1px;
+    position: absolute
+}
+.pps_element_4{
+    width: 283px;
+    height: 44px;
+    top: 202px;
+    left: 9px;
+    position: absolute;
+}
+.pps_element_5{
+    width: 300px;
+    height: 249px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+.pps_element_6{
+    width: 300px;
+    height: 249px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+.pps_element_7{
+    width: 300px;
+    height: 249px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+.countryName{
+    width: 283px;
+    height: 24px;
+    top: 202px;
+    left: 9px;
+}
+
+.countryone{
+    width: 150px;
+    height: 24px;
+    top: 202px;
+    left: 40px;
+    color: #EE2164;
+    position: absolute;
+    font-weight: 700;
+
+}
+.countrytwo{
+    width: 150px;
+    height: 24px;
+    top: 202px;
+    left: 204px;
+    color: #EE2164;
+    position: absolute;
+    font-weight: 700;
+
+}
+.teamone{
+    width: 150px;
+    height: 24px;
+    top: 222px;
+    left: 37px;
+    color: #fff;
+    position: absolute;
+    font-weight: 700;
+
+}
+.teamtwo{
+    width: 150px;
+    height: 24px;
+    top: 222px;
+    left: 197px;
+    color: #fff;
+    position: absolute;
+    font-weight: 700;
+}
+.showZoomInLeft {
+            animation-name: showZoomInLeft;
+            animation-duration: 1s;
+            animation-fill-mode: both;
+}
+
+ @keyframes showZoomInLeft {
+    0% {
+         transform:  translateX(-200%)
+    }
+    100% {
+        transform: translateX(-0%)
+    }
+}
+.zoomOutRight {
+    animation-name: zoomOutRight;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes zoomOutRight {
+
+100% {
+transform: translateX(200%)
+}
+}
+.showZoomIn{
+    animation-name: showZoomIn;
+    animation-duration: .8s;
+    animation-timing-function: ease-in;
+}
+@keyframes showZoomIn{
+    0% {
+        transform: scale(.5, .5);
+      }
+      100% {
+        transform: scale(1, 1);
+      }
+}

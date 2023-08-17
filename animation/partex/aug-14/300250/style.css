@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.hidden{
+    display: none;
+}
+.info_wrapper{
+    width: 300px;
+    height: 250px;
+    background:url(./images/bg.png) no-repeat;
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+.info_element_1 {
+    width: 94px;
+    height: 154px;
+    position: absolute;
+    top: 31px;
+    right: 43px;
+}
+.info_element_1_1 {
+    width:217px;
+    height: 44px;
+    position: absolute;
+    top: 145px;
+    right: 0;
+    mix-blend-mode: multiply;
+}
+.info_element_2 {
+    width: 50px;
+    height: 44px;
+    position: absolute;
+    top: 51px;
+    right: 9px;
+}
+.info_element_3 {
+    width: 142px;
+    height: 125px;
+    position: absolute;
+    top: 22px;
+    left: 13px;
+}
+.info_element_4 {
+    width: 181px;
+    height: 25px;
+    position: absolute;
+    top: 162px;
+    left: 16px;
+}
+.showZoomInTop {
+    animation-name: showZoomInTop;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes showZoomInTop {
+0% {
+ transform:  translateY(-200%)
+}
+100% {
+transform: translateY(-0%)
+}
+}
+
+.showZoomOutTop {
+    animation-name: showZoomOutTop;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes showZoomOutTop {
+0% {
+ transform:  translateY(0%)
+}
+100% {
+transform: translateY(-200%)
+}
+}
+.showZoomIn{
+    animation-name: showZoomIn;
+    animation-duration: .8s;
+    animation-timing-function: ease-in;
+    }
+    @keyframes showZoomIn{
+    0% {
+    transform: scale(.5, .5);
+    opacity: 0;
+    }
+    100% {
+    transform: scale(1, 1);
+    opacity: 1;
+    }
+    }
+
+    .pulse{
+        animation-name: pulse;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+    }
+    
+    @keyframes pulse {
+       0% { transform: scale(1); }
+       50% { transform: scale(.95); }
+       100% { transform: scale(1); } 
+    }
+
+    .bounceInLeft{
+        animation-name: bounceInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+    }
+    @keyframes bounceInLeft {
+       0% {
+          opacity: 0;
+          transform: translateX(-2000px);
+       }
+       60% {
+          opacity: 1;
+          transform: translateX(30px);
+       }
+       80% {
+          transform: translateX(-10px);
+       }
+       100% {
+          transform: translateX(0);
+       }
+    } 
+    .bounceInRight{
+        animation-name: bounceInRight;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+    }
+    @keyframes bounceInRight {
+       0% {
+          opacity: 0;
+          transform: translateX(1000px);
+       }
+       60% {
+          opacity: 1;
+          transform: translateX(-30px);
+       }
+       80% {
+          transform: translateX(10px);
+       }
+       100% {
+          transform: translateX(0);
+       }
+    }

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TVS</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="shortcut icon" type="image/x-icon" href="//infostation.digital/favicon.ico">
+  <link rel="stylesheet" href="style.css?v=1.2">
+</head>
+
+<body>
+  <div class="info_container">
+    <div class="info_slide_1 ">
+      <div class="info_element_1 showZoomIn">
+        <img src="./images/slide1/Rider.png" />
+      </div>
+      <div class="info_element_2 hidden">
+        <img src="./images/slide1/OL.png" />
+      </div>
+      <div class="info_element_3 hidden showZoomInBottom">
+        <div class="info_bike_1 ">
+          <img src="./images/slide1/Bike-1.png" />
+        </div>
+        <div class="info_bike_2">
+          <img src="./images/slide1/Bike-2.png"/>
+        </div>
+        <div class="info_bike_3">
+          <img src="./images/slide1/Bike-3.png"/>
+        </div>
+      </div>
+    </div>
+    <div class="info_slide_2 hidden">
+      <div class="info_element_4 showZoomInLeft">
+        <div class="info_element_4_1 spin">
+          <img src="./images/slide2/F_Wheel.png" alt="">
+        </div> 
+        <div class="info_element_4_2 spin">
+          <img src="./images/slide2/R_Wheel.png" alt="">
+        </div> 
+        <img src="./images/slide2/Bike_4.png" class="bikeImg1 hidden"/>
+        <img src="./images/slide2/Bike_3.png" class="bikeImg2 hidden"/>
+        <img src="./images/slide2/Bike_2.png" class="bikeImg3 hidden"/>
+   
+      </div>
+      <div class="info_element_5 hidden showZoomIn">
+        <img src="./images/slide2/text.png"/>
+      </div>
+      <div class="info_element_6 hidden showZoomIn2">
+        <img src="./images/slide2/Bike_Effect.png"/>
+      </div>
+    </div>
+
+    
+
+
+  </div>
+
+  <script>
+    let info_slide_1 = document.querySelector('.info_slide_1')
+    let info_slide_2 = document.querySelector('.info_slide_2')
+    let bike = document.querySelector('.info_element_1')
+    let info_element_2 = document.querySelector('.info_element_2')
+    let info_element_3 = document.querySelector('.info_element_3')
+    let info_element_4 = document.querySelector('.info_element_4')
+    let bikeImg1 = document.querySelector('.bikeImg1')
+    let bikeImg2 = document.querySelector('.bikeImg2')
+    let bikeImg3 = document.querySelector('.bikeImg3')
+    let info_element_5 = document.querySelector('.info_element_5')
+    let info_element_6 = document.querySelector('.info_element_6')
+    let info_bike_1 = document.querySelector('.info_bike_1')
+    let info_bike_2 = document.querySelector('.info_bike_2')
+    let info_bike_3 = document.querySelector('.info_bike_3')
+
+      setTimeout(slide, false)
+    function slide(){
+      info_slide_1.classList.remove('hidden')
+      info_slide_2.classList.add('hidden')
+      info_element_5.classList.add('hidden')
+      info_element_6.classList.add('hidden')
+      setTimeout(function(){
+        info_element_2.classList.remove('hidden')
+        setTimeout(function(){
+          info_element_3.classList.remove('hidden')
+          bikeAnimi()
+        },500)
+      },1000)
+    }
+    function bikeAnimi(){
+      info_bike_3.classList.remove('heartbeat')
+      info_bike_2.classList.remove('heartbeat')
+      info_bike_1.classList.add('heartbeat')
+      setTimeout(function(){
+        info_bike_1.classList.remove('heartbeat')
+        info_bike_3.classList.remove('heartbeat')
+        info_bike_2.classList.add('heartbeat')
+        setTimeout(function(){
+          info_bike_1.classList.remove('heartbeat')
+          info_bike_2.classList.remove('heartbeat')
+          info_bike_3.classList.add('heartbeat')
+          setTimeout(bikeAnimi,2000)
+        },2000)
+      },2000)
+    }
+  
+
+    info_bike_1.addEventListener('click',function(){
+      info_slide_1.classList.add('hidden')
+      info_slide_2.classList.remove('hidden')
+      bikeImg1.classList.remove('hidden')
+      bikeImg2.classList.add('hidden')
+      bikeImg3.classList.add('hidden')
+      setTimeout(function(){
+        info_element_6.classList.remove('hidden')
+        setTimeout(function(){
+          info_element_5.classList.remove('hidden')
+          setTimeout(slide,4000)
+        },500)
+      },1000)
+    })
+
+    info_bike_2.addEventListener('click',function(){
+      info_slide_1.classList.add('hidden')
+      info_slide_2.classList.remove('hidden')
+      bikeImg2.classList.remove('hidden')
+      bikeImg1.classList.add('hidden')
+      bikeImg3.classList.add('hidden')
+      setTimeout(function(){
+        info_element_6.classList.remove('hidden')
+        setTimeout(function(){
+          info_element_5.classList.remove('hidden')
+          setTimeout(slide,4000)
+        },500)
+      },1000)
+    })
+
+    info_bike_3.addEventListener('click',function(){
+      info_slide_1.classList.add('hidden')
+      info_slide_2.classList.remove('hidden')
+      bikeImg3.classList.remove('hidden')
+      bikeImg1.classList.add('hidden')
+      bikeImg2.classList.add('hidden')
+      setTimeout(function(){
+        info_element_6.classList.remove('hidden')
+        setTimeout(function(){
+          info_element_5.classList.remove('hidden')
+          setTimeout(slide,4000)
+        },500)
+      },1000)
+    })
+
+    info_slide_2.addEventListener('click',function(){
+      window.open("{CLICK_MACRO}")
+    })
+
+
+  </script>
+
+</body>
+
+</html>

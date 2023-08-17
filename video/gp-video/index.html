@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gp </title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="info_wrapper">
+        <div class="info_element_1">
+            <div class="youtube-container"><iframe id="ytplayer" width="240" height="151" src="https://www.youtube.com/embed/9ju9O4Ddlww?rel=0&showinfo=0&autoplay=1&controls=0&enablejsapi=1&playerapiid=ytplayer" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <button class="audio_control" id="audio_control" ><i class="material-icons sound">volume_off</i></button>
+                <button id="play_control" class="play_control"><i class="material-icons play">play_arrow</i></button>
+            </div>
+        </div>
+        <div class="info_element_2">
+            <img src="img/icc-logo.gif" width="55" />
+        </div>
+        <div class="info_element_3 ">
+            <img src="img/text.png"/>
+        </div>
+        <div class="info_element_4">
+            <img src="img/gp-logo.png"/>
+        </div>
+        <div class="info_element_5">
+            <img src="img/cricket-icon.png"/>
+        </div>
+    </div>
+    
+    <script>
+        let info_element_3 = document.querySelector('.info_element_3')
+    
+        // let materialIcons = document.querySelector('.material-icons')
+
+        setTimeout(slide, false)
+        function slide(){
+            info_element_3.classList.add('showZoomInTop')
+            setTimeout(function(){
+                info_element_3.classList.remove('showZoomInTop')
+                setTimeout(function(){
+                    info_element_3.classList.add('showZoomOutTop')
+                    setTimeout(function(){
+                        info_element_3.classList.remove('showZoomOutTop')
+                        setTimeout(slide,false)
+                    },1000)
+                },3000)
+            },1000)
+        }
+
+
+
+  // 2. This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+        var audio_control = document.getElementById('audio_control')
+        var play_control = document.getElementById('play_control')
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+        var isPlaying ;
+        function onYouTubeIframeAPIReady() {
+          player = new YT.Player('ytplayer', {
+            height: '390',
+            width: '640',
+            videoId: 'M7lc1UVf-VE',
+            playerVars: {
+              'playsinline': 1
+            },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        }
+  
+        // 4. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+          event.target.playVideo();
+          player.mute();
+        }
+  
+        var done = false;
+        function onPlayerStateChange(event) {
+          if (event.data == YT.PlayerState.PLAYING) {
+            console.log('Video is playing!');
+           
+            isPlaying = true;
+            updateToggleButton();
+          } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+            console.log('Video is paused or ended.');
+              window.open('{CLICK_MACRO}')
+          
+            isPlaying = false;
+            updateToggleButton();
+          }
+          play_control.addEventListener('click', function(){
+            if(isPlaying ){ 
+                player.stopVideo();
+                play.textContent ='play_arrow'
+                console.log('play_arrow')
+                isPlaying = false
+            }else{
+                event.target.playVideo();
+                play.textContent ='pause'
+                console.log('pause')
+                isPlaying = true
+          
+            }
+        })
+
+        }
+        function stopVideo() {
+          player.stopVideo();
+
+        }
+        const sound = document.querySelector('.sound')
+        const play = document.querySelector('.play')
+        function updateToggleButton() {
+          if (isPlaying) {
+            play.textContent ='pause'
+        } else {
+            play.textContent ='play_arrow'
+          }
+        }
+    
+
+        audio_control.addEventListener('click',function(){
+            if(player.isMuted()){
+                player.unMute()
+                sound.textContent ='volume_up'
+            }else{
+                player.mute();
+                sound.textContent ='volume_off'
+            }
+                    
+        })
+
+
+
+    </script>
+
+</body>
+</html>

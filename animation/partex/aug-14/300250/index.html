@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partex Campaign by Info Station</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://infostation.digital/favicon.ico" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="info_wrapper">
+        <div class="info_element_1_1  bounceInRight hidden">
+            <img src="./images/Shadow.png" alt="">
+        </div>
+        <div class="info_element_1 bounceInRight hidden">
+            <img src="./images/Chair.png" alt="">
+        </div>
+        <div class="info_element_2  showZoomIn hidden">
+            <img src="./images/discount.png" alt="">
+        </div>
+        <div class="info_element_3 showZoomInTop hidden">
+            <img src="./images/t1.png" alt="">
+        </div>
+        <div class="info_element_4 pulse hidden">
+            <img src="./images/btn.png" alt="">
+        </div>
+    </div>
+    
+    <script>
+        let info_element_1 	= document.querySelector('.info_element_1 ')
+        let info_element_1_1 	= document.querySelector('.info_element_1_1')
+        let info_element_2 	= document.querySelector('.info_element_2 ')
+        let info_element_3 	= document.querySelector('.info_element_3 ')
+        let info_element_4 	= document.querySelector('.info_element_4 ')
+        let info_wrapper 	= document.querySelector('.info_wrapper ')
+        // info_wrapper.addEventListener('click',function(){
+        //     window.open("")
+        // })
+    
+        
+            setTimeout(slide, false)
+            function slide(){
+                info_element_1.classList.remove('hidden')
+                info_element_1_1.classList.remove('hidden')
+                info_element_3.classList.remove('hidden')
+                setTimeout(function(){
+                    info_element_2.classList.remove('hidden')
+                    setTimeout(function(){
+                        info_element_4.classList.remove('hidden')
+                        setTimeout(function(){
+                            info_element_1.classList.add('hidden')
+                            info_element_1_1.classList.add('hidden')
+                            info_element_2.classList.add('hidden')
+                            info_element_3.classList.add('hidden')
+                            info_element_4.classList.add('hidden')
+                            setTimeout(slide,500)
+                        },5000)
+                    },1000)
+                },1000)
+            
+            }
+    </script>
+</body>
+</html>
