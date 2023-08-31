@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Sunlight Animation by Info Station </title>
+	<style>
+		* {margin: 0;padding: 0;text-decoration: none;user-select: none;}        
+        .istation_wrapper {
+            width: 300px;
+            height: 250px;
+            background-image: url("bg.jpg");
+            background-size: 100% 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide{ left: 0;right: 0;top: 0;bottom: 0; }
+        .absolute{position: absolute;} 
+        .hidden{display: none;}
+        .slide_1 .element_1{width: 160px;height: 69px;left: 70px;top: 15px;}
+        .slide_1 .element_2{width: 71px;height: 115px;left: 33px;top: 122px;cursor:pointer;}
+        .slide_1 .element_3{width: 102px;height: 35px;left: 77px;top: 94px;}
+        .slide_1 .element_4{width: 111px;height: 112px;right: 20px;bottom: 35px;}
+
+        .slide_2 .element_1 {width: 300px;height: 250px;left: 0px;top:0px;}
+
+
+        @keyframes shake {
+            10%, 90% {transform: translate3d(-1px, 0, 0);}
+            20%,80% {transform: translate3d(2px, 0, 0);}
+            30%,50%,70% {transform: translate3d(-4px, 0, 0);}
+            40%,60% {transform: translate3d(4px, 0, 0);}
+        }        
+        @keyframes fadeMove {
+            from {transform: translate3d(0, 80px, 0)}
+        }        
+        @keyframes fadeInUp {
+            from {opacity: 0;transform: translate3d(0, 80px, 0)}
+        }        
+        @keyframes fadeInZoom {
+            0% {transform: scaleX(1.1)}
+            50% {transform: scale3d(.8, .8, .8) translate3d(0, 35px, 0)}
+            to {transform: scaleX(1)}
+        }        
+        @keyframes pulse {
+            0% {transform: scaleX(1)}
+            50% {transform: scale3d(.95, .95, .95)}
+            to {transform: scaleX(1)}
+        }         
+        @keyframes hideToBottom {
+            100% {opacity: 0;transform: translate3d(0, 200px, 0)}
+        }           
+        @keyframes showFromBottom {
+            100%{opacity:0;transform: translate3d(0, 0px, 0)}
+        }          
+        @keyframes hideZoomOut {
+            100% {opacity: 0;transform: scale3d(.3, .3, .3)}
+        }            
+        @keyframes showZoomIn {
+            from {opacity: 0;transform: scale3d(.3, .3, .3)}
+            to {opacity:1;transform: scale3d(1, 1, 1)}
+        }  
+        @keyframes flyingMove {
+            0%,100% {transform: translateX(0px)}
+            50% {transform: translateX(5px)}
+        }
+        .flyingMove {animation-name: flyingMove;animation-duration: 1s;animation-iteration-count: infinite;}
+        .fadeMove {animation: fadeMove 1s infinite;}
+        .fadeInUp {animation-name: fadeInUp;animation-duration: .7s;animation-fill-mode: both}
+        .fadeInZoom {animation-name: fadeInZoom;animation-duration: .7s;animation-fill-mode: both}
+        .pulse {animation-name: pulse;animation-duration: 1s;animation-iteration-count: infinite;}
+        .hideToBottom {animation-name: hideToBottom;animation-duration: 1s;animation-fill-mode: both}
+        .showFromBottom {animation-name: showFromBottom;animation-duration: 1s;animation-fill-mode: both}
+        .hideZoomOut {animation-name: hideZoomOut;animation-duration: .5s;animation-fill-mode: both}
+        .showZoomIn {animation-name: showZoomIn;animation-duration: .5s;animation-fill-mode: both}
+        .shake {animation: shake 3.1s cubic-bezier(.36, .07, .19, .97) infinite;transform: translate3d(0, 0, 0);backface-visibility: hidden;perspective: 1000px;}
+	</style>
+</head>
+<body>
+
+	<div class="istation_wrapper">
+        <div class="slide slide_1 absolute">
+            <div class="element element_1 absolute"> <img src="swipe-text.png" alt=""> </div>
+            <div class="element element_2 absolute pulse"> <img src="battery.png" alt=""> </div>
+            <div class="element element_3 absolute"> <img src="arrow.png" alt=""> </div>
+            <div class="element element_4 absolute"> <img src="clock.png" alt=""> </div>
+        </div>
+        <div class="slide slide_2 absolute hidden">
+            <div class="element element_1 absolute"><img src="slide-2.jpg" alt=""></div>
+        </div> 
+    </div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script>
+    let dragger_one = $(".slide_1 .element_2")[0];
+    var click_macro = "https://infostation.digital/";
+
+    slide_1_show();
+    function slide_1_show(){
+    	$(".slide_1").removeClass("hidden");
+        $(".slide_1 .drag").addClass("shake");
+    }
+
+    function slide_2_show()
+    {
+        $(".slide_1 .element").filter((id,div)=>!$(div).hasClass("hidden")).addClass('hideZoomOut');
+        setTimeout(function() {
+        	$(".slide_2").removeClass('hidden').addClass('showZoomIn');
+        }, 500);
+        setTimeout(function(){
+            $(".istation_wrapper").click(function(){
+                window.open(click_macro);
+            });
+        },2000);    
+    }
+
+    if (typeof window.orientation !== 'undefined'){
+      dragElementMobile(dragger_one);
+    }else{
+      dragElement(dragger_one);
+    }
+
+
+    function dragElement( elmnt ) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0, pos5=0, pos6=0;
+      elmnt.onmousedown = dragMouseDown;
+
+      function dragMouseDown(e) 
+      {
+        $(".slide_1 .element_2").removeClass("pulse");
+        $(".slide_1 .element_3").addClass("hideZoomOut");
+
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        
+        document.onmousemove = elementDrag;
+        document.onmouseup = closeDragElement;
+      }
+
+      function elementDrag(e) {    
+        e = e || window.event;
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        topSpace = elmnt.offsetTop - pos2;
+        leftSpace = elmnt.offsetLeft - pos1;
+
+        if(leftSpace>125 && topSpace>80 ){
+          setTimeout(slide_2_show, 600);
+          closeDragElement();
+        }
+        if(leftSpace>145) leftSpace=145;
+        if(leftSpace<5) leftSpace=5;
+        if(topSpace>140) topSpace=140;
+        if(topSpace<80) topSpace=80;
+
+        elmnt.style.top = topSpace + "px";
+        elmnt.style.left = leftSpace + "px";
+      }
+
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+
+    function dragElementMobile(elmnt) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0, pos5=0, pos6=0;
+      elmnt.ontouchstart = dragMouseDown;
+      
+      function dragMouseDown(e) {
+        setTimeout(slide_2_show, 600);
+        e.preventDefault();
+
+        e = e.touches[0] || window.event;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        
+        document.ontouchmove = elementDrag;
+      }
+
+      function elementDrag(e) {
+        e = e.touches[0] || window.event;
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        topSpace = elmnt.offsetTop - pos2;
+        leftSpace = elmnt.offsetLeft - pos1;
+
+        if(leftSpace>125 && topSpace>80 ){
+          setTimeout(slide_2_show, 600);
+          closeDragElement();
+        }
+        if(leftSpace>145) leftSpace=145;
+        if(leftSpace<5) leftSpace=5;
+        if(topSpace>140) topSpace=140;
+        if(topSpace<80) topSpace=80;
+
+        elmnt.style.top = topSpace + "px";
+        elmnt.style.left = leftSpace + "px";   
+      }
+      function closeDragElement() {
+        document.ontouchend = null;
+        document.touchmove = null;
+      }
+    }
+
+	</script>
+</body>
+</html>

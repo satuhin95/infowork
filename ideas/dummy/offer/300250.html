@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Banglalink</title>
+	<meta name="ad.size" content="width=300,height=250">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.wrapper {
+	        width: 300px;
+	        height: 250px;
+	        background-image: url('images/bg.jpg');
+	        position: relative;
+	        perspective: 1000px;
+	        overflow: hidden;
+	    }
+	    .absolute{position: absolute;}
+	    .left{left: 0;}
+	    .right{right: 0;}
+	    .top{top: 0;}
+	    .bottom{bottom: 0;}
+
+	    .mask1{
+	    	top: 41px;
+	    	left: 4px;
+	    	width: 93px;
+	    	height: 172px;
+	    	transition: transform 0.6s;
+	    	transform-style: preserve-3d;
+	    	transform-origin: center right;
+	    }
+	    .mask1.is-flipped {
+		  transform: translateX(-100%) rotateY(-180deg);
+		}
+
+	    .mask1:hover img, .mask2:hover img{filter: brightness(120%);cursor: pointer;}
+	    .mask1 .front, .mask1 .back{
+	    	width: 93px;
+	    	height: 172px;
+	    }
+	    .mask1 .front{z-index: 9}
+	    .mask1 .front, .mask1 .back {backface-visibility: hidden;}
+		.mask1 .back{transform: rotateY(180deg);}
+
+	    .mask2{
+	    	top: 7px;
+	    	left: 133px;
+	    	width: 111px;
+	    	height: 205px;
+	    	transition: transform 0.6s;
+	    	transform-style: preserve-3d;
+	    	transform-origin: center right;
+	    }
+	    .mask2.is-flipped {
+		  transform: translateX(-100%) rotateY(-180deg);
+		}
+	    .mask2 .front, .mask2 .back{
+	    	width: 111px;
+	    	height: 205px;
+	    }
+	    .mask2 .front{z-index: 9}
+	    .mask2 .front, .mask2 .back {backface-visibility: hidden;}
+		.mask2 .back{transform: rotateY(180deg);}
+	    .aktara{}
+	    .aktara img{
+	    	top: 38px;
+	    	left: 84px;
+	    }
+
+	    .tap_button{}
+	    .tap_button:hover img{filter: brightness(120%);cursor: pointer;}
+	    .tap_button img{left: 8px;bottom: 8px;}
+
+	    .art_full img{
+	    	right: -156px;
+    		bottom: -154px;
+    		-webkit-animation:spin 8s linear infinite;
+		    -moz-animation:spin 8s linear infinite;
+		    animation:spin 8s linear infinite;
+	    }
+	    .art img{
+	    	top: 10px;
+	    	right: 10px;
+	    }
+	    .skewAnim{
+	    	animation:skewAnim 2s linear infinite;
+	    }
+	    .flipAnim{
+	    	animation:flipAnim 2s linear infinite;
+	    }
+	    .pulse {
+		    animation: pulse 2s linear infinite;
+		}
+
+	    @keyframes skewAnim{
+	    	0%,100%{transform: skewY(0deg);}
+	    	25%,75%{transform: skewY(5deg);}
+	    	50%{transform: skewY(10deg);}
+	    }
+
+	    @keyframes flipAnim{
+	    	0%,100%{transform: rotateY(0deg);}
+	    	25%,75%{transform: rotateY(25deg);}
+	    	50%{transform: rotateY(50deg);}
+	    }
+
+	    @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+		@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+		@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+		@keyframes pulse {
+		    0%,100% {transform: scaleX(1);}
+		    50% {transform: scale3d(1.05, 1.05, 1.05);}
+		}
+
+
+	</style>
+</head>
+<body>
+
+	<div class="wrapper">
+		<div class="aktara"><img class="absolute" src="images/aktara.png" alt=""></div>
+		<div class="mask2 absolute">
+			<div class="front absolute left top">
+				<img class="" src="images/mask2.png" alt="">
+			</div>
+			<div class="back absolute left top">
+				<img class="" src="images/rmask2.png" alt="">
+			</div>
+		</div>
+		<div class="mask1 absolute">
+			<div class="front absolute left top">
+				<img class="" src="images/mask.png" alt="">
+			</div>
+			<div class="back absolute left top">
+				<img class="" src="images/rmask.png" alt="">
+			</div>
+		</div>
+		<div class="tap_button"><img ontouchend="addPulse()" ontouchstart="removePulse()" class="absolute pulse tapImage" src="images/button.png" alt=""></div>
+		<div class="art_full"><img class="absolute" src="images/art.png" alt=""></div>
+<!--		<div class="art"><img class="absolute flipAnim" src="images/logo.png" alt=""></div>-->
+	</div>
+
+	<script type='text/javascript'>
+		const wrapper= document.querySelector(".wrapper");
+		const tapImage= document.querySelector(".tapImage");
+		const mask1 = document.querySelector(".mask1");
+		const mask2 = document.querySelector(".mask2");
+		const maskFront = document.querySelector(".mask1 .front");
+		const mask2Front = document.querySelector(".mask2 .front");
+
+		const maskBack = document.querySelector(".mask1 .back");
+		const mask2Back = document.querySelector(".mask2 .back");
+
+
+		setTimeout(function() {
+			maskFront.classList.add("skewAnim");
+			setTimeout(function() {
+				mask2Front.classList.add("skewAnim");
+			}, 300);
+		}, 500);
+
+		maskFront.addEventListener("mouseover",removeAnim);
+		mask2Front.addEventListener("mouseover",removeAnim2);
+		mask1.addEventListener("click",flipOffer);
+		mask2.addEventListener("click",flipOffer2);
+		tapImage.addEventListener("mouseover",removePulse);
+		tapImage.addEventListener("mouseout",addPulse);
+
+		function removePulse(){ tapImage.className = tapImage.className.replace('pulse', '');}
+		function addPulse(){tapImage.classList ? tapImage.classList.add('pulse') : tapImage.className += ' pulse';}
+
+		function removeAnim(){
+			maskFront.className=maskFront.className.replace("skewAnim", '');
+		}
+		function removeAnim2(){
+			mask2Front.className=mask2Front.className.replace("skewAnim", '');
+		}
+
+		function flipOffer(){
+			mask1.classList ? mask1.classList.add('is-flipped') : mask1.className += ' is-flipped';
+		}
+		function flipOffer2(){
+			mask2.classList ? mask2.classList.add('is-flipped') : mask2.className += ' is-flipped';
+		}
+
+		maskBack.addEventListener("click",function(){
+			window.open("https://infostation.digital","_blank")
+		})
+
+		mask2Back.addEventListener("click",function(){
+			window.open("https://infostation.digital","_blank")
+		})
+
+	</script>
+</body>
+</html>

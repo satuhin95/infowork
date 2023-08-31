@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Info Station GP t20 Banner </title>
+	<style>
+        *{margin: 0;padding: 0;box-sizing: border-box;}
+        .istation_wrapper{position: relative;width: 300px; height: 250px;}
+        .absolute{position: absolute;}
+        .pointer{cursor: pointer;}
+        img.offer_one {top: 12px;right: 15px;}
+        img.offer_two {top: 89px;right: 15px;animation-delay: .4s;}
+        img.offer_three {bottom: 10px;right: 15px;animation-delay: .8s;}
+        img.text_imge {top: 53%;left: 15px;transform: translateY(-50%);}
+        .offer_details_img_one, .offer_details_img_two, .offer_details_img_three {top: 43%;transform: translateY(-50%);left: 7px;}
+        img.tap {bottom: 40px;left: 0;right: 0;margin-left: auto;margin-right: auto;text-align: center;}
+        .offer_details_one{display: none;opacity: 0;z-index: -1;}
+        .offer_details_two{display: none;opacity: 0;z-index: -1;}
+        .offer_details_three{display: none;opacity: 0;z-index: -1;}
+        .fadeIn{z-index: 1;opacity: 1;display: block;animation: fadeIn 2s;}
+        @keyframes fadeIn {
+            0% {opacity: 0;z-index: -1;display: none;}
+            100% {opacity: 1;z-index: 1;display: block;}
+        }
+        .fadeOut{z-index: -1;opacity: 0;display: none;animation: fadeOut 1s}
+        @keyframes fadeOut {
+            0% {opacity: 1;z-index: 1;display: block;}
+            100% {opacity: 0;z-index: -1;display: none;}
+        }
+        .pulse{ animation: pulse 2s infinite;}
+        @keyframes pulse {
+            0% {transform: scale(0.95);}
+            50% {transform: scale(1);}
+            100% {transform: scale(0.95);}
+        }
+        /*.__istation_logo__:hover,span.__istation_logo__{background-color:#d91e39}span.__istation_logo__{position:absolute;top:0;right:0;font-family:sans-serif;font-size:11px;z-index:9999}.__istation_logo__ img{width:18px;height:18px;vertical-align:top;padding:1px;float:left}.__istation_logo__>a{opacity:1;text-decoration:none;color:#fff;display:block}.__istation_logo__>a>span{width:0;transform:scaleX(1);height:16px;line-height:16px;overflow:hidden;display:inline-block;transition:.2s}.__istation_logo__>a:hover>span{width:auto;transform:scaleX(1)}*/
+    </style>
+</head>
+<body>
+
+	<div class="istation_wrapper">
+	    <img class="main_image" src="//showcase.infostation.digital/ideas/gp-t20/main-image.jpg">
+	    <div class="main_wrapper">
+	        <img class="offer_one absolute pointer pulse" src="//showcase.infostation.digital/ideas/gp-t20/offer-one.png">
+	        <img class="offer_two absolute pointer pulse" src="//showcase.infostation.digital/ideas/gp-t20/offer-two.png">
+	        <img class="offer_three absolute pointer pulse" src="//showcase.infostation.digital/ideas/gp-t20/offer-three.png">
+	        <img class="text_imge absolute" src="//showcase.infostation.digital/ideas/gp-t20/text.png">
+	    </div>
+	    <div class="offer_details_one">
+	        <img class="offer_details_img_one absolute" src="//showcase.infostation.digital/ideas/gp-t20/offer-one-details.png">
+	        <a href="https://www.grameenphone.com/" target="_blank"><img class="tap absolute pulse" src="//showcase.infostation.digital/ideas/gp-t20/tap.png"></a>
+	    </div>
+	    <div class="offer_details_two">
+	        <img class="offer_details_img_two absolute" src="//showcase.infostation.digital/ideas/gp-t20/offer-two-details.png">
+	        <a href="https://www.grameenphone.com/" target="_blank"><img class="tap absolute pulse" src="//showcase.infostation.digital/ideas/gp-t20/tap.png"></a>
+	    </div>
+	    <div class="offer_details_three">
+	        <img class="offer_details_img_three absolute" src="//showcase.infostation.digital/ideas/gp-t20/offer-three-details.png">
+	        <a href="https://www.grameenphone.com/" target="_blank"><img class="tap absolute pulse" src="//showcase.infostation.digital/ideas/gp-t20/tap.png"></a>
+	    </div>
+	    <!-- <span class="__istation_logo__">
+	        <a href="//infostation.digital" target="_blank"> <img src="//infostation.digital/icon.svg" alt="logo"> <span>Info Station&nbsp;</span></a>
+	    </span> -->
+	</div>
+	<script>
+		(function(msg){
+			console.info(msg);
+			let offerOne 	= document.querySelector(".offer_one");
+		    let offerTwo 	= document.querySelector(".offer_two");
+		    let offerThree 	= document.querySelector(".offer_three");
+		    let mainWrapper = document.querySelector(".main_wrapper");
+
+		    let offerOneDetails = document.querySelector(".offer_details_one");
+		    let offerTwoDetails = document.querySelector(".offer_details_two");
+		    let offerThreeDetails = document.querySelector(".offer_details_three");
+
+		    offerOne.addEventListener("click", function() {
+		        add_class(mainWrapper, "fadeOut");
+		        add_class(offerOneDetails, "fadeIn");
+		    });
+		    offerTwo.addEventListener("click", function() {
+		        add_class(mainWrapper, "fadeOut");
+		        add_class(offerTwoDetails, "fadeIn");
+		    });
+		    offerThree.addEventListener("click", function() {
+		        add_class(mainWrapper, "fadeOut");
+		        add_class(offerThreeDetails, "fadeIn");
+		    });
+
+		    /*add and remove class function*/
+		    function remove_class(element, classname='',newclass='') {
+		      element.className = element.className.replace(classname, newclass);
+		    }
+
+		    function add_class(element, classname) {
+		      element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+		    }
+		})('Info Station (Pvt.) Limited')
+	</script>
+</body>
+</html>

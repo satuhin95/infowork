@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Balloon Splitting Animation</title>
+	<meta name="ad.size" content="width=300,height=250">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<style>
+	*{margin: 0;padding: 0;-webkit-user-select: none; /* Safari */  -ms-user-select: none; /* IE 10+ and Edge */  user-select: none; /* Standard syntax */}
+	html, body {
+		width: 300px;
+		height: 250px;
+		overflow: hidden;
+	}
+	.wrapper{
+		width: 100%;
+		height: 100%;
+		background-image: url(//ms.purplepatch.online/dummy/boisakh/boisakh/ballon/images/bg.jpg);
+		background-size: 300px 250px;
+	}
+	.slide_one{
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	.absolute{position: absolute;}
+	.slide_one .stand{
+		top: 20px;
+		left: 18px;
+	}
+	.slide_one .top{
+		top: 0;
+		left: 0;
+	}
+	.slide_one .time{
+		top: 10px;
+		right: 10px;
+	}
+	.slide_one .boishak{
+		bottom: 5px;
+		right: 5px;
+		z-index: 999;
+	}
+	.slide_one .gun{
+		bottom: 0px;
+		right: 85px;
+		height: 112px;
+		cursor: pointer;
+		z-index: 9;
+	}
+	.slide_one .bottom{
+		bottom: 0px;
+		left: 0;
+		z-index: 99;
+	}
+	.slide_ballons{
+		top: 50px;
+		left: 32px;
+		width: 180px;
+    	height: 122px;
+	}
+
+.split {
+  width: 300px;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-perspective: 400px;
+          perspective: 400px;
+  cursor: pointer;
+}
+
+.split img {
+  height: auto;
+  width: 100%;
+  opacity: 0;
+}
+.split div {
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+  background-repeat: no-repeat;
+  -webkit-transform: rotate(0deg) translateY(0);
+          transform: rotate(0deg) translateY(0);
+}
+.burst div {
+  background-repeat: no-repeat;
+  -webkit-transform: rotateY(-120deg) scale(7);
+          transform: rotateY(-120deg) scale(7);
+  opacity: 0;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transition: all 0.4s cubic-bezier(0.71, 0.05, 0.09, 0.91);
+  transition: all 0.4s cubic-bezier(0.71, 0.05, 0.09, 0.91);
+}
+
+.timer{
+	top: 24px;
+    right: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 28px;
+    text-align: center;
+}
+.result_slide{
+	width: 300px;
+    height: 250px;
+    left: 0;
+    top: 0;
+}
+.result_slide .boishakh{
+	left: 0;
+    right: 0;
+    top: 10px;
+    margin: auto;
+}
+.result_slide .discount{
+    left: 0;
+    right: 0;
+    top: 121px;
+    margin: auto;
+}
+.result_slide .cta{
+    left: 0;
+    right: 0;
+    top: 205px;
+    margin: auto;
+    cursor: pointer;
+    z-index: 9;
+}
+.hidden{
+	display: none;
+}
+
+.fadeInZoomOut {
+	animation-duration: .3s;
+	animation-fill-mode: both;
+	animation-name: fadeInZoomOut
+}
+.fadeInUp {
+	animation-duration: .5s;
+	animation-fill-mode: both;
+    animation-name: fadeInUp;
+}
+.fadeOutZoomDown {
+    animation-name: fadeOutZoomDown;
+    animation-duration: .65s;
+}
+
+@keyframes fadeInZoomOut {
+	from {
+		transform: scale3d(.7, .7, .7)
+	}
+	to {
+		transform: scale3d(1, 1, 1)
+	}
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 50px, 0)
+    }
+}
+@keyframes fadeOutZoomDown {
+    to {
+        opacity: 0;
+        transform: scale3d(0.7, 0.7, 0.7)
+    }
+}
+
+	</style>
+</head>
+<body>
+
+<div class="wrapper">
+	<div class="slide_one">
+		<img class="absolute stand" src="//ms.purplepatch.online/dummy/boisakh/ballon/images/stand.png" alt="">
+		<img class="absolute top" src="//ms.purplepatch.online/dummy/boisakh/ballon/images/top.png" alt="">
+		<img class="absolute time" src="//ms.purplepatch.online/dummy/boisakh/ballon/images/time.png" alt="">
+		<img class="absolute boishak" src="//ms.purplepatch.online/dummy/boisakh/ballon/images/boishak.png" alt="">
+		<img class="absolute gun" src="//ms.purplepatch.online/dummy/boisakh/ballon/images/gun.png" alt="">
+		<img class="absolute bottom" src="//ms.purplepatch.online/dummy/boisakh/ballon/images/bottom.png" alt="">
+		<div class="timer absolute">
+			<span>0</span>
+		</div>
+	</div>
+	<div class="slide_ballons absolute"></div>
+	<div class="result_slide absolute hidden">
+		<img class="absolute boishakh" src="//ms.purplepatch.online/dummy/boisakh/ballon/images/boishakh.png" alt="">
+		<img class="absolute discount" src="//ms.purplepatch.online/dummy/boisakh/ballon/images/discount.png" alt="">
+		<a href="http://ms.purplepatch.online/" target="_blank"><img class="absolute cta" src="//ms.purplepatch.online/dummy/boisakh/ballon/images/cta.png" alt=""></a>
+		
+	</div>
+	
+	
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+	const values =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60];
+	
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function timerStart(start){
+	let counter = 0;
+	let timerId = setInterval(function() {
+		counter++;
+		$(".timer span").html(counter);
+	}, 1e3);
+	
+	if (start==0 || counter>60) {
+		clearInterval(timerId);		
+	}
+}
+
+let counter = 1;
+$(".gun,.slide_one").click(function(){
+	if (counter==1) {
+		timerStart(counter);
+		counter=2;
+	}	
+	if (values.length>30) {		
+		shuffle(values);
+		var pop =values.pop();
+		if ($(".slide_ballons .split")[pop]) {
+			$($(".slide_ballons .split")[pop]).addClass("burst");
+			$(".slide_ballons .split")[pop].click();
+		}		
+	}else{
+		timerStart(0);
+		console.log('done');
+		$(".slide_one").addClass("fadeOutZoomDown");
+		$(".slide_ballons").addClass("fadeOutZoomDown");	
+		
+		setTimeout(function() {
+			$(".slide_one").addClass("hidden");
+			$(".slide_ballons").addClass("hidden");
+			$(".result_slide").removeClass("hidden");
+			$(".result_slide .boishakh").addClass("fadeInUp");
+			$(".result_slide .cta").addClass("fadeInUp");
+			$(".result_slide .discount").addClass("fadeInZoomOut");
+		}, 500);
+	}	
+});
+
+var Split = function() {
+	$(".split").each(function(){
+		this.$t = $(this);
+		this.gridX = 4;
+		this.gridY = 4;
+		this.w = this.$t.width();
+		this.h = this.$t.height();
+		this.img = $("img", this.$t).attr("src");
+		this.delay = 0.05;
+		this.counter=0;
+
+	  this.create = function() {
+	    $("div", this.$t).remove();
+	    for (x = 0; x < this.gridX; x++) {
+	      for (y = 0; y < this.gridY; y++) {
+	        var width = this.w / this.gridX * 101 / this.w + "%",
+	            height = this.h / this.gridY * 101 / this.h + "%",
+	            top = this.h / this.gridY * y * 100 / this.h + "%",
+	            left = this.w / this.gridX * x * 100 / this.w + "%",
+	            bgPosX = -(this.w / this.gridX * x) + "px",
+	            bgPosY = -(this.h / this.gridY * y) + "px";
+	        $("<div />")
+	          .css({
+	          top: top,
+	          left: left,
+	          width: width,
+	          height: height,
+	          backgroundImage: "url(" + $("img", this.$t)[this.counter].src + ")",
+	          backgroundPosition: bgPosX + " " + bgPosY,
+	          backgroundSize: this.w + "px",
+	          transitionDelay: x * this.delay + y * this.delay + "s",
+	        })
+	          .appendTo(this.$t);
+	      }
+	    }
+	    
+	  };
+  	this.create();
+	});  
+};
+
+var Ballons = function() {
+  this.$t = $(".slide_ballons");
+  this.w = "18";
+  this.h = "19";
+
+  this.create = function() {
+    for (x = 1; x <= 6; x++) {
+      for (y = 1; y <= 10; y++) {
+        var width = "18px",
+            height = "23px",
+            top = (this.h*x +5) -28 +"px",
+            left = (this.w * y)-18 + "px";;
+
+        $("<div />")
+          .css({
+          top: top,
+          left: left,
+          width: width,
+          height: height
+        })
+          .addClass("absolute split")
+          .prepend("<img src='ballons/"+(y)+".png' />")
+          .appendTo(this.$t);
+      }
+    }
+  };
+  this.create();
+  setTimeout(function() {
+  	new Split();
+  }, 100);
+    
+};
+ window.onload= function(){new Ballons();};
+
+
+</script>
+	
+</body>
+</html>

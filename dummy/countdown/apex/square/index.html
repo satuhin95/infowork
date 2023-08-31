@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animation by lincoln mahmud</title>
+    <script src="//ms.purplepatch.online/countdown/apex/square/jsbundle_complex.js?v=1.4"></script>
+<style>
+	*{margin: 0;padding: 0;}
+	.wrapper{width: 300px;height: 250px;background-image: url(//ms.purplepatch.online/countdown/apex/square/bg.jpg);background-size: 100% 100%;position: relative;}
+    .ClassyCountdownDemo{position: absolute;top: 0;bottom: 0;margin: auto;height: 65px;}
+	.ClassyCountdown-wrapper div{display: inline-block;position: relative;width: 60px;height: 60px;font-size: 30px;}
+	.ClassyCountdown-value{position: absolute;top: 20px;left: 0;}
+	.ClassyCountdown-wrapper .ClassyCountdown-value {width: 100%;line-height: 1em;position: absolute;top: 80%;text-align: center;left: 0;display: block;color: #fff !important;font-weight: 700!important;}
+    .ClassyCountdown-hours{margin-left:45px;}
+    .ClassyCountdown-minutes{margin-left: 15px;}
+    .ClassyCountdown-seconds{margin-left: 15px;}
+</style>
+</head>
+<body>
+    <a href="{CLICK_MACRO}" target="_blank">
+        <div class="wrapper">
+            <div id="countdown9" class="ClassyCountdownDemo"></div>
+        </div>
+    </a>    
+<script>
+$(document).ready(function() {
+    $('#countdown9').ClassyCountdown({
+        end: Date.parse(new Date("11/20/2022 09:59:59")),
+        now: Date.parse(new Date()),
+        labels: true,
+        labelsOptions: {
+          lang: {
+            hours: '',
+            minutes: '',
+            seconds: ''
+          },
+        },
+        style: {
+            element: "",
+            textResponsive: .6,
+            days: {
+                gauge: {
+                    thickness: .15,
+                    bgColor: "transparent",
+                    fgColor: "#fff",                   
+                }
+            },
+            hours: {
+                gauge: {
+                    thickness: .15,
+                    bgColor: "transparent",
+                    fgColor: "#fff",
+                    lineCap: 'round'                   
+                }
+            },
+            minutes: {
+                gauge: {
+                    thickness: .12,
+                    bgColor: "transparent",
+                    fgColor: "#fff",
+                    lineCap: 'round'                    
+                }
+            },
+            seconds: {
+                gauge: {
+                    thickness: .09,
+                    bgColor: "transparent",
+                    fgColor: "#fff",
+                    lineCap: 'round'                    
+                }
+            }
+
+        },
+        onEndCallback: function() {
+            console.log("Time out!");
+        }
+    });
+    $(".ClassyCountdown-days").hide();
+});
+</script>
+</body>
+</html>

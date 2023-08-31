@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    *{ margin: 0; padding: 0;}
+  </style>
+</head>
+<body>
+  <iframe class="gwd-gen-11pqgwdanimation" id="username" src="//showcase.infostation.digital/ideas/personalised/xiaomi/getname.html" margin="0" padding="0" frameborder="0" width="0" height="250" scrolling="no" seamless='seamless' style="margin: 0px; padding: 0px; border: 0px none; height: 250px; overflow: hidden;"></iframe>
+<script>
+function done() {
+    var e = document.getElementById("username").contentWindow.document.getElementById("text").innerText,
+        n = parseInt(e, 10),
+        t = n - 180;
+    document.getElementById("username").width = t
+}
+var interval = setInterval(function () {
+    "" != document.getElementById("username").contentWindow.document.getElementById("text").innerHTML ? (clearInterval(interval), done()) : "" != document.getElementById("username").contentWindow.document.getElementById("usershortname").innerText && (document.getElementById("username").width = "250px")
+}, 300);
+</script>

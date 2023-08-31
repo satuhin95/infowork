@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Chillox bangladesh</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      *{margin:0;padding:0}
+      .wp_wrapper, .slider_1{width:100%;height:250px;}
+      #map{width:100%;height:500px}
+      .responsive{width:100%;height:auto;margin-bottom:20px}
+  </style>
+</head>
+<body>
+  <div class="wp_wrapper">
+    <div class="slider_1">
+      <img src="1.jpg" alt="">
+    </div>
+    <!-- <img src="bg1.png" class="responsive"> -->
+    <div class="container">
+      <div class="row">
+        <div class=" col-md-12 col-sm-12 ">
+         <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8MQrdVaz8JKiUnSU0usHzGRQGrI_x3DQ&callback=initMap&libraries=geometry,places" async defer="defer"></script>
+
+<script>
+
+  let slider_1 = document.querySelector('.slider_1');
+
+
+
+    setTimeout(getLocation, false);
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      }
+    }
+    var mylat, mylon;
+    function showPosition(position) {
+      mylat =  position.coords.latitude;
+      mylon =  position.coords.longitude;
+      if (mylat) {
+        setTimeout(initMap,100);
+      }
+    }
+
+    function initMap() {
+      if (mylat) {
+        // console.info(mylat + ' longitude ' + mylon);
+        var map;
+        var myOptions = {
+          zoom: 10,
+          scrollwheel: true,
+          mapTypeId: 'roadmap'
+        };
+        // map for search & directions
+        map = new google.maps.Map(document.querySelector('#map'), myOptions);
+        var markerA = new google.maps.Marker({
+          position: {lat:mylat, lng: mylon},
+          map: map
+        });
+
+      var infowindow = new google.maps.InfoWindow;
+      var loc, i;
+      var locations = [];
+      var locs = location_names();
+
+      // create markers for each loc and place them on map
+      for (i = 0; i < locs.length; i++) {
+        loc = new google.maps.Marker({
+          position: new google.maps.LatLng(locs[i][1], locs[i][2]),
+          map,
+          icon: 'xiaomi1.png' 
+        });
+
+        google.maps.event.addListener( loc, 'click', (function(loc, i)  {
+          return function() {
+            infowindow.setContent(locs[i][0]);
+            infowindow.open(map, loc);
+          }
+        })( loc, i ));
+        locations.push(loc.position);
+      }
+
+      var pointA = markerA.getPosition();
+      var markerB;
+
+      findClosest(pointA, locations);
+
+      function findClosest( pointA, locations ) {
+        var closestDistance = Number.MAX_SAFE_INTEGER;
+        var closest;
+        for ( i = 0; i < locations.length; i++ ) {
+          var distance = google.maps.geometry.spherical.computeDistanceBetween(pointA, locations[i]);
+          if ( distance < closestDistance ) {
+            closestDistance = distance;
+            closest = locations[i];
+          }
+        }
+        markerB = closest;
+      }
+
+      var directionsService = new google.maps.DirectionsService;
+      var directionsDisplay = new google.maps.DirectionsRenderer({map});
+
+      // for( var j=0; j < locations.length; j++ ) {
+      //   calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, locations[j], map);
+      // }
+
+      // var pointB = markerB;
+      // console.log(markerB);
+      calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, markerB, map);
+
+      // var onChangeHandler = function() {
+        // calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, markerB, map);
+      // };
+      // map.addListener('change', onChangeHandler);
+        
+      }else{
+        setTimeout(getLocation, false);
+      }
+
+      
+  }
+
+  function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB, map) {
+      directionsService.route({
+       origin: pointA,
+       destination: pointB,
+       travelMode: google.maps.TravelMode.WALKING
+      }, function (response, status) {
+       if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+       } else {
+        console.error('Could not load directions due to ' + status);
+       }
+      });
+  }
+
+  // create array of locations and assign values
+  function location_names() 
+  {
+    return [
+      [ "Mi Store (ZH Telecom)",   "24.36453811", "88.50895154"],
+      [ "Mi Store Anonna Telecom",   "25.10161", "89.029908"],
+      [ "Mi Store Smart point(Naogaon)",   "24.809398", "88.941844"],
+      [ "Mi Store, Tech City",   "23.738", "90.37744"],
+      [ "Mi Store, Star Arena 4",   "23.73865", "90.37417"],
+      [ "Mi Store, HR Telecom",   "23.74383", "90.39181"],
+      [ " Discovery ",   "25.390011", "88.991313"],
+      [ "Hello Xiaomi ",   "25.751641", "89.253057"],
+      [ "MR Telecom, Uttara - EMiPP",   "23.8626577", "90.3995658"],
+      [ "Tondra Telecom EMiPP",   "24.048133", "90.238675"],
+      [ "Ikbal Electronic",   "23.988841", "90.38111"],
+      [ "Dristy Enterprise (EMPP)",   "23.806573", "90.369122"],
+      [ "Smart point (Sumon Telecom)",   "24.91689", "88.749758"],
+      [ "Ma Moni Communication (E.MiPP)",   "26.33117", "88.55558"],
+      [ "Mi Store Business Link",   "25.96635", "89.690829"],
+      [ "Mi Store Azam Telecom",   "25.935364", "88.851413"],
+      [ "Mi Store Electra Mobile Norda",   "23.778249", "90.396609"],
+      [ "Mi Store Electra Mobile Savar 2",   "23.849809", "90.257713"],
+      [ "Mi Store Bhuiyan Telecom",   "23.968361", "91.111783"],
+      [ "Mi Store Electra Mobile Savar 1",   "23.84762", "90.256939"],
+      [ "Mi Store Rohan Telecom",   "25.070439", "91.399081"],
+      [ "Mi Store Raina Telecom, Jamalpur",   "24.92571", "89.948589"],
+      [ "Mi Store Electra Mobile Moulovibazar",   "24.489276", "91.762316"],
+      [ "Mi Store Electra Mobile, Konabari 2",   "24.011185", "90.320552"],
+      [ "Mi Store T N Telecom",   "23.874329", "90.399872"],
+      [ "Mi Store Electra Mobile JFP 2",   "23.812998", "90.42387"],
+      [ "Mi Store Electra Mobile BCT-05 (Shikder Elec), Sho",   "23.751067", "90.3915"],
+      [ "Mi Store S.N Telecom",   "25.499633", "88.956061"],
+      [ "Mi Store Razib Telecom",   "25.7821435", "88.8962586"],
+      [ "Mi Store Sena Mi Zone",   "23.912726", "90.260634"],
+      [ "Mi Store Electra Mobile, Ghatail, Tangail 02",   "24.251388", "89.916647"],
+      [ "Mi Store New Naph Telecom, Ashuganj",   "24.042298", "91.006315"],
+      [ "Mi Store Electra Mobile, Chapainawabganj 01",   "24.594939", "88.274384"],
+      [ "Mi Store Savar City Center",   "23.84969", "90.257695"],
+      [ "Mi Store Hiya Telecom, Ullapara",   "24.312116", "89.569433"],
+      [ "Mi Store AB International",   "23.778249", "90.396609"],
+      [ "Mi Store Electra Mobile, Konabari, Gazipur",   "24.010887", "90.322586"],
+      [ "Mi Store Kishorgong(DTL)",   "24.434147", "90.784379"],
+      [ "Mi Store Uttara (North Tower, DTL)",   "23.874379", "90.400204"],
+      [ "Mi Store Uttara (AMir Cmplex)",   "23.867653", "90.400065"],
+      [ "Mi Store (Badda Link Road)",   "23.780764", "90.421956"],
+      [ "Mi Store, Gulshan-2 - DTL",   "23.794386", "90.414464"],
+      [ "Mi Store DTL, JFP",   "23.813438", "90.424069"],
+      [ "Mi Store Habigonj (DTL)",   "24.3882", "91.4134"],
+      [ "Mi Store Moulovibazar (DTL)",   "24.4897", "91.7595"],
+      [ "Mi Store Sunamgonj",   "25.071251", "91.399252"],
+      [ "Mi Store Tangail (DTL)",   "24.251388", "89.916647"],
+      [ "Mi Store Manikganj (DTL)",   "23.8597", "90.0065"],
+      [ "Mi Store DTL, Bogura",   "24.848075", "89.37605"],
+      [ "Mi Store DTL, Gaibandha",   "25.3314", "89.54378"],
+      [ "Mi Store Dinajpur (DTL)",   "25.6317484", "88.6359092"],
+      [ "Mi Store Saidpur (DTL)",   "25.78165", "88.89537"],
+      [ "Mi Store Kurigram(DTL)",   "25.813929", "89.648516"],
+      [ "Mi Store DTL , Rajshahi",   "24.37134", "88.60278"],
+      [ "Mi Store Rajshahi (Theme Omar Plaza)",   "24.37291283", "88.6019378"],
+      [ "Mi Store Ishwardi",   "24.12782", "89.06434"],
+      [ "Mi Store BisMilla Electronics, Savar",   "23.849256", "90.257727"],
+      [ "Mi Store Arisha Communication (Pabna)",   "24.007649", "89.238323"],
+      [ "Mi Store Nur Telecom",   "25.62731", "88.63473"],
+      [ "Mi Store ( Gadget One-B.Baria)",   "23.975988", "91.112063"],
+      [ "Mi Store (Hello Fahad- B.Baria)",   "23.97179124", "91.11157959"],
+      [ "Mi Store Muktagacha",   "24.764371", "90.256032"],
+      [ "Mi Store Mymensingh",   "24.757", "90.406"],
+      [ "Mi Store Sujan Enterprise",   "25.015721", "90.016229"],
+      [ "Mi Store J.R Communication -2",   "23.86756", "90.3999"],
+      [ "Mi Store (M.A Enterprise-Uttara)",   "23.864417", "90.399194"],
+      [ "Mi Store (J.R Corporation-Uttara)",   "23.863991", "90.399577"],
+      [ "Mi Store Top Sell JFP",   "23.812715", "90.423964"],
+      [ "Mi Store Sky Phone",   "24.3095", "91.7291"],
+      [ "Mi Store (Ring Me), Zindabazar",   "24.895358", "91.869548"],
+      [ "Mi Store Ahando Enterprise",   "24.89905", "91.870324"],
+      [ "Mi Store Manha Telecom",   "24.892078", "91.872325"],
+      [ "Mi Store Saz Telecom",   "24.905077", "91.870235"],
+      [ "Mi Store Ehan Telecom",   "24.89453", "91.8675"],
+      [ "Mi Store Ontel-2",   "24.892342", "91.872285"],
+      [ "Mi Store Wirless Store, Sylhet",   "24.899281", "91.869759"],
+      [ "Mi Store O&S Communication(Tangail)",   "24.250802", "89.915245"],
+      [ "Mi Store (Jaman Telecom-Mawna)",   "24.220403", "90.412859"],
+      [ "Mi Store Mobile Choice, Joydebpur",   "24.00015", "90.4204"],
+      [ "Mi Store Titas Enterprise - Joydebpur",   "24.000124", "90.416088"],
+      [ "Mi Store (Gazipur, Chowrasta)",   "23.988962", "90.381745"],
+      [ "Mi Store (Lotus Telecom, Tongi)",   "23.906313", "90.398621"],
+      [ "Mi Store Yen Telecom",   "23.793066", "90.273225"],
+      [ "Mi Store Maa Telecom, Ashulia",   "23.949642", "90.274174"],
+      [ "Mi Store Maya Telecom - Ashulia",   "23.913891", "90.318406"],
+      [ "Mi Store Hafsa Telecom DEPZ",   "23.949799", "90.274406"],
+      [ "Mi Store Bristi Telecom",   "23.806699617698", "90.369095765054"],
+      [ "Mi Store Mirpur 10(2)",   "23.80612", "90.369584"],
+      [ "Mi Store Mobile Neer (Mirpur-10)",   "23.806371", "90.368899"],
+      [ "Mi Store Rise Telecom, Mirpur-1",   "23.7984", "90.3535"],
+      [ "Mi Store Mirpur 1",   "23.79817", "90.352788"],
+      [ "Mi Store Mobile Network",   "23.799399", "90.354696"],
+      [ "Mi Store Miow Telecom Bogura",   "24.84806", "89.37591"],
+      [ "Mi Store Snigdho, Bogura",   "24.850865", "89.375969"],
+      [ "Mi Store Joypurhat (Annanya Telecom)",   "25.101154", "89.03098"],
+      [ "Mi Store Naogaon (Smart Point)",   "24.8094602", "88.9416272"],
+      [ "Mi Store S Electronics",   "24.4527", "89.7044"],
+      [ "Mi Store Give & Take  Sirajgonj",   "24.452481", "89.703975"],
+      [ "Mi Store( Hello Mi) Dinajpur",   "25.632898", "88.636588"],
+      [ "Mi Store Rangpur(Subata Mobile Gallery)",   "25.751678", "89.252875"],
+      [ "Mi Store Akash Telecom",   "25.75158", "89.25307"],
+      [ "Mi Store Thakurgaon (Shahi Telecom)",   "26.0321", "88.4626"],
+      [ "Mi Store MM Brand Shop",   "24.3703", "88.60302"],
+      [ "Mi Store (ZH Telecom)",   "24.37461", "88.60002"],
+      [ "Mi Store (GR Communications) Natore",   "24.413613", "88.98766"],
+      [ "Mi Store (RT Communications) Pabna",   "24.00794", "89.2389576"],
+      [ "Mi Store Electra Mobile, Mirpur 01",   "23.805109", "90.363156"],
+      [ "Mi Store Electra Mobile, Tangail 01",   "24.251269", "89.91648"],
+      [ "Mi Store Electra Mobile, Hobigonj",   "24.380179", "91.413117"],
+      [ "Mi Store Electra Mobile, Mymensingh 02",   "24.757029", "90.406343"],
+      [ "Mi Store Electra Mobile, Mymensingh 01",   "24.7564259", "90.4058608"],
+      [ "Mi Store Electra Mobile B.Baria",   "23.97223", "91.111518"],
+      [ "Mi Store Electra Mobile Kishoregonj -02",   "24.435581", "90.7823251"],
+      [ "Mi Store Electra Mobile Kishoregonj -01",   "24.4338814", "90.7850236"],
+      [ "Mi Store Electra Mobile RajlaxMi Uttara 01",   "23.864129", "90.399564"],
+      [ "Mi Store Electra Mobile Janapath Uttara 2",   "23.874466", "90.394966"],
+      [ "Mi Store Electra Mobile (Time View) B. City- Shop ",   "23.751052", "90.39074"],
+      [ "Mi Store Electra Mobile Suvastu Tower Badda",   "23.789537", "90.425531"],
+      [ "Mi Store Electra Mobile JFP",   "23.814699", "90.423571"],
+      [ "Mi Store Electra Mobile Badda Link Road (M Cell)",   "23.780846", "90.421939"],
+      [ "Mi Store Electra Mobile BCT-02(JeMini Elec), Shop ",   "23.75091", "90.39088"],
+      [ "Mi Store Electra Mobile BCT-03 (Dipu Elec), Shop #",   "23.751067", "90.3915"],
+      [ "Mi Store Electra Mobile BCT-01 (Mobile World)",   "23.75091", "90.39088"],
+      [ "Mi Store Electra Mobile Jamgora",   "23.936994", "90.292422"],
+      [ "Mi Store Electra Mobile Bogura-BRTC Market",   "24.84845", "89.37182"],
+      [ "Mi Store Electra Mobile Shahjadpur, Sirajganj",   "24.177353", "89.594646"],
+      [ "Mi Store, SEBL 26, Shibbari More, Khulna",   "22.8203637", "89.5535999"],
+      [ "Mi Store CoMilla DTL",   "23.4618046", "91.1790846"],
+      [ "Mi Store Chuadanga DTL",   "23.7096575", "89.0541153"],
+      [ "Mi Store Magura DTL",   "23.4856024", "89.41875"],
+      [ "Mi Store SEBL -25",   "23.742107", "90.3900484"],
+      [ "Mi Store, SEBL 16, Barisal",   "22.702097", "90.369976"],
+      [ "Mi Store, M/S Feba International",   "22.701532", "90.370017"],
+      [ "Mi Store, Jhalokathi (DTL)",   "22.641883", "90.196944"],
+      [ "Mi Store, Hallo Barisal",   "22.4201", "90.2211"],
+      [ "Mi Store, Barisal (DTL)",   "22.4214", "90.2212"],
+      [ "Mi Store, Sinha Enterprise, Banarupa, Rangamati",   "22.6553235", "92.1627616"],
+      [ "Mi Store, Mobile Surgery, Patiya, Chattogram",   "22.291448", "91.982748"],
+      [ "Mi Store, Lohagara, Chattogram",   "21.999599", "92.087876"],
+      [ "Mi Store, Khagrachore (DTL)",   "22.334432", "91.830888"],
+      [ "Mi Store, Dream Tech Computer, Bandarban",   "22.1963359", "92.2164539"],
+      [ "Mi Store, Smart Café-2, CEPZ, Chattogram",   "22.294417", "91.78285"],
+      [ "Mi Store, Smart Café, Chattogram",   "22.333867", "91.8327266"],
+      [ "Mi Store, SEBL 7, Bandartila, Chattogram",   "22.285175", "91.784724"],
+      [ "Mi Store, SEBL 4, Singapur Bangkok Market, Chattog",   "22.327339", "91.811554"],
+      [ "Mi Store, New Market-02",   "22.334841", "91.833387"],
+      [ "Mi Store, New Market",   "23.106014", "91.982103"],
+      [ "Mi Store, Mobile Link",   "22.327148", "91.812529"],
+      [ "Mi Store, Fantasy Telecom, Agrabad, Chattogram",   "22.327116", "91.812513"],
+      [ "Mi Store, Chattogram - EPZ (DTL)",   "22.295316", "91.7831808"],
+      [ "Mi Store, Arnob Telecom (Agrabad)",   "22.32715", "91.81431"],
+      [ "Mi Store Agrabad (DTL)",   "22.327585", "91.810778"],
+      [ "EMiPP, Mi Zone, Chattogram",   "22.327104", "91.812522"],
+      [ "EMiPP, AR Telecom",   "23.730434", "90.409998"],
+      [ "Mi Store, SEBL 24, Hajiganj, Chandpur",   "23.2501799", "90.852236"],
+      [ "EMiPP, SAfi mobile zone",   "23.348144", "90.7040462"],
+      [ "EMiPP, SkyNet, Chandpur",   "23.225977", "90.656469"],
+      [ "Mi Store, SEBL 20, B.City, Level-6, Shop-2",   "23.751", "90.391"],
+      [ "Mi Store, SEBL 1, B.City L-6",   "23.751", "90.391"],
+      [ "Mi Store, B.City, Level-1, Shop-3 (DTL)",   "23.7509107", "90.3882839"],
+      [ "Mi Store, B.City, Level-1, DTL",   "23.75119", "90.39074"],
+      [ "Mi Store, B.City (Level 6, Shop 4) (DTL)",   "23.7509107", "90.3882839"],
+      [ "Mi Store (B.City-Level 6, Shop-01) (DTL)",   "23.74266", "90.37449"],
+      [ "Mi Store (B.City Level-05) (DTL)",   "23.75167", "90.391"],
+      [ "Mi Store (B.City Level 6, Shop-03) (DTL)",   "23.75126", "90.39061"],
+      [ "Mi Store(B. City Level-6, Shop-02) (DTL)",   "23.78459", "90.36455"],
+      [ "Mi Store, DTL, B.City, L-1",   "23.752", "90.391"],
+      [ "Mi Store, One Trade Int, LaxMipur",   "23.099693", "90.860588"],
+      [ "Mi Store, MK Telecom-2, LaxMipur",   "22.938017", "90.828767"],
+      [ "Mi Store, SEBL 19, Noakhali",   "22.8893216", "91.098688"],
+      [ "Mi Store, Mobile Media Exclusive, Maijdee",   "22.869264", "91.097567"],
+      [ "EMiPP, Mi Smart Zone, Chowmuhoni, Noakhali",   "22.946053", "91.120733"],
+      [ "Mi Store, Munshigonj",   "23.9746812", "90.6319629"],
+      [ "EMiPP, Al-Safa Smart Telecom, Munshiganj",   "23.5595336", "90.6535782"],
+      [ "Mi Store, Sheba Brand Shop Café, Cox's Bazar",   "21.443602", "91.97225"],
+      [ "Mi Store, Raifa Telecom, Cox's Bazar",   "21.432323", "91.9834401"],
+      [ "Mi Store Coxs Bazar (DTL)",   "21.444897", "91.968996"],
+      [ "EMiPP Teknaf",   "20.8646115", "92.2966361"],
+      [ "EMiPP, Ovi Mobile Shop, Chokoria, Cox's Bazar",   "21.7643427", "92.0735417"],
+      [ "Mi Store, SEBL 11, Jatrabari",   "23.709486", "90.433186"],
+      [ "Mi Store, Mohammad Electronics, Jurine",   "23.69362791", "90.43476058"],
+      [ "Mi Store Keranigonj (DTL)",   "23.922219", "90.71961"],
+      [ "Mi Store, SEBL 21, Pirojpur",   "22.57898", "89.96894"],
+      [ "Mi Store, Raj Telecom, Gopalganj",   "23.008947", "89.830223"],
+      [ "Mi Store, Allahar Dan Telecom, Gopalganj",   "23.008719", "89.83026"],
+      [ "Mi Store, Raisha Telecom, Sadarghat, DHK",   "23.706684", "90.4108815"],
+      [ "Mi Store Lalbag (DTL)",   "23.71981", "90.39001"],
+      [ "EMiPP, Alia Telecom",   "23.7195686", "90.4142249"],
+      [ "EMiPP, Smart Choice 2, Chankharpul, DHK",   "23.724521", "90.399873"],
+      [ "Mi Store, Telemast Rampura",   "23.761285", "90.419636"],
+      [ "Mi Store, Taltola 2",   "23.751764", "90.424834"],
+      [ "Mi Store, Taltola 1 Wasif Telecom",   "23.752014", "90.422045"],
+      [ "Mi Store, SEBL 3, Baitul View",   "23.73035", "90.41206"],
+      [ "Mi Store, Motijheel, DHK",   "23.72914", "90.416483"],
+      [ "Mi Store, Motijheel (DTL)",   "23.7318407", "90.4067544"],
+      [ "Mi Store, Mobile Choice, Taltola, DHK",   "23.752913", "90.421822"],
+      [ "Mi Store, Imagine, Paltan",   "23.73079", "90.41208"],
+      [ "Mi Store, Fakirapool (DTL)",   "23.7350611", "90.4144626"],
+      [ "Mi Store, DTL, Eastern Plus, DHK",   "23.739", "90.415"],
+      [ "Mi Store, Baitul View, L-2 (DTL)",   "23.730598", "90.412254"],
+      [ "Mi Store, (Maheera International)  Twin Tower",   "23.743949", "90.412131"],
+      [ "EMiPP, Sajia Enterprise",   "22.2826959", "91.7820915"],
+      [ "Mi Store, Tokyo 2",   "23.764746", "90.358324"],
+      [ "Mi Store, Tokyo 1",   "23.765243", "90.35836"],
+      [ "Mi Store, Get Connected",   "23.762608", "90.35969"],
+      [ "EMiPP, Sahat Telecom, Shymoli, Dhaka",   "23.774598", "90.365474"],
+      [ "Mi Store, SEBL 22, Khulna",   "22.810001065", "89.5620904862"],
+      [ "Mi Store, Khulna (Akif Trade International)",   "22.8226374705", "89.5530910044"],
+      [ "Mi Store, In Time (Khulna)",   "22.825105", "89.551236"],
+      [ "Mi Store, Faiza International, Khulna",   "22.817048", "89.563449"],
+      [ "Mi Store, Bagerhat (DTL)",   "22.65842", "89.7959"],
+      [ "Mi Store, Ayaman Teleco",   "22.86715", "89.527198"],
+      [ "Mi Store, DTL, Khulna",   "22.8183063", "89.5528586"],
+      [ "Mi Store, SEBL 18, CoMilla-3, Sattar Khan Complex",   "23.46085", "91.18236"],
+      [ "Mi Store, SEBL 15, CoMilla-1",   "23.46105", "91.18242"],
+      [ "Mi Store, SEBL 14, CoMilla-2, Chalkbaza",   "23.46268", "91.19239"],
+      [ "Mi Store, SaMia Telecom, CoMilla",   "23.46085", "91.18236"],
+      [ "Mi Store, R.S Tel, CoMilla",   "23.461142", "91.182369"],
+      [ "Mi Store, Maa Mobile Shop",   "23.466099", "91.168223"],
+      [ "Mi Store, Gadget Seller, CoMilla",   "23.4606", "91.18113"],
+      [ "Mi Store, Bili International-2, CoMilla",   "23.460794", "91.182455"],
+      [ "Mi Store, Bili International-1, CoMilla",   "43.986748", "97.0360106"],
+      [ "Mi Store, (Laksham, CoMilla)",   "23.239337", "91.123895"],
+      [ "Mi Store, SEBL 9, Feni",   "23.01004", "91.299378"],
+      [ "Mi Store, SEBL 8, Jashore-2",   "23.164892", "89.214704"],
+      [ "Mi Store, SEBL 6, Narail",   "23.17296", "89.50094"],
+      [ "Mi Store, SEBL 5, Jashore-1",   "23.166802", "89.207785"],
+      [ "Mi Store Noapara (DTL)",   "23.028892", "89.399988"],
+      [ "Mi Store, Jashore (Galaxy Telecom)",   "23.17719", "89.21677"],
+      [ "EMiPP, Raj Telecom-2, Nowapara",   "23.027622", "89.401092"],
+      [ "Mi Store, Bhola (DTL)",   "22.41", "90.3846"],
+      [ "Mi Store, AR Telecom, Charfashion, Bhola",   "22.18782", "90.758936"],
+      [ "Mi Store, SEBL 17, Kushtia",   "23.909257", "89.125608"],
+      [ "Mi Store, Kushtia (DTL)",   "23.905929", "89.136337"],
+      [ "EMiPP, Aristo Telecom",   "23.9088444", "89.124866"],
+      [ "EMiPP, KI Mobile Corner, Kushtia",   "23.856824", "89.238979"],
+      [ "Mi Store Patuakhali (DTL)",   "22.2148", "90.2042"],
+      [ "Mi Store, Tahsin Telecom, Narayanganj",   "23.62382", "90.499307"],
+      [ "Mi Store Narayangonj (DTL)",   "23.9746812", "90.6319629"],
+      [ "Mi Store, Mobile lif",   "23.78456", "90.56858"],
+      [ "Mi Store, Mobile hut-2",   "23.85136", "90.67333"],
+      [ "Mi Store, Mobile Hut 1",   "23.62223", "90.50064"],
+      [ "Mi Store, DTL, Demra",   "23.7202964", "90.4889003"],
+      [ "EMiPP, 3 G dot com",   "23.6178374", "90.4989807"],
+      [ "EMiPP, Voice Technologies, Narayanganj",   "23.6178295", "90.5016046"],
+      [ "Mi Store, SEBL 12, Narshingdhi",   "23.92366", "90.71734"],
+      [ "Mi Store, Salam Telecom",   "23.85136", "90.67333"],
+      [ "Mi Store, Friends Telecom, Narayanganj",   "23.78456", "90.56858"],
+      [ "Mi Store, Aporupa Telecom",   "23.9746812", "90.6319629"],
+      [ "Mi Store,Shariatpur (DTL)",   "23.1316", "90.2055"],
+      [ "Mi Store,Madaripur (DTL)",   "23.1038", "90.1215"],
+      [ "Mi Store, Mi Plus, Shatkhira (DTL)",   "22.708967", "89.069965"],
+      [ "Mi Store, SEBL 13, Faridpur",   "23.602794", "89.834571"],
+      [ "Mi Store, Rajbari (DTL)",   "23.453", "89.385"],
+      [ "Mi Store, M/S Astha Enterprise, Pangsha",   "23.7870589", "89.4171877"],
+      [ "Mi Store, Bishwas Telecom, Faridpur",   "23.6019578", "89.8340671"],
+      [ "Mi Store, DTL, Faridpur",   "23.361", "89.5"],
+      [ "Mi Store, SEBL 23, Sanmar, Chattogram",   "22.362342", "91.822103"],
+      [ "Mi Store, SEBL 2, Bahaddarhat, Chattogram",   "22.3687221", "91.8440897"],
+      [ "Mi Store, SA Telecom-2, Hathazari, Chattogram",   "22.499466", "91.807094"],
+      [ "Mi Store, Ocean Point",   "22.361998", "91.821807"],
+      [ "Mi Store, Niha Enterprise, Nasirabad, Chattogram",   "22.376103", "91.780023"],
+      [ "Mi Store, Mobile Candy (Chattogram)",   "22.3479449", "91.8255615"],
+      [ "Mi Store, Cell Touch",   "22.361998", "91.821807"],
+      [ "Mi Store, DTL, Golpahar, Chattogram",   "22.358639", "91.825196"],
+      [ "Mi Store, SEBL 10, Magura",   "23.490289", "89.420719"],
+      [ "Mi Store Jhenaidah (DTL)",   "23.545007", "89.169802"],
+      [ "EMiPP, Tushar Electronics, Kaliganj, Jhenaidah",   "23.4084452", "89.1359122"],
+      [ "Mi Store, Kohinur Enterprise, Eastern Mollika",   "23.737045", "90.386378"],
+      [ "Mi Store, Eastern Plaza, DTL",   "23.744", "90.392"],
+      [ "Mi Store Shimanto Square (DTL)",   "23.737988", "90.3773723"]
+    ];
+  }
+</script>
+</body>
+</html>

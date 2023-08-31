@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Omera LPG animation by Info Station </title>
+	<style>
+		*{margin: 0;padding: 0;}
+		.istation_wrapper{
+			width: 300px;
+			height: 250px;
+			position: relative;
+		}
+		.istation_wrapper .background{left:0;top:0;}
+		.istation_wrapper .slide_1{}
+		.istation_wrapper .slide_1 .element_1{
+			left: 67px;
+		    top: 35px;
+		    width: 164px;
+		    height: 115px;
+		}
+		.istation_wrapper .slide_1 .element_2{
+			left: 58px;
+		    bottom: 62px;
+		    width: 184px;
+		    height: 33px;
+		}
+		.istation_wrapper .slide_1 .element_3{
+			left: 78px;
+		    bottom: 24px;
+		    width: 144px;
+		    height: 35px;
+		    cursor: pointer;
+		}
+		.istation_wrapper .slide_2 .element_1{
+			width: 194px;
+		    height: 112px;
+		    left: 8px;
+		    top: 58px;
+		    z-index: 99;
+		}
+		.istation_wrapper .slide_2 .element_2{
+			width: 135px;
+		    height: 87px;
+		    left: 89px;
+		    bottom: 17px;
+		}
+		.istation_wrapper .slide_2 .element_3{
+			right: 12px;
+			bottom: 4px;
+			width: 77px;
+			height: 175px;
+		}
+		.istation_wrapper .slide_3 .element_1{
+			width: 109px;
+		    height: 31px;
+		    right: 19px;
+		    top: 20px;
+		}
+
+		.istation_wrapper .slide_3 .element_2{
+		    left: 31px;
+		    bottom: 83px;
+		    width: 114px;
+		    height: 74px;
+		}
+
+		.istation_wrapper .slide_3 .element_3{
+			bottom: 25px;
+			left: 31px;
+			width: 100px;
+			height: 91px;
+		}
+
+		.istation_wrapper .slide_3 .element_4{
+			bottom: 0;
+		    right: 0;
+		    width: 179px;
+		    height: 179px;
+		}
+
+		@keyframes line {
+		    0% {
+		        clip-path: polygon(100% 90%, 100% 90%, 100% 100%, 100% 100%);
+		    }
+		    50% {
+		        clip-path: polygon(5% 90%, 100% 90%, 100% 100%,5% 100%);
+		    }
+		    55% {
+		        clip-path: polygon(0 90%, 100% 90%, 100% 100%,0 100%);
+		    }
+		    100% {
+		        clip-path: polygon(0 0, 100% 0, 100% 100%,0 100%);
+		    }
+		}
+
+		@keyframes hideZoomOut {
+		    100% {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3)
+		    }
+		}
+
+		@keyframes showZoomIn {
+		    from {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3)
+		    }
+		    to {
+		        opacity: 1;
+		        transform: scale3d(1, 1, 1)
+		    }
+		}
+
+		.hideZoomOut {
+		    animation-name: hideZoomOut;
+		    animation-duration: .5s;
+		    animation-fill-mode: both
+		}
+
+		.showZoomIn {
+		    animation-name: showZoomIn;
+		    animation-duration: .5s;
+		    animation-fill-mode: both
+		}
+
+		.line {
+		    animation-name: line;
+		    animation-duration: 1.5s;
+		    animation-fill-mode: both;
+		}
+
+		@keyframes pulse {
+		    0% {transform: scaleX(1)}
+		    50% {transform: scale3d(.95, .95, .95)}
+		    to {transform: scaleX(1)}
+		}
+		.pulse {
+		    animation-name: pulse;
+		    animation-duration: 1s;
+		    animation-iteration-count: infinite
+		}
+
+		.absolute{position: absolute;}
+		.hidden{display: none;}
+	</style>
+</head>
+<body>
+
+	<div class="istation_wrapper">
+		<img src="omera/bg.jpg" alt="" class="background absolute">
+		<!-- <img src="omera/3.jpg" alt="" class="background absolute"> -->
+		<div class="slide_1">
+			<img class="element_1 absolute" src="omera/tension.png" alt="tension">
+			<img class="element_2 absolute" src="omera/gas-text.png" alt="gas text">
+			<img class="element_3 absolute pulse" src="omera/tap.png" alt="tap button">
+		</div>
+		<div class="slide_2">
+			<img class="element_1 absolute hidden" src="omera/cartoon.png" alt="cartoon">
+			<img class="element_2 absolute hidden" src="omera/line.png" alt="line">
+			<img class="element_3 absolute hidden" src="omera/lpg.png" alt="lpg">
+		</div>
+		<div class="slide_3">
+			<img class="element_1 absolute hidden" src="omera/logo.png" alt="logo">
+			<img class="element_2 absolute hidden" src="omera/msg-text.png" alt="msg">
+			<img class="element_3 absolute hidden" src="omera/omera.png?v=1.1" alt="omera">
+			<img class="element_4 absolute hidden" src="omera/bottle.png" alt="bottle">
+		</div>
+	</div>
+
+	<script>
+		let bindEvent = (eventNames, selector, handler) => {
+	      eventNames.split(' ').forEach((eventName) => {
+	        document.addEventListener(eventName, function (event) {
+	          if (event.target.matches(selector + ', ' + selector + ' *')) {
+	            handler.apply(event.target.closest(selector), arguments)
+	          }
+	        }, false);
+	      })
+	    };
+		let istation_wrapper = document.querySelector('.istation_wrapper');
+		let tension = document.querySelector('.istation_wrapper .slide_1 .element_1');
+		let first_msg = document.querySelector('.istation_wrapper .slide_1 .element_2');
+		let second_cartoon = document.querySelector('.istation_wrapper .slide_2 .element_1');
+		let second_line = document.querySelector('.istation_wrapper .slide_2 .element_2');
+		let second_lpg = document.querySelector('.istation_wrapper .slide_2 .element_3');
+		let third_logo = document.querySelector('.istation_wrapper .slide_3 .element_1');
+		let third_msg = document.querySelector('.istation_wrapper .slide_3 .element_2');
+		let third_omera = document.querySelector('.istation_wrapper .slide_3 .element_3');
+		let third_lpg = document.querySelector('.istation_wrapper .slide_3 .element_4');
+
+		bindEvent('click','.istation_wrapper .slide_1 .element_3',function(e){
+	        e.preventDefault();
+	        console.log('testing');
+	        remove_class(this,'pulse');
+	        add_class(this,'hideZoomOut');
+	        add_class(first_msg,'hideZoomOut');
+	        
+	        remove_class(second_line,'hidden');
+	        add_class(second_line,'line');
+
+	        remove_class(second_lpg,'hidden');
+	        add_class(second_lpg,'showZoomIn');
+
+	        setTimeout(function(){
+	        	add_class(tension,'hideZoomOut');	        	
+	        	remove_class(second_cartoon,'hidden');
+	        	add_class(second_cartoon,'showZoomIn');
+
+	        	setTimeout(third_slide, 1500); /*initial third slide*/
+	        }, 1000);	        
+	    });
+
+	    function third_slide ( ) {
+	    	remove_class(second_cartoon,'showZoomIn','hideZoomOut');
+	        remove_class(second_line,'line','hideZoomOut');
+	        remove_class(second_lpg,'showZoomIn','hideZoomOut');
+
+	        setTimeout(function(){
+	        	remove_class(third_logo,'hidden');
+		        add_class(third_logo,'showZoomIn');
+
+		        remove_class(third_msg,'hidden');
+		        add_class(third_msg,'showZoomIn');
+
+
+		        remove_class(third_omera,'hidden');
+		        add_class(third_omera,'showZoomIn');
+
+		        remove_class(third_lpg,'hidden');
+		        add_class(third_lpg,'showZoomIn');
+	        }, 500);	    	
+	    }
+
+
+		/*add and remove class function*/
+	    function remove_class(element, classname,replace='') {
+	        element.className = element.className.replace(classname, replace);
+	    }
+
+	    function add_class(element, classname) {
+	        element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+	    }
+
+	</script>
+	
+</body>
+</html>

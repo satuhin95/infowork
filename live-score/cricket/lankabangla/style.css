@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+.hidden{
+    display: none;
+    
+}
+.absolute{
+    position: absolute;
+}
+.info_wrapper{
+    width: 300px;
+    height: 250px;
+    position: relative;
+    background: #E3F0F8;
+    cursor: pointer;
+    overflow: hidden;
+    font-family: "Montserrat", Times, serif;
+    font-size: 12px;
+}
+.info_element_1 {
+    width: 300px;
+    height: 250px;
+    top: 0px;
+    left: 0px;
+}
+.info_element_2 {
+    width: 300px;
+    height: 250px;
+    top: 0px;
+    left: 0px;
+}
+.info_element_3 {
+    width: 300px;
+    height: 250px;
+    top: 0px;
+    left: 0px;
+}
+.info_element_4 {
+    width: 142px;
+    height: 157px;
+    top: 32px;
+    left: 106px;
+}
+.info_element_5 {
+    width: 300px;
+    height: 39px;
+    bottom: 0;
+    left: 0;
+}
+
+
+.countryName{
+    width: 283px;
+    height: 24px;
+    top: 202px;
+    left: 9px;
+}
+
+.countryone{
+    width: 150px;
+    height: 24px;
+    top: 218px;
+    left: 29px;
+    color: #1F1F1F;
+    position: absolute;
+    font-weight: 700;
+    font-size: 12px;
+    font-family: "Montserrat", Times, serif;
+
+}
+.countrytwo{
+    width: 150px;
+    height: 24px;
+    top: 218px;
+    left: 247px;
+    color: #1F1F1F;
+    position: absolute;
+    font-weight: 700;
+    font-size: 12px;
+    font-family: "Montserrat", Times, serif;
+
+}
+.teamone{
+    width: 150px;
+    height: 24px;
+    top: 231px;
+    left: 16px;
+    color: #1F1F1F;
+    position: absolute;
+    font-weight: 700;
+    font-size: 12px;
+    font-family: "Montserrat", Times, serif;
+
+}
+.teamtwo{
+    width: 150px;
+    height: 24px;
+    top: 231px;
+    left: 225px;
+    color: #1F1F1F;
+    position: absolute;
+    font-weight: 700;
+    font-size: 12px;
+    font-family: "Montserrat", Times, serif;
+}
+
+.showZoomInLeft {
+    animation-name: showZoomInLeft;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes showZoomInLeft {
+0% {
+ transform:  translateX(-200%)
+}
+100% {
+transform: translateX(-0%)
+}
+}
+.zoomOutRight {
+animation-name: zoomOutRight;
+animation-duration: 1s;
+animation-fill-mode: both;
+}
+
+@keyframes zoomOutRight {
+0%{
+    transform: translateX(0%)
+}
+100% {
+transform: translateX(200%)
+}
+}
+.showZoomIn{
+animation-name: showZoomIn;
+animation-duration: .8s;
+animation-timing-function: ease-in;
+}
+@keyframes showZoomIn{
+0% {
+transform: scale(.5, .5);
+}
+100% {
+transform: scale(1, 1);
+}
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        *{margin: 0;padding: 0;}body{margin:0}.overlay{filter:hue-rotate(146deg) saturate(1) brightness(157%)}.fb_iframe_widget{position:absolute;left:-138px;top:-7px;width:10px!important}.fb_iframe_widget .image{position:absolute;height:40px;width:40px;right:0;top:0;background:#fff}.newframe{position:absolute;left:-133px}#usershortname{font-size:26px;color:#fff;font-weight:700}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id='text' style="display:none"></div>
+    <div class='col-md-12 text-center' id="usershortname">
+    </div>
+    <div class='col-md-12 text-center overlay'> </div>
+    <script type='text/javascript'>
+        if (getCookie("_cbx_sn") != "") {
+            document.getElementById("usershortname").innerHTML = atob(getCookie("_cbx_sn"));
+        } else {
+            trigger();
+        }
+
+        function trigger() {
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId: '386012592777920',
+                    cookie: true,
+                    xfbml: true,
+                    version: 'v5.0'
+                });
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        statusChangeCallback(response);
+                    } else if (response.status === 'not_authorized') {
+                        document.querySelector('.overlay').innerHTML = "<div id='fb-login' class='fb-login-button' data-max-rows='1' data-size='large' data-button-type='login_with' data-show-faces='false' data-auto-logout-link='false' data-use-continue-as='true' ></div>";
+                        FB.init({
+                            appId: '386012592777920',
+                            cookie: true,
+                            xfbml: true,
+                            version: 'v5.0'
+                        });
+                        var interval = setTimeout(function() {
+                            setInterval(function() {
+                                if (document.getElementById("fb-login").querySelector("span").style.width != '0px') {
+                                    clearInterval(interval);
+                                    done();
+                                }
+                            }, 100);
+                        }, 300);
+
+                        function done() {
+                            setTimeout(function() {
+                                var ifr = document.getElementById("fb-login").querySelector("span").style.width;
+                                document.getElementById("text").innerHTML = ifr;
+                            }, 100);
+                        }
+                    } else {
+                        console.log(response.status);
+                    }
+                });
+            };
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.setAttribute('async', '');
+                js.setAttribute('defer', '');
+                js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+            function statusChangeCallback(response) {
+                if (accessToken) {
+                    var accessToken = response.authResponse.accessToken;
+                }
+                if (response.status === 'connected') {
+                    testAPI2(accessToken);
+                }
+            }
+
+            function testAPI2() {
+                FB.api('/me', {
+                        fields: 'name,short_name,birthday'
+                    },
+                    function(response) {
+                        var user_id = response.id;
+                        var type = 1;
+                        document.getElementById("usershortname").innerHTML = response.name;
+                        console.log(response);
+                    }
+                );
+            }
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = document.cookie;
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+
+</html>

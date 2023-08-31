@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="ad.size" content="width=300,height=250" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Countdown Banner by purplePatch</title>
+    <style>
+      .patch_box,
+      .wrapper {
+        height: 250px;
+        width: 300px;
+        background-size: 300px 250px;
+      }
+      *,
+      .patch_title {
+        background-repeat: no-repeat;
+      }
+      .hidden,
+      .patch_note {
+        display: none;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-size: 100% 100%;
+        user-select: none;
+      }
+      .wrapper {
+        background-image: url("//ms.purplepatch.online/countdown/smc/300250/Assets/bg.jpg");
+        position: relative;
+        cursor: grab;
+        overflow: hidden;
+      }
+      .absolute {
+        position: absolute;
+      }
+      .patch_box {
+        background-image: url("//ms.purplepatch.online/countdown/smc/300250/stayhome.png");
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+      .patch_countdown {
+        height: 37px;
+        width: 170px;
+        top: 169px;
+        left: 61px;
+        font-size: 30px;
+        color: #fff;
+        font-weight: 700;
+        text-align: center;
+        font-family: abirvabhimellight;
+      }
+      .patch_countdown .hour {
+        left: -20px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        height: 35px;
+      }
+      .patch_countdown .min,
+      .patch_countdown .sec {
+        top: 0;
+        width: 36px;
+        height: 35px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+      .patch_countdown .min {
+        left: 70px;
+      }
+      .patch_countdown .sec {
+        left: 140px;
+      }
+      .patch_title {
+        height: 32px;
+        width: 160px;
+        background-image: url("//ms.purplepatch.online/countdown/smc/300250/iftar.png");
+        top: 38px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+      .wrapper .box,
+      .wrapper .logo {
+        right: 0;
+        bottom: 0;
+        width: 300px;
+        height: 250px;
+      }
+      .patch_note {
+        height: 10px;
+        width: 150px;
+        background-image: url("//ms.purplepatch.online/countdown/smc/300250/bottominfo.png");
+        bottom: 2px;
+        left: 5px;
+      }
+      @keyframes pulse {
+        0%,
+        to {
+          transform: scaleX(1);
+        }
+        50% {
+          transform: scale3d(0.95, 0.95, 0.95);
+        }
+      }
+      .pulse {
+        animation-name: pulse;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="{CLICK_MACRO}" target="_blank">
+      <div class="wrapper">
+        <div class="patch_box absolute">
+          <div class="patch_countdown absolute">
+            <div class="hour"><span>0</span></div>
+            <div class="min"><span>0</span></div>
+            <div class="sec"><span>0</span></div>
+          </div>
+          <div class="box absolute hidden">
+            <img
+              src="//ms.purplepatch.online/countdown/smc/300250/Assets/copy1.png"
+              alt=""
+            />
+          </div>
+          <div class="logo absolute">
+            <img
+              src="//ms.purplepatch.online/countdown/smc/300250/Assets/copy2.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </a>
+    <script>
+      (function () {
+        var box = document.querySelector(".box");
+        var logo = document.querySelector(".logo");
+        change();
+        function change() {
+          box.classList.remove("hidden");
+          logo.classList.add("hidden");
+          setTimeout(function () {
+            logo.classList.remove("hidden");
+            box.classList.add("hidden");
+            setTimeout(change, 2000);
+          }, 2000);
+        }
+        // countdown section
+        var patch_countdown = document.querySelector(".patch_countdown");
+        var hour = document.querySelector(".hour");
+        var minute = document.querySelector(".min");
+        var second = document.querySelector(".sec");
+
+        function updateWCTime() {
+          // var kickoff = new Date("2023-11-19T23:59:59.000+06:00");
+          var diff = kickoff - new Date();
+          var dd = Math.floor(diff / (1000 * 60 * 60 * 24));
+          var hh = Math.floor(
+            (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          var mm = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          var ss = Math.floor((diff % (1000 * 60)) / 1000);
+
+          hour.innerHTML = translteNum(hh + dd * 24);
+          minute.innerHTML = translteNum(mm);
+          second.innerHTML = translteNum(ss);
+          setTimeout(updateWCTime, 1000);
+        }
+        setTimeout(updateWCTime, false);
+        function translteNum(num_str) {
+          var bengali = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+          var changed_nun = "";
+          num_str
+            .toString()
+            .split("")
+            .forEach((l) => {
+              if (isNaN(l)) {
+                changed_nun += l;
+              } else {
+                changed_nun += bengali[l];
+              }
+            });
+          return changed_nun;
+        }
+      })();
+    </script>
+  </body>
+</html>

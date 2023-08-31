@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Spice Banner by Info Station Ll </title>
+    <style>
+      *{margin:0;padding:0;box-sizing:border-box;cursor:pointer}.absolute{position:absolute}.station_wrapper{height:250px;width:300px;position:relative;overflow:hidden;background-image:url('images/bg.jpg?v=1.1');background-size:100% 100%;background-repeat:no-repeat}.todayskhabar{left:69px;top:40px;width:162px;height:27px}.slide_1,.slide_2,.slide_3{height:250px;width:300px;background-size:100% 100%;background-repeat:no-repeat;top:0;transition:all 1.25s ease}.slide_1{z-index:1;left:0}.slide_1 .blink img{max-width:100%;max-height:100%}.btn1{top:94px;left:30px;width:115px;height:35px}.btn2{animation:reverse;top:94px;right:24px;width:115px;height:35px}.btn3{top:148px;left:30px;width:115px;height:39px}.btn4{animation:reverse;top:148px;right:23px;width:115px;height:39px}.blink{animation:blink 1s linear infinite}@keyframes blink{0%{transform:scaleX(1)}50%{transform:scale3d(1.05,1.05,1.25)}to{transform:scaleX(1)}}.result_slide_1 .element_1{left:25px;top:27px;width:204px;height:107px}.result_slide_1 .element_2{right:13px;top:125px;width:164px;height:107px}.result_slide_2 .element_1{right:27px;top:27px;width:203px;height:107px}.result_slide_2 .element_2{width:151px;height:124px;left:0;top:114px}.result_slide_3 .element_1{width:203px;height:96px;left:25px;top:27px}.result_slide_3 .element_2{width:166px;height:102px;right:10px;top:126px}.result_slide_4 .element_1{width:203px;height:107px;left:71px;top:27px}.result_slide_4 .element_2{width:169px;height:98px;left:5px;top:129px}.slide_2 .final_text{left:40px;top:43px;width:219px;height:53px}.slide_2 .final_slide{left:10px;bottom:28px;width:278px;height:120px}.hidden{display:none}@keyframes hideZoomOut{100%{opacity:0;transform:scale3d(.3,.3,.3)}}@keyframes showZoomIn{from{opacity:0;transform:scale3d(.3,.3,.3)}to{opacity:1;transform:scale3d(1,1,1)}}.hideZoomOut{animation-name:hideZoomOut;animation-duration:.5s;animation-fill-mode:both}.showZoomIn{animation-name:showZoomIn;animation-duration:.5s;animation-fill-mode:both}
+    </style>
+</head>
+<body>
+  <div class="station_wrapper">
+    <div class="slide_1 absolute">
+        <div class="todayskhabar absolute"><img src="images/ajkhabar.png" alt=""></div>
+        <div class="btn1 blink absolute"><img src="images/biriani.png" alt=""></div>
+        <div class="btn2 blink absolute"><img src="images/faluda.png" alt=""></div>
+        <div class="btn3 blink absolute"><img src="images/kacchi.png" alt=""></div>
+        <div class="btn4 blink absolute"><img src="images/halim.png" alt=""></div>
+    </div>
+
+    <div class="result_slide_1 hidden">
+      <img class="element_1 absolute" src="images/birinani-text.png" alt="">
+      <img class="element_2 absolute" src="images/biriani-packet.png" alt="">
+    </div>
+    <div class="result_slide_2 hidden">
+      <img class="element_1 absolute" src="images/faluda-text.png" alt="">
+      <img class="element_2 absolute" src="images/faluda-packet.png" alt="">
+    </div>
+    <div class="result_slide_3 hidden">
+      <img class="element_1 absolute" src="images/kacchi-text.png" alt="">
+      <img class="element_2 absolute" src="images/kacchi-packet.png" alt="">
+    </div>
+    <div class="result_slide_4 hidden">
+      <img class="element_1 absolute" src="images/halim-text.png" alt="">
+      <img class="element_2 absolute" src="images/halim-packet.png" alt="">
+    </div>
+
+    <div class="slide_2 absolute hidden">
+        <img class="final_text absolute" src="images/final-text.png" alt="">
+        <img class="final_slide absolute" src="images/final-slide.png" alt="">
+    </div>      
+  </div>
+<!-- <script src="infostation.js"></script> -->
+<script>
+    /**
+ * Lead banner for Hero
+ * @author Lincoln Mahmud
+ * @company Info Station
+ * date: 28 October, 2021
+*/
+let bindEvent = (eventNames, selector, handler) => {
+  eventNames.split(' ').forEach((eventName) => {
+    document.addEventListener(eventName, function (event) {
+      if (event.target.matches(selector + ', ' + selector + ' *')) {
+        handler.apply(event.target.closest(selector), arguments)
+      }
+    }, false);
+  })
+};
+
+
+
+var btn1 = document.querySelector('.btn1');
+var slide_1 = document.querySelector('.slide_1');
+var result_slide_1 = document.querySelector('.result_slide_1');
+var result_slide_2 = document.querySelector('.result_slide_2');
+var result_slide_3 = document.querySelector('.result_slide_3');
+var result_slide_4 = document.querySelector('.result_slide_4');
+var slide_2 = document.querySelector('.slide_2');
+
+bindEvent('click', '.btn1', function(e){
+  add_class(slide_1, 'hideZoomOut');
+  remove_class(result_slide_1, 'hidden', 'showZoomIn');
+  setTimeout(function(){
+    final_slide(result_slide_1);
+  },1500);
+
+});
+
+bindEvent('click', '.btn2', function(e){
+  add_class(slide_1, 'hideZoomOut');
+  remove_class(result_slide_2, 'hidden', 'showZoomIn');
+  setTimeout(function(){
+    final_slide(result_slide_2);
+  },1500);
+});
+
+bindEvent('click', '.btn3', function(e){
+  add_class(slide_1, 'hideZoomOut');
+  remove_class(result_slide_3, 'hidden', 'showZoomIn');
+  setTimeout(function(){
+    final_slide(result_slide_3);
+  },1500);
+});
+
+bindEvent('click', '.btn4', function(e){
+  add_class(slide_1, 'hideZoomOut');
+  remove_class(result_slide_4, 'hidden', 'showZoomIn');
+  setTimeout(function(){
+    final_slide(result_slide_4);
+  },1500);
+});
+
+function final_slide( element ) {
+  remove_class(element, 'showZoomIn', 'hideZoomOut');
+  setTimeout(function(){
+    remove_class(slide_2, 'hidden', 'showZoomIn');
+  },500);
+}
+
+function add_class(element, classname) {
+    element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+}
+/*add and remove class function*/
+function remove_class(element, classname,replace='') {
+    element.className = element.className.replace(classname, replace);
+}
+</script>
+</body>
+</html>

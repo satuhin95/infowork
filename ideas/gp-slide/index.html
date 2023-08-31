@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GP animation by Info Station </title>
+	<style>
+		*{margin: 0;padding: 0;}
+main {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  overflow: hidden;
+}
+
+#slider {
+  width: 300px;
+  height: 250px;
+  margin: 0;
+  position: relative;
+}
+#slider canvas {
+  width: 300px !important;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+  z-index: 2;
+}
+#slider img {
+  width: 300px;
+  height: 250px;
+  position: relative;
+  z-index: 0;
+}
+
+#pagination {
+  position: absolute;
+  top: 0;
+  transform: translateY(0%);
+  right: 10px;
+  z-index: 6;
+}
+#pagination button {
+  display: block;
+  border: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #ff102b;
+  border-radius: 100%;
+  padding: 0;
+  margin: 10px 0;
+  cursor: pointer;
+  position: relative;
+  opacity: 0.2;
+  transition: opacity 0.2s ease-in-out;
+  outline: none;
+}
+#pagination button:hover {
+  opacity: 0.5;
+}
+#pagination button.active {
+  opacity: 1;
+}
+#pagination button.active:before {
+  width: 150%;
+  height: 150%;
+  opacity: 1;
+}
+#pagination button:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out, width 0.4s ease-in-out, height 0.4s ease-in-out;
+}
+
+	</style>
+</head>
+<body>
+	<main>
+		<div id="slider">
+			<img width="300" height="250" src="1.jpg" />
+			<img width="300" height="250" src="2.jpg" />
+			<img width="300" height="250" src="3.jpg" />
+			<img width="300" height="250" src="4.jpg" />
+			<img width="300" height="250" src="5.jpg" />
+			<div id="pagination">
+				<button class="active" data-slide="0"></button>
+				<button data-slide="1"></button>
+				<button data-slide="2"></button>
+				<button data-slide="3"></button>
+				<button data-slide="4"></button>
+			</div>
+		</div>
+	</main>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+
+	<script>
+	const displacementSlider = function (opts) {
+  let vertex = `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        }
+    `;
+
+  let fragment = `
+        varying vec2 vUv;
+        uniform sampler2D currentImage;
+        uniform sampler2D nextImage;
+        uniform float dispFactor;
+        void main() {
+            vec2 uv = vUv;
+            vec4 _currentImage;
+            vec4 _nextImage;
+            float intensity = 0.3;
+
+            vec4 orig1 = texture2D(currentImage, uv);
+            vec4 orig2 = texture2D(nextImage, uv);
+            
+            _currentImage = texture2D(currentImage, vec2(uv.x, uv.y + dispFactor * (orig2 * intensity)));
+
+            _nextImage = texture2D(nextImage, vec2(uv.x, uv.y + (1.0 - dispFactor) * (orig1 * intensity)));
+            vec4 finalTexture = mix(_currentImage, _nextImage, dispFactor);
+            gl_FragColor = finalTexture;
+        }
+    `;
+
+  let images = opts.images, image,sliderImages = [];
+  let parent = opts.parent;
+  let renderWidth = 300;
+  let renderHeight = 250;
+
+  let renderer = new THREE.WebGLRenderer({
+    antialias: false
+  });
+
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(renderWidth, renderHeight);
+  parent.appendChild(renderer.domElement);
+
+  let loader = new THREE.TextureLoader();
+  loader.crossOrigin = "anonymous";
+
+  images.forEach((img) => {
+    image = loader.load(img.getAttribute("src") + "?v=" + Date.now());
+    image.magFilter = image.minFilter = THREE.LinearFilter;
+    image.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    sliderImages.push(image);
+  });
+
+  let scene = new THREE.Scene();
+  let camera = new THREE.OrthographicCamera(
+    renderWidth / -2,
+    renderWidth / 2,
+    renderHeight / 2,
+    renderHeight / -2,
+    1,
+    1000
+  );
+
+  camera.position.z = 1;
+
+  let mat = new THREE.ShaderMaterial({
+    uniforms: {
+      dispFactor: { type: "f", value: 0.0 },
+      currentImage: { type: "t", value: sliderImages[0] },
+      nextImage: { type: "t", value: sliderImages[1] }
+    },
+    vertexShader: vertex,
+    fragmentShader: fragment,
+    transparent: true,
+    opacity: 1.0
+  });
+
+  let geometry = new THREE.PlaneBufferGeometry(
+    parent.offsetWidth,
+    parent.offsetHeight,
+    1
+  );
+  let object = new THREE.Mesh(geometry, mat);
+  object.position.set(0, 0, 0);
+  scene.add(object);
+
+  let addEvents = function () {
+    let pagButtons = Array.from(
+      document.getElementById("pagination").querySelectorAll("button")
+    );
+    let isAnimating = false;
+
+    function slide () {
+      if (!isAnimating) {
+        isAnimating = true;
+
+        document
+          .querySelector("#pagination")
+          .querySelectorAll(".active")[0].className = "";
+        this.className = "active";
+
+        let slideId = parseInt(this.dataset.slide, 10);
+        mat.uniforms.nextImage.value = sliderImages[slideId];
+        mat.uniforms.nextImage.needsUpdate = true;
+
+        TweenLite.to(mat.uniforms.dispFactor, 1, {
+          value: 1,
+          ease: "Expo.easeInOut",
+          onComplete: function () {
+            mat.uniforms.currentImage.value = sliderImages[slideId];
+            mat.uniforms.currentImage.needsUpdate = true;
+            mat.uniforms.dispFactor.value = 0.0;
+            isAnimating = false;
+          }
+        });      
+      }
+    }
+
+    pagButtons.forEach((el) => {
+      el.addEventListener("click", slide);
+    });
+
+    var slide_id = 0;
+
+    function autoslide ( ) {
+    	slide_id++;
+    	if (slide_id ==  pagButtons.length ) { slide_id=0; }
+    	var item = pagButtons[slide_id];
+    	item.click();
+    	setTimeout(autoslide,2000);
+    }
+    setTimeout(autoslide,5000);
+  };
+
+  addEvents();
+  let animate = function () {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+  };
+  animate();
+};
+
+imagesLoaded(document.querySelectorAll("#slider img"), () => {
+  const el = document.querySelector("#slider");
+  const imgs = Array.from(el.querySelectorAll("#slider img"));
+  new displacementSlider({
+    parent: el,
+    images: imgs
+  });
+});
+
+	</script>
+
+
+	</body>
+
+</html>

@@ -1,0 +1,139 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,html{
+    height: 90px;
+    width: 728px;
+    cursor: pointer;
+}
+
+.slider3d__inner, .slider3d__rotater, .slider3d__handle__inner, .slider3d__handle__rotater {
+    position: relative;
+    height: 90px;
+    transform-style: preserve-3d;
+}
+.slider3d {
+    overflow: hidden;
+    position: relative;
+    height: 90px;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+.slider3d.no-select {
+    user-select: none;
+}
+.slider3d__wrapper {
+    z-index: 1;
+    position: relative;
+    height: 90px;
+}
+.slider3d__item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 740px;
+    height: 90px;
+    background-size: cover;
+    backface-visibility: hidden;
+    background-color: #000;
+    transform-style: preserve-3d;
+}
+.slider3d__item:nth-child(1) {
+    background-image: url('//ms.purplepatch.online/dummy/brac-donate/72890/1.jpg');
+}
+.slider3d__item:nth-child(2) {
+    background-image: url('//ms.purplepatch.online/dummy/brac-donate/72890/8.jpg');
+}
+.slider3d__item:nth-child(3) {
+    background-image: url('//ms.purplepatch.online/dummy/brac-donate/72890/1.jpg');
+}
+.slider3d__item:nth-child(4) {
+    background-image: url('//ms.purplepatch.online/dummy/brac-donate/72890/8.jpg');
+}
+
+.slider3d.slider-ready .slider3d__heading {
+    transform: translateZ(3rem);
+    opacity: 1;
+}
+.slider3d__controls {
+    display: none;
+}
+.slider3d.with-controls .slider3d__controls {
+    display: block;
+}
+.slider3d__handle {
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 15rem;
+    height: 7rem;
+    margin-top: -3.5rem;
+    perspective-origin: 100% 50%;
+
+    transition: opacity 0.3s;
+}
+.slider3d__handle__item.active:after {
+    opacity: 0;
+}
+.slider3d__control {
+    z-index: 3;
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    width: 15rem;
+    height: 4rem;
+    margin-top: -2rem;
+    cursor: pointer;
+    opacity: none;
+}
+.m--xAxis .slider3d__control {
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: 0;
+    width: 6rem;
+    height: 7rem;
+    margin-top: 0;
+    margin-left: -3rem;
+}
+.slider3d__control:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 30px;
+    height: 30px;
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+    border: 5px solid #fff;
+    border-left: none;
+    border-bottom: none;
+}
+.slider3d__control.m--up {
+    transform: translateY(-6rem);
+}
+.slider3d__control.m--up:after {
+    transform: rotate(-45deg);
+}
+.m--xAxis .slider3d__control.m--up {
+    transform: translateX(-11.5rem);
+}
+.m--xAxis .slider3d__control.m--up:after {
+    transform: rotate(-135deg);
+}
+.slider3d__control.m--down {
+    transform: translateY(6rem);
+}
+.slider3d__control.m--down:after {
+    transform: rotate(135deg);
+}
+.m--xAxis .slider3d__control.m--down {
+    transform: translateX(11.5rem);
+}
+.m--xAxis .slider3d__control.m--down:after {
+    transform: rotate(45deg);
+}
+

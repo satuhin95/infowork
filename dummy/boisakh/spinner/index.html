@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="ad.size" content="width=300,height=250">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>wheeler</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body,html{
+            height: 250px;
+            width: 300px;
+        }
+
+        .ad_box{
+            height: 250px;
+            width: 300px;
+            cursor: pointer;
+            touch-action: auto;
+            overflow: hidden;
+            background-image: url("images/bg.png");
+            background-size: 100%;
+            position: relative;
+        }
+
+        .wheel_board{
+            position: absolute;
+            top: 10px;
+            left: 52px;
+            transition: transform 5s cubic-bezier(.5,.1,.15,1);
+            transform: rotate(0deg);
+            z-index: 99;
+        }
+
+        .wheel_pag{
+            position: absolute;
+            top: 5px;
+            left: 130px;
+            z-index: 100;
+        }
+
+        .offer{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+        .offer_button{
+            position: absolute;
+            bottom: 5px;
+            left: 0px;
+            z-index: 20;
+        }
+
+        .logo{
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+
+        .hidden{
+            display: none;
+        }
+
+        .zoomIn {
+            animation-name: zoomIn;
+            animation-duration: .3s;
+            animation-fill-mode: both
+        }
+
+
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0);
+            }
+        }
+
+        .buy_now{
+            top: 101px;
+            left: 70px;
+            z-index: 2000;
+            animation: shake 2s linear infinite;
+        }
+
+        @keyframes shake {
+            0%,100%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(0.9);
+            }
+        }
+
+        @keyframes run {
+             0% { right: 130px;}
+            50%{ right : 130px; transform: scale3d(0.5, 0.5, 1);}
+            100%{ right: 130px;}
+        }
+        .overlay{
+            left: 43px;
+            top: 46px;
+            z-index: 998;
+        }
+
+        .element_3,.element_4,.element_5,.element_6{  }
+
+        .absolute{ position: absolute; }
+        .left{left: 0}
+        .right{right: 0}
+        .top{top: 0}
+        .bottom{bottom: 0}
+        .cross{left: -7px;z-index: 999}
+        .element_7{}
+        .element_8{
+            top: 110px;
+            right: 120px;
+            z-index: 99;
+            animation: run 3s linear infinite alternate;
+        }
+        .tap_icon{
+            width: 50px;
+            height: 60px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="ad_box">
+<!--    <div class="element_logo"><img src="images/logo_small.png" class="logo"></div>-->
+    <div class="element_1"><img src="images/wheelnoffer.png" class="wheel_board"></div>
+    <div class="element_2"><img src="images/peg.png" class="wheel_pag"></div>
+
+    <div class="overlay absolute hidden">
+        <div class="element_3 absolute hidden">
+            <img src="images/twogb.png" class="offer">
+        </div>
+        <div class="element_4 absolute hidden">
+            <img src="images/fiveGb.png" class="offer">
+        </div>
+        <div class="element_5 absolute hidden">
+            <img src="images/sixGb.png" class="offer">
+        </div>
+        <div class="element_6 absolute hidden">
+            <img src="images/onefourtwosixmb.png" class="offer">
+        </div>
+        <div class="buy_now absolute">
+            <img class="buyButton" src="images/buy_now.png">
+        </div>
+        <div class="cross absolute top">
+            <img class="cross" src="images/cross.png" alt="">
+        </div>
+    </div>
+
+
+    <div class="element_7">
+        <img src="images/offer_button.png" class="offer_button">
+    </div>
+
+    <div class="element_8 absolute right">
+        <img src="images/tap.svg" class="tap_icon">
+    </div>
+</div>
+
+<script type='text/javascript' src="wizards.js"> </script>
+</body>
+</html>

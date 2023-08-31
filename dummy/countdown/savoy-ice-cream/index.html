@@ -1,0 +1,53 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="ad.size" content="width=300,height=250">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Countdown Banner by purplePatch</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;background-size:100% 100%;background-repeat:no-repeat;user-select:none}.wrapper{width:300px;height:250px;background-image:url('//ms.purplepatch.online/countdown/savoy-ice-cream/bg.jpg');background-size:300px 250px;position:relative;cursor:grab;overflow:hidden}.absolute{position:absolute}.patch_box{height:250px;width:300px;background-size:300px 250px;top:0;left:0;z-index:1}.patch_countdown{height:37px;width:192px;top:161px;left:54px;font-size:36px;color:#fff;font-weight:800;text-align:center;letter-spacing:8px;line-height:36px}.patch_countdown .hour{left:4px;right:0;top:0;bottom:0;width:58px;height:35px}.patch_countdown .minute{left:72px;right:0;top:0;bottom:0;width:55px;height:35px}.patch_countdown .second{left:140px;right:0;top:0;bottom:0;width:54px;height:35px}.patch_note{height:10px;width:150px;bottom:2px;left:5px;display:none}
+    </style>
+</head>
+<body>
+    <a href="{CLICK_MACRO}" target="_blank">
+        <div class="wrapper">
+            <div class="patch_box absolute">
+                <div class="patch_countdown absolute">
+                    
+                </div>
+                <div class="patch_note absolute"></div>
+            </div>
+        </div>
+    </a>
+    <script type="text/javascript">
+        var displayCounter = document.querySelector('.patch_countdown');
+        setInterval( checkEndTime,1000);
+
+        function checkEndTime() {
+            let startDate = new Date();
+            let endDate = new Date("2022-04-02T08:00:00Z");
+            var diffTime = Math.round((endDate.getTime() - startDate.getTime()) / 1000);
+
+            // console.log(startDate , '  =>  ' , endDate);
+            if ( diffTime>=0){
+                displayCounter.innerHTML = printTimer(diffTime);
+            }
+        }
+
+        function printTimer(sec) {
+            hr = Math.floor(sec / 3600) % 24;
+            mm = Math.floor(sec / 60) % 60;
+            ss = sec % 60;
+
+            var x = hr < 10? "0"+hr : hr;
+            var y = mm < 10? "0"+mm : mm;
+            var z = ss < 10? "0"+ss : ss;
+            return ` <span class="hour absolute">${x}</span> <span class="minute absolute">${y}</span> <span class="second absolute">${z}</span>`;
+        }
+
+    </script>
+</body>
+</html>

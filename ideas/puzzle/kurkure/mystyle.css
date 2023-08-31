@@ -1,0 +1,72 @@
+body {
+    margin:0;
+    padding:0;
+}
+
+@font-face {
+font-family: 'Helvetica'; /*a name to be used later*/
+src: url('MYRIADPRO-BOLDIT.OTF'); /*URL to font*/
+}
+
+#bg {
+    opacity: 1;
+}
+
+#theguy {
+	/*left: -18px;*/
+}
+
+#adArea {
+ background: #ffffff; 
+background: white;
+overflow: hidden;
+text-overflow: clip;
+cursor:pointer;
+}
+
+#mozaicBoard {
+    background-color: black;
+    /* background-color: white; */
+}
+
+
+.mozaicPlace {
+position: absolute;
+width: 300px;
+height: 250px;
+/*background-color: #333;*/
+}
+
+.dragEl {
+    background-color: red;
+    /* background-color: rgba(0, 0, 0, 0.01); */
+    opacity: 0;
+}
+
+.rct {
+width:300px;
+height:250px;
+position: absolute;
+}
+
+.opacity0 { opacity: 0; }
+.opacity1 { opacity: 1; }
+
+.zIndex99995 { z-index: 99995; }
+.zIndex99996 { z-index: 99996; }
+.zIndex99997 { z-index: 99997; }
+.zIndex99998 { z-index: 99998; }
+.zIndex99999 { z-index: 99999; }
+
+.hidden{
+visibility: hidden;
+}
+.noEvents{
+pointer-events: none;
+}
+.noVis{
+visibility: none;
+}
+.noDisplay{
+display: none;
+}

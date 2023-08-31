@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Swipe Animation by Info Station </title>
+	<style>
+		*{margin: 0;padding: 0;user-select: none;}
+		.istation_wrapper{
+			width: 300px;
+			height: 250px;
+			position: relative;
+			overflow: hidden;
+		}
+		.istation_wrapper .background{
+			width: 300px;
+			height: 250px;
+			left: 0;
+			top: 0;			
+		}
+		.istation_wrapper .slide_1 .element_1{
+		    width: 135px;
+		    height: 49px;
+		    left: 84px;
+		    top: 16px;	
+		}
+		.istation_wrapper .slide_1 .element_2{
+		    width: 73px;
+		    height: 115px;
+		    left: 28px;
+		    top: 94px;	
+		    cursor: pointer;		
+		}
+		.istation_wrapper .slide_1 .element_3{
+			width: 34px;
+			height: 48px;
+			top: 58px;
+			left: 81px;
+			z-index: 1;
+			cursor: pointer;		
+		}
+		.istation_wrapper .slide_1 .element_4{
+			width: 114px;
+			height: 40px;
+			left: 92px;
+			top: 72px;			
+		}
+		.istation_wrapper .slide_1 .element_5{
+			width: 128px;
+			height: 252px;
+			right: 12px;
+			top: 120px;
+		}
+		.istation_wrapper .slide_2 .element_1{
+			width: 169px;
+	    height: 64px;
+	    left: 22px;
+	    top: 24px;
+		}
+		.istation_wrapper .slide_2 .element_2{
+	    width: 158px;
+	    height: 169px;
+	    right: 16px;
+	    bottom: 19px;
+		}
+		.istation_wrapper .slide_2 .element_3{
+			width: 97px;
+	    height: 42px;
+	    left: 25px;
+	    bottom: 34px;
+		}
+
+		.absolute{position: absolute;}
+		.hidden{display: none;}
+
+		@keyframes hideZoomOut {
+		    100% {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3)
+		    }
+		}
+
+		@keyframes showZoomIn {
+		    from {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3)
+		    }
+		    to {
+		        opacity: 1;
+		        transform: scale3d(1, 1, 1)
+		    }
+		}
+
+		.hideZoomOut {
+		    animation-name: hideZoomOut;
+		    animation-duration: .5s;
+		    animation-fill-mode: both
+		}
+
+		.showZoomIn {
+		    animation-name: showZoomIn;
+		    animation-duration: .5s;
+		    animation-fill-mode: both
+		}
+
+		@keyframes shake {
+        10%, 90% {transform: translate3d(-1px, 0, 0);}
+        20%,80% {transform: translate3d(2px, 0, 0);}
+        30%,50%,70% {transform: translate3d(-4px, 0, 0);}
+        40%,60% {transform: translate3d(4px, 0, 0);}
+    }  
+
+    @keyframes pulse {
+        0% {transform: scaleX(1)}
+        50% {transform: scale3d(.95, .95, .95)}
+        to {transform: scaleX(1)}
+    }  
+
+		@keyframes ShowHide {
+        0%,100%{opacity: 0.1}
+        50% { opacity: 1; }
+    }
+    .ShowHide {animation-name: ShowHide;animation-duration: 1s; animation-iteration-count: infinite;}
+    .pulse {animation-name: pulse;animation-duration: 1s;animation-iteration-count: infinite;}
+    .shake {animation: shake 1.5s cubic-bezier(.36, .07, .19, .97) infinite;transform: translate3d(0, 0, 0);backface-visibility: hidden;perspective: 1000px;}
+
+
+	</style>
+</head>
+<body>
+
+	<div class="istation_wrapper">
+		<img class="background absolute" src="bg.jpg" alt="background-img">
+		<div class="slide_1">
+			<img src="swipe.png" class="absolute element_1 pulse">
+			<img src="card.png" class="absolute element_2 shake">
+			<!-- <img src="taka.png" class="absolute element_3 pulse"> -->
+			<img src="arrow.png" class="absolute element_4 ShowHide">
+			<img src="phone.png" class="absolute element_5">
+		</div>
+
+		<div class="slide_2">
+			<img class="element_1 absolute hidden" src="msg.png" alt="">
+			<img class="element_2 absolute hidden" src="card-phone.png" alt="">
+			<img class="element_3 absolute hidden" src="logo.png" alt="">
+		</div>
+
+
+	</div>
+
+	<script>
+		let dragger_card = document.querySelector('.istation_wrapper .slide_1 .element_2');
+		// var istation_taka = document.querySelector('.istation_wrapper .slide_1 .element_3');
+		var istation_arrow = document.querySelector('.istation_wrapper .slide_1 .element_4');
+		var istation_swipe = document.querySelector('.istation_wrapper .slide_1 .element_1');
+		var istation_phone = document.querySelector('.istation_wrapper .slide_1 .element_5');
+
+		var istation_msg = document.querySelector('.istation_wrapper .slide_2 .element_1');
+		var istation_cardphone = document.querySelector('.istation_wrapper .slide_2 .element_2');
+		var istation_logo = document.querySelector('.istation_wrapper .slide_2 .element_3');
+
+		if (typeof window.orientation !== 'undefined'){
+		  dragElementMobile(dragger_card);
+		}else{
+		  dragElement(dragger_card);
+		}
+
+function dragElement( elmnt ) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0, pos5=0, pos6=0;
+  elmnt.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e)
+  {
+  	remove_class( elmnt ,'shake');
+  	remove_class( istation_swipe ,'pulse');
+  	// remove_class( istation_taka ,'pulse');
+  	// add_class( istation_taka ,'hideZoomOut');
+  	remove_class( istation_arrow ,'ShowHide');
+  	add_class( istation_arrow ,'hideZoomOut');
+
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    
+    document.onmousemove = elementDrag;
+    document.onmouseup = closeDragElement;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    topSpace = elmnt.offsetTop - pos2;
+    leftSpace = elmnt.offsetLeft - pos1;
+
+    if(leftSpace>135 && topSpace > 90 ){
+      setTimeout( slide_2_show, 500);
+      closeDragElement();
+    }
+    if(leftSpace>180) leftSpace=180;
+    if(leftSpace<30) leftSpace=32;
+    if(topSpace>110) topSpace=115;
+    if(topSpace<90) topSpace=92;
+
+    elmnt.style.top = topSpace + "px";
+    elmnt.style.left = leftSpace + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+
+function slide_2_show ( ) {
+	console.log('slide_2_show');
+	add_class(dragger_card, 'hideZoomOut');
+	add_class(istation_phone, 'hideZoomOut');
+	add_class(istation_swipe, 'hideZoomOut');
+
+	setTimeout(function(){
+		console.info('show second slide');
+		remove_class(istation_cardphone, 'hidden','showZoomIn');
+		remove_class(istation_msg, 'hidden','showZoomIn');
+		remove_class(istation_logo, 'hidden','showZoomIn');
+	},500);
+	
+
+}
+
+
+function dragElementMobile(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0, pos5=0, pos6=0;
+  elmnt.ontouchstart = dragMouseDown;
+  
+  function dragMouseDown(e) {
+    remove_class( elmnt ,'shake');
+  	remove_class( istation_swipe ,'pulse');
+  	remove_class( istation_arrow ,'ShowHide');
+  	add_class( istation_arrow ,'hideZoomOut');
+    e.preventDefault();
+
+    e = e.touches[0] || window.event;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    
+    document.ontouchmove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e.touches[0] || window.event;
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    topSpace = elmnt.offsetTop - pos2;
+    leftSpace = elmnt.offsetLeft - pos1;
+
+    if(leftSpace>135 && topSpace > 90 ){
+      setTimeout( slide_2_show, 500);
+      closeDragElement();
+    }
+    if(leftSpace>180) leftSpace=180;
+    if(leftSpace<30) leftSpace=32;
+    if(topSpace>110) topSpace=115;
+    if(topSpace<90) topSpace=92;
+
+    elmnt.style.top = topSpace + "px";
+    elmnt.style.left = leftSpace + "px";   
+  }
+  function closeDragElement() {
+    document.ontouchend = null;
+    document.touchmove = null;
+  }
+}
+
+/*add and remove class function*/
+function remove_class(element, classname,replace='') {
+    element.className = element.className.replace(classname, replace);
+}
+
+function add_class(element, classname) {
+    element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+}
+
+</script>
+
+	
+</body>
+</html>

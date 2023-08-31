@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>BRAC</title>
+    <meta name="ad.size" content="width=300,height=250">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="carousel.min.js"></script>
+    <script src="tweenmax_2.0.1_min.js"></script>
+    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div id="container">
+        <div class="Cube_templete">
+            <div id="link1" class="slide">
+                <img src="slide_1.jpg" alt="" class="bg">
+            </div>
+            <div id="link2" class="slide">
+                <img src="slide_2.jpg" alt="" class="bg">
+            </div>
+            <div id="link3" class="slide">
+                <div id="video-player" class="video-wrapper">
+                    <video id="video" playsinline autoplay muted playsinline>
+                        <source src="bracvid.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button id="toggle" class="btn"><i class="material-icons">play_arrow</i></button>
+                        <button id="sound" class="btn"><i class="material-icons">volume_off</i></button>
+                    </div>
+                </div>
+                <div id="invis"></div>
+            </div>
+            <div id="link4" class="slide">
+                <img src="slide_3.jpg" alt="" class="bg">
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // @variables
+        var player = document.querySelector('#video-player');
+        var video = player.querySelector('#video');
+        var toggle = player.querySelector('#toggle');
+        var sound = player.querySelector('#sound');
+
+        // @icons
+        var playIcon = `<i class="material-icons">play_arrow</i>`;
+        var pauseIcon = `<i class="material-icons">pause</i>`;
+        var volumeUp = `<i class="material-icons">volume_up</i>`;
+        var volumeOff = `<i class="material-icons">volume_off</i>`;
+        var replayIcon = `<i class="material-icons">replay</i>`;
+
+        // var poster = document.getElementById('poster');
+
+        // play or pause
+        function togglePlay(e) {
+            e.stopPropagation();
+            // poster.style.display='none';
+            var playOrPause = video.paused ? 'play' : 'pause';
+            video[playOrPause]();
+
+        }
+
+        // check if video is playing or in pause & update icon accordingly
+        function updatePlayPause(e) {
+            e.stopPropagation();
+            var playPauseIcon = this.paused ? playIcon : pauseIcon;
+            toggle.innerHTML = playPauseIcon;
+        }
+
+        // check if video is muted or in not & update icon accordingly
+        function toggleSound(e) {
+            e.stopPropagation();
+            var soundIcon = video.muted ? volumeUp : volumeOff;
+            sound.innerHTML = soundIcon;
+
+            if (video.muted) video.muted = false;
+            else video.muted = true;
+        }
+
+        // when video will finished show the replay icon instead of play or pause icon
+        function updateReplay(e) {
+            e.stopPropagation();
+            // poster.style.display='block';
+            toggle.innerHTML = replayIcon;
+        }
+
+        // event listeners
+        video.addEventListener('play', updatePlayPause);
+        video.addEventListener('pause', updatePlayPause);
+        video.addEventListener('ended', updateReplay);
+        toggle.addEventListener('click', togglePlay);
+        sound.addEventListener('click', toggleSound);
+
+        // function vidEnd(){
+        //     var t2 = new TimelineMax({});
+        //
+        //     t2
+        //         .add('f3')
+        //         .to('#video-player',0.6,{opacity:0,ease:Power0.easeNone},'f3')
+        //         // .to('#f2_t2',0.6,{opacity:0,ease:Power0.easeNone},'f3')
+        //         .to('#bg2',0.6,{opacity:0,ease:Power0.easeNone},'f3')
+        //         .to('#f1_t1',0.6,{opacity:1,ease:Power0.easeNone},'f3')
+        // }
+    </script>
+
+    <script src="script.js"></script>
+    <!--DCM CODE-->
+</body>
+
+</html>

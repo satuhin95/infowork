@@ -1,0 +1,94 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+body , html {
+    height: 250px;
+    width: 300px;
+    background-image: url("bg.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.boox_box{
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    animation: nudge 3s ease infinite;
+}
+
+.container{
+    width: 150px;
+    height: 175px;
+    background: url("p1.png");
+    position: relative;
+    left: 69%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    perspective: 1000px;
+}
+
+.cover{
+    width: 135px;
+    height: 100%;
+    position: absolute;
+    left: 20px;
+    background-color: transparent;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: all .5s ease-in;
+    /*-webkit-transition: .5s linear;*/
+    /*-webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden; /*/
+}
+
+/*.container:hover .cover{*/
+/*    transform: rotateY(-180deg);*/
+/*}*/
+
+figure{
+    margin: 0px;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    /*-webkit-backface-visibility: hidden; */
+}
+
+figure.front{
+    left: -1px;
+    background: url("cover.jpg");
+}
+
+figure.back{
+    background: url("p4.png");
+    transform: rotateY(180deg);
+}
+
+
+@keyframes nudge {
+
+    0%,100% {
+        transform: rotate(-5deg);
+    }
+
+    33% {
+        transform: rotate(5deg);
+    }
+
+    66% {
+        transform: rotate(-5deg);
+    }
+}

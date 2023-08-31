@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="ad.size" content="width=300,height=250">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Countdown Banner by purplePatch</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box;background-size: 100% 100%;background-repeat: no-repeat;user-select: none;}
+        .pp_wrapper{width: 300px;height: 250px;
+            background-color: #d80061;position: relative;cursor: grab;overflow: hidden;}
+        .slide_general{width: 300px;height: 173px;left: 0;bottom: 0;}
+        .absolute{position: absolute;}
+        .hidden{display: none;}
+        .patch_box{height: 250px;width: 300px;top: 0;left: 0;transition: all 1s ease-in-out;}
+        .patch_countdown {height: 32px;width: 158px;top: 195px;left: 12px;font-size: 21px;color: #fff;font-weight: 600;text-align: center;line-height: 32px;z-index: 1;letter-spacing: 4px;}
+        .patch_countdown .day{left: 2px;right: 0;top: 0;bottom: 0;width: 35px;height: 32px;}
+        .patch_countdown .hour{left: 44px;right: 0;top: 0;bottom: 0;width: 32px;height: 32px;}
+        .patch_countdown .minute{left: 86px;right: 0;top: 0;bottom: 0;width: 32px;height: 32px;}
+        .patch_countdown .second{left: 127px;right: 0;top: 0;bottom: 0;width: 31px;height: 36px;}
+        .patch_title{width: 300px;height: 250px;bottom: 0;left: 0;z-index: 2;}
+
+        .slide{left: 0;top: 0;right: 0;bottom: 0;width: 300px;height: 144px;}
+
+        .slide_1 .elements_1{width: 164px;height: 106px;left: 11px;top: 17px;animation: bottle 3s ease-in-out .5s infinite;}
+        .slide_1 .elements_2{width: 48px;height: 48px;right: 8px;top: 6px;}
+        .slide_2 .elements_1{width: 186px;height: 37px;left: 20px;top: 15px;}
+        .slide_2 .elements_2{width: 127px;height: 33px;left: 49px;top: 63px;}
+
+        @keyframes pulse {
+            0% {transform: scaleX(1)}
+            50% {transform: scale3d(.95, .95, .95)}
+            to {transform: scaleX(1)}
+        }
+        @keyframes toLeft {
+          0%{transform: translateX(300px);}
+          25% {transform: translateX(0px);}
+          75% {transform: translateX(0px);}
+          100% {transform: translateX(-300px);}
+        }
+        @keyframes bottle {
+            0% {transform: rotateZ(0deg)}
+            10% {transform: rotateZ(-5deg)}
+            20% {transform: rotateZ(5deg)}
+            30% {transform: rotateZ(-5deg)}
+            40% {transform: rotateZ(5deg)}
+            50% {transform: rotateZ(-5deg)}
+            60% {transform: rotateZ(0deg)}
+           100% {transform: rotateZ(0deg) }
+        }
+
+        .pulse {animation-name: pulse;animation-duration: 2s;animation-iteration-count: infinite;}
+        .toLeft {animation-name: toLeft;animation-duration: 4s;animation-fill-mode: both;}
+
+    </style>
+</head>
+<body>
+    <a href="{CLICK_MACRO}" target="_blank">
+        <div class="pp_wrapper">
+            <div class="patch_box absolute">
+                <div class="patch_countdown absolute"></div>
+                <div class="patch_title absolute"></div>
+            </div>
+            <div class="slide_1 slide absolute hidden">
+                <div class="elements_1 absolute"><img src="//ms.purplepatch.online/countdown/foodpanda/june-21/khusir-deal-300250/text.png?v=1.1" alt=""></div>
+                <div class="elements_2 absolute"><img src="//ms.purplepatch.online/countdown/foodpanda/june-21/khusir-deal-300250/logo.png?v=1.1" alt=""></div>
+            </div>
+            <div class="slide_2 slide absolute hidden">
+                <div class="elements_1 absolute"><img src="//ms.purplepatch.online/countdown/foodpanda/june-21/khusir-deal-300250/fulllogo.png?v=1.1" alt=""></div>
+                <div class="elements_2 absolute pulse"><img src="//ms.purplepatch.online/countdown/foodpanda/june-21/khusir-deal-300250/button.png?v=1.1" alt=""></div>
+            </div>
+            <div class="slide_general absolute">
+                <img src="//ms.purplepatch.online/countdown/foodpanda/june-21/khusir-deal-300250/bg.png">
+            </div>
+        </div>
+    </a>
+
+    <script type="text/javascript" src="//ms.purplepatch.online/countdown/foodpanda/june-21/animation.js?v=1.4"></script>
+    <script type="text/javascript"> 
+        /* 
+            * Sports value will countrius name, it's needed to get country flag and start countdown
+        */
+        countdown_runner( sports['italy-vs-england']); 
+    </script>
+</body>
+</html>

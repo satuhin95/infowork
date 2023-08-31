@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GrameenPhone by purplepatch</title>
+    <link rel="shortcut icon" type="image/x-icon" href="//purplepatch.online/assets/ico/favicon.ico">
+    <meta name="ad.size" content="width=300,height=250">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="//ms.purplepatch.online/dummy/gp/jquery.min.js"></script>
+    <script type="text/javascript" src="//ms.purplepatch.online/dummy/gp/carousel.min.js"></script>
+    <script src="//ms.purplepatch.online/dummy/gp/tweenmax_2.0.1_min.js"></script>
+    <link rel="stylesheet" href="//ms.purplepatch.online/dummy/gp/style.css?v=1.4">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>  
+    <div id="container">
+        <div class="Cube_templete">
+            <div id="link1" class="slide">
+                <a href="{CLICK_MACRO}" target="_blank">
+                    <img src="//ms.purplepatch.online/dummy/gp/slide_1.jpg" alt="" class="bg">
+                </a>
+            </div>
+            <div id="link2" class="slide">
+                <div id="video-player" class="video-wrapper">
+                    <video id="video" playsinline autoplay muted playsinline>
+                        <source src="//ms.purplepatch.online/dummy/gp/mygp.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button id="toggle" class="btn"><i class="material-icons">play_arrow</i></button>
+                        <button id="sound" class="btn"><i class="material-icons">volume_off</i></button>
+                    </div>
+                </div>
+                <a href="{CLICK_MACRO}" target="_blank">
+                    <div id="invis"></div>
+                </a>
+                
+            </div>
+            <div id="link3" class="slide">
+                <a href="{CLICK_MACRO}" target="_blank">
+                    <img src="//ms.purplepatch.online/dummy/gp/slide_2.jpg" alt="" class="bg">
+                </a>
+            </div>
+            <!-- <div id="link4" class="slide">
+                <div id="video-player2" class="video-wrapper">
+                    <video id="video2" playsinline autoplay muted playsinline>
+                        <source src="//ms.purplepatch.online/dummy/gp/mygp.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button id="toggle2" class="btn"><i class="material-icons">play_arrow</i></button>
+                        <button id="sound2" class="btn"><i class="material-icons">volume_off</i></button>
+                    </div>
+                </div>
+                <a href="{CLICK_MACRO}" target="_blank">
+                    <div id="invis2"></div>
+                </a>
+            </div> -->
+        </div>
+    </div>
+    
+
+    
+
+    <script src="//ms.purplepatch.online/dummy/gp/script.js?v=1.9"></script>
+    <script>
+        var player = document.querySelector('#video-player');
+        var video = player.querySelector('#video');
+        var toggle = player.querySelector('#toggle');
+        var sound = player.querySelector('#sound');
+
+        var playIcon = `<i class="material-icons">play_arrow</i>`;
+        var pauseIcon = `<i class="material-icons">pause</i>`;
+        var volumeUp = `<i class="material-icons">volume_up</i>`;
+        var volumeOff = `<i class="material-icons">volume_off</i>`;
+        var replayIcon = `<i class="material-icons">replay</i>`;
+
+        function togglePlay(e) {
+            e.stopPropagation();
+            var playOrPause = video.paused ? 'play' : 'pause';
+            video[playOrPause]();
+        }
+
+        function updatePlayPause(e) {
+            e.stopPropagation();
+            var playPauseIcon = this.paused ? playIcon : pauseIcon;
+            toggle.innerHTML = playPauseIcon;
+        }
+
+        function toggleSound(e) {
+            e.stopPropagation();
+            var soundIcon = video.muted ? volumeUp : volumeOff;
+            sound.innerHTML = soundIcon;
+
+            if (video.muted) video.muted = false;
+            else video.muted = true;
+        }
+
+        function updateReplay(e) {
+            e.stopPropagation();
+            toggle.innerHTML = replayIcon;
+        }
+
+        video.addEventListener('play', updatePlayPause);
+        video.addEventListener('pause', updatePlayPause);
+        video.addEventListener('ended', updateReplay);
+        toggle.addEventListener('click', togglePlay);
+        sound.addEventListener('click', toggleSound);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // var player2 = document.querySelector('#video-player2');
+        // var video2 = player.querySelector('#video2');
+        // var toggle2 = player.querySelector('#toggle2');
+        // var sound2 = player.querySelector('#sound2');
+
+        // var playIcon2 = `<i class="material-icons">play_arrow</i>`;
+        // var pauseIcon2 = `<i class="material-icons">pause</i>`;
+        // var volumeUp2 = `<i class="material-icons">volume_up</i>`;
+        // var volumeOff2 = `<i class="material-icons">volume_off</i>`;
+        // var replayIcon2 = `<i class="material-icons">replay</i>`;
+
+        // function togglePlay2(e) {
+        //     e.stopPropagation();
+        //     var playOrPause2 = video2.paused ? 'play' : 'pause';
+        //     video2[playOrPause2]();
+        // }
+
+        // function updatePlayPause2(e) {
+        //     e.stopPropagation();
+        //     var playPauseIcon2 = this.paused ? playIcon : pauseIcon;
+        //     toggle2.innerHTML = playPauseIcon2;
+        // }
+
+        // function toggleSound2(e) {
+        //     e.stopPropagation();
+        //     var soundIcon2 = video2.muted ? volumeUp : volumeOff;
+        //     sound2.innerHTML = soundIcon2;
+
+        //     if (video2.muted) video2.muted = false;
+        //     else video2.muted = true;
+        // }
+
+        // function updateReplay2(e) {
+        //     e.stopPropagation();
+        //     toggle2.innerHTML = replayIcon2;
+        // }
+
+        // video2.addEventListener('play', updatePlayPause2);
+        // video2.addEventListener('pause', updatePlayPause2);
+        // video2.addEventListener('ended', updateReplay2);
+        // toggle2.addEventListener('click', togglePlay2);
+        // sound2.addEventListener('click', toggleSound2);
+    </script>
+</body>
+
+</html>

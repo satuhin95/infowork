@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GuardianLife Insurance Company</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Hind Siliguri',sans-serif}.absolute{position:absolute}body,html{height:250px;width:300px;cursor:pointer;overflow:hidden;position:relative}.delta_box{height:100%;width:100%;background-image:url(bg.jpg?v=1.5);background-size:100% 100%;background-repeat:no-repeat;top:0;left:0};background-size:100% 100%;background-repeat:no-repeat;top:0;left:0;animation:fadeIn 2s infinite ease;z-index:11}.slide_2{height:100%;width:100%;background-color:transparent;top:0;left:0;z-index:12}@keyframes fadeIn{from{opacity:0}to{opacity:1}}.delta_calc,.delta_calc2{height:105px;width:165px;top:85px;left:120px;padding:5px}.delta_calc2{width:105px;left:190px;overflow:hidden;background-color:#f7d6b0}.delta_label{font-size:13px;line-height:24px;width:75px;color:#000;font-weight:700;margin-bottom:4px}.insight{margin-bottom:4px}select{width:95px;border-radius:5px;outline:0;border:0}.delta_year{width:65px}input{width:95px;border-radius:7px;outline:0;border:0}.delta_earn{padding-left:3px}.landing{top:208px;left:144px;font-size:14px;color:#fff;width:335px;height:14px;opacity:0;text-decoration:underline}
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="delta_box absolute">
+    <div class="slide_2 absolute">
+        <div class="delta_calc absolute">
+            <div class="delta_label">মাসিক জমা</div>
+            <div class="delta_label">কত বছর</div>
+            <div class="delta_label"><span style="color: red">*</span>মুনাফা সহ সম্ভাব্য সঞ্চয়</div>
+        </div>
+
+        <div class="delta_calc2 absolute">
+            <div class="insight">
+                <select class="delta_joma" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                    <option value=""></option>
+                    <option value="1000">1000</option>
+                    <option value="3000">3000</option>
+                    <option value="5000">5000</option>
+                    <option value="10000">10000</option>
+                    <option value="15000">15000</option>
+                    <option value="25000">25000</option>
+                    <option></option>
+                </select>
+            </div>
+
+            <div class="insight">
+                <select class="delta_year" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                    <option></option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+
+            <div class="insight">
+                <input type="text" class="delta_earn" name="delta_earn" readonly>
+            </div>
+        </div>
+        <a class="details" target="_blank" href="https://guardianlife.com.bd/en">
+            <div class="landing absolute">বিস্তারিত জানতে ক্লিক করুন!</div>
+        </a>
+    </div>
+</div>
+<script>
+    var myJoma, myYear;
+    var delta_year = document.querySelector(".delta_year");
+    var delta_earn = document.querySelector(".delta_earn");
+    var delta_joma = document.querySelector(".delta_joma");
+
+document.querySelector("select option:first-child").setAttribute("disabled", "disabled");
+document.querySelector(".delta_year").setAttribute("disabled", "disabled");
+
+delta_joma.onchange = function(){
+    myJoma = document.querySelector( ".delta_joma" ).value;
+    delta_year.removeAttribute("disabled");
+    delta_earn.value = '';
+    delta_year.value = '';
+};
+
+delta_year.onchange = function() {
+    myJoma = document.querySelector( ".delta_joma" ).value;
+    myYear = document.querySelector( ".delta_year" ).value;
+    setTimeout(earningCalc, false);
+};
+
+function earningCalc() {
+    switch (Number(myJoma)+Number(myYear)) {
+        case 1010: delta_earn.value = '195000'; break;
+        case 1011: delta_earn.value = '215000'; break;
+        case 1012: delta_earn.value = '230000'; break;
+        case 1013: delta_earn.value = '250000'; break;
+        case 1014: delta_earn.value = '270000'; break;
+        case 1015: delta_earn.value = '381000'; break;
+        case 1016: delta_earn.value = '405000'; break;
+        case 1017: delta_earn.value = '435000'; break;
+        case 1018: delta_earn.value = '455000'; break;
+        case 1019: delta_earn.value = '480000'; break;
+        case 1020: delta_earn.value = '655000'; break;
+        case 3010: delta_earn.value = '585000'; break;
+        case 3011: delta_earn.value = '645000'; break;
+        case 3012: delta_earn.value = '690000'; break;
+        case 3013: delta_earn.value = '750000'; break;
+        case 3014: delta_earn.value = '810000'; break;
+        case 3015: delta_earn.value = '1143000'; break;
+        case 3016: delta_earn.value = '1215000'; break;
+        case 3017: delta_earn.value = '1305000'; break;
+        case 3018: delta_earn.value = '1365000'; break;
+        case 3019: delta_earn.value = '1440000'; break;
+        case 3020: delta_earn.value = '1965000'; break;
+        case 5010: delta_earn.value = '975000'; break;
+        case 5011: delta_earn.value = '1075000'; break;
+        case 5012: delta_earn.value = '1150000'; break;
+        case 5013: delta_earn.value = '1250000'; break;
+        case 5014: delta_earn.value = '1350000'; break;
+        case 5015: delta_earn.value = '1905000'; break;
+        case 5016: delta_earn.value = '2025000'; break;
+        case 5017: delta_earn.value = '2175000'; break;
+        case 5018: delta_earn.value = '2275000'; break;
+        case 5019: delta_earn.value = '2400000'; break;
+        case 5020: delta_earn.value = '3275000'; break;
+        case 10010: delta_earn.value = '1950000'; break;
+        case 10011: delta_earn.value = '2150000'; break;
+        case 10012: delta_earn.value = '2300000'; break;
+        case 10013: delta_earn.value = '2500000'; break;
+        case 10014: delta_earn.value = '2700000'; break;
+        case 10015: delta_earn.value = '3810000'; break;
+        case 10016: delta_earn.value = '4050000'; break;
+        case 10017: delta_earn.value = '4350000'; break;
+        case 10018: delta_earn.value = '4550000'; break;
+        case 10019: delta_earn.value = '4800000'; break;
+        case 10020: delta_earn.value = '6550000'; break;
+        case 15010: delta_earn.value = '2925000'; break;
+        case 15011: delta_earn.value = '3225000'; break;
+        case 15012: delta_earn.value = '3450000'; break;
+        case 15013: delta_earn.value = '3750000'; break;
+        case 15014: delta_earn.value = '4050000'; break;
+        case 15015: delta_earn.value = '5715000'; break;
+        case 15016: delta_earn.value = '6075000'; break;
+        case 15017: delta_earn.value = '6525000'; break;
+        case 15018: delta_earn.value = '6825000'; break;
+        case 15019: delta_earn.value = '7200000'; break;
+        case 15020: delta_earn.value = '9825000'; break;
+        case 25010: delta_earn.value = '4875000'; break;
+        case 25011: delta_earn.value = '5375000'; break;
+        case 25012: delta_earn.value = '5750000'; break;
+        case 25013: delta_earn.value = '6250000'; break;
+        case 25014: delta_earn.value = '6750000'; break;
+        case 25015: delta_earn.value = '9525000'; break;
+        case 25016: delta_earn.value = '10125000'; break;
+        case 25017: delta_earn.value = '10875000'; break;
+        case 25018: delta_earn.value = '11375000'; break;
+        case 25019: delta_earn.value = '12000000'; break;
+        case 25020: delta_earn.value = '16375000'; break;
+        default: delta_earn.value = '195000'; break;
+    }
+
+    setTimeout(function(){
+        document.querySelector('.landing').style.opacity = '1';
+    },1000);   
+    
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+
+/*Common aniation style*/
+
+.pulse {animation-name: pulse;animation-duration: 2s;animation-iteration-count: infinite;}
+.showZoomIn {animation-name: showZoomIn;animation-duration: .5s;animation-fill-mode: both}
+.line { animation-name: line;animation-duration: 2s;animation-fill-mode: both;}
+
+
+@keyframes pulse {
+    0% {transform: scaleX(1)}
+    50% {transform: scale3d(.95, .95, .95)}
+    to {transform: scaleX(1)}
+}
+
+@keyframes showZoomIn {
+    from {opacity: 0;transform: scale3d(.3, .3, .3)}
+    to {opacity:1;transform: scale3d(1, 1, 1)}
+} 
+
+@keyframes line {
+  0% { clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); }
+  100% { clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%); }
+}
+
+@keyframes zoomIn {
+    from{ transform: scale3d(0.1, 0.1, 0.1);opacity: 0.1}
+    to { opacity: 1; transform: scale3d(1, 1, 1); }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+@keyframes fadeMove {
+  from {
+    transform: translate3d(0, 80px, 0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 80px, 0);
+  }
+}
+@keyframes fadeInZoom {
+  0% {
+    transform: scaleX(1.1);
+  }
+  50% {
+    transform: scale3d(0.8, 0.8, 0.8) translate3d(0, 35px, 0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scale3d(0.95, 0.95, 0.95);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes hideToBottom {
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 200px, 0);
+  }
+}
+@keyframes showFromBottom {
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes hideZoomOut {
+  100% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+@keyframes showZoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes flyingMove {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes bottle {
+    0% {transform: rotateZ(0deg)}
+    10% {transform: rotateZ(-5deg)}
+    20% {transform: rotateZ(5deg)}
+    30% {transform: rotateZ(-5deg)}
+    40% {transform: rotateZ(5deg)}
+    50% {transform: rotateZ(-5deg)}
+    60% {transform: rotateZ(0deg)}
+   100% {transform: rotateZ(0deg) }
+}
+
+.bottle{animation: bottle 3s ease-in-out infinite;}
+
+@keyframes toLeft {
+  0%{transform: translateX(300px);}
+  25% {transform: translateX(0px);}
+  75% {transform: translateX(0px);}
+  100% {transform: translateX(-300px);}
+}
+
+.toLeft {animation-name: toLeft;animation-duration: 4s;animation-fill-mode: both;}
+
+
+.flyingMove {
+  animation-name: flyingMove;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+.fadeMove {
+  animation: fadeMove 1s infinite;
+}
+.fadeInUp {
+  animation-name: fadeInUp;
+  animation-duration: 0.7s;
+  animation-fill-mode: both;
+}
+.fadeInZoom {
+  animation-name: fadeInZoom;
+  animation-duration: 0.7s;
+  animation-fill-mode: both;
+}
+.pulse {
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+.hideToBottom {
+  animation-name: hideToBottom;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.showFromBottom {
+  animation-name: showFromBottom;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.hideZoomOut {
+  animation-name: hideZoomOut;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+.showZoomIn {
+  animation-name: showZoomIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+.shake {
+  animation: shake 3.1s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+

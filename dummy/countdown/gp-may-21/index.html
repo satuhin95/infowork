@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Countdown</title>
+	<meta name="ad.size" content="width=300,height=250">
+	<link rel="shortcut icon" type="image/x-icon" href="//purplepatch.online/assets/ico/favicon.ico">
+	<style>
+		 * {margin: 0;padding: 0;text-decoration: none;user-select: none;}
+        .pp_wrapper {
+            width: 300px;
+            height: 250px;
+            background-image: url("//ms.purplepatch.online/countdown/gp-may-21/bg.jpg");
+            background-size: 100% 100%;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }        
+        .slide {top:0;bottom:0;left:0;right:0;}
+        .slide_1 .element_1 {width: 86px;height: 83px;left: 24px;bottom: 60px;}
+        .slide_1 .element_2 {width: 68px;height: 161px;left: 116px;top: 56px;}
+        .slide_1 .element_3 {width: 88px;height: 32px;right: 19px;top: 120px;}
+
+        .slide_2 .element_1 {width: 87px;height: 78px;left: 23px;top: 18px;}
+		.patch_countdown{width: 83px;height: 26px;top: 53px;left: 25px;font-size: 22px;color: #fff;font-family: 'solaimanlipi';line-height: 26px;z-index: 1;text-align: center;}
+    	.patch_countdown .minute{left: 0px;right: 0;top: 0;bottom: 0;width: 34px;height: 26px;}
+		.patch_countdown .second{left: 49px;right: 0;top: 0;bottom: 0;width: 34px;height: 26px;}
+        
+        .hidden {display: none;}
+        .absolute{position: absolute;}
+        .bottle {animation: bottle 3s ease-in-out infinite;}
+        .pulse {animation: pulse 1.5s ease-in-out infinite;}
+        .zoomInOut{animation-name: zoomInOut;animation-duration: 1.12s;animation-fill-mode: both;animation-delay: 1.48s}
+        @keyframes bottle {
+            0% {transform: rotateZ(0deg)}
+            10% {transform: rotateZ(-3deg)}
+            20% {transform: rotateZ(3deg)}
+            30% {transform: rotateZ(-3deg)}
+            40% {transform: rotateZ(3deg)}
+            50% {transform: rotateZ(-3deg)}
+            60% {transform: rotateZ(0deg)}
+           100% {transform: rotateZ(0deg) }
+        }
+        @keyframes pulse {
+            0% {transform: scaleX(1)}
+            50% {transform: scale3d(.95, .95, .95)}
+            to {transform: scaleX(1)}
+        }
+      
+	</style>
+</head>
+<body>
+
+	<div class="pp_wrapper">
+        <div class="slide slide_1 absolute">
+            <div class="element_1 absolute pulse"><img src="//ms.purplepatch.online/countdown/gp-may-21/left.png" alt=""></div>
+            <div class="element_2 absolute bottle"><img src="//ms.purplepatch.online/countdown/gp-may-21/mobile.png" alt=""></div>
+            <div class="element_3 absolute"><img src="//ms.purplepatch.online/countdown/gp-may-21/right.png" alt=""></div>
+        </div>
+        <div class="slide_2 absolute hidden">
+            <div class="element_1 absolute"><img src="//ms.purplepatch.online/countdown/gp-may-21/countdown.png" alt=""></div>
+            <div class="patch_countdown absolute"> </div>
+        </div>
+    </div>
+
+    <script>
+    	var slide_2 = document.querySelector('.slide_2');
+    	var patch_countdown = document.querySelector('.patch_countdown');
+
+	    setInterval(function () {
+	        var today = new Date();
+	        var curDate = today.getDate();
+	        var nextHourTime = (today.getHours()+1)*60*60;
+	        var currTime = today.getHours()*60*60+ today.getMinutes()*60+today.getSeconds();
+	        var diff_sec = nextHourTime - currTime;
+
+	        if ( diff_sec < 1501 ) {
+	        	slide_2.classList.remove("hidden");
+	        	patch_countdown.innerHTML = printTimer( nextHourTime - currTime );
+	        } else {
+	        	slide_2.classList.add("hidden");
+	        }
+	        
+	    }, 1000 );
+
+    	 function printTimer(sec) 
+    	 {
+	        hr = Math.floor(sec / 3600) % 24;
+	        mm = Math.floor(sec / 60) % 60;
+	        ss = sec % 60;
+
+	        var y = mm < 10? "0"+mm : mm;
+	        var z = ss < 10? "0"+ss : ss;
+	        return `<span class="minute absolute">${translteNum(y)}</span> <span class="second absolute">${translteNum(z)}</span>`;
+	    }
+
+	    function translteNum( num_str ) {
+	            var bengali = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+	            var changed_nun='';
+	            num_str.toString().split('').forEach(l => {
+	              if(isNaN(l)){changed_nun +=l;}else{changed_nun += bengali[l];}
+	            });
+	            return changed_nun;
+	    }
+
+    </script>
+	
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Scratch Animation by Info Station </title>
+	<style>
+		*{margin: 0;padding: 0;user-select: none;}
+		.station_wrapper{
+			width: 300px;
+			height: 250px;
+			position: relative;
+		}
+		.slider_1{
+			background-image: url('bg.jpg');
+			/*background-image: url('1.jpg');*/
+			background-size: 300px 250px;
+			width: 300px;
+			height: 250px;
+		}
+		.absolute{position: absolute;}
+		.first-text{width: 146px;height: 34px;left: 76px;top: 21px;}
+    	.germ_first_div{width: 69px;height: 69px;overflow: hidden;left: 157px;top: 63px;border-radius: 50%;}
+		.first-germ1{width: 49px;height: 49px;left: 10px;top: 10px;}
+    	.germ_second_div{width: 86px;height: 86px;overflow: hidden;left: 43px;top: 105px;border-radius: 50%;}
+		.first-germ2{width: 66px;height: 66px;left: 10px;top: 10px;}
+    	.germ_third_div{width: 94px;height: 94px;overflow: hidden;left: 143px;top: 142px;border-radius: 50%;}
+		.first-germ3{width: 74px;height: 74px;left: 10px;top: 10px;}
+		.slider_2{width: 300px;height: 250px;left: 0;top: 0;}
+	    .cursor{cursor: pointer;}
+	    .hidden{display: none;}
+	    @keyframes pulse {
+	        0% {transform: scaleX(1)}
+	        50% {transform: scale3d(.95, .95, .95)}
+	        to {transform: scaleX(1)}
+	    }
+	    .pulse {
+	        animation-name: pulse;
+	        animation-duration: 1s;
+	        animation-iteration-count: infinite
+	    }
+	    @keyframes burstvirus {
+	        100% {opacity: 0;transform: rotateY(120deg) scale(7);}
+	    }
+	    .burstvirus {
+	        animation: burstvirus 1s cubic-bezier(0.71, 0.05, 0.09, 0.91);
+	    }
+	    .burst {
+		  background-repeat: no-repeat;
+		  -webkit-transform: rotateY(-120deg) scale(3);
+		          transform: rotateY(-120deg) scale(3);
+		  opacity: 0;
+		  -webkit-transform-origin: bottom;
+		          transform-origin: bottom;
+		  -webkit-transition: all 0.4s cubic-bezier(0.71, 0.05, 0.09, 0.91);
+		  transition: all 2s cubic-bezier(0.71, 0.05, 0.09, 0.91);
+		}
+		@keyframes hideZoomOut {
+		    100% {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3)
+		    }
+		}
+
+		@keyframes showZoomIn {
+		    from {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3)
+		    }
+		    to {
+		        opacity: 1;
+		        transform: scale3d(1, 1, 1)
+		    }
+		}
+
+		.hideZoomOut {
+		    animation-name: hideZoomOut;
+		    animation-duration: .5s;
+		    animation-fill-mode: both
+		}
+
+		.showZoomIn {
+		    animation-name: showZoomIn;
+		    animation-duration: .5s;
+		    animation-fill-mode: both
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="station_wrapper">
+		<div class="slider_1 absolute ">
+			<img class="first-text absolute" src="text.png" alt="">
+			<div class="absolute germ_first_div"><img class="pulse cursor first-germ1 absolute" src="germ-1.png" alt=""></div>
+			<div class="absolute germ_second_div"><img class="pulse cursor first-germ2 absolute" src="germ-2.png" alt=""></div>
+			<div class="absolute germ_third_div"><img class="pulse cursor first-germ3 absolute" src="germ-3.png" alt=""></div>
+		</div>
+		<div class="slider_2 absolute hidden">
+			<img src="slide-2.jpg" alt="">
+		</div>
+	</div>
+
+	<script>
+		/*Device friendly click event fire*/
+		let bindEvent = (eventNames, selector, handler) => {
+	      eventNames.split(' ').forEach((eventName) => {
+	        document.addEventListener(eventName, function (event) {
+	          if (event.target.matches(selector + ', ' + selector + ' *')) {
+	            handler.apply(event.target.closest(selector), arguments)
+	          }
+	        }, false);
+	      })
+	    };
+	    
+		let germ_first_img = document.querySelector('.germ_first_div img');
+		let germ_second_img = document.querySelector('.germ_second_div img');
+		let germ_third_img = document.querySelector('.germ_third_div img');
+		let slider_1 = document.querySelector('.slider_1');
+		let slider_2 = document.querySelector('.slider_2');
+		let ballons = 3;
+
+		bindEvent('click','.germ_first_div',function(e){
+	        e.preventDefault();
+	        ballons--;
+	        remove_class(germ_first_img, 'pulse','burstvirus');	 
+	        setTimeout(function(){hideball(germ_first_img)},900);        
+	    });
+
+		bindEvent('click','.germ_second_div',function(e){
+	        e.preventDefault();
+	        ballons--;
+	        remove_class(germ_second_img, 'pulse','burstvirus');
+	        setTimeout(function(){hideball(germ_second_img)},900);
+	    });
+
+		bindEvent('click','.germ_third_div',function(e){
+	        e.preventDefault();
+	        ballons--;
+	        remove_class(germ_third_img, 'pulse','burstvirus');	
+	        setTimeout(function(){hideball(germ_third_img)},900);
+	    });
+
+	    /**
+	     * Hide ballon image and show second slide after burst 3 ballons*/
+	    function hideball( img ) {
+	    	console.info(ballons); /*console info ballons current number*/
+	    	if (ballons<1) {
+	    		second_slide(); /*show second slide after 3 ballon burst animatedly*/
+	    	}
+	    	remove_class(img, 'burstvirus','hidden'); /*hide clicked image after animated burst*/
+	    }
+
+	    /**
+	     * Second slide start and first slide hide animation*/
+	    function second_slide() {
+	    	add_class(slider_1,'hideZoomOut');
+	    	setTimeout(function(){
+	    		remove_class(slider_1, 'hideZoomOut','hidden');
+	    		remove_class(slider_2, 'hidden','showZoomIn');
+	    	},500);	    	
+	    }
+
+		/*add and remove class function*/
+	    function remove_class(element, classname,replace='') {
+	        element.className = element.className.replace(classname, replace);
+	    }
+
+	    function add_class(element, classname) {
+	        element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+	    }
+
+	</script>
+	
+</body>
+</html>

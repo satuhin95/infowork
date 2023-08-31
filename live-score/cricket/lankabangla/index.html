@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lankabangla Live Score  campaign by Info Station</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://infostation.digital/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="info_wrapper">
+        <div class="info_element_1 absolute ">
+            <img src="./img/1.jpg"/>
+        </div>
+        <div class="info_element_2 absolute hidden ">
+            <img src="./img/2.jpg"/>
+        </div>
+        <div class="info_element_3 absolute hidden">
+            <img src="./img/3.jpg"/>
+        </div>
+        <div class="info_element_5 absolute ">
+            <img src="./img/score-board.png"/>
+        </div>
+        <div class="countryName">
+            <span class="countryone" id="countryone">PAK</span>
+            <span class="countrytwo" id="countrytwo">BAN</span>
+        </div>
+        <div class="teams">
+            <span class="teamone" id="teamone">137/8 (20)</span>
+            <span class="teamtwo" id="teamtwo">138/5 (19)</span>
+        </div>
+    </div>
+
+    <!-- <script src="main.js"></script> -->
+    <script>
+        let info_wrapper = document.querySelector('.info_wrapper')
+        let info_element_1 = document.querySelector('.info_element_1')
+        let info_element_2 = document.querySelector('.info_element_2')
+        let info_element_3 = document.querySelector('.info_element_3')
+        setTimeout(slide, false)
+        function slide(){
+            info_element_3.classList.remove('zoomOutRight')
+            info_element_3.classList.add('hidden')
+            info_element_1.classList.remove('hidden')
+            info_element_1.classList.add('showZoomInLeft')
+            setTimeout(function(){
+                info_element_1.classList.remove('showZoomInLeft')
+                setTimeout(function(){
+                    info_element_1.classList.add('zoomOutRight')
+                    info_element_2.classList.remove('hidden')
+                    info_element_2.classList.add('showZoomInLeft')
+                    setTimeout(function(){
+                        info_element_1.classList.remove('zoomOutRight')
+                        info_element_1.classList.add('hidden')
+                        setTimeout(function(){
+                            info_element_1.classList.remove('showZoomInLeft')
+                            setTimeout(function(){
+                                info_element_2.classList.add('zoomOutRight')
+                                info_element_3.classList.remove('hidden')
+                                info_element_3.classList.add('showZoomInLeft')
+                                setTimeout(function(){
+                                    info_element_2.classList.remove('zoomOutRight')
+                                    info_element_2.classList.add('hidden')
+                                    setTimeout(function(){
+                                        info_element_3.classList.remove('showZoomInLeft')
+                                        setTimeout(function(){
+                                            info_element_3.classList.add('zoomOutRight')
+                                            setTimeout(slide,200)
+                                        },1000)
+                                    },1000)
+                                },500)
+                            },2000)
+                         
+                        },1000)
+                    },1000)
+                },2000)
+            },1000)
+        }
+        info_wrapper.addEventListener('click',function(){
+            window.open('https://infostation.digital', '_blank');
+
+        })
+     
+    </script>
+    
+</body>
+</html>

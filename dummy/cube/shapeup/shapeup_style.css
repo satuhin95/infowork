@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+body {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+#container {
+    display: block;
+    position: relative;
+    height: 250px;
+    width: 300px;
+    background-color: #FFEC8D;
+    overflow: hidden;
+
+}
+
+.slide {
+    display: flex;
+    position: relative;
+    height: 250px;
+    width: 300px;
+    background-color: #c80000;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: white;
+    position: absolute;
+    opacity: 0.7;
+    box-sizing: border-box;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+.controls div {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+    color: #fff;
+    text-transform: lowercase;
+    background-color: #5923a5;
+}
+
+
+
+.absolute{
+    position: absolute;
+}
+
+.donate_btn,.donate_btn_en{
+    height: 31px;
+    width: 202px;
+    background-image: url("//ms.purplepatch.online/dummy/brac-donate/Donate_Button.png");
+    top: 205px;
+    left: 49px;
+    z-index: 1000;
+    animation: scaleIn 1.5s infinite ease;
+}
+
+.donate_btn_en{
+    background-image: url("//ms.purplepatch.online/dummy/brac-donate/img/Donate_Button.png");
+}
+
+
+@keyframes scaleIn {
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(.95);
+    }
+}

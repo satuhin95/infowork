@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="ad.size" content="width=300,height=250">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	<title> Xiaomi personalised campaign by Info Station </title>
+	<style>
+        /*Animation css*/
+        .pulse{animation-name:pulse;animation-duration:2s;animation-iteration-count:infinite}.showZoomIn{animation-name:showZoomIn;animation-duration:.5s;animation-fill-mode:both}.line{animation-name:line;animation-duration:2s;animation-fill-mode:both}@keyframes pulse{0%{transform:scaleX(1)}50%{transform:scale3d(.95,.95,.95)}to{transform:scaleX(1)}}@keyframes showZoomIn{from{opacity:0;transform:scale3d(.3,.3,.3)}to{opacity:1;transform:scale3d(1,1,1)}}@keyframes line{0%{clip-path:polygon(0 0,0 0,0 100%,0 100%)}100%{clip-path:polygon(100% 0,0 0,0 100%,100% 100%)}}@keyframes zoomIn{from{transform:scale3d(.1,.1,.1);opacity:.1}to{opacity:1;transform:scale3d(1,1,1)}}@keyframes shake{10%,90%{transform:translate3d(-1px,0,0)}20%,80%{transform:translate3d(2px,0,0)}30%,50%,70%{transform:translate3d(-4px,0,0)}40%,60%{transform:translate3d(4px,0,0)}}@keyframes fadeMove{from{transform:translate3d(0,80px,0)}}@keyframes fadeInUp{from{opacity:0;transform:translate3d(0,80px,0)}}@keyframes fadeInZoom{0%{transform:scaleX(1.1)}50%{transform:scale3d(.8,.8,.8) translate3d(0,35px,0)}to{transform:scaleX(1)}}@keyframes pulse{0%{transform:scaleX(1)}50%{transform:scale3d(.95,.95,.95)}to{transform:scaleX(1)}}@keyframes hideToBottom{100%{opacity:0;transform:translate3d(0,200px,0)}}@keyframes showFromBottom{100%{opacity:0;transform:translate3d(0,0,0)}}@keyframes hideZoomOut{100%{opacity:0;transform:scale3d(.3,.3,.3)}}@keyframes showZoomIn{from{opacity:0;transform:scale3d(.3,.3,.3)}to{opacity:1;transform:scale3d(1,1,1)}}@keyframes flyingMove{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}@keyframes bottle{0%{transform:rotateZ(0)}10%{transform:rotateZ(-5deg)}20%{transform:rotateZ(5deg)}30%{transform:rotateZ(-5deg)}40%{transform:rotateZ(5deg)}50%{transform:rotateZ(-5deg)}60%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}.bottle{animation:bottle 3s ease-in-out infinite}@keyframes toLeft{0%{transform:translateX(300px)}25%{transform:translateX(0)}75%{transform:translateX(0)}100%{transform:translateX(-300px)}}.toLeft{animation-name:toLeft;animation-duration:4s;animation-fill-mode:both}.flyingMove{animation-name:flyingMove;animation-duration:1s;animation-iteration-count:infinite}.fadeMove{animation:fadeMove 1s infinite}.fadeInUp{animation-name:fadeInUp;animation-duration:.7s;animation-fill-mode:both}.fadeInZoom{animation-name:fadeInZoom;animation-duration:.7s;animation-fill-mode:both}.pulse{animation-name:pulse;animation-duration:1s;animation-iteration-count:infinite}.hideToBottom{animation-name:hideToBottom;animation-duration:1s;animation-fill-mode:both}.showFromBottom{animation-name:showFromBottom;animation-duration:1s;animation-fill-mode:both}.hideZoomOut{animation-name:hideZoomOut;animation-duration:.5s;animation-fill-mode:both}.showZoomIn{animation-name:showZoomIn;animation-duration:.5s;animation-fill-mode:both}.shake{animation:shake 3.1s cubic-bezier(.36,.07,.19,.97) infinite;transform:translate3d(0,0,0);backface-visibility:hidden;perspective:1000px}
+        /*Custom css*/
+		*{margin:0;padding:0}.wrapper{width:300px;height:250px;position:relative;background-image:url(300250/bg.jpg);background-size:100% 100%;overflow:hidden}.buy_button,.element_1_1,.element_1_2,.element_2_1,.element_3_1,.element_4_1,.slide_1,.slide_2,.slide_3,.slide_4{width:100%;height:100%;position:absolute;bottom:0;right:0}.buy_button,.element_1_1{z-index:1}.battery,.camera,.display,.processor{position:absolute;z-index:2}.camera{left:35px;bottom:70px}.battery{right:45px;bottom:70px}.processor{left:35px;bottom:25px}.display{right:45px;bottom:25px}.hidden{display:none}@keyframes pulsee{0%{transform:scaleX(.9)}50%{transform:scale3d(1,1,1)}to{transform:scaleX(.9)}}.pulsee{animation:pulsee 2s infinite;animation-timing-function:ease-in-out}
+        
+	</style>
+	
+</head>
+<body>
+
+	<div class="wrapper">
+        <div class="logo">
+            <div class="element_1_1 "> <img src="300250/logo.png" alt=""> </div>
+        </div>
+		<div class="slide_1 hidden">
+			<div class="element_1_2 "> <img src="300250/choose.png?v=1.1" alt=""> </div>
+             <iframe id="fbname" src="//showcase.infostation.digital/ideas/personalised/xiaomi/fbname.html" margin="0" padding="0" frameborder="0" width="164" height="35" scrolling="no" style="position: absolute; z-index: 9; margin: 0px; margin-top: 13px; border: 0px none; width: 164px; height: 35px; left: 85px;"></iframe>
+		</div>
+		<div class="slide_2 hidden">
+            <div class="camera active"> <img src="300250/bc.png" alt=""> </div>
+            <div class="battery"> <img src="300250/bb.png" alt=""> </div>
+            <div class="processor"> <img src="300250/bp.png" alt=""> </div>
+			<div class="display"> <img src="300250/bd.png" alt="">  </div>
+		</div>
+        <div class="buy_button">
+            <img class="pulsee" style="position: absolute; right:15px; bottom: 14px;" src="300250/button.png" alt="">
+        </div>
+        <div class="slide_3 hidden">
+            <div class="element_3_1 hidden"> <img src="300250/camera.png" alt=""> </div>
+        </div>  
+        <div class="slide_4 hidden">
+            <div class="element_4_1 hidden"> <img src="300250/battery.png?v=1.1" alt=""> </div>
+        </div>   
+        <div class="slide_5 hidden">
+            <div class="element_5_1 hidden"> <img src="300250/processor.png" alt=""> </div>
+        </div>   
+		<div class="slide_6 hidden">
+			<div class="element_6_1 hidden"> <img src="300250/display.png" alt=""> </div>
+		</div>	
+
+	</div>
+
+
+<script>
+    let wrapper = document.querySelector(".wrapper");
+    let slide_1 = document.querySelector(".slide_1");
+    let slide_2 = document.querySelector(".slide_2");
+    let slide_3 = document.querySelector(".slide_3");
+    let slide_4 = document.querySelector(".slide_4");
+    let slide_5 = document.querySelector(".slide_5");
+    let slide_6 = document.querySelector(".slide_6");
+
+    let element_1_1 = document.querySelector(".element_1_1");
+    let element_2_1 = document.querySelector(".element_2_1");
+    let element_3_1 = document.querySelector(".element_3_1");
+    let element_4_1 = document.querySelector(".element_4_1");
+    let element_5_1 = document.querySelector(".element_5_1");
+    let element_6_1 = document.querySelector(".element_6_1");
+
+    let camera = document.querySelector(".camera");
+    let battery = document.querySelector(".battery");
+    let processor = document.querySelector(".processor");
+    let display = document.querySelector(".display");
+    var url = 'poll/vote.php';
+
+    let buy_button = document.querySelector(".buy_button");
+
+    var link1 = 'https://www.pickaboo.com/mobile-tablet/mobile-phone/huawei/huawei-y9-2019.html?utm_source=Wizards_Magnito&utm_medium=CPM&utm_campaign=Y9_Wizards_Nov2018&utm_content=Y9';
+
+    loopButton();
+    function loopButton(){
+        camera.classList ? camera.classList.add('pulsee') : camera.className += ' pulsee';
+        setTimeout(()=>{
+            battery.classList ? battery.classList.add('pulsee') : battery.className += ' pulsee';
+            setTimeout(()=>{
+                processor.classList ? processor.classList.add('pulsee') : processor.className += ' pulsee';
+                setTimeout(()=>{
+                    display.classList ? display.classList.add('pulsee') : display.className += ' pulsee';
+                },200);
+            },200);
+        },200);
+    }
+
+    lincoln();
+    function lincoln(){
+        slide_1.className = slide_1.className.replace('hidden', '');
+        buy_button.classList ? buy_button.classList.add('hidden') : buy_button.className += ' hidden';
+        setTimeout(()=>{
+            slide_2.className = slide_2.className.replace('hidden', '');
+        },200);
+    }
+
+    camera.addEventListener("click",()=>{
+
+        camera.querySelector("img").src = "300250/bca.png";
+        camera.classList ? camera.classList.add('active') : camera.className += ' active';
+        setTimeout(()=>{
+            slide_1.classList ? slide_1.classList.add('slideOutLeft') : slide_1.className += ' slideOutLeft';
+            slide_2.classList ? slide_2.classList.add('slideOutLeft') : slide_2.className += ' slideOutLeft';
+            setTimeout(()=>{
+                slide_1.classList ? slide_1.classList.add('hidden') : slide_1.className += ' hidden';
+                slide_2.classList ? slide_2.classList.add('hidden') : slide_2.className += ' hidden';
+                slide_3.className = slide_3.className.replace('hidden', '');
+                element_3_1.className = element_3_1.className.replace('hidden', '');
+                element_3_1.classList ? element_3_1.classList.add('slideInRight') : element_3_1.className += ' slideInRight';
+                setTimeout(()=>{
+                    buy_button.className = buy_button.className.replace('hidden', '');
+                },400);
+            },300);
+        },200);   
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               console.log(xhttp.responseText);
+            }
+        };
+        // xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhttp.send("sign=0");
+
+    });
+
+    battery.addEventListener("click",()=>{
+        battery.querySelector("img").src = "300250/bba.png";
+        battery.classList ? battery.classList.add('active') : battery.className += ' active';
+        setTimeout(()=>{
+            slide_1.classList ? slide_1.classList.add('slideOutLeft') : slide_1.className += ' slideOutLeft';
+            slide_2.classList ? slide_2.classList.add('slideOutLeft') : slide_2.className += ' slideOutLeft';
+            setTimeout(()=>{
+                slide_1.classList ? slide_1.classList.add('hidden') : slide_1.className += ' hidden';
+                slide_2.classList ? slide_2.classList.add('hidden') : slide_2.className += ' hidden';
+                slide_4.className = slide_4.className.replace('hidden', '');
+                element_4_1.className = element_4_1.className.replace('hidden', '');
+                element_4_1.classList ? element_4_1.classList.add('slideInRight') : element_4_1.className += ' slideInRight';
+                setTimeout(()=>{
+                    buy_button.className = buy_button.className.replace('hidden', '');
+                },400);
+            },300);
+        },200);  
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               console.log(xhttp.responseText);
+            }
+        };
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhttp.send("sign=1");
+
+    });
+
+    processor.addEventListener("click",()=>{
+        processor.querySelector("img").src = "300250/bpa.png";
+        processor.classList ? processor.classList.add('active') : processor.className += ' active';
+        setTimeout(()=>{
+            slide_1.classList ? slide_1.classList.add('slideOutLeft') : slide_1.className += ' slideOutLeft';
+            slide_2.classList ? slide_2.classList.add('slideOutLeft') : slide_2.className += ' slideOutLeft';
+            setTimeout(()=>{
+                slide_1.classList ? slide_1.classList.add('hidden') : slide_1.className += ' hidden';
+                slide_2.classList ? slide_2.classList.add('hidden') : slide_2.className += ' hidden';
+                slide_5.className = slide_5.className.replace('hidden', '');
+                element_5_1.className = element_5_1.className.replace('hidden', '');
+                element_5_1.classList ? element_5_1.classList.add('slideInRight') : element_5_1.className += ' slideInRight';
+                setTimeout(()=>{
+                    buy_button.className = buy_button.className.replace('hidden', '');
+                },400);
+            },300);
+        },200);    
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               console.log(xhttp.responseText);
+            }
+        };
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhttp.send("sign=2");  
+    });
+
+    display.addEventListener("click",()=>{
+        display.querySelector("img").src = "300250/bda.png";
+        display.classList ? display.classList.add('active') : display.className += ' active';
+        setTimeout(()=>{
+            slide_1.classList ? slide_1.classList.add('slideOutLeft') : slide_1.className += ' slideOutLeft';
+            slide_2.classList ? slide_2.classList.add('slideOutLeft') : slide_2.className += ' slideOutLeft';
+            setTimeout(()=>{
+                slide_1.classList ? slide_1.classList.add('hidden') : slide_1.className += ' hidden';
+                slide_2.classList ? slide_2.classList.add('hidden') : slide_2.className += ' hidden';
+                slide_6.className = slide_6.className.replace('hidden', '');
+                element_6_1.className = element_6_1.className.replace('hidden', '');
+                element_6_1.classList ? element_6_1.classList.add('slideInRight') : element_6_1.className += ' slideInRight';
+                setTimeout(()=>{
+                    buy_button.className = buy_button.className.replace('hidden', '');
+                },400);
+            },300);
+        },200);   
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               console.log(xhttp.responseText);
+            }
+        };
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhttp.send("sign=3");
+
+    });
+
+    wrapper.style.cursor = "pointer";
+    buy_button.addEventListener("click",()=>{
+        window.open(link1);
+    });
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,173 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Video campaign by infostation</title>
+        <!-- <link rel="shortcut icon" type="image/x-icon" href=""> -->
+        <meta name="ad.size" content="width=300,height=250">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <script src="jquery.min.js"></script>
+        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+        <style>
+        	*{padding:0;margin:0;-webkit-user-select:none;-ms-user-select:none;user-select:none}#container{width:300px;height:250px;top:0;left:0;perspective:1500px;overflow:hidden;cursor:pointer;background-color:#ead0ff}.slide{overflow:hidden}.slide img{position:absolute;top:0;left:0}.slide .right_woman{left:46px}.slide .left_man{left:auto;right:25px}.navigation{display:none}.controls{top:27%!important;opacity:0}#invis{width:300px;height:200px;background-color:brown;position:absolute;top:0;opacity:0}#video{width:300px;height:250px;left:0;position:relative}.video-controls{top:-35px;position:relative;padding-left:5px;padding-right:5px}.sound{float:right;background:0 0;color:#000;border:none;outline:0}.toggle{background:0 0;color:#000;border:none;outline:0}
+        </style>
+    </head>
+    <body>  
+        <div id="container">
+            <div class="cube_templete">
+                <div id="link1" class="slide">
+                    <div id="video-player" class="video-wrapper">
+                        <video id="video" playsinline autoplay muted playsinline>
+                            <source src="oppo.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-controls">
+                            <button id="toggle" class="btn toggle"><i class="material-icons">play_arrow</i></button>
+                            <button id="sound" class="btn sound"><i class="material-icons">volume_off</i></button>
+                        </div>
+                    </div>
+                    <a href="#" target="_blank">
+                        <div id="invis"></div>
+                    </a>                
+                </div>  
+                <div id="link2" class="slide"></div>                        
+            </div>
+        </div>
+        <script>
+(function (factory) {factory(jQuery); })(function($){
+	$.fn.lMCarousel = function(options){
+		var _defaults = {
+				width : 3e2,				
+				height: 2.5e2,			
+				slides : [], 					
+				slideLayout : 'fill', 			
+				perspective: 3000,					
+				animation: 'slide3D', 			
+				animationCurve: 'ease',			
+				animationDuration: 1e3,	
+				animationInterval: 3e3,		
+				autoplay: true,					
+				controls: true,					
+				slideClass: 'slide',
+				navigation: 'circles',			
+				rotationDirection: 'rtl',
+				onSlideShow: function(){}
+		}
+		
+		var _settings = $.extend( true, {}, _defaults, options );
+		var _container = this;
+		var _width = _settings.width;
+		var _height = _settings.height;
+		var _aspectRatio = _settings.width/_settings.height;
+		var _lMCarouselDiv = $( "<div class='lMCarousel' />" )
+								.css({ width: '100%', height: '100%', transition:'transform '+_settings.animationDuration+'ms '+_settings.animationCurve, 'transformStyle': 'preserve-3d' })
+								.appendTo(_container);
+		var _currentSlideIndex = 0;
+		var _animations = new Animations();
+		var _timeOutTimer;
+		var _videoSlide;
+		var _baseAngle;
+		var _rotationAngle = 0;
+		var _translateZ;
+		var _perspective;
+		var _transform;
+		var _noOfSlides = _settings.slides.length || _container.find('.'+_settings.slideClass).length;
+		
+		(function setup(){
+			createlMCarousel();
+			if(_settings.autoplay){ _playlMCarousel();}
+			
+			function createlMCarousel(){
+				if(_settings.animation.indexOf('slide')!=-1){
+					_translateZ = (_width/2) / Math.tan(Math.PI/_noOfSlides);
+					_perspective = (_width/2) * Math.tan(2*Math.PI/_noOfSlides)+'px';
+				}
+				_baseAngle = 360 / _noOfSlides;
+
+				_container.find('.'+_settings.slideClass).each(function(i){
+					var slide = $(this).attr('data-index', i);
+					if(_settings.animation.indexOf('slide')!=-1){
+						_transform = 'rotateY('+_baseAngle*i+'deg) translateZ('+_translateZ+'px)';
+					}
+					slide = slide.css({ transform: _transform }).detach();
+					_lMCarouselDiv.append(slide);
+				});
+				
+				_lMCarouselDiv.find('.'+_settings.slideClass).css({position: 'absolute', left: 0, top:0, width:'100%', height:'100%', backfaceVisibility: 'hidden'})
+								.find('img').css({ width:'100%', height:'100%', objectFit:_settings.slideLayout });
+				_perspective = _settings.perspective || _perspective;
+				_container.css({ perspective: _perspective, width: _width+'px', height: _height+'px', position: "relative", overflow: 'visible'});
+			}
+			
+		})();
+		
+		function _playlMCarousel(){
+			_videoSlide = _getCurrentSlide()[0].querySelector('video');
+			if(_videoSlide){			
+				_videoSlide.currentTime=0;
+				_videoSlide.play();
+				_videoSlide.addEventListener('ended', _playlMCarousel);
+			}
+		}	 
+		function _getCurrentSlide(){
+			return _lMCarouselDiv.find('.'+_settings.slideClass).eq(_currentSlideIndex % _noOfSlides);
+		}
+		function Animations(){ this.animations = {slide3D : _slide3D} }
+		Animations.prototype.run = function run(animation, targetSlideIndex){
+				this.animations[animation](targetSlideIndex);
+		}
+		function _slide3D(targetSlideIndex){
+			console.log('_slide3D');
+			_container.css({ perspective: _perspective, overflow: 'visible' });
+			_rotationAngle = _baseAngle * targetSlideIndex;
+			_lMCarouselDiv.css({ transform: 'translateZ('+-_translateZ+'px) rotateY('+-_rotationAngle+'deg)' });
+		}
+		function _slideCarouseld(){
+			_currentSlideIndex = Math.round(_rotationAngle/_baseAngle);
+		}
+		return this;
+	}
+});
+
+$('.cube_templete').lMCarousel({});
+
+var video = document.querySelector('#video-player #video');
+var toggle = document.querySelector('#video-player #toggle');
+var sound = document.querySelector('#video-player #sound');
+
+var playIcon = `<i class="material-icons">play_arrow</i>`;
+var pauseIcon = `<i class="material-icons">pause</i>`;
+var volumeUp = `<i class="material-icons">volume_up</i>`;
+var volumeOff = `<i class="material-icons">volume_off</i>`;
+var replayIcon = `<i class="material-icons">replay</i>`;
+
+function togglePlay(e) {
+    e.stopPropagation();
+    var playOrPause = video.paused ? 'play' : 'pause';
+    video[playOrPause]();
+}
+
+function updatePlayPause(e) {
+    e.stopPropagation();
+    var playPauseIcon = this.paused ? playIcon : pauseIcon;             
+    toggle.innerHTML = playPauseIcon;
+}
+
+function toggleSound(e) {
+    e.stopPropagation();
+    var soundIcon = video.muted ? volumeUp : volumeOff;
+    sound.innerHTML = soundIcon;
+
+    if (video.muted) video.muted = false;
+    else video.muted = true;
+}
+
+video.addEventListener('play', updatePlayPause);
+video.addEventListener('pause', updatePlayPause);
+toggle.addEventListener('click', togglePlay);
+sound.addEventListener('click', toggleSound);
+
+
+        </script>
+    </body>
+</html>

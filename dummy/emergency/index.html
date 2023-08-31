@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="ad.size" content="width=300,height=250">
+    <title>Banglalink Video Emergency Campaign</title>
+    <style>
+        *{
+            font-family: 'kongshomjbold';
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .absolute{
+            position: absolute;
+        }
+
+        .hidden{
+            display: none;
+        }
+
+        .show{
+            display: block;
+        }
+
+        html, body{
+            height: 250px;
+            width: 300px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+
+        .slide_1{
+            height: 250px;
+            width: 300px;
+            background-image: url(//ms.purplepatch.online/dummy/emergency/bg.jpg);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            overflow: hidden;
+            position: absolute;
+            background-color: #2a3a4a;
+            top: 0;
+            left: 0;
+        }
+
+
+        .details_box{
+            font-family: 'kongshomjbold';
+            height: 40px;
+            width: 150px;
+            top: 210px;
+            left: 0;
+            background-color: transparent;
+            /*font-weight: bold;*/
+        }
+
+
+        .icon_box{
+            height: 25px;
+            width: 25px;
+            background-image: url("//ms.purplepatch.online/dummy/emergency/mute.png");
+            background-size: 25px 25px;
+            background-repeat: no-repeat;
+            top: 217px;
+            left: 15px;
+        }
+
+        .dailouge_box{
+            color: white;
+            top: 220px;
+            left: 110px;
+            font-size: 14px;
+        }
+
+
+        a:hover p{
+            color: #fe0 !important;
+        }
+
+       /* .logo_box{
+            top: 7px;
+            left: 5px;
+            height: 26px;
+            width: 106px;
+            background-image: url("bsrm_w.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }*/
+
+    </style>
+</head>
+<body>
+<div class="slide_1">
+	<a href="http://bit.ly/3a0Vdaw" target="_blank">
+		<video id="vid" width="300" height="250" autoplay="true" controls playsinline loop muted="true" poster="//ms.purplepatch.online/dummy/emergency/poster.jpg">
+        	<source src="//ms.purplepatch.online/dummy/emergency/banglalink.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    	</video>
+    <div class="dailouge_box absolute">বিস্তারিত জানতে ক্লিক করুন।</div>
+	</a>
+</div>
+<div class="icon_box absolute"></div>
+<!-- <div class="logo_box absolute"></div> -->
+
+<script type="text/javascript">
+    var volume = document.querySelector(".icon_box");
+    var video = document.querySelector("#vid");
+    // var landing = document.querySelector('.dailouge_box')
+    volume.addEventListener("click", playSound);
+    toggleControls();
+
+    function playSound() {
+        if(video.muted){
+            video.muted = false;
+            volume.style.backgroundImage = "url('//ms.purplepatch.online/dummy/emergency/unmute.png')";
+        }
+        else {
+            volume.style.backgroundImage = "url('//ms.purplepatch.online/dummy/emergency/mute.png')";
+            video.muted = true;
+        }
+    };
+
+    function toggleControls() {
+        if (video.hasAttribute("controls")) {
+            video.removeAttribute("controls")
+        }
+    }
+
+
+</script>
+</body>
+</html>

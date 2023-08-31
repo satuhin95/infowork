@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="ad.size" content="width=728,height=90" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Countdown Banner by purplePatch</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        user-select: none;
+      }
+      .wrapper {
+        width: 728px;
+        height: 90px;
+        /* background-image: url("//ms.purplepatch.online/countdown/smc/72890/img2.jpg"); */
+        background-image: url("//ms.purplepatch.online/countdown/smc/72890/Assets/bg.jpg");
+        background-size: 728px 90px;
+        position: relative;
+        cursor: grab;
+        overflow: hidden;
+      }
+      .absolute {
+        position: absolute;
+      }
+      .patch_box {
+        height: 90px;
+        width: 728px;
+        background-image: url("//ms.purplepatch.online/countdown/smc/72890/stayhome.png");
+        background-size: 728px 90px;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        /*transition: all 1s ease-in-out;*/
+      }
+
+      .patch_countdown {
+        height: 37px;
+        width: 147px;
+        top: 42px;
+        right: 283px;
+        font-size: 21px;
+        color: #ffffff;
+        font-weight: 700;
+        text-align: center;
+        font-family: "abirvabhimellight";
+      }
+      .patch_countdown .hour {
+        left: -10px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 36px;
+        height: 35px;
+        position: absolute;
+      }
+      .patch_countdown .min {
+        left: 46px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 36px;
+        height: 35px;
+        position: absolute;
+      }
+      .patch_countdown .sec {
+        left: 100px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 36px;
+        height: 35px;
+        position: absolute;
+      }
+
+      .patch_title {
+        height: 32px;
+        width: 160px;
+        background-image: url("//ms.purplepatch.online/countdown/smc/72890/iftar.png");
+        background-repeat: no-repeat;
+        top: 38px;
+        left: 0px;
+        right: 0;
+        margin: 0 auto;
+      }
+      .wrapper .box {
+        right: 0px;
+        bottom: 0px;
+        width: 728px;
+        height: 90px;
+      }
+      .wrapper .logo {
+        right: 0px;
+        bottom: 0px;
+        width: 728px;
+        height: 90px;
+      }
+      .patch_note {
+        height: 10px;
+        width: 150px;
+        background-image: url("//ms.purplepatch.online/countdown/smc/72890/bottominfo.png");
+        bottom: 2px;
+        left: 5px;
+        display: none;
+      }
+      .hidden {
+        display: none;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scaleX(1);
+        }
+        50% {
+          transform: scale3d(0.95, 0.95, 0.95);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+      .pulse {
+        animation-name: pulse;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <a href="{CLICK_MACRO}" target="_blank">
+        <div class="patch_box absolute">
+          <div class="patch_countdown absolute">
+            <div class="hour"><span>0</span></div>
+            <div class="min"><span>0</span></div>
+            <div class="sec"><span>0</span></div>
+          </div>
+          <div class="box absolute hidden">
+            <img
+              src="//ms.purplepatch.online/countdown/smc/72890/Assets/copy1.png"
+              alt=""
+            />
+          </div>
+          <div class="logo absolute">
+            <img
+              src="//ms.purplepatch.online/countdown/smc/72890/Assets/copy2.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <script>
+      (function () {
+        var box = document.querySelector(".box");
+        var logo = document.querySelector(".logo");
+        change();
+        function change() {
+          box.classList.remove("hidden");
+          logo.classList.add("hidden");
+          setTimeout(function () {
+            logo.classList.remove("hidden");
+            box.classList.add("hidden");
+            setTimeout(change, 2000);
+          }, 2000);
+        }
+        // countdown section
+        var patch_countdown = document.querySelector(".patch_countdown");
+        var hour = document.querySelector(".hour");
+        var minute = document.querySelector(".min");
+        var second = document.querySelector(".sec");
+
+        function updateWCTime() {
+          var kickoff = new Date("2022-11-19T23:59:59.000+06:00");
+          var diff = kickoff - new Date();
+          var dd = Math.floor(diff / (1000 * 60 * 60 * 24));
+          var hh = Math.floor(
+            (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          var mm = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          var ss = Math.floor((diff % (1000 * 60)) / 1000);
+
+          hour.innerHTML = translteNum(hh + dd * 24);
+          minute.innerHTML = translteNum(mm);
+          second.innerHTML = translteNum(ss);
+          setTimeout(updateWCTime, 1000);
+        }
+        setTimeout(updateWCTime, false);
+        function translteNum(num_str) {
+          var bengali = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+          var changed_nun = "";
+          num_str
+            .toString()
+            .split("")
+            .forEach((l) => {
+              if (isNaN(l)) {
+                changed_nun += l;
+              } else {
+                changed_nun += bengali[l];
+              }
+            });
+          return changed_nun;
+        }
+      })();
+    </script>
+  </body>
+</html>

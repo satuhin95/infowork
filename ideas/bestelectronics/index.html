@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Best Electronics Banner by Info Station </title>
+	<style>
+		*{margin: 0;padding: 0;user-select:none;}
+		.station_wrapper{
+			width: 300px;
+			height: 250px;
+			position: relative;
+			background-color: #fed217;
+		}
+		.station_wrapper .main{width: 300px;height: 250px;left: 0;top: 0;}
+		.top-left{
+			width: 75px;
+			height: 71px;
+			left: 17px;
+			top: 16px;
+			/*transform: translateX(91px) translateY(76px);*/
+		}
+		.middle{
+			width: 106px;
+			height: 137px;
+			left: 99px;
+			top: 37px;	
+			z-index:99;		
+		}
+		.top-right{
+			width: 84px;
+			height: 74px;
+			left: 201px;
+			top: 14px;
+		}
+		.bottom-left{
+			width: 83px;
+		    height: 74px;
+		    left: 13px;
+		    top: 114px;
+		}
+		.bottom-right{
+			width: 67px;
+			height: 74px;
+			left: 212px;
+			top: 107px;
+		}
+		.bottom-button{
+			width: 136px;
+			height: 31px;
+			left: 82px;
+			top: 188px;
+			cursor:pointer;
+		}
+		.absolute{position: absolute;}
+		.hidden{display: none;}
+
+		@keyframes pulse {
+		    0% {
+		        transform: scaleX(1)
+		    }
+		    50% {
+		        transform: scale3d(.95, .95, .95)
+		    }
+		    to {
+		        transform: scaleX(1)
+		    }
+		}
+		.pulse {
+		    animation-name: pulse;
+		    animation-duration: 1s;
+		    animation-iteration-count: infinite
+		}
+
+		@keyframes hideZoomOut {
+		    100% {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3)
+		    }
+		}
+
+		@keyframes showZoomIn {
+		    from {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3)
+		    }
+		    to {
+		        opacity: 1;
+		        transform: scale3d(1, 1, 1)
+		    }
+		}
+
+		@keyframes showZoomRigtTop {
+		    from {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3) translateX(-200px) translateY(200px);
+		    }
+		    30%{opacity: 1;}
+		    to {
+		        opacity: 1;
+		        transform: scale3d(1, 1, 1) translateX(0px) translateY(0px);
+		    }
+		}
+
+		@keyframes showZoomLeftTop {
+		    from {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3) translateX(220px) translateY(170px);
+		    }
+		    30%{opacity: 1;}
+		    to {
+		        opacity: 1;
+		        transform: scale3d(1, 1, 1) translateX(0px) translateY(0px);
+		    }
+		}
+
+		@keyframes showZoomLeftBottom {
+		    from {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3) translateX(200px) translateY(-80px);
+		    }
+		    30%{opacity: 1;}
+		    to {
+		        opacity: 1;
+		        transform: scale3d(1, 1, 1) translateX(0px) translateY(0px);
+		    }
+		}
+
+		@keyframes showZoomRightBottom {
+		    from {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3) translateX(-150px) translateY(-57px);
+		    }
+		    30%{opacity: 1;}
+		    to {
+		        opacity: 1;
+		        transform: scale3d(1, 1, 1) translateX(0px) translateY(0px);
+		    }
+		}
+
+		.hideZoomOut {
+		    animation-name: hideZoomOut;
+		    animation-duration: .5s;
+		    animation-fill-mode: both
+		}
+
+		.showZoomIn {
+		    animation-name: showZoomIn;
+		    animation-duration: .5s;
+		    animation-fill-mode: both
+		}
+
+		.showrighttop {animation: showZoomRigtTop 1s ease-out .4s;}
+		.showZoomLeftTop {animation: showZoomLeftTop 1s ease-out}
+		.showZoomLeftBottom {animation: showZoomLeftBottom 1s ease-out}
+		.showZoomRightBottom {animation: showZoomRightBottom 1s ease-out}
+
+	</style>
+</head>
+<body>
+
+	<div class="station_wrapper">
+		<img class="main absolute" src="bg.jpg" alt="bg">
+		<img src="top-left.png" alt="" class="top-left absolute hidden">
+		<img src="middle.png" alt="" class="middle absolute showZoomIn">
+		<img src="top-right.png" alt="" class="top-right absolute hidden">
+		<img src="bottom-left.png" alt="" class="bottom-left absolute hidden">
+		<img src="bottom-right.png" alt="" class="bottom-right absolute hidden">
+		<a href="#" target="_blank"><img src="button.png" alt="" class="bottom-button absolute pulse"></a>
+	</div>
+
+	<script>
+
+		let station_wrapper = document.querySelector('.station_wrapper');
+		let topleft = document.querySelector('.top-left');
+		let topright = document.querySelector('.top-right');
+		let bottomleft = document.querySelector('.bottom-left');
+		let bottomright = document.querySelector('.bottom-right');
+
+		setTimeout(function(){			
+			remove_class(topright,'hidden','showrighttop');
+			setTimeout(function(){
+				remove_class(topleft,'hidden','showZoomLeftTop');
+				setTimeout(function(){
+					remove_class(bottomleft,'hidden','showZoomLeftBottom');
+					setTimeout(function(){
+						remove_class(bottomright,'hidden','showZoomRightBottom');
+					},500);
+				},600);
+			},700);
+		},100);	
+
+		/*add and remove class function*/
+	    function remove_class(element, classname, replace='') {
+	        element.className = element.className.replace(classname, replace);
+	    }
+	    function add_class(element, classname) {
+	        element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+	    }
+	</script>
+	
+</body>
+</html>

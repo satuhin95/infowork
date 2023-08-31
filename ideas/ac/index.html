@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ac Animation </title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="test.css">
+	<script src="Tween.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="startArea">
+			<div class="remote_area"></div>			
+			<div class="remote_hand input_btn"></div>	
+			<div class="ac_dense"></div>	
+		</div>
+		<div id="adArea" class="rct">
+	        <div id="endAnimCont" class="rct">
+			  <div id="bg1" class="scalex05"></div>
+	        </div>
+	        <div id="over" class="rct"></div>
+		    <canvas id="ctx" width="600px" height="500px" class="scalex05"></canvas>
+	        <div id="scratch" class="scalex06 pulse noEvents"></div>
+			<div class="lead_box">
+				<a href="https://infostation.digital" target="_blank"><img class="click_button input_btn" src="images/cta.png" alt=""></a>        
+			</div> 
+		</div>
+	</div>
+	<audio id="relaxAudio">
+    	<source src="images/relax.mp3" type="audio/ogg">
+    	<source src="images/relax.mp3" type="audio/mpeg">
+   	 	Your browser does not support the audio element.
+	</audio>
+	
+<script src="test.js"></script>
+<script>
+    
+var rSrc;
+var revealImg = new Image();
+var assets = {
+    init: {
+        url: 'images/',
+    }
+};
+
+    var curCount = 0;
+    var countNeed = 2;
+    function countLoad(){
+        curCount++;
+        if(curCount == countNeed){
+            init();
+        }
+    }
+    revealImg.onload = function() {
+    // console.log(revealImg);
+        countLoad();
+    };
+revealImg.src = assets.init.url + "bg2.jpg";
+rSrc = assets.init.url + "bg.jpg";
+</script>
+</body>
+</html>

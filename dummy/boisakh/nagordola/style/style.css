@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body,html{
+    height: 250px;
+    width: 300px;
+}
+
+.container1{
+    height: 250px;
+    width: 300px;
+    background-image: url("../images/bg.png");
+    position: relative;
+    overflow: hidden;
+
+}
+
+.container2{
+    height: 250px;
+    width: 300px;
+    background-image: url("../images/bg2.png");
+    position: relative;
+    overflow: hidden;
+}
+#wheel {
+    display: inline-block;
+    width: 175px;
+    height: 175px;
+    position: absolute;
+    top: 20px;
+    left: 67px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+
+@keyframes goround {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.offer_1{
+    position: absolute;
+    top: 21px;
+    left: 124px;
+    touch-action: auto;
+}
+
+.offer_2{
+    position: absolute;
+    top: 102px;
+    left: 205px;
+    touch-action: auto;
+}
+
+.offer_3{
+    position: absolute;
+    top: 185px;
+    left: 124px;
+    touch-action: auto;
+}
+
+.offer_4{
+    position: absolute;
+    top: 107px;
+    left: 47px;
+    touch-action: auto;
+}
+
+.wheel_animate{
+    -webkit-animation: goround 25s infinite linear; /* Safari 4+ */
+    -moz-animation:    goround 25s infinite linear; /* Fx 5+ */
+    -o-animation:      goround 25s infinite linear; /* Opera 12+ */
+    animation: goround 25s infinite linear;
+}
+.top_animate{
+    -webkit-animation: roundRobin12 25s infinite linear; /* Safari 4+ */
+    -moz-animation:    roundRobin12 25s infinite linear; /* Fx 5+ */
+    -o-animation:      roundRobin12 25s infinite linear; /* Opera 12+ */
+    animation: roundRobin12 25s infinite linear;
+}
+.right_animate{
+    -webkit-animation: roundRobin23 25s infinite linear; /* Safari 4+ */
+    -moz-animation:    roundRobin23 25s infinite linear; /* Fx 5+ */
+    -o-animation:      roundRobin23 25s infinite linear; /* Opera 12+ */
+    animation: roundRobin23 25s infinite linear;
+}
+.bottom_animate{
+    -webkit-animation: roundRobin34 25s infinite linear; /* Safari 4+ */
+    -moz-animation:    roundRobin34 25s infinite linear; /* Fx 5+ */
+    -o-animation:      roundRobin34 25s infinite linear; /* Opera 12+ */
+    animation: roundRobin34 25s infinite linear;
+}
+.left_animate{
+    -webkit-animation: roundRobin41 25s infinite linear; /* Safari 4+ */
+    -moz-animation:    roundRobin41 25s infinite linear; /* Fx 5+ */
+    -o-animation:      roundRobin41 25s infinite linear; /* Opera 12+ */
+    animation: roundRobin41 25s infinite linear;
+}
+
+
+
+@keyframes roundRobin12 {
+     0%,100%{top: 21px;left: 124px;}
+     25%{top: 102px;left: 205px;}
+     50%{top: 185px;left: 124px;}
+     75%{top: 107px;left: 47px;}
+}
+@keyframes roundRobin23 {
+    0%,100%{top: 102px;left: 205px;}
+    25%{top: 185px;left: 124px;}
+    50%{top: 107px;left: 47px;}
+    75%{top: 21px;left: 124px;}
+}
+
+@keyframes roundRobin34 {
+    0%,100%{top: 185px;left: 124px;}
+    25%{top: 107px;left: 47px;}
+    50%{top: 21px;left: 124px;}
+    75%{top: 102px;left: 205px;}
+}
+
+
+@keyframes roundRobin41 {
+    0%,100%{top: 107px;left: 47px;}
+    25%{top: 21px;left: 124px;}
+    50%{top: 102px;left: 205px;}
+    75%{top: 185px;left: 124px;}
+}
+
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.offer_box{
+    z-index: 9999;
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 1.75s;
+    animation-fill-mode: both
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        transform: scale(0);
+    }
+}
+
+.button{
+    display: none;
+    position: absolute;
+    top: 110px;
+    left: 55px;
+    z-index: 9999;
+    animation: shake 2s linear infinite;
+}
+
+
+@keyframes shake {
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.8);
+    }
+}
+

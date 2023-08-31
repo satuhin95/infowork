@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta name="ad.size" content="width=300,height=250">
+       <title>IFAD Ad by Info Station</title>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+       <style>
+            *{
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+            }
+
+            .info_wrapper{
+               width: 300px;
+               height: 250px;
+               position: relative;
+               overflow: hidden;
+               cursor: pointer;
+            }
+            .info_slide_one{
+                width: 300px;
+                height: 250px;
+                background-image: url("images/slide1/bg.jpg");
+                background-size: cover;
+                position: absolute;
+
+            }
+            /* slide 1  */
+            .info_element_1 {
+                width: 189px;
+                height: 135px;
+                position: absolute;
+                top: 16px;
+                left: 300px;
+            }
+            .info_element_2 {
+                width: 199px;
+                height: 81px;
+                position: absolute;
+                top: 156px;
+                right: 97px;
+                display: none;
+            }
+            .info_element_3 {
+                width: 108px;
+                height: 31px;
+                position: absolute;
+                top: 12px;
+                left: 10px;
+                opacity: 0;
+            }
+            .info_element_4 {
+                width: 118px;
+                height: 83px;
+                position: absolute;
+                top: 95px;
+                left: 10px;
+                opacity: 0;
+            }
+            .info_element_5 {
+                width: 96px;
+                height: 14px;
+                position: absolute;
+                top: 20px;
+                right: 19px;
+                opacity: 0;
+            }
+            .info_element_5_0 {
+                width: 62px;
+                height: 24px;
+                position: absolute;
+                bottom: 3px;
+                right: 6px;
+                display: none;
+            }
+            /* slide 2  */
+            .info_element_6 {
+                width: 189px;
+                height: 135px;
+                position: absolute;
+                top: 10px;
+                left: 300px;
+                display: none;
+            }
+            .info_element_7 {
+                width: 199px;
+                height: 81px;
+                position: absolute;
+                top: 165px;
+                right: 98px;
+                z-index: 9;
+                display: none;
+            }
+            .info_element_8 {
+                width: 155px;
+                height: 59px;
+                position: absolute;
+                top: 82px;
+                left: -134px;
+                opacity: 0;
+            }
+            .info_element_9 {
+                width: 134px;
+                height: 14px;
+                position: absolute;
+                top: 20px;
+                left: 67px;
+                opacity: 0;
+            }
+
+            .info_slide_two{
+                width: 300px;
+                height: 250px;
+                top: 0;
+                left: 0;
+                position: absolute;
+                background: url("images/slide2/bg2.jpg") no-repeat;
+            }
+       
+            .hidden{
+                display: none;
+            }
+     
+       </style>
+    </head>
+
+    <body>
+           <!-- <a href="{CLICK_MACRO}" target="_blank"> -->
+               <div class="info_wrapper">
+                    <div class="info_slide_one ">
+                        <img src="images/slide1/pickup.png" alt="" class="info_element_1 ">
+                        <img src="images/slide1/light.png" alt="" class="info_element_2 ">
+                        <img src="images/slide1/text1.png" alt="" class="info_element_3">
+                        <img src="images/slide1/text2.png" alt="" class="info_element_4">
+                        <img src="images/slide1/text3.png" alt="" class="info_element_5">
+                        <img src="images/slide1/number.png" alt="" class="info_element_5_0">
+                    </div>
+                    <div class="info_slide_two hidden">
+                        <img src="images/slide1/pickup.png" alt="" class="info_element_6">
+                        <img src="images/slide1/light.png" alt="" class="info_element_7 ">
+                        <img src="images/slide2/num.png" alt="" class="info_element_8">
+                        <img src="images/slide2/text4.png" alt="" class="info_element_9">
+                    </div>
+
+               </div>
+           <!-- </a> -->
+
+       <script>
+            let info_wrapper = document.querySelector('.info_wrapper');
+            let info_slide_one = document.querySelector('.info_slide_one');
+            let info_slide_two = document.querySelector('.info_slide_two');
+            let info_element_1 = document.querySelector('.info_element_1');
+            let info_element_2 = document.querySelector('.info_element_2');
+            let info_element_3 = document.querySelector('.info_element_3');
+            let info_element_4 = document.querySelector('.info_element_4');
+            let info_element_5 = document.querySelector('.info_element_5');
+            let info_element_5_0 = document.querySelector('.info_element_5_0');
+            let info_element_6 = document.querySelector('.info_element_6');
+            let info_element_7 = document.querySelector('.info_element_7');
+            let info_element_8 = document.querySelector('.info_element_8');
+            let info_element_9 = document.querySelector('.info_element_9');
+
+            setTimeout(slide, false)
+                function slide(){
+                    info_slide_two.classList.add('hidden')
+                    info_slide_one.classList.remove('hidden')
+                setTimeout(function(){
+                    TweenMax.fromTo(info_element_1, 1, {scale:.5,y:16,x:300}, {scale:1, y:96,  x: -189});
+                    TweenMax.fromTo(info_element_2, .5, {display: 'none'}, { display: 'block',},">=.5");
+                    TweenMax.fromTo(info_element_3, .5, {opacity:0,y:12}, { opacity:1,y:48},">=.5");
+                    TweenMax.fromTo(info_element_4, .5, {opacity:0,y:95}, { opacity:1,y:1},"<=.1");
+                    TweenMax.fromTo(info_element_5, .5, {opacity:0,y:20}, { opacity:1,y:62},">=.1");
+                    TweenMax.fromTo(info_element_5_0, .5, {display: 'none'}, { display: 'block',},">=.5");
+            
+                    setTimeout(() => {
+                        info_slide_one.classList.add('hidden')
+                        info_slide_two.classList.remove('hidden')
+                        setTimeout(function(){
+                            TweenMax.fromTo(info_element_6, 1, {scale:.5,y:10,x:300,display: 'none'}, {scale:1, y:114,  x: -189,display: 'block'});
+                            TweenMax.fromTo(info_element_7, .5, {display: 'none'}, { display: 'block',},">=.5");
+                            TweenMax.fromTo(info_element_8, .5, {opacity:0,x:-134}, { opacity:1,x:150},">=.5");
+                            TweenMax.fromTo(info_element_9, .5, {opacity:0,y:20}, { opacity:1,y:52},">=.1");
+                            //   setTimeout(slide,5000)
+                        },false)
+                    }, 5000);
+                
+                },100)
+       
+           }
+     
+          
+       </script>
+    </body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="ad.size" content="width=300,height=250">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Countdown Banner by purplePatch</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box;background-size: 100% 100%;background-repeat: no-repeat;user-select: none;}
+        .pp_wrapper{width: 300px;height: 250px;
+            background-image: url("//ms.purplepatch.online/countdown/foodpanda/june-21/khusir-deal-300250/bg.jpg?v=1.1");
+            background-size: 300px 250px;position: relative;cursor: grab;overflow: hidden;}
+        .absolute{position: absolute;}
+        .hidden{display: none;}
+        .patch_box{height: 250px;width: 300px;top: 0;left: 0;transition: all 1s ease-in-out;}
+        .patch_countdown {height: 32px;width: 158px;top: 195px;left: 12px;font-size: 21px;color: #fff;font-weight: 600;text-align: center;line-height: 32px;z-index: 1;letter-spacing: 4px;}
+        .patch_countdown .day{left: 2px;right: 0;top: 0;bottom: 0;width: 35px;height: 32px;}
+        .patch_countdown .hour{left: 44px;right: 0;top: 0;bottom: 0;width: 32px;height: 32px;}
+        .patch_countdown .minute{left: 86px;right: 0;top: 0;bottom: 0;width: 32px;height: 32px;}
+        .patch_countdown .second{left: 127px;right: 0;top: 0;bottom: 0;width: 31px;height: 36px;}
+        .patch_title{width: 300px;height: 250px;bottom: 0;left: 0;}
+
+        .slide{left: 0;top: 0;right: 0;bottom: 0;width: 300px;height: 144px;}
+
+        .slide_1 .elements_1{width: 300px;height: 144px;left: 0;top: 0;}
+        .slide_2 .elements_1{width: 300px;height: 125px;left: 0;top: 0;}
+
+        @keyframes pulse {
+            0% {transform: scaleX(1)}
+            50% {transform: scale3d(.95, .95, .95)}
+            to {transform: scaleX(1)}
+        }
+        @keyframes toLeft {
+          0%{transform: translateX(100px);}
+          25% {transform: translateX(0px);}
+          75% {transform: translateX(0px);}
+          100% {transform: translateX(-300px);}
+        }
+        @keyframes bottle {
+            0% {transform: rotateZ(0deg)}
+            10% {transform: rotateZ(-5deg)}
+            20% {transform: rotateZ(5deg)}
+            30% {transform: rotateZ(-5deg)}
+            40% {transform: rotateZ(5deg)}
+            50% {transform: rotateZ(-5deg)}
+            60% {transform: rotateZ(0deg)}
+           100% {transform: rotateZ(0deg) }
+        }
+
+        .pulse {animation-name: pulse;animation-duration: 2s;animation-iteration-count: infinite;}
+        .toLeft {animation-name: toLeft;animation-duration: 4s;animation-fill-mode: both;}
+
+    </style>
+</head>
+<body>
+    <a href="{CLICK_MACRO}" target="_blank">
+        <div class="pp_wrapper">
+            <div class="patch_box absolute">
+                <div class="patch_countdown absolute"></div>
+                <div class="patch_title absolute"></div>
+            </div>
+            <div class="slide_1 slide absolute hidden">
+                <div class="elements_1 absolute"><img src="//ms.purplepatch.online/countdown/foodpanda/june-21/khusir-deal-300250/slide-1.png?v=1.1" alt=""></div>
+            </div>
+            <div class="slide_2 slide absolute hidden">
+                <div class="elements_1 absolute"><img src="//ms.purplepatch.online/countdown/foodpanda/june-21/khusir-deal-300250/slide-2.png?v=1.1" alt=""></div>
+            </div>
+        </div>
+    </a>
+
+    <!-- <script type="text/javascript" src="animation.js"></script> -->
+    <script type="text/javascript">
+
+        let pp_wrapper  = document.querySelector('pp_wrapper');
+        let slide_1     = document.querySelector('.slide_1');
+        let slide_2     = document.querySelector('.slide_2');
+        let slide_3     = document.querySelector('.slide_3');
+
+        setTimeout( slide_1_show, false);
+        function slide_1_show( ) {
+            slide_2.className = slide_2.className.replace("toLeft","hidden");
+            slide_1.className = slide_1.className.replace("hidden","toLeft");
+            setTimeout(function() {
+                slide_1.className = slide_1.className.replace("toLeft","hidden");
+                slide_2.className = slide_2.className.replace("hidden","toLeft");
+                setTimeout(function() {
+                    slide_2.className = slide_2.className.replace("toLeft","hidden");
+                        setTimeout(slide_1_show, false);
+                }, 3000);
+            }, 3000);
+        }
+
+        var displayCounter = document.querySelector('.patch_countdown');
+        var displayTitle = document.querySelector('.patch_title');
+
+        var media_url = '//ms.purplepatch.online/countdown/foodpanda/june-21/khusir-deal-300250/';
+        var sports = {
+            "belgium-vs-russia" : { "date" : new Date("June 13,2021 01:00:00").getTime(), "flag" : media_url + 'assets/belgiumVsRussia.png' },
+            "england-vs-croatia" : { "date" : new Date("June 13,2022 19:00:00").getTime(), "flag" : media_url + 'EnglandVsCroatia.png' },
+            "austria-vs-north-macedonia" : { "date" : new Date("June 13,2021 22:00:00").getTime(), "flag" : media_url + 'AustriaVsNMacedonia.png' },
+            "netherlands-vs-ukraine" : { "date" : new Date("June 14,2021 01:00:00").getTime(), "flag" : media_url + 'NetherlandsVsUkraine.png' },
+            "scotland-vs-czechRepublic" : { "date" : new Date("June 14,2021 19:00:00").getTime(), "flag" : media_url + 'ScotlandVsCzechRepublic.png' },
+            "poland-vs-slovakia" : { "date" : new Date("June 14,2021 22:00:00").getTime(), "flag" : media_url + 'PolandVsSlovakia.png' },
+            "spain-vs-sweden" : { "date" : new Date("June 15,2021 01:00:00").getTime(), "flag" : media_url + 'assets/spainVsSweden.png' },
+            "hungary-vs-portugal" : { "date" : new Date("June 15,2021 22:00:00").getTime(), "flag" : media_url + 'assets/hungaryVsPortugal.png' },
+            "france-vs-germany" : { "date" : new Date("June 16,2021 01:00:00").getTime(), "flag" : media_url + 'assets/franceVsGermany.png' },
+            "finland-vs-russia" : { "date" : new Date("June 16,2021 19:00:00").getTime(), "flag" : media_url + 'assets/finlandVsRussia.png' },
+            "turkey-vs-wales" : { "date" : new Date("June 16,2021 22:00:00").getTime(), "flag" : media_url + 'assets/turkeyVsWales.png' },
+            "italy-vs-switzerland" : { "date" : new Date("June 17,2021 01:00:00").getTime(), "flag" : media_url + 'assets/ItalyVsSwitzerland.png' },
+            "ukraine-vs-northMacedonia" : { "date" : new Date("June 17,2021 19:00:00").getTime(), "flag" : media_url + 'assets/ukraineVsNorthMacedonia.png' },
+            "denmark-vs-belgium" : { "date" : new Date("June 17,2021 22:00:00").getTime(), "flag" : media_url + 'assets/denmarkVsBelgium.png' },
+        };
+
+        countdown_runner( sports['england-vs-croatia']);
+
+        function countdown_runner ( info ) {
+            displayTitle.innerHTML = `<img src="${info['flag']}" alt="">`;;
+            countdown ( info['date'] );
+        }
+
+        function countdown ( countDate ) 
+        {
+            var gap = countDate - new Date().getTime();
+
+            if( gap > 0) {
+                var second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+
+                var textDay = Math.floor(gap/day);
+                var textHour = Math.floor((gap%day) / hour);
+                var textMinute = Math.floor((gap%hour) / minute);
+                var textSecond = Math.floor((gap%minute) / second);
+                
+                var _day = textDay < 10? "0"+textDay : textDay;
+                var _hour = textHour < 10? "0"+textHour : textHour;
+                var _minute = textMinute < 10? "0"+textMinute : textMinute;
+                var _second = textSecond < 10? "0"+textSecond : textSecond;
+
+                displayCounter.innerHTML = `<span class="day absolute">${_day}</span><span class="hour absolute">${_hour}</span><span class="minute absolute">${_minute}</span><span class="second absolute">${_second}</span>`;
+
+            }
+
+            setTimeout( function(){countdown(countDate);}, 1000 );
+
+        }
+
+       
+       
+
+    </script>
+</body>
+</html>

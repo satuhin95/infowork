@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+body, html{
+    height: 250px;
+    width: 300px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.dettol_logo{
+    background-image: url("img/Logo.png");
+    height: 49px;
+    width: 39px;
+    top: 190px;
+    left: 15px;
+}
+
+.dettol_box{
+    width: 300px;
+    height: 250px;
+    top: 0px;
+    left: 0px;
+    background-image: url("img/bg.jpg");
+}
+
+.slide_1{
+    background-image: url("img/question.png");
+    height: 250px;
+    width: 300px;
+    top: 0px;
+    left: 0px;
+}
+
+.dettol_result,.dettol_end{
+    height: 250px;
+    width: 300px;
+    left: 300px;
+    top: 0px;
+    background-image: url("img/score0.jpg");
+    transition: all .2s cubic-bezier(0,1.01,.72,.99);
+}
+
+.dettol_end{
+    z-index: 1000001;
+    background-image: url("img/last_Slide.jpg");
+}
+
+.dettol_answer{
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    height: 250px;
+    width: 300px;
+    z-index: 3;
+}
+
+[class^='ans_']{
+    top: 80px;
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+    animation: scaleIn 1.5s infinite ease;
+    transition: all .2s cubic-bezier(0,1.01,.72,.99);
+}
+
+
+@keyframes scaleIn {
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(.95);
+    }
+}
+
+.ans_a_1{
+    background-image: url("img/Ans1a.png");
+    left: 35px;
+}
+
+.ans_a_2{
+    background-image: url("img/Ans1b.png");
+    left: 170px;
+}
+
+.ans_b_1{
+    background-image: url("img/Ans2a.png");
+    left: 335px;
+}
+
+.ans_b_2{
+    background-image: url("img/Ans2b.png");
+    left: 470px;
+}
+
+.ans_c_1{
+    background-image: url("img/Ans3a.png");
+    left: 335px;
+}
+
+.ans_c_2{
+    background-image: url("img/Ans3b.png");
+    left: 470px;
+}
+
+.ans_d_1{
+    background-image: url("img/Ans4a.png");
+    left: 335px;
+}
+
+.ans_d_2{
+    background-image: url("img/Ans4b.png");
+    left: 470px;
+}
+
+
+.ans_e_1{
+    background-image: url("img/Ans5a.png");
+    left: 335px;
+}
+
+.ans_e_2{
+    background-image: url("img/Ans5b.png");
+    left: 470px;
+}

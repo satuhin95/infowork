@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.hidden{
+    display: none;
+}
+.info_wrapper{
+    width: 300px;
+    height: 250px;
+    background:url(./img/BG.png) no-repeat;
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+.info_element_1 {
+    width: 112px;
+    height: 183px;
+    position: absolute;
+    top: 24px;
+    right: 100px;
+}
+.info_element_1_1 {
+    width:282px;
+    height: 52px;
+    position: absolute;
+    top: 161px;
+    left: 0;
+    mix-blend-mode: multiply;
+}
+.info_element_2 {
+    width: 72px;
+    height: 63px;
+    position: absolute;
+    top: 57px;
+    right: 17px;
+    transform-origin: 50% 50%;
+}
+.info_element_3 {
+    width: 65px;
+    height: 80px;
+    position: absolute;
+    top: 11px;
+    left: 11px;
+}
+.info_element_4 {
+    width: 76px;
+    height: 16px;
+    position: absolute;
+    bottom: 9px;
+    right: 22px;
+}
+.showZoomInTop {
+    animation-name: showZoomInTop;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes showZoomInTop {
+0% {
+ transform:  translateY(-200%)
+}
+100% {
+transform: translateY(-0%)
+}
+}
+
+.showZoomOutTop {
+    animation-name: showZoomOutTop;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes showZoomOutTop {
+0% {
+ transform:  translateY(0%)
+}
+100% {
+transform: translateY(-200%)
+}
+}
+.showZoomIn{
+    animation-name: showZoomIn;
+    animation-duration: .8s;
+    animation-timing-function: ease-in;
+    }
+    @keyframes showZoomIn{
+    0% {
+    transform: scale(.5, .5);
+    opacity: 0;
+    }
+    100% {
+    transform: scale(1, 1);
+    opacity: 1;
+    }
+    }
+
+    .pulse{
+        animation-name: pulse;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+    }
+    
+    @keyframes pulse {
+       0% { transform: scale(1); }
+       50% { transform: scale(.95); }
+       100% { transform: scale(1); } 
+    }
+
+    .bounceInLeft{
+        animation-name: bounceInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+    }
+    @keyframes bounceInLeft {
+       0% {
+          opacity: 0;
+          transform: translateX(-1000px);
+       }
+       60% {
+          opacity: 1;
+          transform: translateX(30px);
+       }
+       80% {
+          transform: translateX(-10px);
+       }
+       100% {
+          transform: translateX(0);
+       }
+    } 
+    .bounceInRight{
+        animation-name: bounceInRight;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+    }
+    @keyframes bounceInRight {
+       0% {
+          opacity: 0;
+          transform: translateX(1000px);
+       }
+       60% {
+          opacity: 1;
+          transform: translateX(-30px);
+       }
+       80% {
+          transform: translateX(10px);
+       }
+       100% {
+          transform: translateX(0);
+       }
+    }
+    .spin {
+        animation-name: spin;
+        animation-duration: 0.9s;
+        animation-timing-function: linear;
+    }
+    @keyframes spin {
+        0% {
+            opacity: 0;
+            transform: rotate(0deg);
+        }
+ 
+        100% {
+            opacity: 1;
+            transform: rotate(360deg);
+        }
+    }

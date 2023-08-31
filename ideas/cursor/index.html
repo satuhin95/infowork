@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Mouse cursor Image replace animation by Info Station Limited </title>
+	<style>
+#istation_cursor {
+  display: block;
+  position: absolute;
+  margin-top: -40px;
+  margin-left: -40px;
+  width: 80px;
+  height: 80px;
+  z-index: -1;
+  text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+#istation_circle {
+  display: block;
+  position: relative;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: url('follow/upay.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+	</style>
+</head>
+<body>
+
+	<div id="istation_cursor">
+	  <div id="istation_circle"></div>
+	</div> 
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	
+	<script>
+		$('body').mouseover(function(){
+		  $(this).css({cursor: 'none'});
+		});
+
+		$(document).on('mousemove', function(e){
+		  $('#istation_cursor').css({
+		    left:  e.pageX,
+		    top:   e.pageY
+		  });
+		});
+	</script>
+</body>
+</html>

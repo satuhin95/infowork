@@ -1,0 +1,160 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+body, html{
+    height: 250px;
+    width: 300px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.absolute{
+    position: absolute;
+}
+.shw{
+    display: block;
+}
+.hid{
+    display: none;
+}
+.patch_box{
+    height: 250px;
+    width: 300px;
+    background-image: url("img/bg.jpg");
+    top: 0px;
+    left: 0px;
+}
+
+.patch_des{
+    height: 19px;
+    width: 204px;
+    background-image: url("img/text2.png");
+    left: 48px;
+    top: 53px;
+    transition: all 1.5s linear;
+}
+.patch_slider{
+    top: 113px;
+    left: 113px;
+}
+
+.patch_board,.patch_board_left,.patch_board_right{
+    height: 130px;
+    width: 189px;
+    top: 75px;
+    left: 55px;
+    background-image: url("img/bioscope.png");
+    transition: all 1.5s ease-out;
+    z-index: 3;
+}
+
+.patch_board.animate {
+    height: 250px;
+    width: 300px;
+    background-image: url("img/lens.png");
+    top: 0px;
+    left: 0px;
+}
+.patch_board_right{
+    z-index: 2;
+	background-image: url("img/bioscope_covered.png");
+    left: -63px;
+    transform: perspective(800px) rotateY(-75deg) scale(.9);
+}
+
+.patch_board_left{
+    z-index: 1;
+	background-image: url("img/bioscope_covered.png");
+    left: 174px;
+    transform: perspective(800px) rotateY(75deg) scale(.9);
+}
+
+.patch_boisak{
+    height: 43px;
+    width: 106px;
+    background-image: url("img/boishakh_text.png");
+    top: 5px;
+    right: 15px;
+}
+
+.patch_offer{
+    height: 22px;
+    width: 180px;
+    background-image: url("img/button.png");
+    left: 60px;
+    top: 213px;
+    animation: btnAnim .3s infinite linear;
+}
+
+.patch_slider_2{
+    transition: all .5s linear;
+    /*z-index: 100;*/
+    left: 30px;
+}
+
+[class^='offer_']{
+    transform: scale(.9);
+}
+
+.patch_cta{
+    height: 29px;
+    width: 116px;
+    background-image: url(img/button_cta.png);
+    left: 92px;
+    top: 200px;
+    z-index: 100;
+    display: none;
+    animation: btnAnim .3s infinite linear;
+}
+
+@keyframes btnAnim {
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(.95);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

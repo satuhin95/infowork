@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Apex animation by Info Station </title>
+	<style>
+		*{margin: 0;padding: 0;user-select: none;}
+		.istation_wrapper{
+			width: 300px;
+			height: 250px;
+			background-image: url('bg.jpg');
+			background-image: url('1.jpg');
+			position: relative;
+		}
+		.istation_wrapper .slide_1 *{
+			cursor: pointer;
+			transition: width;
+		}
+		.istation_wrapper .slide_1 img:hover{
+			width:175px;
+		}
+		.istation_wrapper .slide_1 .list_1{
+			width: 170px;
+			height: 63px;
+			left: 0;
+			top: 0;
+		}
+		.istation_wrapper .slide_1 .list_2{
+			width: 170px;
+			height: 63px;
+			left: 0;
+			top: 63px;
+		}
+		.istation_wrapper .slide_1 .list_3{
+			width: 170px;
+			height: 63px;
+			left: 0;
+			bottom: 63px;
+		}
+		.istation_wrapper .slide_1 .list_4{
+			width: 170px;
+			height: 63px;
+			left: 0;
+			bottom: 0;
+		}
+		.absolute{position: absolute;}
+		.hidden {display: none;}
+		.istation_wrapper .pointer{
+			width: 39px;
+			height: 38px;
+			left: 157px;
+			top: 110px;
+			cursor: pointer;
+		}
+		.istation_wrapper .buynowbutton{
+			width: 111px;
+			height: 27px;
+			right: 34px;
+    		bottom: 13px;
+		}
+		@keyframes hideZoomOut {
+		    100% {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3)
+		    }
+		}
+
+		@keyframes showZoomIn {
+		    from {
+		        opacity: 0;
+		        transform: scale3d(.3, .3, .3)
+		    }
+		    to {
+		        opacity: 1;
+		        transform: scale3d(1, 1, 1)
+		    }
+		}
+
+		.hideZoomOut {
+		    animation-name: hideZoomOut;
+		    animation-duration: .5s;
+		    animation-fill-mode: both
+		}
+
+		.showZoomIn {
+		    animation-name: showZoomIn;
+		    animation-duration: .5s;
+		    animation-fill-mode: both
+		}
+
+		@keyframes pulse {
+		    0% {transform: scaleX(1)}
+		    50% {transform: scale3d(.95, .95, .95)}
+		    to {transform: scaleX(1)}
+		}
+		.pulse {
+		    animation-name: pulse;
+		    animation-duration: 1s;
+		    animation-iteration-count: infinite
+		}
+		.back{
+			width: 100px;
+			height:20px;
+			left: 0px;
+			bottom: 0px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="istation_wrapper">
+		<div class="slide_1">
+			<img class="list_1 absolute" src="list-1.jpg" alt="list 1">
+			<img class="list_2 absolute" src="list-2.jpg" alt="list 2">
+			<img class="list_3 absolute" src="list-3.jpg" alt="list 3">
+			<img class="list_4 absolute" src="list-4.jpg" alt="list 4">
+		</div>
+		<img src="pointer.png" alt="pointer" class="pointer absolute">
+		<img class="list_1_feature feature-slide absolute hidden" src="slide-1.jpg" alt="slide result">
+		<img class="list_2_feature feature-slide absolute hidden" src="slide-2.jpg" alt="slide result">
+		<img class="list_3_feature feature-slide absolute hidden" src="slide-3.jpg" alt="slide result">
+		<img class="list_4_feature feature-slide absolute hidden" src="slide-4.jpg" alt="slide result">
+		<img class="buynowbutton absolute hidden" src="buy.png" alt="slide result">
+
+		<div class="back absolute hidden"></div>
+
+	</div>
+
+	<script>
+		let bindEvent = (eventNames, selector, handler) => {
+	      eventNames.split(' ').forEach((eventName) => {
+	        document.addEventListener(eventName, function (event) {
+	          if (event.target.matches(selector + ', ' + selector + ' *')) {
+	            handler.apply(event.target.closest(selector), arguments)
+	          }
+	        }, false);
+	      })
+	    };
+		let istation_wrapper = document.querySelector('.istation_wrapper');
+		let pointer = document.querySelector('.pointer');
+		let list_1_feature = document.querySelector('.list_1_feature');
+		let list_2_feature = document.querySelector('.list_2_feature');
+		let list_3_feature = document.querySelector('.list_3_feature');
+		let list_4_feature = document.querySelector('.list_4_feature');
+		let feature_slides = Array.from(document.querySelectorAll('.feature-slide'));
+
+		function featureslides ( ) {
+			for(slide in feature_slides ) {
+				console.log(feature_slides[slide]);
+				remove_class(feature_slides[slide],'showZoomIn');
+				add_class(feature_slides[slide],'hideZoomOut');
+			}
+		}
+
+		bindEvent('click','.istation_wrapper .list_1',function(e){
+	        e.preventDefault();
+	        add_class(pointer,'hidden');
+	        add_class(this,'hideZoomOut');
+	        remove_class(list_1_feature,'hidden');
+	        remove_class(list_1_feature,'hideZoomOut');
+	        add_class(list_1_feature,'showZoomIn');
+	       	setTimeout(buynowbutton,100);
+
+	    });
+
+		bindEvent('click','.istation_wrapper .list_2',function(e){
+	        e.preventDefault();
+	        add_class(pointer,'hidden');
+	        add_class(this,'hideZoomOut');
+	        remove_class(list_2_feature,'hidden');
+	        remove_class(list_2_feature,'hideZoomOut');
+	        add_class(list_2_feature,'showZoomIn');
+	       	setTimeout(buynowbutton,100);
+	    });
+
+		bindEvent('click','.istation_wrapper .list_3',function(e){
+	        e.preventDefault();
+	        add_class(pointer,'hidden');
+	        add_class(this,'hideZoomOut');
+	        remove_class(list_3_feature,'hidden');
+	        remove_class(list_3_feature,'hideZoomOut');
+	        add_class(list_3_feature,'showZoomIn');
+	       	setTimeout(buynowbutton,100);
+	    });
+
+		bindEvent('click','.istation_wrapper .list_4',function(e){
+	        e.preventDefault();
+	        add_class(pointer,'hidden');
+	        add_class(this,'hideZoomOut');
+	        remove_class(list_4_feature,'hidden');
+	        remove_class(list_4_feature,'hideZoomOut');
+	        add_class(list_4_feature,'showZoomIn');
+	       	setTimeout(buynowbutton,100);
+	    });
+
+		bindEvent('click','.istation_wrapper .back',function(e){
+	        e.preventDefault();
+	        console.log('backed clicked');
+	        featureslides();
+	    });
+
+	    function buynowbutton( ) {
+	    	remove_class(document.querySelector(".buynowbutton"),'hidden');
+	    	remove_class(document.querySelector(".istation_wrapper .back"),'hidden');
+	    }
+
+		/*add and remove class function*/
+	    function remove_class(element, classname) {
+	        element.className = element.className.replace(classname, '');
+	    }
+
+	    function add_class(element, classname) {
+	        element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+	    }
+
+	</script>
+	
+</body>
+</html>

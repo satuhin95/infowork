@@ -1,0 +1,167 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.slide_1,
+.slide_1 img,
+body,
+html {
+    width: 300px;
+    height: 250px;
+}
+#action,
+#video-container:hover #action {
+    opacity: 1;
+}
+
+.slide_1 {
+    overflow: hidden;
+}
+#video-container,
+.slide_2 {
+    width: 100%;
+    height: 100%;
+}
+#video-container {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #f70008;
+    width: 300px;
+    height: 250px;
+}
+#action,
+.readMore,
+.readMore .details,
+.slide_2,
+iframe#ytplayer,
+img.disk {
+    position: absolute;
+}
+#action {
+    display: block;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    right: 0;
+    height: 32px;
+    width: 32px;
+}
+.readMore {
+    width: 50%;
+    height: 46px;
+    bottom: -13px;
+    left: 5px;
+    z-index: 9999;
+}
+.readMore .details {
+    color: #fff;
+    font-size: 12px;
+    top: 0;
+    left: 0;
+    font-weight: 700;
+}
+button.audio_control {
+    position: absolute;
+    right: 7px;
+    bottom: 5px;
+    background: #f70008;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    border: 2px solid #fff;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+iframe#ytplayer {
+    top: 55px;
+    left: 10px;
+}
+img.disk {
+    width: 90px;
+    right: 30px;
+    top: -3px;
+}
+.music-disk {
+    position: relative;
+    width: 300px;
+    height: 80px;
+}
+#turntable,
+#turntable-arm,
+#turntable-disk,
+img.small_circle,
+img.stick {
+    position: absolute;
+}
+img.small_circle {
+    width: 22px;
+    right: 14px;
+    top: 17px;
+}
+img.stick {
+    right: 22px;
+    width: 16px;
+    transform: rotate(10deg);
+}
+.fadeIn {
+    animation: 1.5s fadeIn;
+}
+.d_none {
+    display: none;
+}
+.logo {
+    width: 100px;
+}
+#turntable {
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 64px;
+    background: url(turntable_bg.png) 0 0 / contain no-repeat;
+    z-index: 9999;
+}
+#turntable-disk {
+    top: 4.4px;
+    right: 23.7px;
+    width: 51.96px;
+    height: 51.96px;
+    background: url(turntable_disk.png) 0 0 / contain no-repeat;
+}
+#turntable-arm {
+    top: 3px;
+    right: 12.3px;
+    width: 11.6px;
+    height: 55.76px;
+    background: url(turntable_arm.png) 0 0 / contain no-repeat;
+    transform-origin: 6.6px 12.8px;
+    transition: transform 2s;
+}
+#turntable.started #turntable-disk {
+    animation: 4s linear infinite spin-disk;
+}
+#turntable.started #turntable-arm {
+    transform: rotate(25deg);
+}
+@keyframes spin-disk {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.slide_2_bg {
+    width: 100%;
+    transform: rotate(-19deg);
+}

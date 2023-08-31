@@ -1,0 +1,118 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.absolute{
+    position: absolute;
+}
+
+body,html{
+    height: 250px;
+    width: 300px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.delta_box{
+    height: 100%;
+    width: 100%;
+    background-image: url("bg.jpg?v=1.3");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    top: 0px;
+    left: 0px;
+}
+
+.slide_1{
+    height: 100%;
+    width: 100%;
+    background-image: url("slide.png?v=1.3");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    top: 0px;
+    left: 0px;
+    animation: fadeIn 2s infinite ease;
+    z-index: 11;
+}
+
+.slide_2{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    top: 0px;
+    left: 0px;
+    z-index: 12;
+}
+
+@keyframes fadeIn {
+    from{ opacity: 0; }
+    /*30% {opacity: 0.5; }*/
+    to{ opacity: 1; }
+}
+
+.delta_calc,.delta_calc2{
+    height: 105px;
+    width: 165px;
+    /*border: 1px solid black;*/
+    top: 85px;
+    left: 120px;
+    padding: 5px;
+}
+
+.delta_calc2{
+    width: 105px;
+    left: 190px;
+    overflow: hidden;
+    /*border: 1px solid black;*/
+    background-color: #f7d6b0;
+}
+
+.delta_label{
+    font-size: 13px;
+    line-height: 24px;
+    width: 75px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.insight{
+    margin-bottom: 4px;
+}
+
+select{
+    width: 95px;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+}
+
+.delta_year{
+    width: 65px;
+}
+
+input{
+    width: 95px;
+    border-radius: 7px;
+    outline: 0;
+    border: 0;
+}
+
+.delta_earn{
+    padding-left: 3px;
+}
+
+.landing{
+    top: 208px;
+    left: 144px;
+    font-size: 14px;
+    color: #fff;
+    width: 335px;
+    height: 14px;
+    opacity: 0;
+    text-decoration: underline;
+}

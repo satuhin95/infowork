@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="ad.size" content="width=300,height=250">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Countdown Banner by purplePatch</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;background-size:100% 100%;background-repeat:no-repeat;user-select:none}
+        @font-face {
+          font-family: "fugazOne";
+          src: url("//ms.purplepatch.online/ramadan/banglalink/najat/fonts/fugazOne-Regular.eot?71205724");
+          src: url("//ms.purplepatch.online/ramadan/banglalink/najat/fonts/fugazOne-Regular.eot?71205724#iefix") format("embedded-opentype"),
+            url("//ms.purplepatch.online/ramadan/banglalink/najat/fonts/fugazOne-Regular.otf?71205724") format("opentype"),
+            url("//ms.purplepatch.online/ramadan/banglalink/najat/fonts/fugazOne-Regular.svg?71205724") format("svg"),
+            url("//ms.purplepatch.online/ramadan/banglalink/najat/fonts/fugazOne-Regular.ttf?71205724") format("truetype"),
+            url("//ms.purplepatch.online/ramadan/banglalink/najat/fonts/fugazOne-Regular.woff?71205724") format("woff"),
+            url("//ms.purplepatch.online/ramadan/banglalink/najat/fonts/fugazOne-Regular.woff2?71205724") format("woff2");
+          font-weight: normal;
+          font-style: normal;
+        }
+        .wrapper{width:300px;height:250px;background-image:url(//ms.purplepatch.online/countdown/hero/thriller/300250.jpg);background-size:300px 250px;position:relative;cursor:grab;overflow:hidden}.absolute{position:absolute}.patch_box{transition:all 1s ease-in-out;width:300px;height:250px;left:0;top:0}.patch_countdown{height:40px;width:230px;top:57px;right:0;font-size:24px;line-height:32px;color:#fff;font-weight:500;text-align:center;font-family:fugazOne;margin:0 auto}.patch_countdown .hour{left:30px;right:0;top:0;bottom:0;width:63px;height:30px}.patch_countdown .minute{left:92px;right:0;top:0;bottom:0;width:72px;height:30px}.patch_countdown .second{left:160px;right:0;top:0;bottom:0;width:60px;height:30px}.wrapper .box{left:0;right:0;top:10px;margin:0 auto;width:80px;height:107px}@keyframes pulse{0%{transform:scaleX(1)}50%{transform:scale3d(.95,.95,.95)}to{transform:scaleX(1)}}.pulse{animation-name:pulse;animation-duration:2s;animation-iteration-count:infinite}
+    </style>
+</head>
+<body>
+    <a href="{CLICK_MACRO}" target="_blank">
+        <div class="wrapper">
+            <div class="patch_box absolute">
+                <div class="patch_countdown absolute">
+                </div>
+            </div>
+        </div>
+    </a>
+
+<script type="text/javascript">
+var displayCounter= document.querySelector(".patch_countdown");
+
+
+var date = new Date("2020-12-27T20:30:00.000Z");
+var seconds = date.getTime() / 1000;
+
+setInterval(Countdown,1000);
+function Countdown(){
+    var today = new Date();
+    var curDate = today.getDate();
+    var curTime = today.getHours()*60*60+ today.getMinutes()*60+today.getSeconds();
+
+    var date = new Date("2020-12-27T20:30:00.000Z");
+    var setTime = date.getTime() / 1000;
+    var diffTime = setTime - curTime;
+    displayCounter.innerHTML =printTimer(diffTime);
+}
+
+function printTimer(sec) {
+    hr = Math.floor(sec / 3600) % 24;
+    mm = Math.floor(sec / 60) % 60;
+    ss = sec % 60;
+
+    var x = hr < 10? "0"+hr : hr;
+    var y = mm < 10? "0"+mm : mm;
+    var z = ss < 10? "0"+ss : ss;
+    return `<span class="hour absolute">${x}H :</span><span class="minute absolute">${y}M :</span><span class="second absolute">${z}S</span>`;
+}
+
+function translteNum( num_str ) {
+        var bengali = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+        var changed_nun='';
+        num_str.toString().split('').forEach(l => {
+          if(isNaN(l)){changed_nun +=l;}else{changed_nun += bengali[l];}
+        });
+        return changed_nun;
+}
+    
+</script>
+</body>
+</html>

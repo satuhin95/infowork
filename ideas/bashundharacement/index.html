@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Bashundhara Cement creative idea by Info Station (Pvt) Limited </title>
+	<link rel="shortcut icon" type="image/x-icon" href="//showcase.infostation.digital/shapeshifter/images/favicon.ico"> <!-- favicon -->
+	<style>
+		*{margin:0;padding:0}.istation_wrapper{width:300px;height:250px;background-image:url('//showcase.infostation.digital/ideas/bashundharacement/bg.jpg');position:relative;overflow:hidden}.absolute{position:absolute}.istation_wrapper .slide{left:0;top:0;right:0;bottom:0}.istation_wrapper .slide_1 .asset_1{width:137px;height:124px;left:0;bottom:10px;z-index:1;cursor:e-resize}.istation_wrapper .slide_1 .asset_2{width:58px;height:27px;left:77px;top:84px;animation-delay:.3s}.istation_wrapper .slide_1 .asset_3{width:122px;height:52px;right:36px;top:99px}.istation_wrapper .slide_2 .asset_1{width:300px;height:163px;left:0;bottom:7px}.istation_wrapper .slide_3 .asset_1{width:174px;height:54px;left:12px;top:56px}.istation_wrapper .slide_3 .asset_2{width:93px;height:43px;left:13px;bottom:89px}.istation_wrapper .slide_3 .asset_3{width:190px;height:139px;right:0;bottom:0;z-index:9}.footer{width:300px;height:55px;bottom:0;left:0}.footer img{width:100%}.hidden{display:none}@keyframes pulse{0%{transform:scaleX(1)}50%{transform:scale3d(.95,.95,.95)}to{transform:scaleX(1)}}.pulse{animation-name:pulse;animation-duration:1s;animation-iteration-count:infinite}@keyframes shake{10%,90%{transform:translate3d(-1px,0,0)}20%,80%{transform:translate3d(2px,0,0)}30%,50%,70%{transform:translate3d(-4px,0,0)}40%,60%{transform:translate3d(4px,0,0)}}.shake{animation:shake 3.1s cubic-bezier(.36,.07,.19,.97) infinite;transform:translate3d(0,0,0);backface-visibility:hidden;perspective:1000px}@keyframes hideZoomOut{100%{opacity:0;transform:scale3d(.3,.3,.3)}}@keyframes showZoomIn{0%{transform:scale3d(.3,.3,.3)}100%{opacity:1;transform:scale3d(1,1,1)}}@keyframes showFromBottom{0%{transform:translate3d(0,100px,0)}100%{transform:translate3d(0,0,0)}}@keyframes hideToBottom{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(0,120px,0)}}.hideZoomOut{animation-name:hideZoomOut;animation-duration:.5s;animation-fill-mode:both}.showZoomIn{animation-name:showZoomIn;animation-duration:.5s;animation-fill-mode:both}.showFromBottom{animation-name:showFromBottom;animation-duration:1s;animation-fill-mode:both}.hideToBottom{animation-name:hideToBottom;animation-duration:1s;animation-fill-mode:both}
+	</style>
+</head>
+<body>
+
+	<div class="istation_wrapper">
+		<div class="slide slide_1 absolute">
+			<img class="asset asset_1 absolute pulse" src="//showcase.infostation.digital/ideas/bashundharacement/cement.png" alt="cement">
+			<img class="asset asset_2 absolute shake" src="//showcase.infostation.digital/ideas/bashundharacement/sign.png" alt="icon">
+			<img class="asset asset_3 absolute" src="//showcase.infostation.digital/ideas/bashundharacement/text-1.png" alt="text">
+		</div>
+		<div class="slide slide_2 absolute hidden">
+			<img class="asset asset_1 absolute" src="//showcase.infostation.digital/ideas/bashundharacement/bridge.png" alt="bridge image">
+		</div>
+		<div class="slide slide_3 absolute hidden">
+			<img class="asset asset_1 absolute" src="//showcase.infostation.digital/ideas/bashundharacement/text-3.png" alt="text">
+			<img class="asset asset_2 absolute" src="//showcase.infostation.digital/ideas/bashundharacement/boshundhara.png" alt="logo">
+			<a href="http://www.bashundharacement.com/" target="_blank"><img class="asset asset_3 absolute" src="//showcase.infostation.digital/ideas/bashundharacement/cement-box.png" alt="cement box"></a>
+		</div>
+		<div class="footer absolute">
+			<img src="//showcase.infostation.digital/ideas/bashundharacement/footer.png" alt="footer color">
+		</div>
+	</div>
+
+<script>
+	let bindEvent = (eventNames, selector, handler) => {
+      eventNames.split(' ').forEach((eventName) => {
+        document.addEventListener(eventName, function (event) {
+          if (event.target.matches(selector + ', ' + selector + ' *')) {
+            handler.apply(event.target.closest(selector), arguments)
+          }
+        }, false);
+      })
+    };
+
+    /*add and remove class function*/
+    function remove_class(element, classname) {
+        element.className = element.className.replace(classname, '');
+    }
+
+    function add_class(element, classname) {
+        element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+    } 
+
+	let sign_icon = document.querySelector(".slide_1 .asset_2");
+	let cement_icon = document.querySelector(".slide_1 .asset_1");
+
+	if (typeof window.orientation !== 'undefined'){
+		dragElementMobile(cement_icon, 1);
+	}else{
+		dragElement(cement_icon, 1);
+	}
+
+	function dragElement( elmnt, item ) {
+	  var pos1 = 0, pos3 = 0;
+	  if (document.getElementById(elmnt.id + "header")) {
+	    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+	  } else {
+	    elmnt.onmousedown = dragMouseDown;
+	  }
+
+	  function dragMouseDown(e) {  
+	  	remove_class(elmnt, 'pulse');
+	  	remove_class(sign_icon, 'shake');
+	  	add_class(sign_icon, 'hideZoomOut');
+	  	elmnt.style.zIndex= "99";
+
+	    e = e || window.event;
+	    e.preventDefault();
+	    pos3 = e.clientX;
+	    
+	    document.onmousemove = elementDrag;
+	    document.onmouseup = closeDragElement;
+	  }
+
+	  function elementDrag(e) {    
+	    e = e || window.event;
+	    e.preventDefault();
+	    pos1 = pos3 - e.clientX;
+	    pos3 = e.clientX;
+	    leftSpace = elmnt.offsetLeft - pos1;
+
+	    draggedResult( elmnt, leftSpace, item );    
+	  }
+
+	  function closeDragElement() {
+	    document.onmouseup = null;
+	    document.onmousemove = null;
+	  }
+	}
+
+	function dragElementMobile(elmnt, item) {
+	  var pos1 = 0, pos3 = 0;
+	  if (document.getElementById(elmnt.id + "header")) {
+	    document.getElementById(elmnt.id + "header").ontouchstart = dragMouseDown;
+	  } else {
+	    elmnt.ontouchstart = dragMouseDown;
+	  }
+
+	  function dragMouseDown(e) {
+	    remove_class(elmnt, 'pulse');
+	  	remove_class(sign_icon, 'shake');
+	  	add_class(sign_icon, 'hideZoomOut');
+	  	elmnt.style.zIndex= "99";
+
+	    e.preventDefault();
+
+	    e = e.touches[0] || window.event;
+	    pos3 = e.clientX;
+	    
+	    document.ontouchmove = elementDrag;
+	  }
+
+	  function elementDrag(e) {
+	    e = e.touches[0] || window.event;
+	    pos1 = pos3 - e.clientX;
+	    pos3 = e.clientX;
+	    leftSpace = elmnt.offsetLeft - pos1;
+
+	    draggedResult(elmnt,leftSpace, item);   
+	  }
+	  function closeDragElement() {
+	    document.ontouchend = null;
+	    document.touchmove = null;
+	  }
+	}
+
+	function draggedResult(elmnt, leftSpace, item){
+	  	if( leftSpace > 100 ) {
+	  		add_class( document.querySelector('.slide_1 .asset_2'),'hideZoomOut');
+	  		setTimeout(secondSlide, 300);
+	    }
+	    if ( leftSpace<1 ) { leftSpace = 1 }
+	    if ( leftSpace>130 ) { leftSpace = 130 }
+
+	    elmnt.style.left = leftSpace + "px";
+	}
+
+
+	function secondSlide ( ) {
+		add_class( document.querySelector('.slide_1 .asset_3'),'hideZoomOut');	
+		remove_class( document.querySelector('.slide_1 .asset_1'), 'pulse');
+		add_class( document.querySelector('.slide_1 .asset_1'),'hideZoomOut');
+		remove_class( document.querySelector('.slide_2'), 'hidden');
+		add_class( document.querySelector('.slide_2 .asset_1'), 'showFromBottom');
+
+		setTimeout(function(){
+			console.log('testing');
+			remove_class( document.querySelector('.slide_2 .asset_1'), 'showFromBottom');
+			add_class( document.querySelector('.slide_2 .asset_1'), 'hideToBottom');
+			remove_class( document.querySelector('.slide_3'), 'hidden');
+			add_class( document.querySelector('.slide_3 .asset_1'), 'showZoomIn');
+			add_class( document.querySelector('.slide_3 .asset_2'), 'showZoomIn');
+			add_class( document.querySelector('.slide_3 .asset_3'), 'showZoomIn');
+
+			setTimeout(function() {
+				remove_class( document.querySelector('.slide_2 .asset_1'), 'hideToBottom');
+				add_class( document.querySelector('.slide_2 .asset_1'), 'hidden');
+				remove_class( document.querySelector('.slide_3 .asset_3'), 'showZoomIn');
+				add_class( document.querySelector('.slide_3 .asset_3'), 'pulse');
+			}, 2000);
+
+		}, 1000)
+	}
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Spice Banner by Info Station Ll </title>
+    <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: pointer
+          }
+          .absolute {
+            position: absolute
+          }
+
+      .station_wrapper {
+        height: 250px;
+        width: 300px;
+        position: relative;
+        overflow: hidden;
+        background-image: url('bg.jpg?v=1.1');
+        /*background-image: url('6.jpg?v=1.1');*/
+        background-size: 100% 100%;
+        background-repeat: no-repeat
+      }
+
+      .todayskhabar{
+        left: 69px;
+        top: 40px;
+        width: 162px;
+        height: 27px;
+      }
+
+      .slide_1,
+      .slide_2,
+      .slide_3 {
+        height: 250px;
+        width: 300px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        top: 0;
+        transition: all 1.25s ease
+      }
+
+      .slide_1 {
+        z-index: 1;
+        left: 0;
+      }
+
+      .btn1 {
+          top: 94px;
+          left: 30px;
+          width: 115px;
+          height: 35px;
+      }
+
+      .btn2 {
+        animation: reverse;
+      top: 94px;
+          right: 24px;
+          width: 115px;
+          height: 35px;
+      }
+
+      .btn3 {
+      top: 148px;
+          left: 30px;
+          width: 115px;
+          height: 39px;
+      }
+
+      .btn4 {
+        animation: reverse;
+      top: 148px;
+          right: 23px;
+          width: 115px;
+          height: 39px;
+      }
+
+      .blink {
+        /*animation: blink 1s linear infinite*/
+      }
+
+      @keyframes blink {
+        0% {
+          transform: scaleX(1)
+        }
+
+        50% {
+          transform: scale3d(1.05, 1.05, 1.25)
+        }
+
+        to {
+          transform: scaleX(1)
+        }
+      }
+
+      .result_slide_1 .element_1{
+        left: 77px;
+    top: 23px;
+    width: 204px;
+    height: 127px;
+      }
+      .result_slide_1 .element_2{
+left: 22px;
+    top: 124px;
+    width: 159px;
+    height: 111px;
+      }
+
+      .result_slide_2 .element_1{
+        right: 20px;
+        top: 29px;
+        width: 180px;
+        height: 125px;
+      }
+      .result_slide_2 .element_2{
+        width: 162px;
+        height: 111px;
+        left: 22px;
+        top: 119px;
+      }
+
+      .result_slide_3 .element_1{
+    width: 263px;
+    height: 149px;
+    left: 16px;
+    top: 27px;
+      }
+      .result_slide_3 .element_2{
+width: 166px;
+    height: 111px;
+    left: 20px;
+    top: 123px;
+      }
+
+      .result_slide_4 .element_1{
+width: 184px;
+    height: 127px;
+    left: 95px;
+    top: 28px;
+      }
+      .result_slide_4 .element_2{
+width: 162px;
+    height: 111px;
+    left: 19px;
+    top: 123px;
+      }
+
+      .slide_2 .final_text{
+left: 46px;
+    top: 21px;
+    width: 208px;
+    height: 103px;
+      }
+      .slide_2 .final_slide{
+left: 13px;
+    bottom: 12px;
+    width: 276px;
+    height: 122px;
+      }
+      .hidden {
+        display: none
+      }
+    @keyframes hideZoomOut {
+        100% {
+            opacity: 0;
+            transform: scale3d(.3, .3, .3)
+        }
+    }
+
+    @keyframes showZoomIn {
+        from {
+            opacity: 0;
+            transform: scale3d(.3, .3, .3)
+        }
+        to {
+            opacity: 1;
+            transform: scale3d(1, 1, 1)
+        }
+    }
+
+    .hideZoomOut {
+        animation-name: hideZoomOut;
+        animation-duration: .5s;
+        animation-fill-mode: both
+    }
+
+    .showZoomIn {
+        animation-name: showZoomIn;
+        animation-duration: .5s;
+        animation-fill-mode: both
+    }
+    </style>
+</head>
+<body>
+  <div class="station_wrapper">
+    <div class="slide_1 absolute">
+        <div class="todayskhabar absolute"><img src="ajkhabar.png" alt=""></div>
+        <div class="btn1 blink absolute"><img src="biriyani.png" alt=""></div>
+        <div class="btn2 blink absolute"><img src="semai.png" alt=""></div>
+        <div class="btn3 blink absolute"><img src="kacchi.png" alt=""></div>
+        <div class="btn4 blink absolute"><img src="firni.png" alt=""></div>
+    </div>
+
+    <div class="result_slide_1 hidden">
+      <img class="element_1 absolute" src="biriyani-text.png" alt="">
+      <img class="element_2 absolute" src="biriyani-packet.png" alt="">
+    </div>
+    <div class="result_slide_2 hidden">
+      <img class="element_1 absolute" src="semai-text.png" alt="">
+      <img class="element_2 absolute" src="semai-packet.png" alt="">
+    </div>
+    <div class="result_slide_3 hidden">
+      <img class="element_1 absolute" src="kacchi-text.png" alt="">
+      <img class="element_2 absolute" src="kacchi-packet.png" alt="">
+    </div>
+    <div class="result_slide_4 hidden">
+      <img class="element_1 absolute" src="firni-text.png" alt="">
+      <img class="element_2 absolute" src="firni-packet.png" alt="">
+    </div>
+
+    <div class="slide_2 absolute hidden">
+        <img class="final_text absolute" src="final-text.png" alt="">
+        <img class="final_slide absolute" src="final-slide.png" alt="">
+    </div>      
+  </div>
+
+<script>
+    /**
+ * Lead banner for Hero
+ * @author Lincoln Mahmud
+ * @company Info Station
+ * date: 28 October, 2021
+*/
+let bindEvent = (eventNames, selector, handler) => {
+  eventNames.split(' ').forEach((eventName) => {
+    document.addEventListener(eventName, function (event) {
+      if (event.target.matches(selector + ', ' + selector + ' *')) {
+        handler.apply(event.target.closest(selector), arguments)
+      }
+    }, false);
+  })
+};
+
+
+
+var btn1 = document.querySelector('.btn1');
+var slide_1 = document.querySelector('.slide_1');
+var result_slide_1 = document.querySelector('.result_slide_1');
+var result_slide_2 = document.querySelector('.result_slide_2');
+var result_slide_3 = document.querySelector('.result_slide_3');
+var result_slide_4 = document.querySelector('.result_slide_4');
+var slide_2 = document.querySelector('.slide_2');
+
+bindEvent('click', '.btn1', function(e){
+  add_class(slide_1, 'hideZoomOut');
+  remove_class(result_slide_1, 'hidden', 'showZoomIn');
+  setTimeout(function(){
+    final_slide(result_slide_1);
+  },1500);
+
+});
+
+bindEvent('click', '.btn2', function(e){
+  add_class(slide_1, 'hideZoomOut');
+  remove_class(result_slide_2, 'hidden', 'showZoomIn');
+  setTimeout(function(){
+    final_slide(result_slide_2);
+  },1500);
+});
+
+bindEvent('click', '.btn3', function(e){
+  add_class(slide_1, 'hideZoomOut');
+  remove_class(result_slide_3, 'hidden', 'showZoomIn');
+  setTimeout(function(){
+    final_slide(result_slide_3);
+  },1500);
+});
+
+bindEvent('click', '.btn4', function(e){
+  add_class(slide_1, 'hideZoomOut');
+  remove_class(result_slide_4, 'hidden', 'showZoomIn');
+  setTimeout(function(){
+    final_slide(result_slide_4);
+  },1500);
+});
+
+function final_slide( element ) {
+  remove_class(element, 'showZoomIn', 'hideZoomOut');
+  setTimeout(function(){
+    remove_class(slide_2, 'hidden', 'showZoomIn');
+  },500);
+}
+
+function add_class(element, classname) {
+    element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+}
+/*add and remove class function*/
+function remove_class(element, classname,replace='') {
+    element.className = element.className.replace(classname, replace);
+}
+</script>
+</body>
+</html>

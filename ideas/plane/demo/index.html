@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Plane destination animation by Info Station </title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="mystyle.css">
+        <script src="gsap.min.js"></script>
+        <script src="Draggable.min.js"></script>
+        <link rel="shortcut icon" type="image/x-icon" href="//showcase.infostation.digital/shapeshifter/images/favicon.ico"> <!-- favicon -->
+    </head>
+    <body>
+        <div id="adArea" class="opacity0">
+            <div id="slide_1" class="rct">
+                <div class="posFix">
+                    <div id="mapControl">
+                        <div id="map" class="">
+                            <svg id="svgLines" class="hitLine">
+                                <defs></defs>
+                                <line id="lineEl2" class="ll" x2="384" y2="312" x1="594" y1="324" stroke-dasharray="6, 11" style="stroke:rgb(255,242,0);stroke-width:2" marker-end="url(#arrow)"></line>
+                                <line id="lineEl3" class="ll" x2="418" y2="270" x1="594" y1="324" stroke-dasharray="6, 11" style="stroke:rgb(255,242,0);stroke-width:2" marker-end="url(#arrow)"></line>
+                                <line id="lineEl4" class="ll" x2="716" y2="508" x1="594" y1="324" stroke-dasharray="6, 11" style="stroke:rgb(255,242,0);stroke-width:2" marker-end="url(#arrow)"></line>
+                                <line id="lineEl5" class="ll" x2="686" y2="550" x1="594" y1="324" stroke-dasharray="6, 11" style="stroke:rgb(255,242,0);stroke-width:2" marker-end="url(#arrow)"></line>
+                                <line id="lineEl6" class="ll" x2="682" y2="580" x1="594" y1="324" stroke-dasharray="6, 11" style="stroke:rgb(255,242,0);stroke-width:2" marker-end="url(#arrow)"></line>
+                                <line id="lineEl1" x2="523" y2="383" x1="594" y1="324" stroke-dasharray="6, 11" style="stroke:rgb(255,242,0);stroke-width:2" class="" marker-end="url(#arrow)"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div id="drag_icon" class="noEvents zIndex6666"></div>
+                <div id="drag_text" class="noEvents"></div>
+                <div id="textCont" class="rct noEvents">
+                    <div id="t1" class="opacity0"></div>
+                    <div id="t2" class="opacity0"></div>
+                </div>
+                <div id="planeCont" class="abs">
+                    <div id="plane_icon_bg" class=""></div>
+                    <div id="plane_icon"></div>
+                </div>
+
+            </div>
+            <div id="slide_2" class="rct noEvents"></div>
+        </div>
+        <script>
+            // L O A D   I M A G E S
+            var assets_url = "images/";
+            var assets = {
+                init: [{
+                    format: "png",
+                    type: "id",
+                    scale: 1,
+                    names: "map t1 t2 plane_icon drag_icon drag_text"
+                },
+                ],
+                end: []
+            }
+
+            function ctaFunction() {
+                window.open("#");
+            }
+        </script>
+        <script src="code.js"></script>
+    </body>
+</html>
+            

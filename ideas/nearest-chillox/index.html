@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Chillox - Best Burgers in TOWN </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      *{margin:0;padding:0}.wp_wrapper{width:100%;height:100}#map{width:100%;height:100%;min-height:70vh;}.responsive{width:100%;height:auto;margin-bottom:1px}
+  </style>
+</head>
+<body>
+  <div class="wp_wrapper">
+    <img src="bg.jpg" class="responsive">
+    <div class="container">
+      <div class="row">
+        <div class=" col-md-12 col-sm-12 ">
+         <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8MQrdVaz8JKiUnSU0usHzGRQGrI_x3DQ&callback=initMap&libraries=geometry,places" async defer="defer"></script>
+
+<script>
+    setTimeout(getLocation, false);
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      }
+    }
+    var mylat, mylon;
+    function showPosition(position) {
+      mylat =  position.coords.latitude;
+      mylon =  position.coords.longitude;
+      if (mylat) {
+        setTimeout(initMap,100);
+      }
+    }
+
+    function initMap() {
+      if (mylat) {
+        console.info(mylat + ' longitude ' + mylon);
+        var map;
+        var myOptions = {
+          zoom: 10,
+          scrollwheel: true,
+          mapTypeId: 'roadmap'
+        };
+        // map for search & directions
+        map = new google.maps.Map(document.querySelector('#map'), myOptions);
+        var markerA = new google.maps.Marker({
+          position: {lat:mylat, lng: mylon},
+          map: map
+        });
+
+      var infowindow = new google.maps.InfoWindow;
+      var loc, i;
+      var locations = [];
+      var locs = location_names();
+
+      // create markers for each loc and place them on map
+      for (i = 0; i < locs.length; i++) {
+        loc = new google.maps.Marker({
+          position: new google.maps.LatLng(locs[i][1], locs[i][2]),
+          map,
+          icon: 'pointer.png' 
+        });
+
+        google.maps.event.addListener( loc, 'click', (function(loc, i)  {
+          return function() {
+            infowindow.setContent(locs[i][0]);
+            infowindow.open(map, loc);
+          }
+        })( loc, i ));
+        locations.push(loc.position);
+      }
+
+      var pointA = markerA.getPosition();
+      var markerB;
+
+      findClosest(pointA, locations);
+
+      function findClosest( pointA, locations ) {
+        var closestDistance = Number.MAX_SAFE_INTEGER;
+        var closest;
+        for ( i = 0; i < locations.length; i++ ) {
+          var distance = google.maps.geometry.spherical.computeDistanceBetween(pointA, locations[i]);
+          if ( distance < closestDistance ) {
+            closestDistance = distance;
+            closest = locations[i];
+          }
+        }
+        markerB = closest;
+      }
+
+      var directionsService = new google.maps.DirectionsService;
+      var directionsDisplay = new google.maps.DirectionsRenderer({map});
+
+      // for( var j=0; j < locations.length; j++ ) {
+      //   calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, locations[j], map);
+      // }
+
+      // var pointB = markerB;
+      console.log(markerB);
+      calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, markerB, map);
+
+      // var onChangeHandler = function() {
+        // calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, markerB, map);
+      // };
+      // map.addListener('change', onChangeHandler);
+        
+      }else{
+        setTimeout(getLocation, false);
+      }
+
+      
+  }
+
+  function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB, map) {
+      directionsService.route({
+       origin: pointA,
+       destination: pointB,
+       travelMode: google.maps.TravelMode.WALKING
+      }, function (response, status) {
+       if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+       } else {
+        console.error('Could not load directions due to ' + status);
+       }
+      });
+  }
+
+  // create array of locations and assign values
+  function location_names() 
+  {
+    return [
+      [ "Chillox Banani",       "23.793985489005525", "90.40489104222243"],
+      [ "Chillox Dhanmondi",    "23.740275836165576", "90.37573429748473"],
+      [ "Chillox Bashundhara",  "23.81201803335367",  "90.42338180728446"],
+      [ "Chillox Khilgaon",     "23.75261752519188",  "90.41816064776481"],
+      [ "Chillox Aftabnagar",   "23.76892176071015",  "90.42489681708203"],
+      [ "Chillox Mirpur TFC",   "23.799924047985183", "90.35519124776573"],
+      [ "Chillox Mohakhali",    "23.779980872097564", "90.40780267844849"],
+      [ "Chillox",              "24.760259064433118", "90.40134254224112"],
+      [ "Chillox Nasirabad",    "22.364910521524312", "91.82548540171462"],
+      [ "Chillox Uttara",       "23.874664957465566", "90.3929696766354"],
+      [ "Chillox Mohammadpur",  "23.763224546292758", "90.36159560913124"],
+    ];
+  }
+</script>
+</body>
+</html>
