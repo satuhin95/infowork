@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nagad: OverFlow V5</title>
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="style.css?v=2.1">
+</head>
+
+<body>
+  <div class="info_wrapper">
+    <img src="img/closebtn.png" alt="" class="info_closeBtn "> 
+    <img src="img/p1.png" alt="" class="info_element_1 " >
+    <img src="img/p2.png" alt="" class="info_element_2 " >
+    <img src="img/1.png" alt="" class="info_element_3 " >
+    <img src="img/01.png" alt="" class="info_element_4 " >
+    <img src="img/02.png" alt="" class="info_element_5 " >
+    <img src="img/03.png" alt="" class="info_element_6 ">
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+
+  <script>
+
+let info_element_1 = document.querySelector('.info_element_1')
+let info_element_2 = document.querySelector('.info_element_2')
+let info_element_3 = document.querySelector('.info_element_3')
+let info_element_4 = document.querySelector('.info_element_4')
+let info_element_5 = document.querySelector('.info_element_5')
+let info_element_6 = document.querySelector('.info_element_6')
+
+// TweenMax.from(info_element_1, 1, { display: 'block',  x: -135,});
+TweenMax.fromTo(info_element_1, 2, {delay: 1.0,display: 'none', x: '-100vw'}, {display: 'block', y:'0vh', x: '0vh',ease: "back.out(1.2)"});
+TweenMax.fromTo(info_element_2, 2, {delay: 1.0,display: 'none', x: '-100vw'}, {display: 'block', y:'0vh', x: '0vh',ease: "back.out(1.2)"},'<=.9');
+TweenMax.fromTo(info_element_3, 2, {delay: 1.0,display: 'none', y: '100vw'}, {display: 'block', y:'0vh', x: '0vh'},'<=.9');
+TweenMax.fromTo(info_element_4, 2, {delay: 1.0,display: 'none', y: '100vw'}, {display: 'block', y:'0vh', x: '0vh'},'<=.5');
+TweenMax.fromTo(info_element_5, 2, {delay: 1.0,display: 'none', y: '100vw'}, {display: 'block', y:'0vh', x: '0vh'},'<=.5');
+TweenMax.fromTo(info_element_6, 2, {delay: 1.0,display: 'none', y: '100vw'}, {display: 'block', y:'0vh', x: '0vh'},'<=.5');
+
+
+document.querySelector('.info_closeBtn').addEventListener('click', function (e) {
+  e.stopPropagation()
+  gsap.to('.info_wrapper', { y: '70px', x: '70px', scale: .1, opacity: 0, display: 'none', duration: 1 });
+})
+
+
+  </script>
+</body>
+
+</html>

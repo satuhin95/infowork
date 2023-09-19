@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.info_wrapper{
+    width: 800px;
+    height: 450px;
+    top: 0;
+    left: 0;
+    position: relative;
+    overflow: hidden;
+}
+.infoImgLeft{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.infoImgright{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.infoLeftPizza {
+    width: 56%;
+    height: auto;
+    left: -23%;
+    top: 4%;
+    position: absolute;
+    z-index: 3;
+}
+.infoRightPizza {
+    width: 56%;
+    height: auto;
+    right: -23%;
+    top: 4%;
+    position: absolute;
+    z-index: 3;
+}
+
+.infoMiddleBg {
+    width: 56%;
+    height: 100%;
+    right: 23%;
+    left: 23%;
+    top: 0%;
+    bottom: 0%;
+    position: absolute;
+    z-index: 2;
+}
+.infoPizzaLogo {
+    width: 34%;
+    height: auto;
+    left: 34%;
+    top: 6%;
+    position: absolute;
+    z-index: 2;
+}
+.infoText {
+    width: 32%;
+    height: auto;
+    left: 34%;
+    top: 22%;
+    position: absolute;
+    z-index: 2;
+}
+.infoText1 {
+    width: 24%;
+    height: auto;
+    left: 38%;
+    top: 52%;
+    position: absolute;
+    z-index: 2;
+}
+.infoText2 {
+    width: 24%;
+    height: auto;
+    left: 38%;
+    top: 65%;
+    position: absolute;
+    z-index: 2;
+}
+.infoText3 {
+    width: 24%;
+    height: auto;
+    left: 38%;
+    top: 78%;
+    position: absolute;
+    z-index: 2;
+}
+.info_overlay{
+    width: 100%;
+    height: 20%;
+    /* max-height: 120px; */
+    bottom: 0%;
+    left: 0%;
+    position: absolute;
+
+}
+.infoOverlayBg{
+    width: 100%;
+    max-height: 120px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    display: none;
+    
+}
+.infoPack1 {
+    position: absolute;
+    width: 17%;
+    height: auto;
+    left: 25%;
+    bottom: 79%;
+    display: none;
+}
+.infoPack2 {
+    position: absolute;
+    width: 17%;
+    height: auto;
+    left: 44%;
+    bottom: 79%;
+    display: none;
+}
+.infoPack3 {
+    position: absolute;
+    width: 17%;
+    height: auto;
+    left: 34%;
+    bottom: 18%;
+    display: none;
+}
+.info_close_btn{
+    position: absolute;
+    right: 1px;
+    width: 20px;
+    height: 20px;
+    bottom: 25%;
+    cursor: pointer;
+    margin: 0!important;
+    z-index: 100;
+    background:url(./close.svg) no-repeat;
+    z-index: 4;
+    opacity: 0;
+}

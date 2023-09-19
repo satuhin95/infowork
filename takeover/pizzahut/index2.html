@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .overlay_test {
+            width: 800px;
+            height: 450px;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay_test">
+<!-- overlay image css -->
+<style>
+    .istation__wrapper *{margin:0;padding:0;box-sizing:border-box; }#istation_image_overlay_section{position:relative;overflow:hidden;}.istation__wrapper #leftImage{top:0;left:0;width:50%;height:100%;object-fit:fill;position:absolute;margin:initial;}.istation__wrapper #rightImage{right:0;top:0;width:50.2%;height:100%;object-fit:fill;;position:absolute;margin:initial;left:initial;}
+    .istation__wrapper #mainText{top:20%;left:35%;width:260px; height:auto;animation-delay:2s;animation-duration:.8s}
+     #textImage{top:45%;left:39%;width:193px; height:auto;animation-delay:2.1s;animation-duration:.8s}
+       #textImage2{top:59%;left:39%;width:193px;height:auto;animation-delay:2.2s;animation-duration:.8s}
+       #textImage3{top:73%;left:39%;width:193px;height:auto;animation-delay:2.3s;animation-duration:.8s}
+       #pizza1{z-index:5; top:2%;left:-36%;width:610px;height:97%;animation-delay:1s;animation-duration:.8s}
+       #pizza2{z-index:5;top:2%;right:-54%;width:754px;height:auto;;animation-delay:1s;animation-duration:.8s}
+       #middlebg{top:0%;bottom:0%; left:25%;right:25%;width:50%;height:100%;}
+       #pizzalogo{width:285px;top:5%;left:34%;}
+     .istation__wrapper .istation_overlay_img{bottom:0;left:0;width:100%;animation-duration:2s;max-height: 120px;}.absolute{position:absolute}.hidden{display:none}.animate__animated{animation-duration:1s;animation-fill-mode:both}.animate__fadeInLeft{animation-name:fadeInLeft}@keyframes fadeInLeft{0%{opacity:0;transform:translate3d(-100%,0,0)}to{opacity:1;transform:translateZ(0)}}.animate__fadeInRight{animation-name:fadeInRight}@keyframes fadeInRight{0%{opacity:0;transform:translate3d(100%,0,0)}to{opacity:1;transform:translateZ(0)}}.animate__zoomIn{animation-name:zoomIn} .animate__zoomInUp{animation-name:zoomInUp}@keyframes zoomIn{0%{opacity:0;transform:scale3d(.3,.3,.3)}50%{opacity:1}}@keyframes zoomOut{0%{opacity:1}50%{opacity:0;transform:scale3d(.3,.3,.3)}to{opacity:0}}.animate__zoomOut{animation-name:zoomOut}@keyframes fadeOutLeft{0%{opacity:1}to{opacity:0;transform:translate3d(-100%,0,0)}}.animate__fadeOutLeft{animation-name:fadeOutLeft}@keyframes fadeOutRight{0%{opacity:1}to{opacity:0;transform:translate3d(100%,0,0)}}.animate__fadeOutRight{-webkit-animation-name:fadeOutRight;animation-name:fadeOutRight}@keyframes fadeInBottom{0%{opacity:0;transform:translate3d(0,100%,0)}to{opacity:1;transform:translateZ(0)}}.animate__fadeInBottom{animation-name:fadeInBottom}
+     /*info css*/
+    .istation_generic_close{position:absolute;right:1px;width:20px;height:20px;cursor:pointer;margin:0!important;z-index:100}.istation_generic_close{bottom:20%;background:url('close.svg') 0 0/100% 100% no-repeat;-webkit-animation:1s .4s both fadeIn24;animation:1s .4s both fadeIn24}
+    .istation__wrapper .istation_overlay .pack1 {
+        width: 115px;
+        height: 27px;
+        bottom: 13%;
+        left: 25% !important;
+        animation-delay: 1s;
+        position: absolute;
+        top: initial;
+        left: initial;
+    }
+    .istation__wrapper .istation_overlay .pack2 {
+         width:115px;
+        height:28px;
+        bottom: 13%;
+        left: 43% !important;
+        animation-delay: 1s;
+        position:absolute;
+        top:initial;
+        left:initial;
+    }
+    .istation__wrapper .istation_overlay .pack3 {
+         width:115px;
+        height:28px;
+        bottom: 4%;
+        left: 34% !important;
+        animation-delay: 1s;
+        position:absolute;
+        top:initial;
+        left:initial;
+    }
+    .zoomInBottom {
+    animation-name: zoomInBottom;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    }
+    .hidden{
+        display:none;
+    }
+    
+    @keyframes zoomInBottom {
+    0%{
+        transform: translateY(200%)
+    }
+    100% {
+    transform: translateY(0%)
+    }
+    }
+    .showZoomIn{
+    animation-name: showZoomIn;
+    animation-duration: .8s;
+    animation-timing-function: ease-in;
+    }
+    // @media (max-width: 1280px) {
+    //  .istation__wrapper #mainText {
+    //     width: 284px;
+    // } 
+    // .istation__wrapper #textImage {
+    //     width: 180px;
+    // }
+    // .istation__wrapper #textImage2 {
+    //     width: 180px;
+    // }
+    // .istation__wrapper #textImage3 {
+    //     width: 180px;
+    // }
+    // .istation__wrapper #pizza1{
+    //     width:220px;
+    // }
+    // .istation__wrapper #pizza2{
+    //     width:240px;
+    //     right:29%;
+    // }
+    
+    // .istation__wrapper .istation_overlay .pack1 {
+    //     width:95px;
+    //     height:auto;
+        
+    
+    // }
+    // .istation__wrapper .istation_overlay .pack2 {
+    //     width:95px;
+    //     height:auto;
+    
+    // }
+    // .istation__wrapper .istation_overlay .pack3 {
+    //     width:95px;
+    //     height:auto;
+    
+    // }
+    // .istation_generic_close {
+    //     bottom: 23%;
+    //     }
+    
+    // }
+    // @media (max-width: 992px) {
+    //  .istation__wrapper #textImage {
+    //     top: 50%;
+    //     left: 78%;
+    //     width: 190px;
+    // }
+    // }
+    @media (max-width: 669px) {
+    //     #mainText{width:150px !important; }
+    //    #textImage{width:112px !important; }
+    //    #textImage2{;width:112px !important; }
+    //    #textImage3{width:112px !important; }
+    //     #pizza1{top:23%;width:105px!important;}
+    //     #pizza2{width:105px!important;top:64%;}
+    // .istation__wrapper .istation_overlay .pack1 {
+    //      width:60px;
+    //     bottom: 15%;
+    
+    // }
+    // .istation__wrapper .istation_overlay .pack2 {
+    //     width:60px;
+    //     bottom: 15%;
+    
+    // }
+    // .istation__wrapper .istation_overlay .pack3 {
+    //     width:60px;
+    //      bottom: 5%;
+    
+    
+    // }
+    // .istation_generic_close {
+    //     right: 1px;
+    //     width: 14px;
+    //     height: 14px;
+    // }
+    // picture.ratio.ratio__16x9 {
+    //     padding-top: 0 !important;
+    // }
+    
+    }
+    .rotation_animation{
+        animation: rotation_animation 2s infinite linear;
+    }
+    
+    @keyframes rotation_animation {
+      25% {
+        transform: rotate(0deg);
+      }50%{
+        transform: rotate(10deg);
+      }75%{
+        transform: rotate(-10deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+    
+    
+    @keyframes pulse {
+        from,
+        to {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(0.9);
+        }
+    }
+    .pulse {
+        animation: 2s infinite pulse;
+    }
+    
+    #istation_image_overlay_section{
+        /* width: ` + width + `px;
+        height: ` + height + `px; */
+        width: 800px;
+        height: 450px;
+    }
+    </style>
+    
+    <div class="istation__wrapper">
+        <div class="istation_takeover">
+            <img src="img/left.png" class="absolute animate__animated animate__fadeInLeft" id="leftImage">
+            <img src="img/right.png" class="absolute animate__animated animate__fadeInRight" id="rightImage">    
+            <img src="img/leftpizza.png" class="absolute animate__animated animate__zoomIn " id="pizza1">   
+               <img src="img/rightpizza.png" class="absolute animate__animated animate__zoomIn " id="pizza2">  
+               <img src="img/bg2.png" class="absolute animate__animated animate__zoomIn hidden" id="middlebg">  
+               <img src="img/logo.png" class="absolute animate__animated animate__zoomIn hidden" id="pizzalogo">  
+                <img src="img/1.png" class="absolute animate__animated animate__zoomIn hidden" id="mainText"> 
+             <img src="img/01.png" class="absolute animate__animated animate__zoomIn hidden" id="textImage">  
+            <img src="img/02.png" class="absolute animate__animated animate__zoomIn hidden" id="textImage2">   
+            <img src="img/03.png" class="absolute animate__animated animate__zoomIn hidden" id="textImage3">        
+      
+        </div>
+        <div class="istation_overlay hidden">
+            <img src="bg.png?v=1.1" class="absolute istation_overlay_img animate__animated">
+            <img src="1.png" class="pack1 absolute animate__animated animate__zoomIn">
+            <img src="2.png" class="pack2 absolute animate__animated animate__zoomIn">
+            <img src="3.png" class="pack3 absolute animate__animated animate__zoomIn">
+    
+            </div>
+        <!-- hide and info panel -->
+        <div class="istation_generic_close istation-close   hidden"></div>
+    </div>
+    
+    <!-- modal info -->
+    <link rel="stylesheet" href="modal.css?v=1.0">
+    <div class="istation-modal-info" id="istation-modal-info">
+    <script src="modal.js"></script>
+    <script src="https://www.daily-sun.com/assets/newDesktop/js/jquery.min.js"></script>
+    <script>
+        let leftImage = document.querySelector("#leftImage");
+        let rightImage = document.querySelector("#rightImage");
+        let textImage = document.querySelector("#textImage");
+        let textImage2 = document.querySelector("#textImage2");
+        let textImage3 = document.querySelector("#textImage3");
+        let mainText = document.querySelector("#mainText");
+        let pizza1 = document.querySelector("#pizza1");
+        let pizza2 = document.querySelector("#pizza2");
+        
+        
+        
+        let istation_overlay = document.querySelector(".istation_overlay");
+        let istation_overlay_img = document.querySelector(".istation_overlay_img");
+        let pack1 = document.querySelector(".pack1");
+        let pack2 = document.querySelector(".pack2");
+        let closeBtn = document.querySelector(".istation_generic_close");
+    
+        let bindEvent = (eventNames, selector, handler) => {
+      eventNames.split(' ').forEach((eventName) => {
+        document.addEventListener(eventName, function (event) {
+          if (event.target.matches(selector + ', ' + selector + ' *')) {
+            handler.apply(event.target.closest(selector), arguments)
+          }
+        }, false);
+      })
+    };
+    
+    
+        (function(){  
+                  
+                    function animation() {
+                        setTimeout(function(){
+                            remove_class(textImage1,'animate__zoomIn','animate__zoomOut');
+                            remove_class(textImage2,'animate__zoomIn','animate__zoomOut');
+                            remove_class(textImage3,'animate__zoomIn','animate__zoomOut');
+                            remove_class(mainText,'animate__zoomIn','animate__zoomOut');
+                            remove_class(pizza1,'animate__zoomIn','animate__zoomOut');
+                            remove_class(pizza2,'animate__zoomIn','animate__zoomOut');
+                            setTimeout(function(){
+                                console.log('22222')
+                                 remove_class(leftImage,'animate__fadeInLeft','animate__fadeOutLeft');
+                                 remove_class(rightImage,'animate__fadeInRight','animate__fadeOutRight');  
+                                 setTimeout(function(){
+                                    console.log('3333')
+                                     remove_class(istation_overlay,'hidden');
+                                    remove_class(closeBtn,'hidden');
+                                    add_class(istation_overlay_img,'animate__fadeInBottom');   
+                                 },1000)
+                            },2500)
+                        },3000)
+                    
+                        
+    
+                   }
+                   animation();
+    
+                //    bindEvent( 'click', '.istation_overlay', function(e){
+                //     window.open("https://www.grameenphone.com/personal/plans-offers/prepaid-postpaid-packages/prime", "_blank");
+                //     var xhttp = new XMLHttpRequest();
+                //     xhttp.onreadystatechange = function() {
+                //         if ( this.readyState == 4 && this.status == 200 ) {
+                //             if (xhttp.responseText=='200') {
+                //                 console.log(xhttp.responseText); 
+                //             }else{
+                //                 console.log(xhttp.responseText);
+                //             }
+                //         }
+                //     }
+                //     xhttp.open("POST", 'https://showcase.infostation.digital/database/ispahani-takeover/data.php', true);
+                //     xhttp.send();
+                // }); 
+    
+                // function getimpression() {
+                //     var xhttp = new XMLHttpRequest();
+                //         xhttp.onreadystatechange = function() {
+                //             if ( this.readyState == 4 && this.status == 200 ) {
+                //             if (xhttp.responseText=='200') {
+                //                 console.log(xhttp.responseText)  
+                //             } else {
+                //                 console.log(xhttp.responseText)
+                //             }
+                //         }
+                //     }
+                //     xhttp.open("POST", 'https://showcase.infostation.digital/database/ispahani-takeover/impression.php', true);
+                //     xhttp.send();
+                // }
+                // getimpression();
+    
+    
+    
+    
+                   function remove_class(element, classname,newclass='') {
+                       element.className = element.className.replace(classname, newclass);
+                   }
+                   function add_class(element, classname) {
+                       element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+                   }
+    
+    
+    
+    
+                       })();
+    
+     
+       
+    </script>
+    </div>
+    
+</body>
+</html>
