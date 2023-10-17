@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GP Countdown Campaign by Info Station</title>
+     <meta name="author" content="Purple patch" />
+        <link rel="shortcut icon" type="image/x-icon" href="//infostation.digital/favicon.ico" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+         <div class="slide_one hidden">
+            <div class="element_0 absolute">
+                <img src="img/t-shirt.png"/>
+            </div>
+            <div class="element_1 absolute  ">
+                <img src="img/t2.png"/>
+            </div>
+            <div class="element_2 absolute  ">
+                <img src="img/sign.png"/>
+            </div>
+
+        <div class="countdown absolute ">
+            <span id="hoursText" class="hoursText absolute">০০</span>
+            <span id="minutesText" class="minutesText absolute">০০</span>
+            <span id="secondsText" class="secondsText absolute">০০</span>
+        </div>
+    </div>
+    <div class="slide_two absolute hidden">
+        <div class="element_5 absolute">
+            <img src="img/t-shirt.png"/>
+        </div>
+        <div class="element_6 absolute  ">
+            <img src="img/sign.png"/>
+        </div>
+        <div class="element_7 absolute  ">
+            <img src="img/t2.png"/>
+        </div>
+
+    </div>    
+    </div>
+    <script src="gsap.min.js"></script>
+    <script>
+        
+       
+    let slide1 = document.querySelector('.slide_one')
+    let slide2 = document.querySelector('.slide_two')
+    const hoursText = document.querySelector('.hoursText');
+    const minutesText = document.querySelector('.minutesText');
+    const secondsText = document.querySelector('.secondsText');  
+    let wrapper = document.querySelector('.wrapper');
+
+      wrapper.addEventListener('click',function(){
+         window.open("{CLICK_MACRO}");
+      })
+
+checkingHour = 15;
+banglaArr = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+dateCalculation();
+setInterval(dateCalculation, 1000);
+
+
+function dateCalculation() {
+    const d = new Date();
+    let hours = d.getHours();
+    let minutes = d.getMinutes();
+    let seconds = d.getSeconds();
+    var offset = d.getTimezoneOffset();
+    // console.log(hours)
+    if (  hours >= 10 && hours <15) {
+        slide_one();
+        checkRemainingTime(hours, minutes, seconds);
+
+    } else {
+       
+        slide_two();
+    }
+}
+
+
+function checkRemainingTime(hours, minutes, seconds) {
+
+    remainingSeconds = seconds == 0 ? 0 : 60 - seconds;
+    if (remainingSeconds == 0) {
+        if (minutes == 0) {
+            remainingMinutes = 0;
+        }
+        else {
+            remainingMinutes = 60 - minutes;
+        }
+    } else { remainingMinutes = (60 - 1) - minutes }``
+
+    calcRemainingHours = () => {
+        if (hours < checkingHour) {
+            return remainingMinutes == 0 && minutes == 0 ? checkingHour - hours : (checkingHour - 1) - hours;
+        } else {
+            return remainingMinutes == 0 && minutes == 0 ? checkingHour + (24 - hours) : (checkingHour - 1) + (24 - hours);
+        }
+    }
+    remainingHours = calcRemainingHours();
+    secondsText.innerHTML = transformToBangla(remainingSeconds);
+    minutesText.innerHTML = transformToBangla(remainingMinutes);
+    hoursText.innerHTML = transformToBangla(remainingHours);
+
+}
+
+
+function transformToBangla(num) {
+    if (num < 10) {
+        return '০' + banglaArr[num];
+    }
+    else {
+        firstVar = Math.floor(num / 10);
+        return banglaArr[firstVar] + banglaArr[num % 10];
+    }
+}
+
+
+function slide_two() {
+    hoursText.classList.add('hidden');
+    minutesText.classList.add('hidden');
+    secondsText.classList.add('hidden');
+    slide1.classList.add('hidden')
+    slide2.classList.remove('hidden')
+
+    // console.log("slide_two")
+        
+}
+
+function slide_one() {
+    hoursText.classList.remove('hidden');
+    minutesText.classList.remove('hidden');
+    secondsText.classList.remove('hidden');
+    slide1.classList.remove('hidden')
+    slide2.classList.add('hidden')
+    // console.log("slide_one")
+
+
+}
+//  slide one 
+gsap.timeline({delay:.5})
+.fromTo('.element_0',1,{x:65},{x:0},'>=1')
+.fromTo('.element_2',.5,{opacity:0,x:-10},{opacity:1,x:0},'>=.1')
+.fromTo('.element_1',1,{y:200,opacity:0},{y:0,opacity:1})
+
+
+// slide two 
+    gsap.timeline({delay:.5})
+    .fromTo('.element_5',2,{y:-100, opacity:0},{y:0,opacity:1,ease: Bounce.easeOut})
+    .fromTo('.element_6',.5,{opacity:0,x:-10},{opacity:1,x:0},'>=.1')
+    .fromTo('.element_7',1,{y:200,opacity:0},{y:0,opacity:1})
+
+    </script>
+  
+</body>
+</html>

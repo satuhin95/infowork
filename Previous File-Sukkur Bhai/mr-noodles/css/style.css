@@ -1,0 +1,283 @@
+body { 
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}
+#canvas{
+    position: absolute;
+}
+
+#adArea {
+    width:300px;
+    height:250px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: clip;
+    margin:0 auto;
+    padding:0;
+    cursor:auto;
+    z-index: 1;
+    cursor: pointer;
+    background-image: url("../images/bg.jpg");
+}
+#adArea1 {
+    width:300px;
+    height:250px;
+    position: absolute;
+    overflow: hidden;
+    text-overflow: clip;
+    margin:0 auto;
+    padding:0;
+    cursor:auto;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    cursor: pointer;
+    background-size: contain;
+    background-image: url("../images/bg3.png");
+}
+
+#bg2 {
+    width:300px;
+    height:250px;
+    position: absolute;
+    left:0;
+    top:0;
+    background-size: contain;
+    background-image: url("../images/bg2.png");
+}
+#cloud {
+    width:300px;
+    height:250px;
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 11;
+    background-size: contain;
+    background-image: url("../images/cloud.png");
+    transform: scale(5);
+    /* animation-name: goup;
+    animation-duration: 1s;
+    animation-iteration-count: infinite; */
+
+}
+#bg3 {
+    width: 119px;
+    height: 32.5px;
+    position: absolute;
+    left: 18px;
+    top: 14px;
+    background-size: contain;
+    background-image: url(../images/drag.png);
+    background-repeat: no-repeat;
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+#smoke {
+    width:100px;
+    height:112px;
+    position: absolute;
+    left:83px;
+    top:90px;
+    background-image: url("../images/smoke.png");
+}
+#smoke2 {
+    width:100px;
+    height:112px;
+    position: absolute;
+    left:83px;
+    top:90px;
+    background-image: url("../images/smoke.png");
+}
+#smoke3 {
+    width:100px;
+    height:112px;
+    position: absolute;
+    left:83px;
+    top:90px;
+    background-image: url("../images/smoke.png");
+}
+#smoke4 {
+    width:100px;
+    height:112px;
+    position: absolute;
+    left:83px;
+    top:90px;
+    background-image: url("../images/smoke.png");
+}
+
+#puodas {
+    width:320px;
+    height:250px;
+    position: absolute;
+    left:0;
+    top:0;
+    background-image: url("../images/puodas.png");
+    z-index: 11;
+}
+
+#branding {
+    width:320px;
+    height:250px;
+    left:0;
+    top:0;
+    margin:0;
+    padding:0;
+    position: absolute;
+    background-image: url("../images/branding.png");
+}
+
+#msg1 {
+    width:118px;
+    height:61px;
+    left:182px;
+    top:112px;
+    position: absolute;
+    background-image: url("../images/msg1.png");
+    -ms-transform: scale(0); /* IE 9 */
+    -webkit-transform: scale(0); /* Safari */
+    transform: scale(0);
+}
+
+#msg2 {
+    width:187px;
+    height:28px;
+    left:30px;
+    top:36px;
+    position: absolute;
+    background-image: url("../images/msg2.png");
+    -ms-transform: scale(0); /* IE 9 */
+    -webkit-transform: scale(0); /* Safari */
+    transform: scale(0);
+}
+
+#cta {
+    width:118px;
+    height:39px;
+    left:182px;
+    top:134px;
+    position: absolute;
+    background-image: url("../images/cta.png");
+    -ms-transform: scale(0); /* IE 9 */
+    -webkit-transform: scale(0); /* Safari */
+    transform: scale(0);
+    cursor: pointer;
+}
+
+#pep1 {
+    left:5px;
+    width: 57.5px;
+    height: 42.5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/veg.png");
+}
+
+#pep2 {
+    top:72px;
+    width: 27.5px;
+    height: 30px;
+    left:82px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/mas.png");
+}
+
+#pep3 {
+    left:128px;
+    width: 42px;
+    height: 55px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/nood.png");
+}
+
+#pep4 {
+    left:233px;
+    background-image: url("../images/tomatoes.png");
+}
+.noVis{
+    opacity: 0;
+}
+.Vis{
+    opacity: 1;
+}
+
+/* drag css */
+
+#parent {  width: 320px; height: 250px; position:relative;}
+
+.pep
+{ 
+    position:absolute;
+    top:60px;
+    width: 68px;
+    height: 50px;
+    z-index: 10;
+}
+
+.droppable{   
+    width: 100px;
+    height: 70px;
+    left: 84px;
+    top: 130px;
+    position: absolute;
+    /* background-color: red; */
+}
+
+
+
+
+.no-events{
+    pointer-events: none;
+}
+.finder{
+    left: 150px;
+      bottom: 52px;
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      z-index:20;
+      pointer-events: none;
+      animation: slide 2s infinite linear;
+  }
+  @keyframes slide {
+    from { top: 20%;}
+    to { top: 60%;opacity: 0; } 
+  }
+  .packet {
+    height: 129px;
+    width: 112px;
+    right: 3px;
+    bottom: 1px;
+    position: absolute;
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes pulse {
+    0% {
+        transform: scaleX(1)
+    }
+    50% {
+        transform: scale3d(.90, .90, .90)
+    }
+    to {
+        transform: scaleX(1)
+    }
+  }
+  
+  @keyframes goup {
+    0% {
+        top:0px;
+    }
+    
+    100% {
+        top: -300px;
+    }
+  }
+ 
+

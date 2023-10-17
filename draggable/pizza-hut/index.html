@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza hut Animation</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+.hidden{
+    display: none;
+}
+.iss_wrapper{
+    width: 300px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    background: url(https://showcase.infostation.digital/draggable/pizza-hut/june-23/images/bg.png) no-repeat;
+}
+
+.iss_element_1{
+    width: 43px;
+    height: 15px;
+    position: absolute;
+    top: 38px;
+    left: 14px;
+}
+.iss_element_2{
+    width: 30px;
+    height: 50px;
+    position: absolute;
+    top: 20px;
+    left: 60px;
+}
+.iss_element_3{
+    width: 41px;
+    height: 15px;
+    position: absolute;
+    top: 55px;
+    left: 14px;
+}
+.iss_element_4{
+    width: 90px;
+    height: 25px;
+    position: absolute;
+    top: 72px;
+    left: 14px;
+}
+.iss_element_5{
+    width: 92px;
+    height: 41px;
+    position: absolute;
+    top: 100px;
+    left: 14px;
+}
+.iss_element_6{
+    width: 267px;
+    height: 63px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.iss_element_7{
+    width: 145px;
+    height: 122px;
+    position: absolute;
+    left: 119px;
+    bottom: 63px;
+}
+.iss_element_8{
+    width: 68px;
+    height: 60px;
+    position: absolute;
+    left: 190px;
+    bottom: 61px;
+}
+@keyframes showZoomIn {
+    from {
+      transform: scale3d(0.5, 0.5, 0.5);
+    }
+    to {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  .showZoomIn {
+    animation-name: showZoomIn;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+  }
+  .pluse{
+    animation: pluse 2s infinite both;
+}
+
+@keyframes pluse{
+    25%{
+        transform: scale(.90);
+    }
+    50%{
+        transform: scale(1);
+    }
+    75%{
+        transform: scale(.90);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+    </style>
+   
+</head>
+<body>
+    <div class="iss_wrapper">
+        <div class="iss_element_1 hidden showZoomIn">
+            <img src="https://showcase.infostation.digital/draggable/pizza-hut/june-23/images/buy.png"/>
+        </div>
+        <div class="iss_element_2 pluse">
+            <img src="https://showcase.infostation.digital/draggable/pizza-hut/june-23/images/one.png"/>
+        </div>
+        <div class="iss_element_3 hidden showZoomIn">
+            <img src="https://showcase.infostation.digital/draggable/pizza-hut/june-23/images/get.png"/>
+        </div>
+        <div class="iss_element_4">
+            <img src="https://showcase.infostation.digital/draggable/pizza-hut/june-23/images/free.png"/>
+        </div>
+        <div class="iss_element_5">
+            <img src="https://showcase.infostation.digital/draggable/pizza-hut/june-23/images/text2.png"/>
+        </div>
+        <div class="iss_element_6">
+            <img src="https://showcase.infostation.digital/draggable/pizza-hut/june-23/images/hand.png"/>
+        </div>
+        <div class="iss_element_7">
+            <img src="https://showcase.infostation.digital/draggable/pizza-hut/june-23/images/pizza.png"/>
+        </div>
+        <div class="iss_element_8">
+            <img src="https://showcase.infostation.digital/draggable/pizza-hut/june-23/images/pizza-slice.png"/>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/Draggable.min.js"></script>
+
+    <script>
+     
+        // gsap.from(".iss_element_1",  {x:-50,opacity:0, duration: .5, ease: "none"});
+        // gsap.from(".iss_element_2", {y:-70,opacity:0, duration: .5, ease: "none"},'>=.5');
+        // gsap.from(".iss_element_3", {x:-60,opacity:0, duration: .5, ease: "none"},'>=.5');
+        // gsap.from(".iss_element_4", {x:-110,opacity:0, duration: .5, ease: "none"},'>=.5');
+        // gsap.from(".iss_element_5", {y:100,opacity:0, duration: .5, ease: "none"},'>=.5');
+
+        let iss_element_1 = document.querySelector('.iss_element_1')
+        let iss_element_2 = document.querySelector('.iss_element_2')
+        let iss_element_3 = document.querySelector('.iss_element_3')
+        setTimeout(slide,false)
+        function slide(){
+            iss_element_1.classList.remove('hidden')
+            iss_element_3.classList.add('hidden')
+            setTimeout(function(){
+                iss_element_1.classList.add('hidden')
+               iss_element_3.classList.remove('hidden')
+               setTimeout(slide,2000)
+            },2000)
+        }
+
+
+
+
+    // gsap.fromTo(".iss_element_8", {scale: .80}, {scale:1, duration: .5, ease: "none"});
+gsap.to(['.iss_element_8'],{scale:.90,duration:.5,repeat:-1,yoyo:true,ease:'none'})
+
+hitStatus = true;
+
+Draggable.create('.iss_element_8', {
+  type: "x,y", edgeResistance: .99, cursor: 'auto', bounds: {
+    top: 0, left: 0, width: 300, height: 250,
+  },
+
+  onDragEnd: function () {
+    if (hitStatus) {
+    let  location = document.querySelector('.iss_element_8').getBoundingClientRect();
+
+      if(location.left > 205 && location.top > 155 ){
+        window.location.href = "https://www.pizzahutbd.com/";
+      }else{
+       gsap.to(".iss_element_8", { duration: .5, x: 0, y: 0, rotate: 0 });
+
+
+      }
+
+      
+    }
+  },
+  onDrag: function () {
+
+    if (this.hitTest(".boy", '30%') && hitStatus) {
+      hitStatus = false;
+
+    }
+  },
+
+})
+
+    </script>
+</body>
+</html>

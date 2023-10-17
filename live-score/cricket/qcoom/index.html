@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="ad.size" content="width=300,height=250">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="https://infostation.digital/favicon.ico">
+    <title>Qcoom Live Score Banner by Info Station</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box;background-size: 100% 100%;background-repeat: no-repeat;user-select: none;}
+        .pp_wrapper{width: 300px;height: 250px;
+           position: relative;
+           cursor: pointer;
+           overflow: hidden;
+/*           background: url(img/preview.jpg) no-repeat;*/
+       }
+        .absolute{position: absolute;}
+        .hidden{display: none;}
+    
+
+        .slide{left: 0;top: 0;right: 0;bottom: 0;width: 300px;height: 169px;}
+
+        .slide_1 .elements_1{width: 300px;height: 169px;left: 0;top: 0;}
+
+
+        .slide_2 .elements_1{width: 300px;height: 169px;left: 0;top: 0;}
+
+
+        .slide_3 .elements_1{width: 300px;height: 169px;left: 0;top: 0;}
+        .slide_4 .elements_1{width: 300px;height: 169px;left: 0;top: 0;}
+
+
+        @keyframes pulse {
+            0% {transform: scaleX(1)}
+            50% {transform: scale3d(.95, .95, .95)}
+            to {transform: scaleX(1)}
+        }
+        @keyframes toLeft {
+          0%{transform: translateX(300px);}
+          25% {transform: translateX(0px);}
+          75% {transform: translateX(0px);}
+          100% {transform: translateX(-300px);}
+        }
+        @keyframes bottle {
+            0% {transform: rotateZ(0deg)}
+            10% {transform: rotateZ(-5deg)}
+            20% {transform: rotateZ(5deg)}
+            30% {transform: rotateZ(-5deg)}
+            40% {transform: rotateZ(5deg)}
+            50% {transform: rotateZ(-5deg)}
+            60% {transform: rotateZ(0deg)}
+           100% {transform: rotateZ(0deg) }
+        }
+
+        .pulse {animation-name: pulse;animation-duration: 2s;animation-iteration-count: infinite;}
+        .toLeft {animation-name: toLeft;animation-duration: 4s;animation-fill-mode: both;}
+
+ .countryName{
+    width: 300px;
+    height: 62px;
+    bottom: 0px;
+    left: 0px;
+    background: url(img/scoreboards.jpg) no-repeat;
+    position: absolute;
+}
+
+.countryone {
+    width: 150px;
+    bottom: 31px;
+    left: 46px;
+    color: #fff;
+    position: absolute;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: "Montserrat", Times, serif;
+}
+.countrytwo{
+    width: 150px;
+    bottom: 31px;
+    left: 222px;
+    color: #fff;
+    position: absolute;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: "Montserrat", Times, serif;
+
+}
+.teamone {
+    width: 150px;
+    bottom: 8px;
+    left: 31px;
+    color: #fff;
+    position: absolute;
+    font-weight: 700;
+    font-size: 15px;
+    font-family: "Montserrat", Times, serif;
+}
+.teamtwo{
+    width: 150px;
+     bottom: 8px;
+    left: 200px;
+    color: #fff;
+    position: absolute;
+    font-weight: 700;
+    font-size: 15px;
+    font-family: "Montserrat", Times, serif;
+}
+
+    </style>
+</head>
+<body>
+    <a href="{CLICK_MACRO}" target="_blank">
+        <div class="pp_wrapper">
+            <div class="slide_1 slide absolute hidden">
+                <div class="elements_1 absolute"><img src="img/a.jpg" alt=""></div>
+    
+            </div>
+            <div class="slide_2 slide absolute hidden">
+                <div class="elements_1 absolute"><img src="img/b.jpg" alt=""></div>
+       
+            </div>
+            <div class="slide_3 slide absolute hidden">
+                <div class="elements_1 absolute"><img src="img/c.jpg" alt=""></div>
+           
+            </div> 
+              <div class="slide_4 slide absolute hidden">
+                <div class="elements_1 absolute"><img src="img/d.jpg" alt=""></div>
+            </div>
+            <div class="countryName">
+                <span class="countryone" id="countryone"></span>
+                <span class="countrytwo" id="countrytwo"></span>
+            </div>
+           <div class="teams">
+            <span class="teamone" id="teamone"></span>
+            <span class="teamtwo" id="teamtwo"></span>
+        </div>
+        </div>
+    </a>
+<script type="text/javascript" src="animation.js?=1.1"></script>
+<script type="text/javascript">
+    var countryone = document.getElementById('countryone')
+var countrytwo = document.getElementById('countrytwo')
+
+ var teamone = document.getElementById('teamone')
+var teamtwo = document.getElementById('teamtwo')
+
+   getLiveScore();
+   setInterval(function(){ getLiveScore(); }, 5000);
+   //var data;
+   function getLiveScore() {
+
+      fetch('https://showcase.infostation.digital/api/t20/data.json')
+       .then((response) => response.json())
+       .then((data) => {
+        // console.log(data)
+         
+           if (data.teamone==false) {
+               teamone.innerText = ''
+           }else{
+               teamone.innerText = data.teamone.split('-')[1];
+               temp =data.teamone.split('-')[1]
+               run1 = temp.split("/")[0]
+               wicket1 = temp.split("/")[1].split('(')[0]
+               over1 = temp.split("/")[1].split(')')[0].split("(")[1]
+               console.log("run1 : " + run1)
+               console.log("Over1 : " + over1)
+               console.log("wicket1 : " + wicket1)
+           }
+
+           if (data.teamtwo==false) {
+               teamtwo.innerText = ''
+           }else{
+               teamtwo.innerText = data.teamtwo.split('-')[1];
+           }
+
+            countryone.innerText = data.countryone;
+           countrytwo.innerText = data.countrytwo;
+           //  countryone.innerText = data.teamone.split('-')[0];
+           // countrytwo.innerText = data.teamtwo.split('-')[0];
+           
+       })
+
+   }
+</script>
+</body>
+</html>

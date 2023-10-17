@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="ad.size" content="width=300,height=250">
+    <title> Coke Studio Video Ad by InfoStation </title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <style type="text/css">
+      #action,
+#video-container:hover #action {
+    opacity: 1;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+body,
+html {
+    width: 300px;
+    height: 250px;
+}
+
+.slide_1 img {
+    width: 300px;
+    height: 250px;
+}
+
+.slide_1 {
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+}
+#video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    background: #F70008;
+}
+#action,
+.readMore,
+.readMore .details,
+.slide_2 {
+    position: absolute;
+}
+#action {
+    display: block;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    right: 0;
+    height: 32px;
+    width: 32px;
+}
+.slide_2 {
+    width: 100%;
+    height: 100%;
+    /* background-image: linear-gradient(to right, #000, rgba(0, 0, 0, 0)); */
+}
+
+
+.readMore {
+    width: 50%;
+    height: 46px;
+    bottom: -13px;
+    left: 5px;
+    z-index: 9999;
+}
+.readMore .details {
+    color: #fff;
+    font-size: 12px;
+    top: 0;
+    left: 0;
+    font-weight: 700;
+}
+button.audio_control {
+    position: absolute;
+    right: 7px;
+    bottom: 5px;
+    background: #F70008;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    border: 2px solid #fff;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+iframe#ytplayer {
+    position: absolute;
+    top: 55px;
+    left: 10px;
+}
+img.disk {
+    width: 90px;
+    position: absolute;
+    right: 30px;
+    top: -3px;
+}
+
+.music-disk {
+    position: relative;
+    width: 300px;
+    height: 80px;
+}
+
+img.small_circle {
+    position: absolute;
+    width: 22px;
+    right: 14px;
+    top: 17px;
+}
+
+img.stick {
+    position: absolute;
+    right: 22px;
+    width: 16px;
+    transform: rotate(10deg);
+}
+
+.fadeIn {
+    animation: 1.5s fadeIn;
+}
+.d_none{
+    display: none;
+}
+
+.logo {
+    width: 100px;
+}
+
+#turntable {
+  position: absolute;
+  top:0;
+  right:0;
+  width: 80px;
+  height: 64px;
+  background: url(turntable_bg.png) no-repeat;
+  background-size: contain;
+  z-index: 9999;
+}
+
+#turntable-disk {
+    position: absolute;
+    top: 4.4px;
+    right: 23.7px;
+    width: 51.96px;
+    height: 51.96px;
+    background: url(turntable_disk.png) no-repeat;
+    background-size: contain;
+}
+
+#turntable-arm {
+    position: absolute;
+    top: 3px;
+    right: 12.3px;
+    width: 11.6px;
+    height: 55.76px;
+    background: url(turntable_arm.png) no-repeat;
+    background-size: contain;
+    transform-origin: 6.6px 12.8px;
+    transition: transform 2s ease;
+}
+
+#turntable.started #turntable-disk {
+  animation: spin-disk 4s linear infinite;
+}
+
+#turntable.started #turntable-arm {
+  transform: rotate(25deg);
+}
+
+@keyframes spin-disk {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.slide_2_bg {
+    position: absolute;
+    width: 100%;
+    /* top: -50%; */
+    /* left: -69%; */
+    transform: rotate(-19deg);
+}
+
+    </style>
+</head>
+<body>
+<div id="video-container">
+    <div class="slide_1">
+        <img src="coke.gif" alt="" class="coke">
+    </div>
+    <div class="slide_2 d_none">
+        <img src="coke.gif" class="slide_2_bg" alt="">
+
+        <div id="turntable">
+            <div id="turntable-disk"></div>
+            <div id="turntable-arm"></div>
+          </div>
+
+        <div class="youtube-container"><iframe id="ytplayer" width="250" height="141" src="https://www.youtube.com/embed/zN7iK3-tJXw?rel=0&showinfo=0&autoplay=1&controls=0&enablejsapi=1&playerapiid=ytplayer" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <button class="audio_control" onclick="toggleMute()"><i class="material-icons">volume_off</i></button>
+
+        <!-- <div class="music-disk">
+            <img src="disk.png" alt="" class="disk">
+            <img src="small-circle.png" alt="" class="small_circle">
+            <img src="stick.png" alt="" class="stick">
+        </div> -->
+
+        
+
+        <div class="readMore">
+            <img src="logo.png" class="logo" alt="">
+        </div>
+    </div>
+    
+
+</div>
+<script>
+    let slide_1 = document.querySelector(".slide_1");
+    let slide_2 = document.querySelector(".slide_2");
+    let Container = document.querySelector("#video-container");
+    var tag = document.createElement('script');
+    var isPlay = false;
+    let played = true;
+    let audioControl = document.querySelector(".audio_control");
+    let device = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'mobile' : 'desktop';
+
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    document.querySelector("#ytplayer").src = "https://www.youtube.com/embed/zN7iK3-tJXw?rel=0&showinfo=0&autoplay=1&controls=0&enablejsapi=1&playerapiid=ytplayer&loop=1";
+
+    var player;
+
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player('ytplayer', {
+            events: {
+                'onStateChange': ShowMe,
+                'onReady': onPlayerReady
+            },
+            playerVars: {
+                showinfo: 0,
+                ecver: 2
+            },
+        });
+    }
+
+    var turntable = document.getElementById('turntable'),
+        turntableArm = document.getElementById('turntable-arm'),
+        turntableBtn = document.getElementById('turntable-btn');
+
+    function turntable_change() {
+        turntable.classList.toggle('started');
+        if (turntable.classList.contains('started')) {
+            turntableBtn.innerHTML = 'stop';
+            turntableArm.addEventListener('transitionend', play);
+        } else {
+            turntableBtn.innerHTML = 'play';
+            turntableArm.removeEventListener('transitionend', play);
+        }
+    }
+
+
+    function ShowMe() {
+        var sStatus;
+
+        sStatus = player.getPlayerState();
+        if (sStatus == 0) {
+            if (isPlay) {
+                player.stopVideo();
+            }
+        } else if (sStatus == 1) {
+            turntable_change()
+            if (played) {
+                played = false;
+            }
+        } else if (sStatus == 2) {
+            turntable_change()
+            // console.log('paused');
+        } else if (sStatus == 3) {
+            // console.log('buffering');
+        } else if (sStatus == 5) {
+            // console.log('cued');
+        }
+    }
+
+    function toggleMute() {
+        if (player.isMuted()) {
+            player.unMute();
+            audioControl.innerHTML = '<i class="material-icons">volume_up</i>';
+        } else {
+            player.mute();
+            audioControl.innerHTML = '<i class="material-icons">volume_off</i>';
+        }
+    }
+
+    if (device == 'desktop') {
+        function onPlayerReady(event) {
+            event.target.mute();
+        }
+
+    }
+
+    setTimeout(() => {
+        add_class(slide_1, 'd_none');
+        remove_class(slide_2, 'd_none', 'fadeIn');
+    }, 2700);
+
+    function remove_class(element, classname, newclass = '') {
+        element.className = element.className.replace(classname, newclass);
+    }
+
+    function add_class(element, classname) {
+        element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+    }
+
+
+    
+</script>
+</body>
+</html>

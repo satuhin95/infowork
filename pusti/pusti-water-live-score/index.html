@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="ad.size" content="width=300,height=250">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pusti Live Score Banner by Info Station</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box;background-size: 100% 100%;background-repeat: no-repeat;user-select: none;}
+        .pp_wrapper{width: 300px;height: 250px;
+           position: relative;
+           cursor: pointer;
+           overflow: hidden;
+          background: url(images/bg5.png) no-repeat;
+       }
+        .absolute{position: absolute;}
+        .hidden{display: none;}
+        .iis_element_1 {
+            width: 115px;
+            height: 86px;
+            position: absolute;
+            right: 11px;
+            top: 38px;
+        }
+        .iis_element_2 {
+            width: 52px;
+            height: 54px;
+            position: absolute;
+            right: 32px;
+            top: 126px;
+        }
+        .iis_element_3 {
+            width: 141px;
+            height: 245px;
+            position: absolute;
+            left: 17px;
+            top: 5px;
+        }
+        .iis_element_4 {
+            width: 300px;
+            height: 250px;
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            mix-blend-mode: darken;
+        }
+
+        @keyframes pulse {
+            0% {transform: scaleX(1)}
+            50% {transform: scale3d(.90, .90, .90)}
+            to {transform: scaleX(1)}
+        }
+
+
+        .pulse {animation-name: pulse;animation-duration: 1s;animation-iteration-count: infinite;}
+
+        .countryName {
+            width: 276px;
+            height: 42px;
+            bottom: 5px;
+            left: 12px;
+            background: url(images/score.png) no-repeat;
+            position: absolute;
+        }
+
+        .countryone {
+            width: 150px;
+            bottom: 25px;
+            left: 42px;
+            color: #fff;
+            position: absolute;
+            font-weight: 700;
+            font-size: 14px;
+            font-family: "Montserrat", Times, serif;
+        }
+.countrytwo{
+    width: 150px;
+    bottom: 25px;
+    left: 208px;
+    color: #fff;
+    position: absolute;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: "Montserrat", Times, serif;
+
+}
+.teamone {
+    bottom: 15px;
+    left: 35px;
+    color: #fff;
+    position: absolute;
+    font-weight: 700;
+    font-size: 11px;
+    font-family: "Montserrat", Times, serif;
+}
+.teamtwo{
+     bottom: 15px;
+    left: 203px;
+    color: #fff;
+    position: absolute;
+    font-weight: 700;
+    font-size: 11px;
+    font-family: "Montserrat", Times, serif;
+}
+
+
+.upAndDown{
+    animation: upAndDown 4s ease-in-out infinite alternate;
+
+}
+@keyframes upAndDown {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+@keyframes toTop {
+          0%{transform: translateY(-200px);}
+          25% {transform: translateY(0px);}
+          75% {transform: translateY(0px);}
+          100% {transform: translateY(-200px);}
+        }
+.toTop {animation-name: toTop;animation-duration: 4s;animation-fill-mode: both; animation-iteration-count: infinite;}
+span.__istation_logo__ {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-family: sans-serif;
+    font-size: 11px;
+    background-color: #82070f;
+    cursor: pointer;
+    z-index: 9999;
+}
+.__istation_logo__ svg {
+    width: 18px;
+    height: 18px;
+    vertical-align: top;
+    padding: 1px;
+}
+
+
+    </style>
+    	<script>
+            var clickTag = "https://pusti.com.bd/full-shop/";
+        </script>
+</head>
+<body>
+    <a href="javascript:window.open(window.clickTag)">
+        <div class="pp_wrapper">
+            <div class="iis_element_1 toTop">
+                <img src="images/t.png" />
+            </div>
+            <div class="iis_element_2 pulse">
+                <img src="images/7.png" />
+            </div>
+            <div class="iis_element_3 upAndDown">
+                <img src="images/b.png" />
+            </div>
+            <div class="iis_element_4 ">
+                <img src="images/w.gif" />
+            </div>
+
+            <div class="countryName">
+                <span class="countryone" id="countryone"></span>
+                <span class="countrytwo" id="countrytwo"></span>
+            </div>
+           <div class="teams">
+            <span class="teamone" id="teamone"></span>
+            <span class="teamtwo" id="teamtwo"></span>
+         </div>
+         	<span class="__istation_logo__"><svg id="Layer_1" style="enable-background:new 0 0 18 18" version="1.1" viewBox="0 0 18 18" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><path d="M8.2,5.6L6.8,4.2c0,0-1.9,2-3.4,3.6s0,3.6,0,3.6L8.6,6L8.2,5.6z" style="fill:#fff"></path><path d="M14.6,6.1c-2.1-2.1-4.3-0.4-4.3-0.4L4.1,12c2.1,2,4-0.2,4-0.2L11.7,8c0.4-0.5,0.8-0.3,0.8-0.3    c0.5,0.5-0.1,0.9-0.1,0.9L10.1,11l0.7,0.6l0.7-0.7l0.6,0.6l-0.6,0.7l0.6,0.6l2.3-2.4C16.3,8.3,14.6,6.1,14.6,6.1z M11.6,10.7    l-0.4-0.4l0.6-0.6l0.4,0.4L11.6,10.7z M12.7,11.8l-0.4-0.4l0.6-0.6l0.4,0.4L12.7,11.8z M12.8,10.6l-0.4-0.4L13,9.6l0.4,0.4    L12.8,10.6z" style="fill:#fff"></path><rect height="0.8" style="fill:#fff" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -5.7607 11.1373)" width="1.1" x="10" y="12.1"></rect><rect height="0.8" style="fill:#fff" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -5.6769 10.2902)" width="1.1" x="9" y="11.6"></rect><rect height="0.8" style="fill:#fff" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -6.3859 11.7847)" width="1.1" x="10.5" y="13.2"></rect><rect height="0.8" style="fill:#fff" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -6.7719 10.6374)" width="1.1" x="8.9" y="13.1"></rect><rect height="0.8" style="fill:#fff" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -7.827 11.034)" width="0.9" x="9" y="14.6"></rect><rect height="0.8" style="fill:#fff" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -7.7768 10.0061)" width="0.9" x="7.7" y="14"></rect><rect height="0.8" style="fill:#fff" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -8.8762 10.4523)" width="0.8" x="7.8" y="15.6"></rect><path d="M7.8,3.7C8.1,4,8.4,4.3,8.7,4.6c0.1,0.1,0.1,0.1,0.1,0.2c0,0.2,0,0.4,0,0.6c0,0.1,0,0.2,0.1,0.2l0,0    c0.1,0.1,0.2,0,0.3-0.1c0.1-0.1,0.1-0.2,0.2-0.2C9.7,5,9.9,4.8,10.2,4.6l0,0c0.3-0.3,0.6-0.7,0.9-1c0.2-0.2,0.2-0.5-0.1-0.7    c-0.5-0.3-0.9-0.8-1.3-1.2C9.6,1.5,9.4,1.5,9.3,1.5C9.2,1.6,9.1,1.6,9,1.7C8.7,2,8.4,2.3,8.1,2.6C8,2.7,7.9,2.9,7.8,3    C7.6,3.2,7.5,3.4,7.7,3.6C7.7,3.6,7.8,3.7,7.8,3.7L7.8,3.7z M8.1,3.2C8.2,3.1,8.3,3,8.4,2.9C8.7,2.6,9,2.3,9.3,1.9    c0.1-0.1,0.1-0.1,0.2,0c0.4,0.4,0.8,0.8,1.3,1.2c0.1,0.1,0.1,0.1,0,0.2C10.3,3.9,9.8,4.4,9.2,5c0,0,0,0,0,0c0,0,0,0,0,0    c0-0.4-0.1-0.7-0.4-0.9C8.5,3.9,8.3,3.7,8.1,3.5c0,0-0.1-0.1-0.1-0.1C8,3.3,8,3.3,8.1,3.2L8.1,3.2z" style="fill:#fff"></path></svg></span>
+        </div>
+    </a>
+
+<script type="text/javascript">
+    var countryone = document.getElementById('countryone')
+    var countrytwo = document.getElementById('countrytwo')
+
+    var teamone = document.getElementById('teamone')
+    var teamtwo = document.getElementById('teamtwo')
+
+   getLiveScore();
+   setInterval(function(){ getLiveScore(); }, 5000);
+   //var data;
+   function getLiveScore() {
+    fetch('https://ms.purplepatch.online/saif/api/cricket/t20/data.json?v=1.1')
+       .then((response) => response.json())
+       .then((data) => {
+         
+           if (data.teamone==false) {
+               teamone.innerText = ''
+           }else{
+               teamone.innerText = data.teamone.split('-')[1];
+           }
+
+           if (data.teamtwo==false) {
+               teamtwo.innerText = ''
+           }else{
+               teamtwo.innerText = data.teamtwo.split('-')[1];
+           }
+
+            countryone.innerText = data.countryone;
+           countrytwo.innerText = data.countrytwo;
+
+           
+       })
+
+   }
+
+</script>
+</body>
+</html>

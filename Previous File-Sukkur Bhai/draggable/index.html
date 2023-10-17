@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="app.css">
+</head>
+
+<body>
+
+    <div class="banner banner_go-to-swipe">
+
+        <div class="before">
+            <img class="content-image" src="img/2.png" draggable="false" />
+        </div>
+        <div class="after">
+            <img class="content-image" src="img/1.png" draggable="false" />
+        </div>
+        <div class="scroller">
+            <img class="tablet" src="img/tablet.png" draggable="false" />
+        </div>
+
+        <img class="finish-frame finish-frame_l" src="img/3.png" alt="">
+        <img class="finish-frame finish-frame_r" src="img/4.png" alt="">
+
+        <img class="btn" src="img/btn.png" alt="">
+        <img src="img/text.png" alt="" class="text">
+
+        <div class="border"></div>
+        <!-- <img class="logo" src="img/logo.png" alt=""> -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/Draggable.min.js"></script>
+    <script>
+        function ctaFunction() {
+            window.open("{CLICK_URL}");
+        }
+
+        function _dsptr(e) {
+            var track = new Image();
+            track.src = "{EVENT_URL}" + e;
+        };
+
+        var ft = true;
+
+        function dragft() {
+            if (ft) {
+                ft = false;
+                _dsptr("started");
+            }
+        }
+        var ft2 = true;
+
+        function dragft2() {
+            if (ft2) {
+                ft2 = false;
+                _dsptr("finished");
+            }
+        }
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>

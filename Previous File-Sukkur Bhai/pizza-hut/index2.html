@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="shortcut icon" type="image/x-icon" href="//infostation.digital/favicon.ico">
+       <meta name="ad.size" content="width=300,height=250">
+       <title>Pizza Hut Ad by Info Station</title>
+       <style>
+            *{
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+            }
+            body{
+               background-color: #fff;
+            }
+            .istation_wrapper{
+               display: flex;
+               margin: auto;
+               align-items: center;
+               justify-content: center;
+               height: 100vh;
+             }
+            .is_wrapper{
+                background: linear-gradient(115deg, #efefef  50%, #d80027  50.1%);
+            }
+             
+            .is_wrapper{
+               width: 300px;
+               height: 250px;
+               position: relative;
+               overflow: hidden;
+               /* background: linear-gradient(299deg, #efefef  50%, #d80027  50.1%); */
+               
+            }
+
+            .ingredient-images{
+    
+}
+
+img.ingradient_pizza {
+    position: absolute;
+    right: 55px;
+    top: 36.5px;
+}
+
+
+
+img.section_1_01 {
+    position: absolute;
+    width: 40px;
+    left: 112px;
+    top: 40px;
+}
+
+img.section_1_02 {
+    position: absolute;
+    width: 23px;
+    top: 68px;
+    left: 84px;
+}
+
+img.section_1_03 {
+    position: absolute;
+    width: 35px;
+    left: 121px;
+    top: 70px;
+}
+
+img.section_1_04 {
+    position: absolute;
+    width: 20px;
+    top: 86px;
+    left: 103px;
+}
+
+img.section_1_05 {
+    position: absolute;
+    width: 25px;
+    left: 77px;
+    top: 98px;
+}
+
+img.section_1_09 {
+    position: absolute;
+    width: 60px;
+    top: 147px;
+    left:95px;
+}
+
+img.section_1_08 {
+    position: absolute;
+    width: 35px;
+    top: 133px;
+    left: 81px;
+}
+
+img.section_1_07 {
+    position: absolute;
+    width: 39px;
+    left: 109px;
+    top: 110px;
+}
+
+img.section_1_06 {
+    position: absolute;
+    width: 20px;
+    left: 65px;
+    top: 69px;
+}
+img.tomato-half {
+    position: absolute;
+    bottom: 17px;
+    left: 12px;
+    width: 107px;
+}
+
+img.painapple-half {
+    position: absolute;
+    right: 11px;
+    width: 120px;
+    top: 10px;
+}
+
+img.onion-half {
+    position: absolute;
+    top: 20px;
+    width: 110px;
+    left: 22px;
+}
+
+img.capsicaum-half {
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+.fadeOut {
+    animation: 1s fadeOut forwards;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.fadeIn {
+    animation: 1.5s fadeIn;
+}
+img.onion-full {
+    width: 95px;
+    position: absolute;
+    top: 25px;
+    left: 29px;
+}
+img.tomato-full {
+    position: absolute;
+    bottom: 25px;
+    width: 89px;
+    left: 22px;
+}
+img.painapple-full {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    width: 112px;
+}
+img.capsicaum-full {
+    position: absolute;
+    bottom: 17px;
+    right: 34px;
+    width: 102px;
+}
+
+img.img1 {
+    position: absolute;
+    top: 0px;
+    left: 53px;
+    width: 191px;
+}
+
+img.img2 {
+    position: absolute;
+    top: 54px;
+    left: 78px;
+    width: 150px;
+}
+
+img.img3 {
+    position: absolute;
+    width: 150px;
+    left: 90px;
+    top: 74px;
+}
+
+img.img4 {
+    position: absolute;
+    width: 150px;
+    top: 114px;
+    left: 93px;
+}
+
+img.img5 {
+    position: absolute;
+    width: 166px;
+    top: 145px;
+    left: 85px;
+}
+@keyframes polygon_animation {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+    }
+}
+.polygon_animation {
+                animation: 4s polygon_animation forwards;
+            }
+.d-none {
+    display: none;
+}
+
+.loader {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin: auto;
+  width: 300px;
+  height: 250px;
+}
+       </style>
+    </head>
+
+    <body>
+        <div class="istation_wrapper">
+           <a href="https://www.facebook.com/bkashlimited" target="_blank">
+                <div class="is_wrapper section-1 ">
+
+                    <!-- <img class="section_1_bg" src="https://www.dropbox.com/s/ricsb7ra8cyr9or/section_1_bg.webp?raw=1" /> -->
+                    <div class="ingredient-images">
+                        <img src="ingredients/half-pizza.png" class="ingradient_pizza">
+                        <img class="section_1_01" src="/ingredients/onion.png" />
+                      
+                        <img class="section_1_02" src="ingredients/letus.png" />
+                      
+                        <img class="section_1_03" src="ingredients/powder.png" />
+                      
+                        <img class="section_1_04" src="ingredients/black-pepper.png" />
+                      
+                        <img class="section_1_05" src="ingredients/garlic.png" />
+                      
+                        <img class="section_1_06" src="ingredients/chili.png" />
+                      
+                        <img class="section_1_07" src="ingredients/capsicum.png" />
+                      
+                        <img class="section_1_08" src="ingredients/tomato.png" />
+                      
+                        <img class="section_1_09" src="ingredients/butter.png" />
+                    </div>
+
+                    <div class="slices d-none">
+                        <img src="slices/tomato-half.png" alt="" class="tomato-half">
+                        <img src="slices/painapple-half.png" alt="" class="painapple-half">
+                        <img src="slices/onion-half.png" class="onion-half">
+                        <img src="slices/capsicaum-half.png" alt="" class="capsicaum-half">
+    
+                        <img src="slices/tomato-full.png" alt="" class="tomato-full">
+                        <img src="slices/painapple-full.png" alt="" class="painapple-full">
+                        <img src="slices/onion-full.png" class="onion-full">
+                        <img src="slices/capsicaum-full.png" alt="" class="capsicaum-full">
+                    </div>
+
+                    <div class="slide-three d-none">
+                        <img src="pizza/img5.webp" alt="" class="img5">
+                        <img src="pizza/img4.webp" alt="" class="img4">
+                        <img src="pizza/img3.webp" alt="" class="img3">
+                        <img src="pizza/img2.webp" alt="" class="img2">
+                        <img src="pizza/img1.webp" alt="" class="img1">
+                    </div>
+                </div>
+                
+           </a>
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.5/gsap.min.js"
+        integrity="sha256-CkQcTxuQyZLqzqWqntH3FDxeDKMV0m7cw0aM5eph4Do=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
+       <script>
+        ;(function(){
+
+
+        // let ingredient_images = document.querySelector('.ingredient-images');
+        // let slices = document.querySelector('.slices');
+        // let tomato_full = document.querySelector('.tomato-full');
+        // let painapple_full = document.querySelector('.painapple-full');
+        // let onion_full = document.querySelector('.onion-full');
+        // let capsicaum_full = document.querySelector('.capsicaum-full');
+
+        // let t1 = gsap.timeline({
+        //     onComplete: function(){ 
+        //         setTimeout(() => {
+        //             add_class(ingredient_images, 'fadeOut') 
+        //         }, 1000);
+        //     } 
+        // });
+        // t1.from(".section_1_01", 2, {
+        //     y: -50,
+        //     x: -75,
+        //     ease: Power3.easeInOut,
+        //     opacity: 0
+        // })
+        // .from(".section_1_02", 2, {
+        //     y: -75,
+        //     x: -125,
+        //     ease: Power3.easeInOut,
+        //     opacity: 0
+            
+        // }, '-=2')
+        // .from(".section_1_03", 2, {
+        //     y: -40,
+        //     x: -50,
+        //     ease: Power3.easeInOut,
+        //     opacity: 0
+        // }, '-=2')
+        // .from(".section_1_04", 2, {
+        //     y: -50,
+        //     x: -75,
+        //     ease: Power3.easeInOut,
+        //     opacity: 0
+        // }, '-=2')
+        // .from(".section_1_05", 2, {
+        //     y: -40,
+        //     x: -100,
+        //     ease: Power3.easeInOut,
+        //     opacity: 0
+        // }, '-=2')
+        // .from(".section_1_06", 2, {
+        //     y: -50,
+        //     x: -175,
+        //     ease: Power3.easeInOut,
+        //     opacity: 0
+        // }, '-=2')
+        // .from(".section_1_07", 2, {
+        //     y: -25,
+        //     x: -75,
+        //     ease: Power3.easeInOut,
+        //     opacity: 0
+        // }, '-=2')
+        // .from(".section_1_08", 2, {
+        //     y: 25,
+        //     x: -175,
+        //     ease: Power3.easeInOut,
+        //     opacity: 0
+        // }, '-=2')
+        // .from(".section_1_09", 2, {
+        //     y: 50,
+        //     x: -100,
+        //     ease: Power3.easeInOut,
+        //     opacity: 0
+        // }, '-=2')
+
+        
+
+        // setTimeout(() => {
+        //     remove_class(slices, 'd-none', 'fadeIn');
+        //     setTimeout(() => {
+        //         add_class(tomato_full, 'polygon_animation')
+        //     add_class(onion_full, 'polygon_animation')
+        //     add_class(capsicaum_full, 'polygon_animation')
+        //     add_class(painapple_full, 'polygon_animation')
+        //     }, 1000);
+            
+        // }, 4000);
+
+
+
+
+
+        //    (function(){  
+        //        const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+        //        async function animation() {
+                   
+        //        }
+        //        animation();
+
+        //    })();
+
+    })();
+
+           function remove_class(element, classname,newclass='') {
+                element.className = element.className.replace(classname, newclass);
+            }
+            function add_class(element, classname) {
+                element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+            }
+       </script>
+    </body>
+</html>

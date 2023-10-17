@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+.hidden{
+    display: none;
+    
+}
+.absolute{
+    position: absolute;
+}
+.info_wrapper{
+    width: 300px;
+    height: 250px;
+    position: relative;
+    background: #A0DCEC;
+    cursor: pointer;
+    overflow: hidden;
+    font-family: "Montserrat", Times, serif;
+    font-size: 12px;
+}
+.info_element_1 {
+    width: 300px;
+    height: 250px;
+    top: 0px;
+    left: 0px;
+}
+.info_element_2 {
+    width: 300px;
+    height: 250px;
+    top: 0px;
+    left: 0px;
+}
+.iis_element_1{
+    width: 300px;
+    height: 52px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url(img/scoreboard.png) no-repeat;
+    z-index: 102 !important;
+ }
+ .countryName{
+    width: 300px;
+    height: 52px;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+ }
+
+.countryone {
+ width: 150px;
+ bottom: 31px;
+ left: 46px;
+ color: #fff;
+ position: absolute;
+ font-weight: 700;
+ font-size: 16px;
+ font-family: "Montserrat", Times, serif;
+}
+.countrytwo{
+ width: 150px;
+ bottom: 31px;
+ left: 222px;
+ color: #fff;
+ position: absolute;
+ font-weight: 700;
+ font-size: 16px;
+ font-family: "Montserrat", Times, serif;
+
+}
+.teamone {
+ width: 150px;
+ bottom: 10px;
+ left: 20px;
+ color: #fff;
+ position: absolute;
+ font-weight: 700;
+ font-size: 14px;
+ font-family: "Montserrat", Times, serif;
+}
+.teamtwo{
+ width: 150px;
+ bottom: 10px;
+ left: 196px;
+ color: #fff;
+ position: absolute;
+ font-weight: 700;
+ font-size: 14px;
+ font-family: "Montserrat", Times, serif;
+}
+
+.showZoomInLeft {
+    animation-name: showZoomInLeft;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes showZoomInLeft {
+0% {
+ transform:  translateX(-200%)
+}
+100% {
+transform: translateX(-0%)
+}
+}
+.zoomOutRight {
+animation-name: zoomOutRight;
+animation-duration: 1s;
+animation-fill-mode: both;
+}
+
+@keyframes zoomOutRight {
+0%{
+    transform: translateX(0%)
+}
+100% {
+transform: translateX(200%)
+}
+}
+.showZoomIn{
+animation-name: showZoomIn;
+animation-duration: .8s;
+animation-timing-function: ease-in;
+}
+@keyframes showZoomIn{
+0% {
+transform: scale(.5, .5);
+}
+100% {
+transform: scale(1, 1);
+}
+}

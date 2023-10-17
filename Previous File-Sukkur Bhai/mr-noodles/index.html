@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <style>
+          #adfinixAdLogo {
+          z-index: 99999999;
+          background: #ededed;
+          opacity: 0.8;
+          transition: 0.2s;
+          position: absolute;
+          bottom: 0;
+          display: inline-flex;
+          left: 0;
+          /* top: 235px; */
+          text-decoration: none;
+          padding: 3px;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Oxygen, Cantarell, sans-serif;
+          align-items: center;
+        }
+      
+        #adfinixAdLogo img {
+          width: 15px;
+          height: 15px;
+        }
+      
+        #adfinixAdLogo span {
+          width: 0px;
+          transition: 0.2s;
+          margin-left: 2px;
+          display: inline-block;
+          font-size: 10px;
+          visibility: hidden;
+        }
+      
+        #adfinixAdLogo:hover {
+          opacity: 1;
+      
+        }
+      
+        #adfinixAdLogo:hover span {
+          width: 35px;
+          visibility: visible;
+        }
+      
+      </style>
+  
+      <style>
+          @media (max-width: 299px){
+              body{
+                  overflow: hidden;
+                  /* width: fit-content; */
+                  transform: scale(.9,.9);
+                  margin: 0;
+                  padding: 0;
+                  text-align: center;
+                  transform-origin: top left;
+              }
+          }
+  
+  
+          @media (max-width: 250px){
+              body{
+                  overflow: hidden;
+                  /* width: fit-content; */
+                  transform: scale(.79,.79);
+                  margin: 0;
+                  padding: 0;
+                  text-align: center;
+                  transform-origin: top left;
+              }
+          }
+      </style>
+
+    </head>
+    <body>
+        <div style="position: relative;width: 300px;height: 250px;margin:auto">
+      <div id="adArea">
+
+        <div id="bg2"></div>
+        <div id="bg3"></div>
+        <!-- <div id="cloud" ></div> -->
+    
+        <div id="smoke" class="noVis"></div>
+        <div id="smoke2" class="noVis"></div>
+        <div id="smoke3" class="noVis"></div>
+        <div id="smoke4" class="noVis"></div>
+      
+
+        <!-- <div id="branding"></div> -->
+        <!-- <div id="msg1"></div> -->
+        <div id="msg2"></div>
+        <div id="cta"></div>
+        <div id="parent">
+          <div id="pep1" class="pep"></div>
+          <div id="pep2" class="pep"></div>
+          <div id="pep3" class="pep"></div>
+          <!-- <div id="pep4" class="pep"></div> -->
+          <img  class="finder" src="images/hand.png"/>
+          <div class="droppable tr"></div>
+        </div>
+
+        <!-- <div id="puodas" class="no-events"></div> -->
+
+      </div>
+      <div id="adArea1" onclick="clicked()">
+        <img class="packet" src="images/packet.png"/>
+      </div>
+      <a id="adfinixAdLogo" href="https://adfinix.com" target="_blank" noreferrer noopener>
+        <img src="https://content.adfinix.com/adfinix-static/20x20px.png" alt="Adfinix logo" />
+        <span>Adfinix</span>
+    </a>
+  </div>
+
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/modernizr.min.js"></script>
+  <script src="js/jquery.pep.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+
+    <script>
+         function clicked(){
+	    	// _etr("mr", "click");
+            //console.log("mr", "click");
+          window.open('https://www.othoba.com/src?q=mr%20noodles&fbclid=IwAR2klVTpLwXHZh4Q97YiVyvGY67JRrVuEQuSsEKfpgl-LTeMbi_ib_RIGxU', '_system');
+        }
+
+      $(document).ready(function(){
+
+      	// events
+      	var container = document.getElementById('adArea');
+      	$(container).on('endcook', function (e) {
+              $(this).off(e);
+            // _etr("mr", "finished");
+            console.log("mr", "finished");
+        });
+          /*if (typeof window.clickTag != 'undefined') {
+            $(this).on('click', function() {
+              window.parent.location = window.clickTag;
+                _etr("mr", "click");
+            });
+          }*/
+
+        /*}).on('startcook', function (e) {
+            $(this).off(e);
+            console.log("mr", "started");
+            _etr("mr", "started");
+        });*/
+
+
+
+        // function activateCTA(){
+        //   document.getElementById("adArea").addEventListener("click", clicked);
+        // }
+
+     
+
+
+
+
+       setTimeout(init, 200);
+
+
+       function toggleA1(){
+          objLoop("#pep1", 1);
+       }
+       function toggleA2(){
+          objLoop("#pep2", 2);
+       }
+       function toggleA3(){
+          objLoop("#pep3", 3);
+       }
+      //  function toggleA4(){
+      //     objLoop("#pep4", 4);
+      //  }
+
+
+       function init(){
+          //console.log("init");
+
+          //$(container).trigger('startcook');
+          smokeLoop4();
+          toggleA1();
+          setTimeout(toggleA2, 100)
+          setTimeout(toggleA3, 200)
+          // setTimeout(toggleA4, 300)
+
+          //smokeLoop();
+          //setTimeout(smokeLoop2, 500)
+
+          $("#msg1").animate({ textIndent: 1 }, {
+              step: function(now,fx) {
+                  //console.log(now);
+                  var val = easeOutBack(now, 2.5);
+
+                  $(this).css('-ms-transform',"scale(" + val + ")");
+                  $(this).css('-webkit-transform',"scale(" + val + ")");
+                  $(this).css('transform',"scale(" + val + ")");
+              },
+              duration:600
+          },'easeout');
+
+        }
+
+        function hideMsg(){
+
+        	$(container).trigger('endcook');
+
+          $("#msg1").animate({ textIndent: 0 }, {
+              step: function(now,fx) {
+                  var val = 1-now;
+                  $(this).css('-ms-transform',"scale(" + now + ")");
+                  $(this).css('-webkit-transform',"scale(" + now + ")");
+                  $(this).css('transform',"scale(" + now + ")");
+              },
+              complete: function(){
+                showText();
+                setTimeout(showCta, 600);
+              },
+              duration:300
+          },'easeout');
+
+        }
+
+        function showText(){
+          $("#msg2").animate({ textIndent: 1 }, {
+              step: function(now,fx) {
+                  var val = easeOutBack(now, 2.5);
+                  $(this).css('-ms-transform',"scale(" + val + ")");
+                  $(this).css('-webkit-transform',"scale(" + val + ")");
+                  $(this).css('transform',"scale(" + val + ")");
+              },
+              duration:600
+          },'easeout');
+
+        }
+
+
+        function showCta(){
+
+          $("#cta").animate({ textIndent: 1 }, {
+              step: function(now,fx) {
+                  var val = easeOutBack(now, 2.5);
+                  $(this).css('-ms-transform',"scale(" + val + ")");
+                  $(this).css('-webkit-transform',"scale(" + val + ")");
+                  $(this).css('transform',"scale(" + val + ")");
+              },
+              duration:600
+          },'easeout');
+
+
+        }
+
+
+        var cAmm = [0, 0, 0, 0, 0];
+
+        function objLoop(name, id){
+          //console.log(name, id);
+
+          var el = $(name);
+
+          cAmm[id] = cAmm[id]+1;
+
+          el.animate({ textIndent: cAmm[id] }, {
+              step: function(now,fx) {
+
+                  if ( isOdd( cAmm[id] ) ){
+                    var val = (now - (cAmm[id] - 1)) * 8;
+                  } else {
+                    var val = (1 - (now - (cAmm[id] - 1))) * 8;
+                  }
+                  
+                  $(this).css('-ms-transform',"translate( 0px, " + val + "px)");
+                  $(this).css('-webkit-transform',"translate( 0px, " + val + "px)");
+                  $(this).css('transform',"translate( 0px, " + val + "px)");
+              },
+              complete: function(){
+                objLoop(name, id);
+              },
+              duration:600
+          },'linear');
+
+
+        }
+
+
+
+
+
+
+
+
+        
+
+        
+        var toggle1 =  true;
+        var toggle2 =  true;
+        var toggle3 =  true;
+        var toggle4 =  false;
+        function smokeLoop(){
+          //console.log("smokeLoop");
+
+          var tI = 1;
+
+          if (toggle1){
+            toggle1 = false;
+          } else {
+            tI = 0;
+            toggle1 = true;
+          }
+
+          $("#smoke").animate({ textIndent: tI }, {
+              step: function(now,fx) {
+                  var val;
+                  if (!toggle1){
+                    val = now;
+                  } else {
+                    val = 1-now;
+                  }
+                  var val = - val * 200;
+
+                  $(this).css('opacity',"1");
+                  $(this).css('-ms-transform',"translate( 0px, " + val + "px)");
+                  $(this).css('-webkit-transform',"translate( 0px, " + val + "px)");
+                  $(this).css('transform',"translate( 0px, " + val + "px)");
+
+              },
+              complete: function(){
+                smokeLoop();
+              },
+              duration:1300
+          },'easeout');
+        }
+
+        function smokeLoop2(){
+          //console.log("smokeLoop2");
+
+          var tI = 1;
+
+          if (toggle2){
+            toggle2 = false;
+          } else {
+            tI = 0;
+            toggle2 = true;
+          }
+
+          $("#smoke2").animate({ textIndent: tI }, {
+              step: function(now,fx) {
+                  var val;
+                  if (!toggle2){
+                    val = now;
+                  } else {
+                    val = 1-now;
+                  }
+                  var val = - val * 200;
+
+                  $(this).css('opacity',"1");
+                  $(this).css('-ms-transform',"translate( 0px, " + val + "px)");
+                  $(this).css('-webkit-transform',"translate( 0px, " + val + "px)");
+                  $(this).css('transform',"translate( 0px, " + val + "px)");
+
+              },
+              complete: function(){
+                smokeLoop2();
+              },
+              duration:1500
+          },'easeout');
+        }
+function smokeLoop3(){
+          //console.log("smokeLoop3");
+
+          var tI = 1;
+
+          if (toggle3){
+            toggle3 = false;
+          } else {
+            tI = 0;
+            toggle3 = true;
+          }
+
+          $("#smoke3").animate({ textIndent: tI }, {
+              step: function(now,fx) {
+                  var val;
+                  if (!toggle3){
+                    val = now;
+                  } else {
+                    val = 1-now;
+                  }
+                  var val = - val * 200;
+
+                  $(this).css('opacity',"1");
+                  $(this).css('-ms-transform',"translate( 0px, " + val + "px)");
+                  $(this).css('-webkit-transform',"translate( 0px, " + val + "px)");
+                  $(this).css('transform',"translate( 0px, " + val + "px)");
+
+              },
+              complete: function(){
+                smokeLoop3();
+                $('#adArea').hide("slide", { direction: "left" }, 1000);
+                // setTimeout(() => {
+                
+                //   $('#adArea').fadeOut('slow')
+                // }, 100);
+  //               setTimeout(function() {
+  //   $('#adArea').animate({
+  //     deg: 720
+  //   }, {
+  //     duration: 500,
+  //     step: function(now) {
+  //       $(this).css({
+  //         width:'200px',
+  //         height: '200px',
+  //         borderRadius: '50%'
+  //       });
+  //       $(this).css({
+  //         transform: 'rotate(' + now + 'deg)'
+  //       });
+  //     },
+  //     done: function() {
+  //       $(this).fadeOut("slow");
+  //       $('#adArea1').addClass('adArea1').fadeIn('slow');
+  //     }
+  //   });
+  // }, 100);
+              },
+              duration:1500
+          },'easeout');
+        }
+function smokeLoop4(){
+          //console.log("smokeLoop4");
+
+          var tI = 1;
+
+          if (toggle4){
+            toggle4 = false;
+          } else {
+            tI = 0;
+            toggle4 = true;
+          }
+
+          $("#smoke4").animate({ textIndent: tI }, {
+              step: function(now,fx) {
+                  var val;
+                  if (!toggle4){
+                    val = now;
+                  } else {
+                    val = 1-now;
+                  }
+                  var val = - val * 200;
+
+                  $(this).css('opacity',"1");
+                  $(this).css('-ms-transform',"translate( 0px, " + val + "px)");
+                  $(this).css('-webkit-transform',"translate( 0px, " + val + "px)");
+                  $(this).css('transform',"translate( 0px, " + val + "px)");
+
+              },
+              complete: function(){
+                smokeLoop4();
+              },
+              duration:1500
+          },'easeout');
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        ///////////////////////////////////////
+
+        var productAmm = 3;
+        var productsCompeted = 0;
+        var startLeft = [ 5, 82, 128 ];
+        var wantedLeft = 120;
+
+        //
+
+        $('.pep').pep({
+          droppable: '.droppable',
+          axis: "y",
+          constrainTo: 'parent',
+          overlapFunction: false,
+          useCSSTranslation: false,
+          cssEaseDuration: 300,
+          velocityMultiplier: 0,
+          initiate: function(ev,obj) {
+            if(obj.el.id=='pep3'){
+              $("#"+obj.el.id).css({
+                backgroundImage: "url('images/cake.png')"
+              });
+            }
+          },
+          start: function(ev, obj){
+            obj.noCenter = false;
+            if(productsCompeted == 0){
+            	console.log("mr", "started");
+            }
+            if(obj.el.id=='pep3'){
+              $("#"+obj.el.id).css({
+                backgroundImage: "url('images/cake.png')"
+              });
+            }
+          },
+          drag: function(ev, obj){
+            $(".finder").remove()
+            var vel = obj.velocity();
+            var rot = (vel.x)/5;
+            rotate(obj.$el, rot);
+
+            //console.log( obj.$el[0].id );
+
+            var name0 = obj.$el[0].id;
+            var id = parseInt( name0.replace( /^\D+/g, '') ) - 1;
+            var cur =  obj.pos.y / 80; 
+            obj.$el[0].style.left = startLeft[id] + ( wantedLeft - startLeft[id] ) * cur + "px";
+
+            //console.log( obj.pos.y);
+
+            if (obj.pos.y >100){
+              console.log(obj)
+              obj.disabled = true;
+              $( "#adArea" ).mouseup();
+             
+            }
+            if (obj.pos.y  > 120){
+            
+              obj.$el[0].style.opacity = 0;
+            }
+          },
+          stop: function(ev, obj){
+            
+            //rotate(obj, 0);
+          },
+          rest: handleCentering
+        });
+
+        function handleCentering(ev, obj){
+          //console.log(obj.activeDropRegions.length);
+          if ( obj.activeDropRegions.length > 0 ) {
+            $("#"+obj.el.id).css('opacity',"0");
+            centerWithin(obj);
+
+            //console.log("obj drag finish | disable");
+            productsCompeted++;
+            //$(container).trigger('startcook');
+            // _etr("mr", "started");
+            console.log("mr", "started");
+
+            /*if(productsCompeted == 1){
+            	_etr("mr", "started");
+            }*/
+
+            switch(productsCompeted){
+              case 1:
+                smokeLoop();
+                break;
+              case 2:
+                smokeLoop2();
+                break;
+              case 3:
+                smokeLoop3();
+                break;
+              // case 4:
+              //   smokeLoop4();
+              //   break;
+
+            }
+
+
+            obj.toggle(false);
+
+            if (productsCompeted == productAmm){
+              // $('#cloud').slideDown('slow');
+              //console.log("all products drag completed | show msg | cta");
+              // smokeLoop4();
+
+              hideMsg();
+              // activateCTA();
+            }
+          }
+        }
+
+        function centerWithin(obj){
+          var $parent = obj.activeDropRegions[0];
+          var pTop    = $parent.position().top;
+          var pLeft   = $parent.position().left;
+          var pHeight = $parent.outerHeight();
+          var pWidth  = $parent.outerWidth();
+
+          var oTop    = obj.$el.position().top;
+          var oLeft   = obj.$el.position().left;
+          var oHeight = obj.$el.outerHeight();
+          var oWidth  = obj.$el.outerWidth();
+
+          var cTop    = pTop + (pHeight/2);
+          var cLeft   = pLeft + (pWidth/2);
+
+          if ( !obj.noCenter ) {
+            if ( !obj.shouldUseCSSTranslation() ) {
+              var moveTop = cTop - (oHeight/2);
+              var moveLeft = cLeft - (oWidth/2);
+              obj.$el.animate({ top: moveTop, left: moveLeft }, 50);
+            } else{
+              var moveTop   = (cTop - oTop) - oHeight/2;
+              var moveLeft  = (cLeft - oLeft) - oWidth/2;
+              obj.moveToUsingTransforms( moveTop, moveLeft );
+            }
+
+            obj.noCenter = true;
+            return;
+          }
+
+          obj.noCenter = false;
+        }
+
+        function rotate($obj, deg){
+          $obj.css({
+              "-webkit-transform": "rotate("+ deg +"deg)",
+                 "-moz-transform": "rotate("+ deg +"deg)",
+                  "-ms-transform": "rotate("+ deg +"deg)",
+                   "-o-transform": "rotate("+ deg +"deg)",
+                      "transform": "rotate("+ deg +"deg)"
+            });
+        }
+
+      });
+
+
+  function easeOutBack(cTime, s) { // t - cur time, b - start val, c - change in value, d - duration
+  d = 1;
+  t = cTime * d;
+  b = 0;
+  c = 1;
+    //s = 1.70158;
+    //s = 3;
+    if (s == ''){
+      s = 3;
+    }
+    //console.log("s", s);
+
+    return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+}
+function isOdd(num) { return num % 2;}
+    </script>
+
+   </body>
+ </html>

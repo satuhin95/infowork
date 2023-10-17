@@ -1,0 +1,702 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+Bengali:wght@500;700&display=swap" rel="stylesheet">
+		<style>
+            *{
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+            }
+            body{
+               background-color: #fff;
+            }
+            .istation_wrapper{
+               display: flex;
+               margin: auto;
+               align-items: center;
+               justify-content: center;
+               height: 100vh;
+
+             }
+            .is_wrapper{
+               width: 300px;
+               height: 250px;
+               position: relative;
+            }
+
+			canvas {
+                width: 300px;
+                height: 250px;
+				outline: none;
+				display: block;
+			}
+
+
+
+
+@-webkit-keyframes curtain {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes curtain {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.o-main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(23%, 45%);
+}
+.o-main::before {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  background-color: #000;
+  display: none;
+  z-index: 0;
+}
+
+.o-content {
+  z-index: 1;
+}
+
+.c-drawing {
+  -webkit-animation: drawing-path 0.7s cubic-bezier(0.95, 0.05, 0.795, 0.035) 0.7s forwards;
+          animation: drawing-path 0.7s cubic-bezier(0.95, 0.05, 0.795, 0.035) 0.7s forwards;
+  stroke-dasharray: 254;
+  stroke-dashoffset: 254;
+  width: 14rem;
+}
+
+
+@-webkit-keyframes drawing-path {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawing-path {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+
+.c-glitch {
+    font-family: 'Anton', sans-serif;
+  -webkit-animation: fade-in 0.4s linear 1.8s forwards;
+          animation: fade-in 0.4s linear 1.8s forwards;
+  color: black;
+  font-size: 2rem;
+  margin: -0.375rem 0 0 2.25rem;;
+  opacity: 0;
+  position: relative;
+}
+.c-glitch::before, .c-glitch::after {
+  animation: glitch-anime 0s infinite linear alternate-reverse;
+  background: black;
+  color: black;
+  content: attr(data-text);
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+}
+.c-glitch::before {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  left: -0.125rem;
+  text-shadow: 1px 0 #1100ff;
+}
+.c-glitch::after {
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  left: 0.125rem;
+  text-shadow: -1px 0 red;
+}
+
+@-webkit-keyframes glitch-anime {
+  0%, 100% {
+    -webkit-clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+            clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+  }
+  20% {
+    -webkit-clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+            clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+  }
+  30% {
+    -webkit-clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+            clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+  }
+  40% {
+    -webkit-clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+            clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+  }
+  50% {
+    -webkit-clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+            clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+  }
+  55% {
+    -webkit-clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+            clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+  }
+  60% {
+    -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+            clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+  }
+  65% {
+    -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+            clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+  }
+  70% {
+    -webkit-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+            clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+  }
+  80% {
+    -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+            clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+  }
+  85% {
+    -webkit-clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%);
+            clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%);
+  }
+  95% {
+    -webkit-clip-path: polygon(0 72%, 100% 72%, 100% 78%, 0 78%);
+            clip-path: polygon(0 72%, 100% 72%, 100% 78%, 0 78%);
+  }
+}
+
+@keyframes glitch-anime {
+  0%, 100% {
+    -webkit-clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+            clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+  }
+  20% {
+    -webkit-clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+            clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+  }
+  30% {
+    -webkit-clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+            clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+  }
+  40% {
+    -webkit-clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+            clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+  }
+  50% {
+    -webkit-clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+            clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+  }
+  55% {
+    -webkit-clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+            clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+  }
+  60% {
+    -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+            clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+  }
+  65% {
+    -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+            clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+  }
+  70% {
+    -webkit-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+            clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+  }
+  80% {
+    -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+            clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+  }
+  85% {
+    -webkit-clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%);
+            clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%);
+  }
+  95% {
+    -webkit-clip-path: polygon(0 72%, 100% 72%, 100% 78%, 0 78%);
+            clip-path: polygon(0 72%, 100% 72%, 100% 78%, 0 78%);
+  }
+}
+@-webkit-keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+
+
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                100% {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+            .fadeOut {
+                animation: 1s fadeOut forwards;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+                100% {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            .fadeIn {
+                animation: 1s fadeIn forwards;
+            }
+
+            .d-none {
+                display: none;
+            }
+
+            @keyframes fadeInto3 {
+                0% {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+                100% {
+                    opacity: 0.3;
+                    visibility: visible;
+                }
+            }
+            .fadeInto3 {
+                animation: 2s fadeInto3 forwards;
+            }
+
+            .d-none {
+                display: none;
+            }
+
+            .swoosh-container {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                width: 300px;
+                height: 250px;
+                margin-left: auto;
+                margin-right: auto;
+                background: #fff;
+                background: -moz-linear-gradient(top, #f9b78d 0%, #ff848e 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, #f9b78d), color-stop(100%, #ff848e));
+                background: -webkit-linear-gradient(top, #f9b78d 0%, #ff848e 100%);
+                background: -o-linear-gradient(top, #f9b78d 0%, #ff848e 100%);
+                background: -ms-linear-gradient(top, #f9b78d 0%, #ff848e 100%);
+                background: linear-gradient(to bottom, #f9b78d 0%, #ff848e 100%);
+                overflow: hidden;
+                box-sizing: border-box;
+
+                }
+
+.loader {
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+
+}
+
+#logo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: rotate(315deg) translate(-20px, 90px) scale(1.9);
+  transform-origin: center;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+
+
+.pic {
+  background-size: cover;
+  height: 250px;
+  width: 300px;
+}
+
+.swoosh-transition {
+    position: absolute;
+    top: 0;
+    left: 0;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nike {
+  /* paul-volkmer-small-unsplash.jpg */
+  /* background-image: url('map.jpg'); */
+  clip-path: polygon(
+    50.00132% 49.994881%,
+    50.001275% 49.994881%,
+    50.001239% 49.994922%,
+    50.001095% 49.995185%,
+    50.000932% 49.995471%,
+    50.000743% 49.995804%,
+    50.000599% 49.996098%,
+    50.000423% 49.996492%,
+    50.000297% 49.996818%,
+    50.000203% 49.997111%,
+    50.000113% 49.997435%,
+    50.000063% 49.997698%,
+    50.000009% 49.998135%,
+    50% 49.99845%,
+    50.000005% 49.998652%,
+    50.000036% 49.998895%,
+    50.00009% 49.999089%,
+    50.000198% 49.999332%,
+    50.000293% 49.999482%,
+    50.000405% 49.999635%,
+    50.0005% 49.999725%,
+    50.000631% 49.999838%,
+    50.000802% 49.999919%,
+    50.001% 49.999959%,
+    50.001234% 50%,
+    50.001545% 49.999939%,
+    50.001977% 49.999806%,
+    50.002496% 49.999554%,
+    50.003239% 49.999098%,
+    50.004207% 49.998479%,
+    50.006185% 49.997203%,
+    50.008811% 49.99554%,
+    50.009937% 49.994811%,
+    50.009996% 49.994771%,
+    50.01% 49.994724%,
+    50.01% 49.99471%,
+    50.009986% 49.994679%,
+    50.009957% 49.994674%,
+    50.009878% 49.994683%,
+    50.009741% 49.994744%,
+    50.00909% 49.995023%,
+    50.006734% 49.995977%,
+    50.004293% 49.996969%,
+    50.002757% 49.997577%,
+    50.002477% 49.997658%,
+    50.002198% 49.997709%,
+    50.001865% 49.997689%,
+    50.001631% 49.997597%,
+    50.001477% 49.997475%,
+    50.001329% 49.997284%,
+    50.001239% 49.997122%,
+    50.001189% 49.996969%,
+    50.001122% 49.996746%,
+    50.001099% 49.996605%,
+    50.001086% 49.996371%,
+    50.001095% 49.996128%,
+    50.001117% 49.995824%,
+    50.001176% 49.995561%,
+    50.00123% 49.995338%,
+    50.001271% 49.995174%,
+    50.001309% 49.995072%,
+    50.001331% 49.995016%,
+    50.001339% 49.994958%,
+    50.001333% 49.994915%
+  );
+  opacity: 0;
+}
+
+.nike.active {
+  transition: opacity 500ms, clip-path 1000ms cubic-bezier(0.4, 0, 1, 1);
+  clip-path: polygon(
+    -156.05311% -245.05876%,
+    -160.28191% -245.05876%,
+    -163.66494% -241.25286%,
+    -177.19701% -216.5145%,
+    -192.42065% -189.87324%,
+    -210.18146% -158.47459%,
+    -223.71354% -130.88181%,
+    -240.20581% -93.774286%,
+    -252.04636% -63.327086%,
+    -260.92681% -35.73433%,
+    -269.38427% -5.287134%,
+    -274.03599% 19.451218%,
+    -279.11054% 60.364605%,
+    -279.95627% 89.86033%,
+    -279.53336% 108.88983%,
+    -276.57327% 131.72523%,
+    -271.49873% 149.80326%,
+    -261.34964% 172.63863%,
+    -252.46927% 186.91075%,
+    -241.89727% 201.1829%,
+    -233.01681% 209.74619%,
+    -220.75336% 220.2124%,
+    -204.68408% 227.8242%,
+    -186.07746% 231.6301%,
+    -164.0878% 235.436%,
+    -134.90927% 229.72714%,
+    -94.313% 217.35799%,
+    -45.682099% 193.57109%,
+    24.092704% 150.75471%,
+    115.01139% 92.714793%,
+    300.65464% -27.171056%,
+    547.19233% -183.2129%,
+    652.91172% -251.7191%,
+    658.40913% -255.52499%,
+    658.83199% -259.80661%,
+    658.83199% -261.23381%,
+    657.56333% -264.08826%,
+    654.81468% -264.564%,
+    647.41424% -263.61254%,
+    634.51648% -257.90369%,
+    573.41073% -231.73811%,
+    352.24573% -142.29951%,
+    123.12063% -49.054976%,
+    -21.155196% 8.033516%,
+    -47.373599% 15.645316%,
+    -73.591999% 20.402693%,
+    -104.88496% 18.499743%,
+    -126.87458% 9.936466%,
+    -141.25242% -1.481234%,
+    -155.20739% -19.559257%,
+    -163.66494% -34.782852%,
+    -168.31659% -49.054976%,
+    -174.65975% -69.987406%,
+    -176.77416% -83.308056%,
+    -178.04276% -105.19199%,
+    -177.19701% -128.02739%,
+    -175.08264% -156.57163%,
+    -169.58524% -181.30996%,
+    -164.51069% -202.2424%,
+    -160.59906% -217.70386%,
+    -157.11031% -227.21861%,
+    -154.99595% -232.45174%,
+    -154.25591% -237.92271%,
+    -154.78451% -241.96646%
+  );
+  opacity: 1;
+}
+
+#map{width:300px;height:250px;}
+			
+		</style>
+		<title>Scene</title>
+		<link rel="modulepreload" href="main.js">
+		<link rel="preload" href="nike.3d" as="fetch">
+	</head>
+	<body>
+        <div class="istation_wrapper">
+                <div class="is_wrapper">
+                    <div class="loader">
+                        <div class="o-main">
+                            <div class="o-content">
+                              <svg class="c-drawing" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 221.098 94.484"><defs><clipPath id="a" transform="translate(-2.959 8.316)"><path data-name="mask layer" d="M33.023 81.169q-8.76-.348-14.354-4.8a28.672 28.672 0 0 1-2.982-2.984 18.635 18.635 0 0 1-3.232-5.816c-2.114-6.332-1.026-14.641 3.112-23.76C19.11 36 24.577 28.261 34.115 17.537c1.405-1.578 5.589-6.193 5.616-6.193.01 0-.218.4-.505.876a56.212 56.212 0 0 0-5.758 13.28c-1.857 6.8-1.633 12.63.656 17.153a16.755 16.755 0 0 0 7.33 7.307c5.329 2.611 13.131 2.827 22.659.632.656-.152 33.162-8.781 72.236-19.176S207.4 12.524 207.4 12.531 116.623 51.39 69.492 71.545c-7.464 3.191-9.46 4-12.969 5.229-8.97 3.15-17.005 4.653-23.5 4.395z" fill="none"/></clipPath></defs><g clip-path="url(#a)"><path data-name="path layer" d="M40.086 15.905s-77.568 99.586 61.374 42.33l113.369-40.829" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="37"/></g></svg>
+                              <div class="c-glitch" data-text="JUST DO IT">JUST DO IT</div>
+                            </div>
+                          </div> 
+                    </div>
+                    <canvas id="canvas3d" width="300" height="250"></canvas>
+                    <div class="swoosh-container d-none">
+                        <img id='logo' src="https://static1.squarespace.com/static/551409ece4b07d78d6c01886/571a7ee15559862eb8a453a1/571a7f3bd51cd458f38b0ea5/1461355091832/Nike+Logo+White.png" alt="">
+
+                    <div class="o-main">
+                        <div class="o-content">
+                          <svg class="c-drawing" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 221.098 94.484"><defs><clipPath id="b" transform="translate(-2.959 8.316)"><path data-name="mask layer" d="M33.023 81.169q-8.76-.348-14.354-4.8a28.672 28.672 0 0 1-2.982-2.984 18.635 18.635 0 0 1-3.232-5.816c-2.114-6.332-1.026-14.641 3.112-23.76C19.11 36 24.577 28.261 34.115 17.537c1.405-1.578 5.589-6.193 5.616-6.193.01 0-.218.4-.505.876a56.212 56.212 0 0 0-5.758 13.28c-1.857 6.8-1.633 12.63.656 17.153a16.755 16.755 0 0 0 7.33 7.307c5.329 2.611 13.131 2.827 22.659.632.656-.152 33.162-8.781 72.236-19.176S207.4 12.524 207.4 12.531 116.623 51.39 69.492 71.545c-7.464 3.191-9.46 4-12.969 5.229-8.97 3.15-17.005 4.653-23.5 4.395z" fill="none"/></clipPath></defs><g clip-path="url(#b)"><path data-name="path layer" d="M40.086 15.905s-77.568 99.586 61.374 42.33l113.369-40.829" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="37"/></g></svg>
+                          <div class="c-glitch" data-text="JUST DO IT">JUST DO IT</div>
+                        </div>
+                      </div>
+                    </div>
+
+                        <div class="swoosh-transition">
+                          <div class="outer">
+                            <div class="pic nike" id="map"></div>
+                          </div>
+                        </div>
+                      
+                        <div></div>
+                </div>
+            <!-- </a> -->
+         </div>
+         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeFm4lKDKOKGjRS4L_0iHsAtHydO5yFuY&callback=initMap&libraries=geometry,places" async defer="defer"></script>
+		<script type="module">
+			import { Application } from './main.js';
+			const canvas = document.getElementById('canvas3d');
+			const app = new Application(canvas);
+            
+
+			
+
+			const onLoad = () => {
+                let loader = document.querySelector('.loader');
+                add_class(loader, 'fadeOut')
+				setTimeout(() => {
+                    let canvas = document.querySelector('#canvas3d');
+                    let swoosh = document.querySelector('.swoosh-container');
+                    let logo = document.querySelector('#logo');
+                    let nike = document.querySelector('.nike');
+                    add_class(canvas, 'fadeOut')
+                    add_class(canvas, 'd-none')
+                    remove_class(swoosh, 'd-none', 'fadeIn')
+                    setTimeout(() => {
+                        add_class(nike, 'active')
+                    }, 3500);
+                }, 200);
+				
+			}
+	
+			
+			app.load('nike.3d', {
+						credentials: 'include',
+						mode: 'no-cors',
+					}).then(onLoad);
+
+            function remove_class(element, classname,newclass='') {
+                   element.className = element.className.replace(classname, newclass);
+               }
+               function add_class(element, classname) {
+                   element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+               }
+
+               setTimeout(getLocation, false);
+    function getLocation() {
+        showPosition()
+    }
+    var mylat, mylon;
+    function showPosition() {
+      mylat =  23.7745983;
+      mylon =  90.4217695;
+      if (mylat) {
+        setTimeout(initMap,100);
+      }
+    }
+
+    function initMap() {
+      if (mylat) {
+        var map;
+        var myOptions = {
+          zoom: 17,
+          scrollwheel: true,
+          mapTypeId: 'roadmap',
+          disableDefaultUI: true,
+        };
+        // map for search & directions
+        map = new google.maps.Map(document.querySelector('#map'), myOptions);
+        var markerA = new google.maps.Marker({
+          position: {lat:mylat, lng: mylon},
+          map: map
+        });
+
+      var infowindow = new google.maps.InfoWindow;
+      var loc, i;
+      var locations = [];
+      var locs = location_names();
+
+      // create markers for each loc and place them on map
+      for (i = 0; i < locs.length; i++) {
+        loc = new google.maps.Marker({
+          position: new google.maps.LatLng(locs[i][1], locs[i][2]),
+          map,
+          icon: 'markerb.png' 
+        });
+
+        google.maps.event.addListener( loc, 'click', (function(loc, i)  {
+          return function() {
+            infowindow.setContent(locs[i][0]);
+            infowindow.open(map, loc);
+          }
+        })( loc, i ));
+        locations.push(loc.position);
+      }
+
+      var pointA = markerA.getPosition();
+      var markerB;
+
+      findClosest(pointA, locations);
+
+      function findClosest( pointA, locations ) {
+        var closestDistance = Number.MAX_SAFE_INTEGER;
+        var closest;
+        for ( i = 0; i < locations.length; i++ ) {
+          var distance = google.maps.geometry.spherical.computeDistanceBetween(pointA, locations[i]);
+          if ( distance < closestDistance ) {
+            closestDistance = distance;
+            closest = locations[i];
+          }
+        }
+        markerB = closest;
+      }
+
+      var directionsService = new google.maps.DirectionsService;
+      var directionsDisplay = new google.maps.DirectionsRenderer({map});
+
+      // for( var j=0; j < locations.length; j++ ) {
+      //   calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, locations[j], map);
+      // }
+
+      // var pointB = markerB;
+      calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, markerB, map);
+
+      // var onChangeHandler = function() {
+        // calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, markerB, map);
+      // };
+      // map.addListener('change', onChangeHandler);
+        
+      }else{
+        setTimeout(getLocation, false);
+      }
+
+      
+  }
+
+  function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB, map) {
+      directionsService.route({
+       origin: pointA,
+       destination: pointB,
+       travelMode: google.maps.TravelMode.WALKING
+      }, function (response, status) {
+       if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+       } else {
+        console.error('Could not load directions due to ' + status);
+       }
+      });
+  }
+
+  // create array of locations and assign values
+  function location_names() 
+  {
+    return [
+      [ "NIKE Bangladesh",       "23.79073710119268", "90.40625849397107"]
+    ];
+  }
+		</script>
+
+
+
+
+	</body>
+</html>

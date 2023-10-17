@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="iis_wrapper">
+        <div class="iis_slide_1">
+            <div class="iis_element_1 toTop">
+                <img src="images/t.png" />
+            </div>
+            <div class="iis_element_2  pulse">
+                <img src="images/7.png" />
+            </div>
+            <div class="iis_element_3">
+                <img src="images/glass.png" />
+            </div>
+            <div class="iis_element_4">
+                <img src="images/w.png" />
+            </div>
+            <div class="iis_element_5">
+                <img src="images/bottle.png" />
+            </div>
+            <div class="iis_element_6">
+                <img src="images/water.png" />
+            </div>
+        </div>
+        <div class="iis_slide_2 hidden">
+            <div class="iis_element_1 toTop">
+                <img src="images/t.png" />
+            </div>
+            <div class="iis_element_2  pulse">
+                <img src="images/7.png" />
+            </div>
+            <div class="iis_element_7">
+                <img src="images/Untitled-1.gif" />
+            </div>
+            <div class="iis_element_8 upAndDown">
+                <img src="images/b.png" />
+            </div>
+        </div>
+ 
+        <div class="countryName">
+            <span class="countryone" id="countryone"></span>
+            <span class="countrytwo" id="countrytwo"></span>
+        </div>
+       <div class="teams">
+        <span class="teamone" id="teamone"></span>
+        <span class="teamtwo" id="teamtwo"></span>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script>
+        // gsap.timeline({delay:.5,repeat:1,repeatDelay:.1})
+
+        // gsap.timeline({delay:.5,repeatDelay:.1})
+        // .fromTo('.iis_element_5',2,{x:0,y:0,rotate:0},{x:80,y:132,rotate:65})
+        // .fromTo('.iis_element_4',.5,{opacity:0},{opacity:1})
+        // .to('.iis_element_6', { "--pp_clip": '0%', duration: 1 }, '>=.5')
+
+
+
+var countryone = document.getElementById('countryone')
+    var countrytwo = document.getElementById('countrytwo')
+
+    var teamone = document.getElementById('teamone')
+    var teamtwo = document.getElementById('teamtwo')
+
+   getLiveScore();
+   setInterval(function(){ getLiveScore(); }, 5000);
+   //var data;
+   function getLiveScore() {
+      fetch('https://showcase.infostation.digital/api/t20/data.json?v=1.1')
+       .then((response) => response.json())
+       .then((data) => {
+        // console.log(data)
+         
+           if (data.teamone==false) {
+               teamone.innerText = ''
+           }else{
+               teamone.innerText = data.teamone.split('-')[1];
+           }
+
+           if (data.teamtwo==false) {
+               teamtwo.innerText = ''
+           }else{
+               teamtwo.innerText = data.teamtwo.split('-')[1];
+           }
+
+            countryone.innerText = data.countryone;
+           countrytwo.innerText = data.countrytwo;
+           //  countryone.innerText = data.teamone.split('-')[0];
+           // countrytwo.innerText = data.teamtwo.split('-')[0];
+           
+       })
+
+   }
+
+    let iis_slide_1 = document.querySelector('.iis_slide_1')
+    let iis_slide_2 = document.querySelector('.iis_slide_2')
+
+    setTimeout(slide,false)
+
+    function slide(){
+        iis_slide_1.classList.remove("hidden")
+        iis_slide_2.classList.add("hidden")
+            gsap.timeline({delay:.5,repeatDelay:.1})
+            .fromTo('.iis_element_5',2,{x:0,y:0,rotate:0},{x:80,y:132,rotate:65})
+            .fromTo('.iis_element_4',.5,{opacity:0},{opacity:1})
+            .fromTo('.iis_element_6',1, { "--pp_clip": '100%' },{ "--pp_clip": '0%' }, '>=.5')
+        setTimeout(function(){
+            iis_slide_1.classList.add("hidden")
+            iis_slide_2.classList.remove("hidden")
+                setTimeout(slide,5000)
+        },5000)
+    }
+
+    </script>
+</body>
+</html>

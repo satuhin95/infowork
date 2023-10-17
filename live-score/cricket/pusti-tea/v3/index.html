@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusti Tea Live Score Banner by Info Station</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://infostation.digital/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="info_wrapper">
+        <div class="info_element_1 absolute ">
+            <img src="img/tea-old.png"/>
+        </div>
+        <div class="info_element_2 absolute hidden ">
+            <img src="img/tea-young.png"/>
+        </div>
+        <div class="iis_element_1">
+            <div class="countryName">
+               <span class="countryone" id="countryone"></span>
+               <span class="countrytwo" id="countrytwo"></span>
+           </div>
+          <div class="teams">
+           <span class="teamone" id="teamone"></span>
+           <span class="teamtwo" id="teamtwo"></span>
+       </div>
+         </div>
+
+    </div>
+
+    <script>
+        let info_wrapper = document.querySelector('.info_wrapper')
+        let info_element_1 = document.querySelector('.info_element_1')
+        let info_element_2 = document.querySelector('.info_element_2')
+        setTimeout(slide, false)
+        function slide(){
+            info_element_2.classList.remove('zoomOutRight')
+            info_element_2.classList.add('hidden')
+            info_element_1.classList.remove('hidden')
+            info_element_1.classList.add('showZoomInLeft')
+            setTimeout(function(){
+                info_element_1.classList.remove('showZoomInLeft')
+                setTimeout(function(){
+                    info_element_1.classList.add('zoomOutRight')
+                    info_element_2.classList.remove('hidden')
+                    info_element_2.classList.add('showZoomInLeft')
+                    setTimeout(function(){
+                        info_element_1.classList.remove('zoomOutRight')
+                        info_element_1.classList.add('hidden')
+                        setTimeout(function(){
+                            info_element_1.classList.remove('showZoomInLeft')
+                            setTimeout(function(){
+                                info_element_2.classList.add('zoomOutRight')
+                                setTimeout(slide,500)
+                            },2000)
+                         
+                        },1000)
+                    },1000)
+                },2000)
+            },1000)
+        }
+    var countryone = document.getElementById('countryone')
+    var countrytwo = document.getElementById('countrytwo')
+
+    var teamone = document.getElementById('teamone')
+    var teamtwo = document.getElementById('teamtwo')
+
+   getLiveScore();
+   setInterval(function(){ getLiveScore(); }, 5000);
+   //var data;
+   function getLiveScore() {
+      fetch('https://showcase.infostation.digital/api/t20/data.json?v=1.1')
+       .then((response) => response.json())
+       .then((data) => {
+        // console.log(data)
+         
+           if (data.teamone==false) {
+               teamone.innerText = ''
+           }else{
+               teamone.innerText = data.teamone.split('-')[1];
+           }
+
+           if (data.teamtwo==false) {
+               teamtwo.innerText = ''
+           }else{
+               teamtwo.innerText = data.teamtwo.split('-')[1];
+           }
+
+            countryone.innerText = data.countryone;
+           countrytwo.innerText = data.countrytwo;
+           //  countryone.innerText = data.teamone.split('-')[0];
+           // countrytwo.innerText = data.teamtwo.split('-')[0];
+           
+       })
+
+   }
+        info_wrapper.addEventListener('click',function(){
+            window.open('{CLICK_MACRO}', '_blank');
+
+        })
+     
+    </script>
+    
+</body>
+</html>

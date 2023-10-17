@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body {
+  background-color: #803AFD;
+  text-align: center;
+}
+
+canvas {
+  width: 810px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.album-box {
+  display: inline-block;
+  width: 810px;
+  height: 320px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  
+}
+.album-box:hover .vinyl {
+  margin-left: 202.5px;
+  transition: margin-left 0.5s;
+}
+.album-box.active .fa-stop-circle {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.album-box.active .fa-play-circle {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.album-box.active .vinyl {
+  margin-left: 440.1px;
+  transition: margin-left 0.5s;
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.album-box.active #turntable svg {
+  animation-name: start-play;
+  animation-duration: 400s;
+  animation-delay: 0.7s;
+}
+.album-box .vinyl {
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: 270px;
+  height: 270px;
+  background-color: #000;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  margin-left: 54px;
+  transition: margin-left 0.5s;
+}
+.album-box .vinyl .spire {
+  display: none;
+}
+.album-box .vinyl .spire-1 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 77.5px;
+  height: 77.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-2 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 87.5px;
+  height: 87.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-3 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 97.5px;
+  height: 97.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-4 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 107.5px;
+  height: 107.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-5 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 117.5px;
+  height: 117.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-6 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 127.5px;
+  height: 127.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-7 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 137.5px;
+  height: 137.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-8 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 147.5px;
+  height: 147.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-9 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 157.5px;
+  height: 157.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-10 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 167.5px;
+  height: 167.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-11 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 177.5px;
+  height: 177.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-12 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 187.5px;
+  height: 187.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-13 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 197.5px;
+  height: 197.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-14 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 207.5px;
+  height: 207.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-15 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 217.5px;
+  height: 217.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-16 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 227.5px;
+  height: 227.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-17 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 237.5px;
+  height: 237.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .spire-18 {
+  display: block;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 247.5px;
+  height: 247.5px;
+  background-color: transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.album-box .vinyl .vinyl-face {
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  background-color: #F27696;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  color: #FFF;
+  text-align: center;
+  line-height: 1.2em;
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  font-size: 10px;
+}
+.album-box .vinyl .vinyl-face > p {
+  display: block;
+  padding-top: 50px;
+}
+.album-box .vinyl .vinyl-face .triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 5px 10px 5px;
+  border-color: transparent transparent #FFF transparent;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  margin-top: 10px;
+}
+.album-box .vinyl .vinyl-center {
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  background-color: #803AFD;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.album-cover {
+  background-color: #1FFCC8;
+  width: 290px;
+  height: 290px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 4;
+  color: #FFF;
+}
+.album-cover .fa-stop-circle {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.album-cover i {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 70px;
+  height: 100px;
+  font-size: 100px;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.25s;
+}
+
+.album-inside {
+  background-color: #F4EEFF;
+  width: 290px;
+  height: 290px;
+  position: absolute;
+  margin: auto;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  -webkit-box-shadow: 10px 0 15px 0 #452f3d;
+  box-shadow: 10px 0 15px 0 #452f3d;
+}
+
+#turntable {
+  position: absolute;
+  right: 0;
+  top: 15px;
+  z-index: 20;
+  width: 251px;
+  height: 318.406374502px;
+  overflow: hidden;
+  background-color: #f4f3f2;
+  background: repeating-linear-gradient(90deg, #e8e6e4, #e8e6e4 1px, #f4f3f2 1px, #f4f3f2 10%);
+  border: 1px solid #aeaeae;
+  border-radius: 25%;
+  box-shadow: inset white 0 0 2px 1px, inset rgba(0, 0, 0, 0.06) 0 0 48px, rgba(0, 0, 0, 0.2) 0 15px 30px -10px;
+}
+
+#turntable:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+#turntable:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(-45deg, #efeeec, #efeeec 1px, transparent 1px, transparent 4px);
+  border-radius: 25%;
+}
+
+
+
+#turntable .shadow {
+  display: block;
+  width: 30px;
+  height: 10px;
+  opacity: 0.3;
+  -webkit-box-shadow: 0 1px 1px 0 #27016a;
+  box-shadow: 0 1px 1px 0 #27016a;
+  position: absolute;
+  top: -10px;
+  right: 8px;
+  z-index: 3;
+}
+#turntable svg {
+  position: relative;
+  z-index: 2;
+}
+#turntable #bar {
+  fill: #1FFCC8;
+}
+#turntable .darken-green {
+  fill: #02b389;
+}
+#turntable .darken-purple {
+  fill: #39029c;
+}
+#turntable .purple {
+  fill: #4c02cf;
+}
+
+/* The animation code */
+@keyframes spin {
+  0% {
+    -moz-transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+    -o-transform: rotate(-360deg);
+    -ms-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+  100% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+@keyframes start-play {
+  0% {
+    -ms-transform: rotate(0deg);
+    -ms-transform-origin: 100% top;
+    -webkit-transform: rotate(0deg);
+    -webkit-transform-origin: 100% top;
+    transform: rotate(0deg);
+    transform-origin: 100% top;
+  }
+  1% {
+    -ms-transform: rotate(17deg);
+    -ms-transform-origin: 100% top;
+    -webkit-transform: rotate(17deg);
+    -webkit-transform-origin: 100% top;
+    transform: rotate(17deg);
+    transform-origin: 100% top;
+  }
+  97% {
+    -ms-transform: rotate(30deg);
+    -ms-transform-origin: 100% top;
+    -webkit-transform: rotate(30deg);
+    -webkit-transform-origin: 100% top;
+    transform: rotate(30deg);
+    transform-origin: 100% top;
+  }
+  100% {
+    -ms-transform: rotate(0deg);
+    -ms-transform-origin: 100% top;
+    -webkit-transform: rotate(0deg);
+    -webkit-transform-origin: 100% top;
+    transform: rotate(0deg);
+    transform-origin: 100% top;
+  }
+}
+    </style>
+</head>
+<body>
+    <audio preload="auto" crossorigin loop class="audio">
+        <source src="https://www.freesound.org/data/previews/250/250749_4146089-lq.ogg" type="audio/mpeg">
+      </audio>
+    
+    <canvas id="canvas"></canvas>
+    <div class="music-box">
+      <div id="album" class="album-box">
+        <div class="album-cover">
+          <i class="fa fa-play-circle"></i>
+          <i class="fa fa-stop-circle"></i>
+        </div>
+        <div class="album-inside"></div>
+        <div class="vinyl">
+          <div class="spire spire-1"></div>
+          <div class="spire spire-2"></div>
+          <div class="spire spire-3"></div>
+          <div class="spire spire-4"></div>
+          <div class="spire spire-5"></div>
+          <div class="spire spire-6"></div>
+          <div class="spire spire-7"></div>
+          <div class="spire spire-8"></div>
+          <div class="spire spire-9"></div>
+          <div class="spire spire-10"></div>
+          <div class="spire spire-11"></div>
+          <div class="spire spire-12"></div>
+          <div class="spire spire-13"></div>
+          <div class="spire spire-14"></div>
+          <div class="spire spire-15"></div>
+          <div class="spire spire-16"></div>
+          <div class="spire spire-17"></div>
+          <div class="spire spire-18"></div>
+          <div class="spire spire-19"></div>
+          <div class="spire spire-20"></div>
+          <div class="spire spire-21"></div>
+          <div class="spire spire-22"></div>
+          <div class="spire spire-23"></div>
+          <div class="spire spire-24"></div>
+          <div class="spire spire-25"></div>
+          <div class="vinyl-face">
+            <span class="triangle"></span>
+            <p>FACE A</p>
+          </div>
+          <div class="vinyl-center"></div>
+        </div>
+        <div id="turntable">
+          <span class="shadow"></span>
+          <svg viewBox="0 0 211 246" xml:space="preserve">
+        <g>
+          <polygon id="bar" points="161.5,226.375 189.625,245.625 192.625,242.125 164.125,222.75 	"/>
+          <path class="darken-green" d="M189.087,243.743c0,0,2.522-3.493,3.03-3.118s0.508,1.5,0.508,1.5l-3,3.5L189.087,243.743z"/>
+          <path class="darken-purple" d="M191.167,182.667c0.5,3-31.833,50.333-35,50.5s-15.5-8.333-15.5-11.666s23.647-52.17,26.98-52.336
+            c0,0,2.353-0.79,6.583,1.557C177.536,172.556,190.872,180.9,191.167,182.667z"/>
+          <path class="purple" d="M191.167,182.667c0.5,3-31.833,52.333-35,52.5S139,226.667,139,223.334s27.334-54.001,30.667-54.167
+            S190.667,179.667,191.167,182.667z"/>
+          <path class="purple" d="M187.334,0c-0.605,5.307-1.125,10.628-1.492,15.956c-0.27,3.924-0.477,7.765,0.198,11.644
+            c1.743,10.023,3.608,20.025,5.376,30.045c2.456,13.916,4.861,27.846,6.934,41.825c0.812,5.479,1.591,10.968,2.139,16.479
+            c0.377,3.79,0.686,7.439-0.204,11.18c-2.056,8.648-6.675,16.742-11.152,24.339c-1.223,2.074-2.375,4.289-3.796,6.237
+            c-1.368,1.877-2.737,3.755-4.106,5.632c-2.508,3.44-5.017,6.88-7.524,10.32c-0.118,0.162,7.455,6.027,8.295,6.696
+            c6.419-8.728,12.442-17.812,17.894-27.172c3.604-6.189,7.216-12.652,9.306-19.538c1.693-5.581,1.412-11.596,1.081-17.351
+            c-0.896-15.565-3.46-31.051-6.053-46.408c-0.873-5.172-1.619-10.397-2.701-15.529c-1.098-5.205-2.402-10.362-3.386-15.591
+            c-1.146-6.097-1.836-12.236-1.84-18.444c-0.003-6.737,0.383-13.753,2.033-20.32C194.667,0,191.001,0,187.334,0z"/>
+          <g>
+            <path class="darken-purple"  d="M193.933,159.342l0.883,0.616c1.76,1.242,1.628,1.47,1.628,1.47l-8.454,14.72c0,0-0.198,0.345-2.181-0.508
+              l-0.979-0.447c-0.95-0.498-0.966-0.47-1.901-0.992l-0.934-0.527c-0.93-0.534-0.946-0.549-1.388-0.812
+              c-0.442-0.262-0.454-0.283-1.378-0.828l-0.91-0.568c-0.912-0.564-0.891-0.602-1.795-1.177l-0.822-0.72l-0.056,0.096
+              c-1.739-1.276-1.146-1.58-1.146-1.58l8.5-14.545l1.448,0.798l0.929,0.533c0,0,1.159,0.135,2.1,0.649l0.941,0.514
+              c0.933,0.528,0.952,0.537,1.398,0.794L193.933,159.342z"/>
+            <line class="darken-green" x1="192.417" y1="157.677" x2="191.488" y2="157.143"/>
+          </g>
+          <g>
+            <path class="purple" d="M183.502,152.42l-8.454,14.72c0,0-0.142,0.247,1.598,1.523l8.946-15.577
+              C183.633,152.191,183.502,152.42,183.502,152.42z"/>
+            <path class="purple" d="M186.568,153.538l-9.046,15.749c0.906,0.575,0.884,0.612,1.797,1.178l9.157-15.946
+              C187.536,154.004,187.518,154.035,186.568,153.538z"/>
+            <path class="purple" d="M193.124,157.188l-9.196,16.013c0.936,0.522,0.951,0.494,1.902,0.992l9.103-15.851
+              C194.024,157.771,194.042,157.741,193.124,157.188z"/>
+            <path class="purple" d="M195.815,158.958l-9.007,15.682c1.982,0.853,2.181,0.508,2.181,0.508l8.454-14.72
+              C197.443,160.428,197.575,160.2,195.815,158.958z"/>
+            <path class="purple" d="M190.816,155.826c-0.446-0.257-0.466-0.266-1.398-0.794l-9.189,16c0.924,0.545,0.936,0.566,1.378,0.828
+              c0.441,0.264,0.458,0.278,1.388,0.812l9.212-16.039C191.28,156.095,191.264,156.081,190.816,155.826z"/>
+            <polygon class="darken-purple" points="185.447,153.336 176.7,168.566 177.425,169.459 186.377,153.869 		"/>
+            <polygon class="darken-purple" points="188.477,154.519 179.161,170.738 180.091,171.272 189.897,155.304 		"/>
+            <polygon class="darken-purple" points="192.206,156.634 182.879,172.874 183.809,173.407 193.124,157.188 		"/>
+            <polygon class="darken-purple" points="194.933,158.342 185.83,174.192 186.809,174.64 195.672,159.208"/>
+          </g>
+        </g>
+        </svg>
+          </div>
+      </div>
+    </div>
+      
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+//@todo: add rip/scratch sound when stop or end
+var audio, canvas, canvasCtx, audioCtx, source, analyseur,
+    sizeCacheMemory, data, widthCanvas, heightCanvas, totalDuration, soundDurationI;
+var play = false;
+var isInit = false;
+
+$('#album').on('click', () => {
+  if (!isInit) { 
+
+    totalDuration = 5;
+    soundDurationI;
+    isInit = true;
+  }
+  
+  stopStartAlbum();
+});
+
+function stopStartAlbum() {
+  
+  play = !play;
+  if(play){
+    $('#album').addClass('active');
+  } else {
+    stopSound();
+  }
+}
+
+
+function stopSound(){
+  play = false;
+  $('#album').removeClass('active');
+
+}
+
+
+</script>
+</html>

@@ -1,0 +1,12 @@
+<svg width="400" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="displacementFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <mask id="circleMask">
+      <circle cx="200" cy="200" r="0" fill="white" class="displacement" />
+    </mask>
+  </defs>
+  <image xlink:href="https://images.unsplash.com/photo-1630563451961-ac2ff27616ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFwcGxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=400&h=400&q=60" width="400" height="400" mask="url(#circleMask)" />
+</svg>

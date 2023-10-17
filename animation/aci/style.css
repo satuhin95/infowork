@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  width: 300px;
+  height: 250px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.ppm_container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: relative;
+  overflow: hidden;
+}
+
+.ppm_check {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: .5;
+  height: 250px;
+  width: 300px;
+  /* display: none; */
+}
+
+
+/* ppm_slide_1 */
+.ppm_bg {
+  top: 0px;
+  left: 0px;
+}
+
+.ppm_teapot {
+  top: 123px;
+  left: 23px;
+}
+
+.ppm_cupblank {
+  top: 167px;
+  left: 163px;
+}
+
+.ppm_cupfilled {
+  top: 167px;
+  left: 163px;
+    --pp_clip: 100%;
+  clip-path: polygon(0% var(--pp_clip), 100% var(--pp_clip), 100% 100%, 0% 100%);
+}
+
+.ppm_teapotshdaow {
+  top: 212px;
+  left: 12px;
+}
+
+.ppm_teadriping {
+  top: 121px;
+  left: 190px;
+  --pp_drip_clip: 0%;
+  clip-path: polygon(0 0, 100% 0, 100% var(--pp_drip_clip), 0 var(--pp_drip_clip));
+}
+
+
+/* ppm_slide_2 */
+.ppm_products {
+  top: 100px;
+  left: 0px;
+}
+
+.ppm_ushnotaText {
+  top: 24px;
+  left: 116px;
+}
+
+/* Utility class */
+.ppm_absolute {
+  position: absolute;
+}
+
+.ppm_hidden {
+  display: none;
+}
+
+.ppm_zeroOpacity {
+  opacity: 0;
+}
+
+
+/* steam css */
+
+.ppm_steam_container{
+  position: absolute;
+  left: 190px;
+  top: 160px;
+  opacity: 0;
+  }
+  .ppm_vapour {
+   position: relative;
+   display: flex;
+   z-index: 1;
+   padding: 0 0px;
+   justify-content: center;
+   /* border: 1px solid red; */
+  }
+  
+  .ppm_vapour span {
+   position: relative;
+   bottom: 0px;
+   display: block;
+  /*     margin: 0 2px 50px; */
+   min-width: .2em;
+   /* min-width: 2px; */
+   height: 20px;
+   background: #fff;
+   /* background: red; */
+   border-radius: 50%;
+   animation: animate 5s linear infinite;
+   opacity: 0;
+   filter: blur(2px);
+   animation-delay: calc(var(--v) * -0.5s);
+  }
+  
+  @keyframes animate {
+   0% {
+       transform: translateY(0) scaleX(1);
+       opacity: 0;
+   }
+   15% {
+       opacity: 1;
+   }
+   50% {
+       transform: translateY(-20px) scaleX(5);
+   }
+   95% {
+       opacity: 0;
+   }
+   100% {
+       transform: translateY(-60px) scaleX(10);
+   }
+  }

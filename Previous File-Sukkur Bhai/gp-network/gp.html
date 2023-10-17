@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Infinite Lights | Demo 1 | Codrops</title>
+		<meta name="description" content="A Three.js powered animation that resembles the nightly view of fast cars on a road." />
+		<meta name="keywords" content="webgl, three.js, cars, road, highway, lights, speed, web development, demo, javascript" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" href="https://use.typekit.net/uok8swb.css">
+		<link rel="stylesheet" type="text/css" href="base.css" />
+        <style>
+.screen {
+    position: absolute;
+    top: 41px!important;
+    left: 174px!important;
+    width: 100px;
+    height: 181px;
+    inset: 0;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 1px rgba(0,0,0,0.15), 0 -10px 20px -5px rgba(0,0,0,0.3) inset, 1px 2px 1px rgba(255,255,255,0.5) inset, 0 150px 100px -80px rgba(0,0,0,0.4);
+    transform: rotateX(22deg) rotateY(-45deg) rotateZ(5deg) scale(1);
+    transition: all .3s ease;
+    
+}
+/* .screen:hover {
+    transform: rotateX(0deg) rotateY(19deg) rotateZ(0deg) scale(1);
+} */
+
+.glass {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  --offset: 20%;
+  --brightness: 105%;
+  border-radius: 4px;
+  backdrop-filter: blur(var(--blur)) brightness(var(--brightness));
+  -webkit-backdrop-filter: blur(var(--blur)) brightness(var(--brightness));
+  -webkit-mask-image: linear-gradient(to right, black calc(var(--x) - var(--offset)), transparent calc(var(--x) + var(--offset)));
+}
+.glass:nth-of-type(1) {
+  --blur: 128px;
+  --x: 12.5%;
+}
+.glass:nth-of-type(2) {
+  --blur: 64px;
+  --x: 25%;
+}
+.glass:nth-of-type(3) {
+  --blur: 32px;
+  --x: 37.5%;
+}
+.glass:nth-of-type(4) {
+  --blur: 16px;
+  --x: 50%;
+}
+.glass:nth-of-type(5) {
+  --blur: 8px;
+  --x: 62.5%;
+}
+.glass:nth-of-type(6) {
+  --blur: 4px;
+  --x: 75%;
+}
+.glass:nth-of-type(7) {
+  --blur: 2px;
+  --x: 87.5%;
+}
+.glass:nth-of-type(8) {
+  --blur: 2px;
+  --x: 120%;
+}
+.image3 {
+    z-index: 9;
+    position: absolute;
+    width: 170px;
+    top: 70px;
+    opacity: 0;
+    /* animation: fadeIn 1s forwards; */
+}
+
+.image2 {
+    z-index: 9;
+    position: absolute;
+    width: 150px;
+    top: 99px;
+    opacity: 0;
+    /* animation: fadeIn 1s forwards; */
+    /* animation-delay: 0.5s; */
+}
+
+.image1 {
+    z-index: 9;
+    position: absolute;
+    top: 118px;
+    width: 130px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 1s;
+}
+
+img.logo {
+    position: absolute;
+    width: 30px;
+    left: 9px;
+    top: 7px;
+}
+
+
+.neon {
+
+    position: absolute;
+    top: 41px!important;
+    left: 174px!important;
+    width: 100px;
+    height: 181px;
+    border-radius: 4px;
+    color: #03e9f4;
+    overflow: hidden;
+    transform: rotateX(22deg) rotateY(-45deg) rotateZ(5deg) scale(1);
+
+    
+}
+
+.neon-common {
+  position: absolute;
+  display: block;
+}
+
+.neon1 {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.neon2 {
+  top: -100%;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.neon3 {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.neon4 {
+  bottom: -100%;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.fadeIn {
+    animation: 1s fadeIn forwards;
+}
+
+
+
+        </style>
+		<script>
+		document.documentElement.className = "js";
+		var supportsCssVars = function() { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e };
+		supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
+		</script>
+	</head>
+	<body class="demo-4">
+		<main>
+			<div class="content">
+				<div id="app"></div>
+
+                <div class="screen">
+                    <span class="glass"></span>
+                    <span class="glass"></span>
+                    <span class="glass"></span>
+                    <span class="glass"></span>
+                    <span class="glass"></span>
+                    <span class="glass"></span>
+                    <span class="glass"></span>
+                    <span class="glass"></span>
+                  </div>
+                  <div class="neon">
+                    <span class="neon1 neon-common"></span>
+                    <span class="neon2 neon-common"></span>
+                    <span class="neon3 neon-common"></span>
+                    <span class="neon4 neon-common"></span>
+                    </div>
+                  <img src="3.png" alt="" class="msg image3">
+                  <img src="2.png" alt="" class="msg image2">
+                  <img src="1.png" alt="" class="msg image1">
+                  <img src="grameenphone.png" alt="" class="logo">
+			</div>
+		</main>
+		<script src="js/three.min.js"></script>
+		<script src="js/postprocessing.min.js"></script>
+		<script src="js/InfiniteLights.js"></script>
+		<script src="js/Distortions.js"></script>
+		<script>
+		(function() {
+
+			const container = document.getElementById('app');
+
+			const options = {
+				onSpeedUp: (ev) => {					
+				},
+				onSlowDown: (ev) => {
+				},
+				// mountainDistortion || LongRaceDistortion || xyDistortion || turbulentDistortion || turbulentDistortionStill || deepDistortionStill || deepDistortion
+				distortion: turbulentDistortion, 
+				
+				length: 400,
+				roadWidth: 10,
+				islandWidth: 0.5,
+				lanesPerRoad: 3,
+
+				fov: 90,
+				fovSpeedUp: 150,
+				speedUp: 2,
+				carLightsFade: 0.4,
+
+				totalSideLightSticks: 20,
+				lightPairsPerRoadWay: 40,
+
+				// Percentage of the lane's width
+				shoulderLinesWidthPercentage: 0.05,
+				brokenLinesWidthPercentage: 0.1,
+				brokenLinesLengthPercentage: 0.5,
+
+				/*** These ones have to be arrays of [min,max].  ***/
+				lightStickWidth: [0.12, 0.5],
+				lightStickHeight: [1.3, 1.7],
+
+				movingAwaySpeed: [60, 80],
+				movingCloserSpeed: [-120, -160],
+
+				/****  Anything below can be either a number or an array of [min,max] ****/
+
+				// Length of the lights. Best to be less than total length
+				carLightsLength: [400 * 0.03, 400 * 0.2],
+				// Radius of the tubes
+				carLightsRadius: [0.05, 0.14],
+				// Width is percentage of a lane. Numbers from 0 to 1
+				carWidthPercentage: [0.3, 0.5],
+				// How drunk the driver is.
+				// carWidthPercentage's max + carShiftX's max -> Cannot go over 1. 
+				// Or cars start going into other lanes 
+				carShiftX: [-0.8, 0.8],
+				// Self Explanatory
+				carFloorSeparation: [0, 5],
+
+				colors: {
+					roadColor: 0x02469c,
+					islandColor: 0x0275F2,
+					background: 0x003e85,
+					shoulderLines: 0x131318,
+					brokenLines: 0x05e1f5,
+					/***  Only these colors can be an array ***/
+					leftCars: [0xff54de, 0x05e1f5, 0xC247AC],
+					rightCars: [0x05e1f5, 0x0086fc, 0x035396],
+					sticks: 0x05e1f5,
+				}
+			};
+
+			const myApp = new App(container, options);
+			myApp.loadAssets().then(myApp.init)
+            // let screen = document.querySelector('.screen');
+            // add_class(screen, 'fadeIn')
+            let image3 = document.querySelector('.image3');
+            add_class(image3, 'fadeIn')
+            let image2 = document.querySelector('.image2');
+            add_class(image2, 'fadeIn')
+            setInterval(() => {
+                myApp.onMouseDown()
+                setTimeout(() => {
+                myApp.onMouseUp()
+            }, 1500);
+            }, 4000);
+
+            function remove_class(element, classname,newclass='') {
+                   element.className = element.className.replace(classname, newclass);
+               }
+               function add_class(element, classname) {
+                   element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+               }
+		})()
+		</script>
+	</body>
+</html>

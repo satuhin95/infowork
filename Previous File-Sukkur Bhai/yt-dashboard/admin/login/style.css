@@ -1,0 +1,16 @@
+.stat svg{
+  color: #82206b !important;
+}
+
+.loginBtn{
+  background-color: #6a27d9;
+  color: #fff;
+}
+
+.checkBox:checked {
+  background-color: #6a27d9 !important;
+}
+
+.pdLeft20{
+  padding-left: 20px !important;
+}

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="shortcut icon" type="image/x-icon" href="//infostation.digital/favicon.ico">
+       <meta name="ad.size" content="width=300,height=250">
+       <title>Pizza Hut Animation Ad by Info Station</title>
+       <style>
+            *{
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+            }
+            body{
+               background-color: #fff;
+            }
+            .istation_wrapper{
+               display: flex;
+               margin: auto;
+               align-items: center;
+               justify-content: center;
+               height: 100vh;
+             }
+            .is_wrapper{
+               width: 300px;
+               height: 250px;
+               position: relative;
+               background: linear-gradient(299deg, #efefef  50%, #d80027  50.1%);
+            }
+            .slide_one{
+                background-image: url("half-pizza.png"); 
+            }
+            .slide_one, .slide_two{
+                position: relative;
+                width: 300px;
+                height: 250px;
+                overflow: hidden;
+            }
+
+
+            img.onion {
+                position: absolute;
+                top: 44px;
+                left: 109px;
+            }
+
+            @keyframes onion_animation {
+                0% {
+                    opacity: 0;
+                    top: 21px;
+                    left: 83px;
+                }
+                100% {
+                    opacity: 1;
+                    top: 44px;
+                    left: 109px;
+                }
+            }
+            .onion_animation {
+                animation: 2.5s onion_animation linear;
+                
+            }
+
+            img.powder {
+                position: absolute;
+                top: 73px;
+                left: 105px;
+            }
+            img.powder {
+                position: absolute;
+                
+            }
+
+            @keyframes powder_animation {
+                0% {
+                    opacity: 0;
+                    top: 55px;
+                left: 83px;
+                }
+                100% {
+                    opacity: 1;
+                    top: 73px;
+                left: 105px;
+                }
+            }
+            .powder_animation {
+                animation: 2.5s powder_animation linear;
+                
+            }
+
+
+
+            img.capsicum {
+                position: absolute;
+                top: 122px;
+                left: 100px;
+            }
+            @keyframes capsicum_animation {
+                0% {
+                    opacity: 0;
+                    top: 110px;
+                    left: 65px;
+                }
+                100% {
+                    opacity: 1;
+                    top: 122px;
+                    left: 100px;
+                }
+            }
+            .capsicum_animation {
+                animation: 2.5s capsicum_animation linear;
+                
+            }
+
+            img.butter {
+                position: absolute;
+                top: 158px;
+                left: 95px;
+            }
+            @keyframes butter_animation {
+                0% {
+                    opacity: 0;
+                    top: 184px;
+                    left: 50px;
+                }
+                100% {
+                    opacity: 1;
+                    top: 158px;
+                left: 95px;
+                }
+            }
+            .butter_animation {
+                animation: 2.5s butter_animation linear;
+                
+            }
+
+            img.tomato {
+                position: absolute;
+                top: 137px;
+                left: 72px;
+            }
+            @keyframes tomato_animation {
+                0% {
+                    opacity: 0;
+                    top: 160px;
+                left: 30px;
+                }
+                100% {
+                    opacity: 1;
+                    top: 137px;
+                left: 72px;
+                }
+            }
+            .tomato_animation {
+                animation: 2.5s tomato_animation linear;
+                
+            }
+
+            img.garlic {
+                position: absolute;
+                top: 104px;
+                left: 71px;
+            }
+            @keyframes garlic_animation {
+                0% {
+                    opacity: 0;
+                    top: 94px;
+                left: 43px;
+                }
+                100% {
+                    opacity: 1;
+                    top: 104px;
+                left: 71px;
+                }
+            }
+            .garlic_animation {
+                animation: 2.5s garlic_animation linear;
+                
+            }
+
+            img.chili {
+                position: absolute;
+                top: 87px;
+                left: 57px;
+            }
+
+            @keyframes chili_animation {
+                0% {
+                    opacity: 0;
+                    top: 73px;
+                left: 13px;
+                }
+                100% {
+                    opacity: 1;
+                    top: 87px;
+                left: 57px;
+                }
+            }
+            .chili_animation {
+                animation: 2.5s chili_animation linear;
+                
+            }
+            img.black_paper {
+                position: absolute;
+                top: 103px;
+                left: 96px;
+            }
+
+            @keyframes black_animation {
+                0% {
+                    opacity: 0;
+                    top: 81px;
+                left: 66px;
+                }
+                100% {
+                    opacity: 1;
+                    top: 103px;
+                left: 96px;
+                }
+            }
+            .black_animation {
+                animation: 2.5s black_animation linear;
+                
+            }
+
+            img.letus {
+                position: absolute;
+                top: 60px;
+                left: 80px;
+            }
+            @keyframes letus_animation {
+                0% {
+                    opacity: 0;
+                    top: 36px;
+                left: 34px;
+                }
+                100% {
+                    opacity: 1;
+                    top: 60px;
+                left: 80px;
+                }
+            }
+            .letus_animation {
+                animation: 2.5s letus_animation linear;
+                
+            }
+
+            img.onion_full, img.onion_half {
+                position: absolute;
+                right: 40px;
+                bottom: 26px;
+            }
+
+            img.tomato_full , img.tomato_half{
+                position: absolute;
+                top: 60px;
+                left: 40px;
+            }
+
+            img.capsicum_full, img.capsicum_half {
+                position: absolute;
+                top: 50px;
+                right: 70px;
+            }
+
+            img.brinjal_full, img.brinjal_half {
+                position: absolute;
+                bottom: 23px;
+                left: 70px;
+            }
+            @keyframes polygon_animation {
+                0% {
+                    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                }
+                100% {
+                    clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+                }
+            }
+            .polygon_animation {
+                animation: 4s polygon_animation forwards;
+            }
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+                100% {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            .fadeIn {
+                animation: 2.5s fadeIn;
+            }
+            .d_none{
+                display: none;
+            }
+            
+       </style>
+    </head>
+
+    <body>
+        <div class="istation_wrapper">
+           <a href="#" target="_blank">
+               <div class="is_wrapper">
+                    <div class="slide_one">
+                        <img src="onion.png" alt="" class="onion onion_animation">
+                        <img src="powder.png" alt="" class="powder powder_animation">
+                        <img src="capsicum.png" alt="" class="capsicum capsicum_animation">
+                        <img src="butter.png" alt="" class="butter butter_animation">
+                        <img src="tomato.png" alt="" class="tomato tomato_animation">
+                        <img src="garlic.png" alt="" class="garlic garlic_animation">
+                        <img src="chili.png" alt="" class="chili chili_animation">
+                        <img src="black-paper.png" alt="" class="black_paper black_animation">
+                        <img src="letus.png" alt="" class="letus letus_animation">
+                    </div>
+
+                    <div class="slide_two d_none">
+                        <img src="onion-half.png" alt="" class="onion_half">
+                        <img src="tomato-half.png" alt="" class="tomato_half">
+                        <img src="brinjal-half.png" alt="" class="brinjal_half">
+                        <img src="capsicum-half.png" alt="" class="capsicum_half">
+                        
+                        <img src="onion-full.png" alt="" class="onion_full">
+                        <img src="tomato-full.png" alt="" class="tomato_full">
+                        <img src="brinjal-full.png" alt="" class="brinjal_full">
+                        <img src="capsicum-full.png" alt="" class="capsicum_full">
+                    </div>
+               </div>
+           </a>
+        </div>
+
+       <script>
+            let slide_one = document.querySelector('.slide_one');
+            let slide_two = document.querySelector('.slide_two');
+
+            let onion_full = document.querySelector('.onion_full');
+            let tomato_full = document.querySelector('.tomato_full');
+            let brinjal_full = document.querySelector('.brinjal_full');
+            let capsicum_full = document.querySelector('.capsicum_full');
+
+           (function(){  
+               const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+               async function animation() {
+                   await wait(4000);
+                   add_class(slide_one, 'd_none');
+                   remove_class(slide_two, 'd_none', 'fadeIn');
+                   await wait(1200);
+                    add_class(onion_full, 'polygon_animation');
+                    add_class(tomato_full, 'polygon_animation');
+                    add_class(brinjal_full, 'polygon_animation');
+                    add_class(capsicum_full, 'polygon_animation');
+               }
+               animation();
+               function remove_class(element, classname,newclass='') {
+                   element.className = element.className.replace(classname, newclass);
+               }
+               function add_class(element, classname) {
+                   element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+               }
+           })();
+       </script>
+    </body>
+</html>

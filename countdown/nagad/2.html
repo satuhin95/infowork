@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer</title>
+</head>
+<body>
+  <h1>Countdown Timer for Two Hours</h1>
+  <div id="countdown"></div>
+
+  <script>
+    // Set the target time for the countdown (2 hours from now)
+    const targetTime = new Date();
+    targetTime.setHours(targetTime.getHours() + 2);
+
+    function updateCountdown() {
+      const currentTime = new Date();
+      const timeDifference = targetTime - currentTime;
+
+      console.log(currentTime)
+
+      if (timeDifference <= 0) {
+        // Countdown has reached zero or gone negative
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').innerHTML = 'Countdown expired!';
+      } else {
+        // Calculate remaining hours, minutes, and seconds
+        const hours = Math.floor(timeDifference / 3600000);
+        const minutes = Math.floor((timeDifference % 3600000) / 60000);
+        const seconds = Math.floor((timeDifference % 60000) / 1000);
+
+        // Display the remaining time
+        document.getElementById('countdown').innerHTML =
+          `Time remaining: ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+      }
+    }
+
+    // Update the countdown every second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+
+    // Initial update
+    updateCountdown();
+  </script>
+</body>
+</html>

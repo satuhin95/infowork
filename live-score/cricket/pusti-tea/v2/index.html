@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <link rel="shortcut icon" type="image/x-icon" href="https://infostation.digital/favicon.ico">
+      <title>Pusti Tea Live Score Banner by Info Station</title>
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <script src="jquery.min.js" type="text/javascript"></script>
+      <script src="flux.js" type="text/javascript"></script>
+      <style>
+         *{
+            margin: 0;
+            padding: 0;
+         }
+         .iis_container{
+            width: 300px;
+            height: 250px;
+            top: 0;
+            left: 0;
+            position: relative;
+            overflow: hidden;
+         }
+         .iis_slider{
+            width: 300px;
+            height: 250px;
+            top: 0;
+            left: 0;
+            position: absolute;
+         }
+
+         .iis_element_1{
+            width: 300px;
+            height: 52px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: url(images/scoreboard.png) no-repeat;
+            z-index: 102 !important;
+         }
+         .countryName{
+            width: 300px;
+            height: 52px;
+            bottom: 0px;
+            left: 0px;
+            position: absolute;
+         }
+
+      .countryone {
+         width: 150px;
+         bottom: 31px;
+         left: 46px;
+         color: #fff;
+         position: absolute;
+         font-weight: 700;
+         font-size: 16px;
+         font-family: "Montserrat", Times, serif;
+      }
+      .countrytwo{
+         width: 150px;
+         bottom: 31px;
+         left: 222px;
+         color: #fff;
+         position: absolute;
+         font-weight: 700;
+         font-size: 16px;
+         font-family: "Montserrat", Times, serif;
+
+      }
+      .teamone {
+         width: 150px;
+         bottom: 10px;
+         left: 20px;
+         color: #fff;
+         position: absolute;
+         font-weight: 700;
+         font-size: 14px;
+         font-family: "Montserrat", Times, serif;
+      }
+      .teamtwo{
+         width: 150px;
+         bottom: 10px;
+         left: 196px;
+         color: #fff;
+         position: absolute;
+         font-weight: 700;
+         font-size: 14px;
+         font-family: "Montserrat", Times, serif;
+      }
+      </style>
+   </head>
+   <body>
+      <!-- <a target="_blank" href="{CLICK_MACRO}"> -->
+         <section class="iis_container">
+            <div id="iis_slider">
+               <img src="images/tea-old.png"/>
+               <img src="images/tea-young.png"/>
+               <img src="images/tea-old.png"/>
+               <img src="images/tea-young.png"/>
+            </div>
+            <div class="iis_element_1">
+               <div class="countryName">
+                  <span class="countryone" id="countryone"></span>
+                  <span class="countrytwo" id="countrytwo"></span>
+              </div>
+             <div class="teams">
+              <span class="teamone" id="teamone"></span>
+              <span class="teamtwo" id="teamtwo"></span>
+          </div>
+            </div>
+         </section>
+      <!-- </a> -->
+      <script>
+      	$(function(){ 
+      		new flux.slider('#iis_slider', { transitions: [ 'tiles3d' ], pagination: false });
+      		}); 
+            var countryone = document.getElementById('countryone')
+    var countrytwo = document.getElementById('countrytwo')
+
+    var teamone = document.getElementById('teamone')
+    var teamtwo = document.getElementById('teamtwo')
+
+   getLiveScore();
+   setInterval(function(){ getLiveScore(); }, 5000);
+   //var data;
+   function getLiveScore() {
+      fetch('https://showcase.infostation.digital/api/t20/data.json?v=1.1')
+       .then((response) => response.json())
+       .then((data) => {
+        // console.log(data)
+         
+           if (data.teamone==false) {
+               teamone.innerText = ''
+           }else{
+               teamone.innerText = data.teamone.split('-')[1];
+           }
+
+           if (data.teamtwo==false) {
+               teamtwo.innerText = ''
+           }else{
+               teamtwo.innerText = data.teamtwo.split('-')[1];
+           }
+
+            countryone.innerText = data.countryone;
+           countrytwo.innerText = data.countrytwo;
+           //  countryone.innerText = data.teamone.split('-')[0];
+           // countrytwo.innerText = data.teamtwo.split('-')[0];
+           
+       })
+
+   }      	
+      </script>
+   </body>
+</html>

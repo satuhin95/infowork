@@ -1,0 +1,32 @@
+.ib-color-1{background: linear-gradient(90deg, #662D8C 0%, #ED1E79 100%) !important;}
+.ib-color-2{background: linear-gradient(90deg, #2E3192 0%, #1BFFFF 100%) !important;}
+.ib-color-3{background: linear-gradient(90deg, #D4145A 0%, #FBB03B 100%) !important;}
+.ib-color-4{background: linear-gradient(90deg, #009245 0%, #FCEE21 100%) !important;}
+.ib-color-5{background: linear-gradient(90deg, #FF512F 0%, #DD2476 100%) !important;}
+.ib-color-6{background: linear-gradient(90deg, #BFF098 0%, #6FD6FF 100%) !important;}
+.ib-color-7{background: linear-gradient(90deg, #614385 0%, #516395 100%) !important;}
+.ib-color-8{background: linear-gradient(90deg, #09203F 0%, #00CDAC 100%) !important;}
+.ib-color-9{background: linear-gradient(90deg, #BFF098 0%, #6FD6FF 100%) !important;}
+.ib-color-10{background: linear-gradient(90deg, #BFF098 0%, #6FD6FF 100%) !important;}
+.ib-color-11{background: linear-gradient(90deg, #BFF098 0%, #6FD6FF 100%) !important;}
+.ib-color-12{background: linear-gradient(90deg, #BFF098 0%, #6FD6FF 100%) !important;}
+.ib-color-13{background: linear-gradient(90deg, #BFF098 0%, #6FD6FF 100%) !important;}
+.ib-color-14{background: linear-gradient(90deg, #BFF098 0%, #6FD6FF 100%) !important;}
+.ib-color-15{background: linear-gradient(90deg, #764BA2 0%, #6FD6FF 100%) !important;}
+
+
+.purpleBtn{
+  background-color: #6a27d9;
+  color: #fff;
+}
+
+.editBtn{
+  border: none;
+  height: 2rem;
+  margin-bottom: 1rem;
+  /* width: 5rem; */
+  padding: 5px 10px;
+  color: white;
+  background: #6a27d9cc;
+  border-radius: 5px;
+}

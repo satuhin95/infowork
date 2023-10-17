@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="ad.size" content="width=300,height=250" />
+		<link rel="shortcut icon" type="image/x-icon" href="https://infostation.digital/favicon.ico">
+		<title>Qcoom Animation By Info Station</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				overflow: hidden;
+				background-color: #fff;
+			}
+			.istation_wrapper{width: 300px;height: 250px;position: relative;}
+
+			.carousel {
+				position: relative;
+				z-index: 1;
+				width: 300px;
+				height: 250px;
+				overflow: hidden;
+				pointer-events: none;
+			}
+
+			.carousel-item {
+				--items: 4;
+				--width: clamp(150px, 250px, 300px);
+				--height: clamp(200px, 200px, 400px);
+				--x: calc(var(--active) * 300%);
+				--y: calc(var(--active) * 95%);
+				--rot: calc(var(--active) * 120deg);
+				--opacity: calc(var(--zIndex) / var(--items) * 3 - 2);
+				overflow: hidden;
+				position: absolute;
+				z-index: var(--zIndex);
+				width: var(--width);
+				height: var(--height);
+				margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
+				border-radius: 10px;
+				top: 50%;
+				left: 50%;
+				user-select: none;
+				transform-origin: 0% 100%;
+				box-shadow: 0 10px 50px 10px rgba(0, 0, 0, 0.5);
+				background: black;
+				pointer-events: all;
+				transform: translate(var(--x), var(--y)) rotate(var(--rot));
+				transition: transform 0.8s cubic-bezier(0, 0.02, 0, 1);
+			}
+			.carousel-box {
+				position: absolute;
+				z-index: 1;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				transition: opacity 0.8s cubic-bezier(0, 0.02, 0, 1);
+				opacity: var(--opacity);
+				font-family: "Orelo-sw-db", serif;
+
+				&:before {
+					content: "";
+					position: absolute;
+					z-index: 1;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+			.istation_wrapper img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				pointer-events: none;
+			}
+
+			a {
+				display: inline-block;
+				margin-left: 3px;
+			}
+
+			.cursor {
+				position: fixed;
+				z-index: 10;
+				top: 0;
+				left: 0;
+				--size: 40px;
+				width: var(--size);
+				height: var(--size);
+				border-radius: 50%;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				margin: calc(var(--size) * -0.5) 0 0 calc(var(--size) * -0.5);
+				transition: transform 0.85s cubic-bezier(0, 0.02, 0, 1);
+				display: none;
+				pointer-events: none;
+
+				@media (pointer: fine) {
+					display: block;
+				}
+			}
+
+			.cursor2 {
+				--size: 2px;
+				transition-duration: 0.7s;
+			}
+
+			.iis_element_1{
+    width: 300px;
+    height: 52px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url(scoreboard.png) no-repeat;
+    z-index: 102 !important;
+ }
+ .countryName{
+    width: 300px;
+    height: 52px;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+ }
+
+.countryone {
+ width: 150px;
+ bottom: 31px;
+ left: 46px;
+ color: #fff;
+ position: absolute;
+ font-weight: 700;
+ font-size: 16px;
+ font-family: "Montserrat", Times, serif;
+}
+.countrytwo{
+ width: 150px;
+ bottom: 31px;
+ left: 222px;
+ color: #fff;
+ position: absolute;
+ font-weight: 700;
+ font-size: 16px;
+ font-family: "Montserrat", Times, serif;
+
+}
+.teamone {
+ width: 150px;
+ bottom: 10px;
+ left: 20px;
+ color: #fff;
+ position: absolute;
+ font-weight: 700;
+ font-size: 14px;
+ font-family: "Montserrat", Times, serif;
+}
+.teamtwo{
+ width: 150px;
+ bottom: 10px;
+ left: 196px;
+ color: #fff;
+ position: absolute;
+ font-weight: 700;
+ font-size: 14px;
+ font-family: "Montserrat", Times, serif;
+}
+		</style>
+		<!-- <script>
+			var clickTag = "https://mygp.li/wXB4a";
+		</script> -->
+
+	</head>
+
+	<body>
+		<div class="istation_wrapper">
+			<div class="is_wrapper">
+				<div class="carousel">
+					<div class="carousel-item">
+						<div class="carousel-box">
+							<img src="old.png" />
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="carousel-box">
+							<img src="young.png" />
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="carousel-box">
+							<img src="old.png" />
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="carousel-box">
+							<img src="young.png" />
+						</div>
+					</div>
+				
+				</div>
+				<div class="cursor"></div>
+				<div class="cursor cursor2"></div>
+
+			</div>
+			<div class="iis_element_1">
+				<div class="countryName">
+				   <span class="countryone" id="countryone"></span>
+				   <span class="countrytwo" id="countrytwo"></span>
+			   </div>
+			  <div class="teams">
+			   <span class="teamone" id="teamone"></span>
+			   <span class="teamtwo" id="teamtwo"></span>
+		   </div>
+			 </div>
+
+		</div>
+
+		<script>
+			/*--------------------Vars--------------------*/
+			let progress = 60;
+			let startX = 0;
+			let active = 0;
+			let isDown = false;
+
+			/*-------------------- Constants--------------------*/
+			const speedWheel = 0.02;
+			const speedDrag = -0.1;
+
+			/*--------------------Get Z--------------------*/
+			const getZindex = (array, index) =>
+				array.map((_, i) =>
+					index === i ? array.length : array.length - Math.abs(index - i)
+				);
+
+			/*--------------------Items--------------------*/
+			const $items = document.querySelectorAll(".carousel-item");
+			const $cursors = document.querySelectorAll(".cursor");
+
+			const displayItems = (item, index, active) => {
+				const zIndex = getZindex([...$items], active)[index];
+				item.style.setProperty("--zIndex", zIndex);
+				item.style.setProperty("--active", (index - active) / $items.length);
+			};
+
+			/*--------------------Animate--------------------*/
+			const animate = () => {
+				progress = Math.max(0, Math.min(progress, 60));
+				active = Math.floor((progress / 60) * ($items.length - 1));
+
+				$items.forEach((item, index) => displayItems(item, index, active));
+			};
+			animate();
+
+			/*--------------------Click on Items--------------------*/
+			$items.forEach((item, i) => {
+				item.addEventListener("click", () => {
+					progress = (i / $items.length) * 60 + 10;
+					animate();
+				});
+			});
+
+			/*--------------------Handlers--------------------*/
+			const handleWheel = (e) => {
+				const wheelProgress = e.deltaY * speedWheel;
+				console.log(progress);
+				progress = progress + wheelProgress;
+				console.log(progress);
+				animate();
+			};
+
+			const handleMouseMove = (e) => {
+				if (e.type === "mousemove") {
+					$cursors.forEach(($cursor) => {
+						$cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+					});
+				}
+				if (!isDown) return;
+				const x = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+				const mouseProgress = (x - startX) * speedDrag;
+				progress = progress + mouseProgress;
+				startX = x;
+				console.log(x);
+				animate();
+			};
+
+			const handleMouseDown = (e) => {
+				isDown = true;
+				startX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+			};
+
+			const handleMouseUp = () => {
+				isDown = false;
+			};
+
+			/*--------------------Listeners--------------------*/
+			document.addEventListener("mousewheel", handleWheel);
+			document.addEventListener("mousedown", handleMouseDown);
+			document.addEventListener("mousemove", handleMouseMove);
+			document.addEventListener("mouseup", handleMouseUp);
+			document.addEventListener("touchstart", handleMouseDown);
+			document.addEventListener("touchmove", handleMouseMove);
+			document.addEventListener("touchend", handleMouseUp);
+
+			setInterval(() => {
+				if (progress == 60) {
+					progress = 0;
+				}
+				if (progress < 60) {
+					progress = progress + 10;
+				}
+				animate();
+			}, 2000);
+
+			// live score 
+			var countryone = document.getElementById('countryone')
+    var countrytwo = document.getElementById('countrytwo')
+
+    var teamone = document.getElementById('teamone')
+    var teamtwo = document.getElementById('teamtwo')
+
+   getLiveScore();
+   setInterval(function(){ getLiveScore(); }, 5000);
+   //var data;
+   function getLiveScore() {
+      fetch('https://showcase.infostation.digital/api/t20/data.json?v=1.1')
+       .then((response) => response.json())
+       .then((data) => {
+        // console.log(data)
+         
+           if (data.teamone==false) {
+               teamone.innerText = ''
+           }else{
+               teamone.innerText = data.teamone.split('-')[1];
+           }
+
+           if (data.teamtwo==false) {
+               teamtwo.innerText = ''
+           }else{
+               teamtwo.innerText = data.teamtwo.split('-')[1];
+           }
+
+            countryone.innerText = data.countryone;
+           countrytwo.innerText = data.countrytwo;
+       
+           
+       })
+
+   }
+		</script>
+	</body>
+</html>

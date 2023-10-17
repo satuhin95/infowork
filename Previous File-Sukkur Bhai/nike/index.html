@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="shortcut icon" type="image/x-icon" href="//infostation.digital/favicon.ico">
+       <meta name="ad.size" content="width=300,height=250">
+       <title>Bkash by Info Station</title>
+       <style>
+            *{
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+            }
+            body{
+               background-color: #fff;
+            }
+            .istation_wrapper{
+               display: flex;
+               margin: auto;
+               align-items: center;
+               justify-content: center;
+               height: 100vh;
+             }
+            .is_wrapper{
+               width: 300px;
+               height: 250px;
+               position: relative;
+            }
+       </style>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+<script type="importmap">
+  {
+    "imports": {
+      "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@0.9.210/build/runtime.js"
+    }
+  }
+</script>
+<script type="module">
+import { Application } from '@splinetool/runtime';
+const canvas = document.getElementById('canvas3d');
+const app = new Application(canvas);
+app.load('nike.3d');
+</script>
+    </head>
+
+    <body>
+
+
+          
+          <div class="absolute inset-0 z-0 group cursor-pointer bg-violet-50">
+            <canvas id="canvas3d" class="block w-full h-full relative z-10"></canvas>
+            
+
+          
+          </div>
+          
+        <div class="istation_wrapper">
+           <!-- <a href="https://www.facebook.com/bkashlimited" target="_blank"> -->
+               <div class="is_wrapper">
+
+               </div>
+           <!-- </a> -->
+        </div>
+
+       <script>
+           (function(){  
+               const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+               async function animation() {
+                   
+               }
+               animation();
+               function remove_class(element, classname,newclass='') {
+                   element.className = element.className.replace(classname, newclass);
+               }
+               function add_class(element, classname) {
+                   element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+               }
+           })();
+       </script>
+    </body>
+</html>

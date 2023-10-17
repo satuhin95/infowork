@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="iis_wrapper" id="iis_wrapper">
+        <div class="iis_slide_1">
+            <div class="iis_element_1">
+                <img src="images/airfrehener.png" />
+            </div>
+            <div class="iis_element_2">
+                <img src="images/spray.png" />
+            </div>
+            <div class="iis_element_3">
+                <img src="images/bg2.png" />
+            </div>
+            <div class="iis_steam_container ">
+                <div class="iis_vapour">
+                    <span style="--v:1;"></span>
+                    <span style="--v:2;"></span>
+                    <span style="--v:5;"></span>
+                    <span style="--v:4;"></span>
+                    <span style="--v:6;"></span>
+                    <span style="--v:19;"></span>
+                    <span style="--v:7;"></span>
+                    <span style="--v:8;"></span>
+                    <span style="--v:9;"></span>
+                    <span style="--v:10;"></span>
+                    <span style="--v:11;"></span>
+                    <span style="--v:18;"></span>
+                 </div>
+              </div>
+              <div class="iis_steam_container1 ">
+                <div class="iis_vapour1">
+                    <span style="--v:1;"></span>
+                    <span style="--v:2;"></span>
+                    <span style="--v:5;"></span>
+                    <span style="--v:4;"></span>
+                    <span style="--v:6;"></span>
+                    <span style="--v:19;"></span>
+                    <span style="--v:7;"></span>
+                    <span style="--v:8;"></span>
+                    <span style="--v:9;"></span>
+                    <span style="--v:10;"></span>
+                    <span style="--v:11;"></span>
+                    <span style="--v:18;"></span>
+                 </div>
+              </div>
+              <div class="iis_steam_container2 ">
+                <div class="iis_vapour2">
+                    <span style="--v:1;"></span>
+                    <span style="--v:2;"></span>
+                    <span style="--v:5;"></span>
+                    <span style="--v:4;"></span>
+                    <span style="--v:6;"></span>
+                 </div>
+              </div>
+              <div class="iis_flowers">
+                <div class="flower">
+                    <div><img src="./images/flower1.png"/></div>
+                    <div><img src="./images/flower2.png"/></div>
+                    <div><img src="./images/flower3.png"/></div>
+                    <div><img src="./images/flower4.png"/></div>
+                    <div><img src="./images/flower5.png"/></div>
+                    <div><img src="./images/flower6.png"/></div>
+                    <div><img src="./images/flower7.png"/></div>
+                    <div><img src="./images/flower8.png"/></div>
+                    <div><img src="./images/flower9.png"/></div>
+                    <div><img src="./images/flower10.png"/></div>
+
+                </div>
+              </div>
+              <!-- <canvas id="canvas" ></canvas>
+              <img id="smoke" src="images/spray.png" class="d_none"/> -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script>
+    <script src="main.js"></script> -->
+    <script>
+        let iis_steam_container = document.querySelector('.iis_steam_container')
+        let iis_steam_container1 = document.querySelector('.iis_steam_container1')
+        let iis_steam_container2 = document.querySelector('.iis_steam_container2')
+        let iis_element_1 = document.querySelector('.iis_element_1')
+        let iis_element_2 = document.querySelector('.iis_element_2')
+        let iis_element_3 = document.querySelector('.iis_element_3')
+        let iis_flowers = document.querySelector('.iis_flowers')
+   
+
+        // gsap.timeline({delay:.5,repeatDelay:2,repeat:-1})
+        gsap.timeline({delay:.5,repeatDelay:5,repeat:-1})
+            .fromTo(iis_steam_container,1,{opacity:'0',display: 'none', }, {opacity:1 ,display: 'block'})
+            .fromTo(iis_steam_container1,1,{opacity:'0',display: 'none', }, {opacity:1 ,display: 'block'},"<=.1")
+            .fromTo(iis_steam_container2,1,{opacity:'0',display: 'none', }, {opacity:1 ,display: 'block'},"<=.1")
+            .fromTo(iis_element_1,1,{opacity:'0',display: 'none',x: -100 }, {opacity:1 ,display: 'block',x:0},">=.5")
+            .fromTo(iis_element_2,1,{display: 'none',opacity:'0' }, {display: 'block',opacity:1 },">=.5")
+            .to(iis_steam_container,.8,{opacity:0},'>=.5')
+            .to(iis_steam_container1,.8,{opacity:0},'<=.1')
+            .to(iis_steam_container2,.8,{opacity:0},'<=.1')
+            .to(iis_element_2,.8,{opacity:0,display:'none'},'<=.1')
+            .fromTo(iis_element_3,1,{display: 'none',opacity:'0' }, {display: 'block',opacity:1 },">=.5")
+            .fromTo(iis_flowers,1,{display: 'none',opacity:'0' }, {display: 'block',opacity:1 },">=.5")
+           
+           
+           
+            // .set($(".iis_slide_1"),1, { css: { backgroundImage: 'url(/images/bg2.png)' } },'<=.1')
+    
+    </script>
+</body>
+</html>
